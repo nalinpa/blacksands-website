@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is GPS-Gating and Why Use It for Tours? | Black Sands</title>
+    <meta name="description" content="GPS-gating unlocks app content only when a user physically reaches a location. For tours it verifies real visits, builds anticipation and rewards being there.">
+    <link rel="canonical" href="https://blacksands.app/blog/building/what-is-gps-gating/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+
+    <meta property="og:title" content="What Is GPS-Gating and Why Use It for Tours?">
+    <meta property="og:description" content="GPS-gating unlocks app content only when a user physically reaches a location. For tours it verifies real visits, builds anticipation and rewards being there.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://blacksands.app/blog/building/what-is-gps-gating/">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Is GPS-Gating and Why Use It for Tours?",
+  "description": "GPS-gating unlocks app content only when a user physically reaches a location. For tours it verifies real visits, builds anticipation and rewards being there.",
+  "author": {
+    "@type": "Organization",
+    "name": "Black Sands",
+    "url": "https://blacksands.app"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Black Sands",
+    "url": "https://blacksands.app"
+  },
+  "mainEntityOfPage": "https://blacksands.app/blog/building/what-is-gps-gating/",
+  "datePublished": "2026-06-18",
+  "dateModified": "2026-06-18"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is GPS-gating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPS-gating is using a device's location to control when content becomes available. The app checks where the user is, and only unlocks a stop's story, audio or reward once they are within range of it. Until then the content stays locked. It ties the digital experience to a physical place, so reaching the spot is what triggers the payoff."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why use GPS-gating for tours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because it changes the behaviour you are designing for. Instead of someone skimming all the content from home, the tour becomes a sequence of places to reach, each unlocking as you arrive. That builds anticipation, rewards the effort of getting there, and keeps people moving through the route in the intended order."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What else can gating be used for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Verification and gamification. Because the unlock proves someone was physically present, gating can confirm genuine check-ins, which matters for things like trail challenges, passport-style collect-them-all tours, loyalty rewards and event activations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does gating need a connection to work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not if the app is built offline-first. The location check happens on the device using its GPS, which works without mobile data. Combined with content stored locally, that means gating can function in remote areas with no signal, unlocking stops as the user arrives even deep off the grid. The two ideas work best together."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="guide-akl">
+
+    <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
+
+    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
+        <nav class="coord-label" style="margin-bottom: 2rem;">
+            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
+            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+        </nav>
+
+        <article class="bs-content" style="max-width: 760px;">
+            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
+            <h1>What Is GPS-Gating and Why Use It for Tours?</h1>
+            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">GPS-gating means content in an app unlocks only when the user physically reaches a set location. For tours it turns passive reading into a reason to actually be there, verifies real visits, and builds a sense of discovery stop by stop.</p>
+
+            <section>
+                <h2>What is GPS-gating?</h2>
+                <p>GPS-gating is using a device's location to control when content becomes available. The app checks where the user is, and only unlocks a stop's story, audio or reward once they are within range of it. Until then the content stays locked. It ties the digital experience to a physical place, so reaching the spot is what triggers the payoff.</p>
+            </section>
+
+            <section>
+                <h2>Why use GPS-gating for tours?</h2>
+                <p>Because it changes the behaviour you are designing for. Instead of someone skimming all the content from home, the tour becomes a sequence of places to reach, each unlocking as you arrive. That builds anticipation, rewards the effort of getting there, and keeps people moving through the route in the intended order. It makes the tour an experience rather than a document.</p>
+            </section>
+
+            <section>
+                <h2>What else can gating be used for?</h2>
+                <p>Verification and gamification. Because the unlock proves someone was physically present, gating can confirm genuine check-ins, which matters for things like trail challenges, passport-style collect-them-all tours, loyalty rewards and event activations. Operators can build journeys where finishing unlocks a prize or certificate, knowing the completions are real.</p>
+            </section>
+
+            <section>
+                <h2>Does gating need a connection to work?</h2>
+                <p>Not if the app is built offline-first. The location check happens on the device using its GPS, which works without mobile data. Combined with content stored locally, that means gating can function in remote areas with no signal, unlocking stops as the user arrives even deep off the grid. The two ideas work best together.</p>
+            </section>
+
+            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
+                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Gate your experience by place</h3>
+                <p style="margin-bottom: 1.5rem;">Black Sands builds GPS-gated, offline-first location apps, so reaching the spot is what unlocks the story. We handle the engineering.</p>
+                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/why-offline-first-matters/" style="color: #0E7490;">Why offline-first matters for location apps</a>.</p>
+        </article>
+    </main>
+
+    <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide AKL | Auckland City Guide by Black Sands Digital</title>
+    <meta name="description" content="Guide AKL — the all-in-one Auckland city guide. Hidden gems, local insider knowledge, and neighbourhood navigation. Coming soon.">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/style.css">
+
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="guide-akl" x-init="lucide.createIcons()">
+
+    <div class="global-canvas"></div>
+
+    <div x-data="{ navHtml: '' }"
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})"
+        x-html="navHtml">
+    </div>
+
+    <main class="container page-layout app-light-theme">
+
+        <!-- Hero Section -->
+        <div class="app-hero">
+            <div class="hero-content">
+                <div class="case-meta" style="margin-bottom: 1.5rem;">
+                    <span class="case-badge loc-badge teal-badge">↗ Auckland, NZ</span>
+                </div>
+
+                <h1 class="hero-title">Your Auckland.<br><span class="text-teal-gradient">Fully Unlocked.</span></h1>
+                <p class="hero-desc">Guide AKL is the all-in-one Auckland companion built on the Black Sands engine. Real local knowledge — hidden laneways, neighbourhood deep-dives, and the kind of tips that only come from people who actually live here.</p>
+
+                <div class="btn-group">
+                    <a href="https://apps.apple.com/us/app/akl-auckland-travel-guide/id6781898807" class="btn btn-primary app-btn teal-btn">
+                        <i data-lucide="apple" class="icon-sm"></i> App Store
+                    </a>
+                    <a href="/android" class="btn btn-secondary app-btn">
+                        <i data-lucide="play" class="icon-sm"></i> Google Play
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="case-image-wrapper light-mode-img">
+                    <img src="/assets/ssGuideAKL.png" alt="Guide AKL App Interface">
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section-header text-center">
+            <h2>Built on local knowledge</h2>
+            <p>Guide AKL brings the Black Sands proximity engine to the people who live here — turning Auckland residents into expert curators for anyone who visits.</p>
+        </div>
+
+        <div class="app-features">
+            <div class="feature-card">
+                <div class="feature-icon teal-icon"><i data-lucide="map"></i></div>
+                <h3>Local Insider Tips</h3>
+                <p>The hidden laneway café, the free carpark locals never tell tourists about, the viewpoint that doesn't appear on any map. Curated by people who actually live here.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon teal-icon"><i data-lucide="navigation"></i></div>
+                <h3>Neighbourhood Navigator</h3>
+                <p>Ponsonby to Parnell, Titirangi to Takapuna. Each neighbourhood has its own personality — unlock its character layer as you move through it.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon teal-icon"><i data-lucide="star"></i></div>
+                <h3>Verified Check-ins</h3>
+                <p>GPS proximity verification means every unlocked location was actually visited. Build a credible record of everywhere you've explored across the city.</p>
+            </div>
+        </div>
+
+        <!-- Privacy Policy Section -->
+        <div class="legal-container" x-data="{ formattedDate: '1 June 2025' }">
+            <div id="privacy" class="legal-box">
+                <h2 class="legal-title">Privacy Policy</h2>
+                <p class="last-updated">Last Updated: <span x-text="formattedDate"></span></p>
+
+                <div class="legal-prose">
+                    <p><strong>Black Sands Digital</strong> ("we", "our", or "us") respects your privacy. This policy explains how we collect, use, and protect your information when you use the <strong>Guide AKL</strong> mobile application.</p>
+
+                    <h3>1. Information We Collect</h3>
+                    <ul>
+                        <li><strong>Account Information:</strong> When you create an account to save your progress, we collect your email address and a unique user identifier.</li>
+                        <li><strong>Location Data:</strong> Guide AKL requires your precise location (GPS) to unlock nearby content layers and verify your presence at points of interest. This data is processed in real-time on-device and is not stored continuously.</li>
+                        <li><strong>Usage Data &amp; Crash Reports:</strong> We collect anonymous diagnostic data to help us identify bugs and improve the app's performance.</li>
+                    </ul>
+
+                    <h3>2. How We Use Your Information</h3>
+                    <p>Your data is used solely to provide and improve the app's core functionality. We <strong>do not</strong> sell, rent, or share your personal location history or account details with third-party advertisers or data brokers.</p>
+
+                    <h3>3. Third-Party Services</h3>
+                    <p>Guide AKL utilizes Google Firebase to securely authenticate users and store your visited location history. Your data is handled in accordance with Google's privacy and security protocols.</p>
+
+                    <h3>4. Data Storage &amp; Deletion</h3>
+                    <p>You have full control over your data. You can completely delete your account and your visited history at any time directly via the settings menu inside the Guide AKL application. Upon requesting deletion, your data is permanently removed from our active database.</p>
+
+                    <h3>5. Children's Privacy</h3>
+                    <p>Guide AKL does not knowingly collect or solicit personal information from anyone under the age of 13. If you are under 13, please do not attempt to register for the app or send any personal information about yourself to us.</p>
+                </div>
+
+                <div id="support" class="support-box">
+                    <h3><i data-lucide="help-circle" class="icon-sm"></i> Need Support?</h3>
+                    <p>If you have questions about this privacy policy or want to register early interest in Guide AKL, contact us.</p>
+                    <a href="mailto:info@blacksandsdigital.nz" class="btn btn-secondary">
+                        <i data-lucide="mail" class="icon-sm"></i> info@blacksandsdigital.nz
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div x-data="{ footerHtml: '' }"
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})"
+        x-html="footerHtml">
+    </div>
+
+</body>
+</html>

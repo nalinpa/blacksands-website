@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Access | Black Sands</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg height='48' viewBox='0 0 24 24' width='48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3CclipPath id='dune-clip'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23dune-clip)' fill='%230F172A'%3E%3Cpath d='M0 0 L 24 0 L 24 12 C 20 9, 17 6, 13 6 C 9 6, 4 11, 0 14 Z'/%3E%3Cpath d='M0 24 L 24 24 L 24 16 C 21 12, 18 9.5, 15 9.5 C 10 9.5, 5 14, 0 18 Z'/%3E%3C/g%3E%3C/svg%3E">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="global-canvas"></div>
+
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    
+    <main class="login-container">
+        
+        <div class="login-box access-box">
+            
+            <svg class="lock-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <h1>Access Restricted</h1>
+            <p>Platform access is currently limited to our early access trial partners. We are not accepting new public registrations at this time.</p>
+            
+            <a href="/" class="btn btn-secondary full-width">Return Home</a>
+            
+        </div>
+        
+    </main>
+
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+</body>
+</html>

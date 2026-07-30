@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Route Not Found | Black Sands Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="global-canvas"></div>
+
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <main class="error-container">
+        <div class="error-box">
+            <div class="error-code">404</div>
+            <h1>Route Not Found</h1>
+            <p>The requested endpoint does not exist on this server. Please verify the URL or return to the main platform.</p>
+            
+            <div class="btn-group" style="justify-content: center; margin-top: 2rem;">
+                <a href="/" class="btn btn-primary">Return to Base</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div x-data="{ footerHtml: '' }"
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})"
+        x-html="footerHtml">
+    </div>
+
+</body>
+</html>

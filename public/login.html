@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in | Black Sands</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg height='48' viewBox='0 0 24 24' width='48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3CclipPath id='dune-clip'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23dune-clip)' fill='%230F172A'%3E%3Cpath d='M0 0 L 24 0 L 24 12 C 20 9, 17 6, 13 6 C 9 6, 4 11, 0 14 Z'/%3E%3Cpath d='M0 24 L 24 24 L 24 16 C 21 12, 18 9.5, 15 9.5 C 10 9.5, 5 14, 0 18 Z'/%3E%3C/g%3E%3C/svg%3E">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="global-canvas"></div>
+
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <main class="login-container" x-data="{ isLoading: false, hasError: false }">
+        
+        <svg height="48" viewBox="0 0 24 24" width="48" fill="none" xmlns="http://www.w3.org/2000/svg" class="login-logo">
+            <clipPath id="dune-clip-large"><circle cx="12" cy="12" r="10" /></clipPath>            
+            <g clip-path="url(#dune-clip-large)" fill="currentColor">
+                <path d="M0 0 L 24 0 L 24 12 C 20 9, 17 6, 13 6 C 9 6, 4 11, 0 14 Z" />
+                <path d="M0 24 L 24 24 L 24 16 C 21 12, 18 9.5, 15 9.5 C 10 9.5, 5 14, 0 18 Z" />
+            </g>
+        </svg>
+        
+        <div class="login-box">
+            <h1>Sign in to Black Sands</h1>
+            
+            <div class="login-alert" x-show="hasError" x-cloak x-transition.opacity>
+                Incorrect email or password.
+            </div>
+
+            <form @submit.prevent="isLoading = true; hasError = false; setTimeout(() => { isLoading = false; hasError = true; }, 1500)">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" required autocomplete="email" :disabled="isLoading">
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label for="password">Password</label>
+                        <a href="/access" class="forgot-link">Forgot password?</a>
+                    </div>
+                    <input type="password" id="password" name="password" required autocomplete="current-password" :disabled="isLoading">
+                </div>
+
+                <button type="submit" class="bs-btn-submit" :disabled="isLoading" :class="{ 'loading': isLoading }">
+                    <span x-show="!isLoading">Sign in</span>
+                    <span x-show="isLoading" x-cloak>Authenticating...</span>
+                </button>
+            </form>
+        </div>
+        
+        <div class="login-footer">
+            New to Black Sands? <a href="/access">Request an account</a>.
+        </div>
+    </main>
+
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+</body>
+</html>

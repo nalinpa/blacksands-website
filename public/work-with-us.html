@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us | Black Sands Engine</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Global Background -->
+    <div class="global-canvas"></div>
+
+    <!-- Navigation -->
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <!-- Main Content with Alpine Tab State -->
+    <main class="container page-layout" x-data="{ activeTab: 'creator' }">
+        
+        <!-- Unified White Background Panel with scroll tracking reference -->
+        <div class="deployment-panel" x-ref="deploymentPanel">
+            
+            <header class="work-header">
+                <h1>Deployment Models.</h1>
+                <p>We provide the master white-label engine; you provide the narrative.</p>
+            </header>
+
+            <!-- Tab Controls -->
+            <div class="tab-controls" x-ref="tabControls">
+                <button class="bs-tab-btn" 
+                        :class="{ 'active creator-tab': activeTab === 'creator' }" 
+                        @click="activeTab = 'creator'; $nextTick(() => $refs.tabControls.scrollIntoView({ behavior: 'smooth', block: 'start' }))">
+                    Content Creator
+                </button>
+                <button class="bs-tab-btn" 
+                        :class="{ 'active operator-tab': activeTab === 'operator' }" 
+                        @click="activeTab = 'operator'; $nextTick(() => $refs.tabControls.scrollIntoView({ behavior: 'smooth', block: 'start' }))">
+                    Tourism Operator
+                </button>
+                <button class="bs-tab-btn" 
+                        :class="{ 'active civic-tab': activeTab === 'civic' }" 
+                        @click="activeTab = 'civic'; $nextTick(() => $refs.tabControls.scrollIntoView({ behavior: 'smooth', block: 'start' }))">
+                    Civic Body
+                </button>
+            </div>
+
+            <!-- Tab Content Stack -->
+            <div class="partner-stack">
+                
+                <!-- Content Creator -->
+                <section class="partner-row tab-content" :class="{ 'active': activeTab === 'creator' }">
+                    <div class="partner-meta">
+                        <span class="case-badge creator">Content Creators</span>
+                    </div>
+                    <div class="partner-content">
+                        <h2>Monetize your info.</h2>
+                        <p class="partner-pitch">Stop selling static $15 PDF itineraries that get lost in your followers' downloads folder. The modern traveler doesn't just want a list of your recommendations; they want to navigate a destination exactly the way you experienced it. Through our Creator Portal, you can seamlessly transform your hard-earned travel knowledge into a premium, interactive product.</p>
+                        
+                        <ul class="partner-pitch-list">
+                            <li><strong>Interactive GPS Routing:</strong> Offer your audience a native, turn-by-turn app experience that guides them directly to your curated spots.</li>
+                            <li><strong>Rich Media Integration:</strong> Attach exclusive audio notes, hidden vlogs, and behind-the-scenes photos to specific map coordinates.</li>
+                            <li><strong>Custom-Branded Interface:</strong> Your colors, your logo, your voice. We handle the technical infrastructure, while you own the brand relationship.</li>
+                            <li><strong>Dynamic Updates:</strong> Did your favorite hidden cafe close? Update a pin instantly across all user devices without having to issue a "Version 2" PDF.</li>
+                            <li><strong>Scalable Revenue:</strong> Lock premium map layers behind subscriptions or one-time purchases, turning a passive audience into a recurring revenue stream.</li>
+                        </ul>
+
+                        <p class="partner-pitch">Drop your pins, upload your digital assets, and generate your bespoke map in minutes. Stop leaving money on the table and give your audience the immersive guide they actually want.</p>
+                        
+                        <a href="/login" class="bs-btn-action">Initialize Creator Sandbox &rarr;</a>
+                    </div>
+                </section>
+
+                <!-- Tourism Operator -->
+                <section class="partner-row tab-content" :class="{ 'active': activeTab === 'operator' }">
+                    <div class="partner-meta">
+                        <span class="case-badge operator">Corporate Operators</span>
+                    </div>
+                    <div class="partner-content">
+                        <h2>Digital Upsells, Deployed Faster.</h2>
+                        <p class="partner-pitch">The modern tourism operator faces a massive digital gap: you control the physical journey, but you lose the customer to third-party apps the moment they look at their phone. Black Sands provides the enterprise infrastructure to build a custom-branded, GPS-gated companion app that recaptures user attention and drives in-journey revenue—without funding an expensive in-house dev team.</p>
+                        
+                        <ul class="partner-pitch-list">
+                            <li><strong>Zero-CAPEX Deployment:</strong> Bypass the $150k+ upfront cost of custom app development. Leverage our tested, highly available white-label engine to get to market on day one.</li>
+                            <li><strong>Location-Triggered Upsells:</strong> Push hyper-relevant offers based on physical proximity. Gamify transit routes to unlock food, beverage, or partner activity discounts exactly when the customer arrives at a waypoint.</li>
+                            <li><strong>Offline-First Resilience:</strong> Experiential travel happens off-grid. Our engine caches state locally and syncs payloads the moment cellular signal returns, ensuring a flawless customer experience in remote terrain.</li>
+                            <li><strong>Data & Dwell Metrics:</strong> Stop guessing what your customers do between stops. Gain verified GPS analytics on where your users spend their time and how they interact with your physical assets.</li>
+                        </ul>
+                        
+                        <p class="partner-pitch">Turn your transit fleet or hostel network into a connected, monetizable digital ecosystem. Request an API key to review the documentation and evaluate the architecture.</p>
+
+                        <a href="/access" class="bs-btn-action">Request API Key &rarr;</a>
+                    </div>
+                </section>
+
+                <!-- Civic Body -->
+                <section class="partner-row tab-content" :class="{ 'active': activeTab === 'civic' }">
+                    <div class="partner-meta">
+                        <span class="case-badge civic">Civic Groups</span>
+                    </div>
+                    <div class="partner-content">
+                        <h2>Verified Engagement for Public Good.</h2>
+                        <p class="partner-pitch">Civic initiatives often struggle with a critical metric: proving physical engagement. You build the trails, protect the heritage sites, and fund the public health campaigns, but tracking actual human participation is notoriously difficult. Black Sands provides the digital infrastructure to transform your physical spaces into measurable, interactive civic ecosystems.</p>
+                        
+                        <ul class="partner-pitch-list">
+                            <li><strong>Measurable Health ROI:</strong> Prove the impact of your wellness grants. Use our proximity engine to gamify physical activity, tracking aggregate check-ins and completion rates across your local parks and trails.</li>
+                            <li><strong>Respectful Heritage Unlocks:</strong> Protect your narratives. Lock sensitive cultural history, indigenous storytelling, or geological education behind strict GPS coordinates, ensuring citizens only access the stories when they are physically present to appreciate them.</li>
+                            <li><strong>Gamified Community Action:</strong> Drive foot traffic to underutilized public spaces or local business districts by deploying city-wide digital passports and proximity-based scavenger hunts.</li>
+                            <li><strong>Zero-Maintenance Tech:</strong> Civic software often decays when initial grant funding runs dry. By running on our master architecture, your app remains consistently updated and live without requiring a permanent government IT payroll.</li>
+                        </ul>
+                        
+                        <p class="partner-pitch">Turn your protected sites and wellness initiatives into verifiable, data-backed success stories. Explore our civic sandbox to see how we digitize public infrastructure.</p>
+
+                        <a href="/access" class="bs-btn-action">Explore Civic Sandbox &rarr;</a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+    <!-- Lucide Library & Initialization -->
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

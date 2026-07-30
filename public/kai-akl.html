@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kai AKL | Auckland Food Tracker by Black Sands Digital</title>
+    <meta name="description" content="Discover Auckland's vibrant culinary scene. Track your visits, find nearby dishes on the map, and earn exclusive foodie badges.">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="kai-akl" x-init="lucide.createIcons()">
+
+    <!-- Global Background -->
+    <div class="global-canvas"></div>
+
+    <div x-data="{ navHtml: '' }"
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})"
+        x-html="navHtml">
+    </div>
+
+    <!-- Main Application Profile Content -->
+    <main class="container page-layout app-light-theme">
+
+        <!-- Hero Section -->
+        <div class="app-hero">
+            <div class="hero-content">
+                <div class="case-meta">
+                    <span class="case-badge loc-badge blue-badge">↗ Auckland, NZ</span>
+                </div>
+                
+                <h1 class="hero-title">Discover Epic <br><span class="text-blue-gradient">Local Dishes</span></h1>
+                <p class="hero-desc">Explore Auckland's vibrant culinary scene. Track your tasting journey, build your personal ledger, and earn exclusive foodie badges.</p>
+                
+                <div class="btn-group">
+                    <a href="https://apps.apple.com/us/app/kai-akl-auckland-food-guide/id6774390837" target="_blank" rel="noopener noreferrer" class="btn btn-primary app-btn">
+                        <i data-lucide="apple" class="icon-sm"></i> App Store
+                    </a>
+                    <a href="/android" class="btn btn-primary app-btn blue-btn">
+                        <i data-lucide="play" class="icon-sm"></i> Google Play
+                    </a>
+                </div>
+            </div>
+
+            <!-- App Screenshot -->
+            <div class="hero-visual">
+                <div class="case-image-wrapper light-mode-img">
+                    <img src="/assets/ssKai.png" alt="Kai AKL App Interface">
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section-header text-center">
+            <h2>Your Culinary Companion</h2>
+            <p>Built for Auckland foodies, Kai AKL makes discovering and tracking the city's best bites an interactive adventure.</p>
+        </div>
+
+        <div class="app-features">
+            <div class="feature-card">
+                <div class="feature-icon blue-icon"><i data-lucide="map"></i></div>
+                <h3>Interactive Map</h3>
+                <p>Put away the spreadsheets. Our interactive map guides you to the exact venue of your next unforgettable meal, filtering by cuisine and distance.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon blue-icon"><i data-lucide="check-square"></i></div>
+                <h3>Personal Ledger</h3>
+                <p>Build your ultimate tasting ledger. Check off dishes as you taste them, scribble down your personal notes, and watch your completion bar fill up.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon blue-icon"><i data-lucide="award"></i></div>
+                <h3>Earn Badges</h3>
+                <p>Unlock beautifully designed digital badges as you explore different neighborhoods and conquer specific culinary categories across the city.</p>
+            </div>
+        </div>
+
+        <!-- Privacy Policy Section with Alpine Date formatting -->
+        <div class="legal-container" x-data="{ formattedDate: '1 June 2025' }">
+            <div id="privacy" class="legal-box">
+                <h2 class="legal-title">Privacy Policy</h2>
+                <p class="last-updated">Effective Date: <span x-text="formattedDate"></span></p>
+                
+                <div class="legal-prose">
+                    <p><strong>Black Sands Digital</strong> ("we", "our", or "us") is committed to protecting your privacy. This policy explains how we collect, use, disclose, and safeguard your information when you use the <strong>Kai AKL</strong> mobile application (the "App"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application.</p>
+                    
+                    <h3>1. Information We Collect</h3>
+                    <p>We may collect information about you in a variety of ways. The information we may collect via the App includes:</p>
+                    <ul>
+                        <li><strong>Personal Data:</strong> When you register an account, we collect identifiable information such as your email address and a unique user identifier created via our authentication provider.</li>
+                        <li><strong>Geo-Location Information:</strong> We request access or permission to track location-based information from your mobile device, either continuously or while you are using the App, to provide location-based services (such as calculating the distance to nearby venues and unlocking location-based badges).</li>
+                        <li><strong>Camera & Media Access:</strong> We request access to your device's camera to allow you to take photos of your meals and share them. <strong>These photos remain entirely on your local device.</strong> We do not upload or collect your personal photos on our servers.</li>
+                        <li><strong>Mobile Device Data:</strong> We automatically collect device information, such as your mobile device ID, model, operating system, and anonymous crash data to improve app stability.</li>
+                    </ul>
+
+                    <h3>2. How We Use Your Information</h3>
+                    <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we use information collected about you via the App to:</p>
+                    <ul>
+                        <li>Create and manage your account and personal tasting ledger.</li>
+                        <li>Verify your proximity to venues for check-ins.</li>
+                        <li>Monitor and analyze usage and trends to improve your experience with the App.</li>
+                        <li>Secure your data across multiple devices.</li>
+                    </ul>
+
+                    <h3>3. Third-Party Service Providers</h3>
+                    <p>We do not sell, trade, or rent your personal identification information to others. We share your information only with third-party service providers that perform services for us or on our behalf. These include:</p>
+                    <ul>
+                        <li><strong>Google Firebase:</strong> Used for secure user authentication and securely storing your completed dishes, reviews, and unlocked badges (Cloud Firestore).</li>
+                        <li><strong>Expo:</strong> Used for application framework infrastructure, over-the-air updates, and anonymous crash reporting.</li>
+                    </ul>
+
+                    <h3>4. Your Rights (New Zealand Privacy Act 2020)</h3>
+                    <p>In accordance with the New Zealand Privacy Act 2020 and globally recognized privacy standards, you have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. You also maintain the right to withdraw your consent for location tracking at any time via your device's system settings.</p>
+
+                    <h3>5. Account and Data Deletion</h3>
+                    <p>You maintain full control over your data. You can delete your account and permanently erase your tasting history at any time. To do this:</p>
+                    <ul>
+                        <li>Open the <strong>Kai AKL</strong> App and navigate to the <strong>Account</strong> screen.</li>
+                        <li>Tap on <strong>Delete Account & Data</strong> and confirm your choice.</li>
+                    </ul>
+                    <p>Upon confirmation, your email, unique identifier, and checklist history are permanently expunged from our active Firebase databases.</p>
+                </div>
+
+                <!-- Support Box -->
+                <div id="support" class="support-box">
+                    <h3><i data-lucide="help-circle" class="icon-sm"></i> Contact Us</h3>
+                    <p>If you have questions or comments about this Privacy Policy, or wish to exercise your data rights, please contact us at:</p>
+                    <a href="mailto:info@blacksandsdigital.nz" class="btn btn-secondary">
+                        <i data-lucide="mail" class="icon-sm"></i> info@blacksandsdigital.nz
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+</body>
+</html>

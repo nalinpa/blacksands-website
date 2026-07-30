@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Makes a Great Self-Guided Walking Tour? | Black Sands</title>
+    <meta name="description" content="A great self-guided walking tour has a route that flows, a strong story at each stop, sensible pacing, and works offline. The content matters more than the technology.">
+    <link rel="canonical" href="https://blacksands.app/blog/building/what-makes-a-great-walking-tour/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+
+    <meta property="og:title" content="What Makes a Great Self-Guided Walking Tour?">
+    <meta property="og:description" content="A great self-guided walking tour has a route that flows, a strong story at each stop, sensible pacing, and works offline. The content matters more than the technology.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://blacksands.app/blog/building/what-makes-a-great-walking-tour/">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Makes a Great Self-Guided Walking Tour?",
+  "description": "A great self-guided walking tour has a route that flows, a strong story at each stop, sensible pacing, and works offline. The content matters more than the technology.",
+  "author": {
+    "@type": "Organization",
+    "name": "Black Sands",
+    "url": "https://blacksands.app"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Black Sands",
+    "url": "https://blacksands.app"
+  },
+  "mainEntityOfPage": "https://blacksands.app/blog/building/what-makes-a-great-walking-tour/",
+  "datePublished": "2026-06-18",
+  "dateModified": "2026-06-18"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What makes a self-guided walking tour good?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The same things that make any tour good, minus the guide. It needs a route that makes sense to walk, stops that each earn their place, writing that is worth stopping for, and pacing that holds attention without exhausting people."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A route that flows",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The route is the backbone. Stops should run in a logical order that a person can actually walk, with sensible distances between them and no awkward doubling back. GPS-gating helps here, unlocking each stop as the walker reaches it so the tour reveals itself in sequence rather than all at once."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A story worth stopping for",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every stop has to justify asking someone to pause. The best tours pick stops with a genuine story, a striking view, a turning point in the history, a detail you would walk straight past otherwise, and tell it in plain, human writing rather than an encyclopedia entry."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pacing and reliability",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Finally, respect the walker's time and trust. Keep the length honest, build in the option to stop and resume, and make sure the experience works offline so it does not die in a dead spot halfway round. Think about accessibility and varying fitness in the route."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="guide-akl">
+
+    <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
+
+    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
+        <nav class="coord-label" style="margin-bottom: 2rem;">
+            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
+            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+        </nav>
+
+        <article class="bs-content" style="max-width: 760px;">
+            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
+            <h1>What Makes a Great Self-Guided Walking Tour?</h1>
+            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">A great self-guided walking tour comes down to a clear route, a strong story at each stop, sensible pacing, and reliability in the field. The technology is the easy part. The curation and the writing are what make people finish a tour and recommend it.</p>
+
+            <section>
+                <h2>What makes a self-guided walking tour good?</h2>
+                <p>The same things that make any tour good, minus the guide. It needs a route that makes sense to walk, stops that each earn their place, writing that is worth stopping for, and pacing that holds attention without exhausting people. On top of that it has to be reliable, working offline and unlocking the right content as you arrive. Get the curation right and the tech simply needs to stay out of the way.</p>
+            </section>
+
+            <section>
+                <h2>A route that flows</h2>
+                <p>The route is the backbone. Stops should run in a logical order that a person can actually walk, with sensible distances between them and no awkward doubling back. GPS-gating helps here, unlocking each stop as the walker reaches it so the tour reveals itself in sequence rather than all at once. A route that flows feels like a story unfolding. One that jumps around feels like a chore.</p>
+            </section>
+
+            <section>
+                <h2>A story worth stopping for</h2>
+                <p>Every stop has to justify asking someone to pause. The best tours pick stops with a genuine story, a striking view, a turning point in the history, a detail you would walk straight past otherwise, and tell it in plain, human writing rather than an encyclopedia entry. Fewer, stronger stops beat a long list of dutiful ones. The goal is for each pause to feel like a reward, not a box to tick.</p>
+            </section>
+
+            <section>
+                <h2>Pacing and reliability</h2>
+                <p>Finally, respect the walker's time and trust. Keep the length honest, build in the option to stop and resume, and make sure the experience works offline so it does not die in a dead spot halfway round. Think about accessibility and varying fitness in the route. A tour that is the right length, reliable in the field, and easy to follow is one people complete, and completed tours are what get recommended.</p>
+            </section>
+
+            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
+                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Build a tour people finish</h3>
+                <p style="margin-bottom: 1.5rem;">Black Sands gives you the GPS-gated, offline-first engine. You bring the route and the stories that make a tour worth taking. We handle the build.</p>
+                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/walking-tour-to-app-no-code/" style="color: #0E7490;">How to turn a walking tour into an app without code</a>.</p>
+        </article>
+    </main>
+
+    <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>
+</body>
+</html>

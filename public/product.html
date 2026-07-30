@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Capabilities | Black Sands Engine</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg height='48' viewBox='0 0 24 24' width='48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3CclipPath id='dune-clip'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23dune-clip)' fill='%230F172A'%3E%3Cpath d='M0 0 L 24 0 L 24 12 C 20 9, 17 6, 13 6 C 9 6, 4 11, 0 14 Z'/%3E%3Cpath d='M0 24 L 24 24 L 24 16 C 21 12, 18 9.5, 15 9.5 C 10 9.5, 5 14, 0 18 Z'/%3E%3C/g%3E%3C/svg%3E">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    
+    <style>
+        [x-cloak] { display: none !important; }
+        /* Overrides the global footer margin just for this page */
+        .bs-global-footer {
+            margin-top: 0 !important;
+        }
+    </style>
+</head>
+<body>
+
+   <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <!-- Layout Container -->
+    <div class="container bs-layout" 
+         x-data="{ activeSection: 'overview' }"
+         x-init="
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activeSection = entry.target.id;
+                    }
+                });
+            }, { rootMargin: '-120px 0px -60% 0px' });
+            document.querySelectorAll('.bs-content section').forEach(section => observer.observe(section));
+         ">
+        
+        <aside class="bs-sidebar">
+            <div class="sidebar-group">
+                <h3>The Platform</h3>
+                <nav>
+                    <a href="#overview" :class="{ 'active': activeSection === 'overview' }">Platform Overview</a>
+                    <a href="#reliability" :class="{ 'active': activeSection === 'reliability' }">Reliability & Scale</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-group">
+                <h3>Core Capabilities</h3>
+                <nav>
+                    <a href="#proximity" :class="{ 'active': activeSection === 'proximity' }">Verified Proximity</a>
+                    <a href="#offline" :class="{ 'active': activeSection === 'offline' }">Zero-Signal Operation</a>
+                    <a href="#virality" :class="{ 'active': activeSection === 'virality' }">Automated Marketing</a>
+                </nav>
+            </div>
+
+            <div class="sidebar-group">
+                <h3>Deployment</h3>
+                <nav>
+                    <a href="#whitelabel" :class="{ 'active': activeSection === 'whitelabel' }">White-Label Apps</a>
+                    <a href="#api" :class="{ 'active': activeSection === 'api' }">API Integration</a>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="bs-content">
+            <section id="overview">
+                <h1>Launch Your Interactive Journey.</h1>
+                <p>Black Sands provides the enterprise-grade infrastructure to turn passive physical locations into monetizable digital experiences. You supply the destination and the narrative; we supply the technology to guide, track, and engage your audience—eliminating the massive upfront cost and risk of custom app development.</p>
+                <hr class="bs-divider">
+            </section>
+
+            <section id="reliability">
+                <h2>Built for the Wild. Scaled for the Masses.</h2>
+                <p>Consumer travel apps fail because they drop out in remote areas and crash during peak seasons. Experiential travel requires a fundamentally different architecture. Our platform is built on highly available, cloud-native infrastructure designed to handle tourist surges effortlessly, ensuring a flawless experience whether your users are in a downtown metro or off-grid in the mountains.</p>
+                <ul>
+                    <li><strong>Zero Maintenance:</strong> We manage the server scaling, database security, and OS updates so you don't have to hire an IT team.</li>
+                    <li><strong>Cross-Platform:</strong> Native, high-performance deployment across both iOS and Android from day one.</li>
+                    <li><strong>Actionable Analytics:</strong> Gain verified dwell metrics on where your visitors actually spend their time.</li>
+                </ul>
+            </section>
+
+            <section id="proximity">
+                <h2>Location-Triggered Engagement</h2>
+                <p>Stop giving your premium content away to people sitting on their couches. Our proximity engine ensures that digital rewards, hidden audio guides, and partner discounts are only unlocked when a user is <strong>physically present</strong> at your designated real-world coordinates.</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <pre><code><span class="keyword">import</span> { Engine } <span class="keyword">from</span> <span class="string">'@blacksands/core'</span>;
+
+<span class="comment">// Define your physical reward zone</span>
+<span class="keyword">const</span> destination = {
+    target: <span class="string">"historic_summit"</span>,
+    requiredRadius: <span class="number">20</span> <span class="comment">// meters</span>
+};
+
+<span class="comment">// The Engine verifies their physical presence</span>
+<span class="keyword">if</span> (<span class="keyword">await</span> Engine.verifyArrival(destination)) {
+    unlockExclusiveAudioGuide();
+    issueDigitalExplorerBadge();
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="offline">
+                <h2>Zero-Signal Operation</h2>
+                <p>Real exploration happens off the grid. If your app dies when a customer loses cellular service, you lose the customer. The Black Sands engine caches your entire interactive map and digital inventory locally on the user's device. They can navigate trails, check into waypoints, and unlock badges completely offline. The moment they return to civilization, the engine silently syncs their progress to the cloud.</p>
+            </section>
+
+            <section id="virality">
+                <h2>Automated Marketing & Virality</h2>
+                <p>Turn your customers into your strongest marketing channel. Instead of relying on generic photos, our engine automatically generates beautifully branded, data-rich completion screens (like topographical journey maps and stamped badges). Users proudly share these personalized assets to Instagram and TikTok, driving organic traffic right back to your brand.</p>
+            </section>
+
+            <section id="whitelabel">
+                <h2>White-Label App Deployment</h2>
+                <p>Your brand, our engine. Don't spend 12 months and six figures building a mobile app from scratch. We deploy a fully branded, native iOS and Android application directly to your company's Apple App Store and Google Play accounts. You retain 100% ownership of your customer relationships and brand identity, powered quietly by the Black Sands core.</p>
+            </section>
+
+            <section id="api">
+                <h2>Headless API Integration</h2>
+                <p>Already have a successful mobile app or corporate portal? You don't need to start over. Plug the Black Sands proximity and gamification engine directly into your existing codebase. Our flexible, headless API allows you to trigger location-based rewards, track verified physical check-ins, and sync interaction data seamlessly with your existing CRM and loyalty programs.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+</body>
+</html>

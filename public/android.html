@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Availability | Black Sands Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="global-canvas"></div>
+
+    <!-- Navigation -->
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <!-- Main Content (Reusing the 404 container CSS for perfect centering) -->
+    <main class="error-container">
+        <div class="error-box">
+            <div style="color: var(--layer-4); margin-bottom: 1.5rem; display: flex; justify-content: center;">
+                <i data-lucide="smartphone" style="width: 48px; height: 48px;"></i>
+            </div>
+            
+            <h1 style="font-size: 2.25rem; margin-bottom: 1rem;">Android Development</h1>
+            <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2.5rem;">
+                Our master white-label engine is currently optimized exclusively for iOS. If you are interested in an Android version of our apps, please let us know so we can keep you updated on our roadmap.
+            </p>
+            
+            <div class="btn-group" style="justify-content: center;">
+                <a href="mailto:info@blacksands.app" class="btn btn-primary" style="display: inline-flex; align-items: center;">
+                    <i data-lucide="mail" class="icon-sm" style="margin-right: 8px;"></i> info@blacksands.app
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+    <!-- Lucide Library & Initialization -->
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

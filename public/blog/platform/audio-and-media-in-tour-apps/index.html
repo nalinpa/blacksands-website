@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Audio and Rich Media Matter in Tour Apps | Black Sands</title>
+    <meta name="description" content="Audio lets people experience a place with their eyes up, not on a screen. Combined with photos and archive material, rich media makes a location app feel alive.">
+    <link rel="canonical" href="https://blacksands.app/blog/building/audio-and-media-in-tour-apps/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+
+    <meta property="og:title" content="Why Audio and Rich Media Matter in Tour Apps">
+    <meta property="og:description" content="Audio lets people experience a place with their eyes up, not on a screen. Combined with photos and archive material, rich media makes a location app feel alive.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://blacksands.app/blog/building/audio-and-media-in-tour-apps/">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Audio and Rich Media Matter in Tour Apps",
+  "description": "Audio lets people experience a place with their eyes up, not on a screen. Combined with photos and archive material, rich media makes a location app feel alive.",
+  "author": {
+    "@type": "Organization",
+    "name": "Black Sands",
+    "url": "https://blacksands.app"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Black Sands",
+    "url": "https://blacksands.app"
+  },
+  "mainEntityOfPage": "https://blacksands.app/blog/building/audio-and-media-in-tour-apps/",
+  "datePublished": "2026-06-18",
+  "dateModified": "2026-06-18"
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does audio matter in a tour app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because looking at a place beats reading about it. When the content is audio, a walker can listen while actually looking at the building, view or landscape in front of them, instead of staring down at text and missing the thing they came to see."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Letting people look up, not down",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A screen pulls attention away from the place. Audio gives it back. With a story playing in their ears, people can take in the view, watch the street, and walk safely, rather than navigating a place head-down through a phone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bringing a place to life",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rich media adds the layers that text alone cannot. Archive photographs let people see how a spot looked a century ago while standing in it, a then-and-now that lands far harder than a description. Voices, ambient sound and images give a place texture and emotion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Keeping it light and offline",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The practical catch is weight, and it is solvable. Audio and images add file size, which matters when the app needs to work offline in places with no signal. The answer is an offline-first design that downloads the media once, up front, so it is all there on the device when the walker reaches a dead spot."
+      }
+    }
+  ]
+}
+    </script>
+</head>
+<body class="guide-akl">
+
+    <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
+
+    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
+        <nav class="coord-label" style="margin-bottom: 2rem;">
+            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
+            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+        </nav>
+
+        <article class="bs-content" style="max-width: 760px;">
+            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
+            <h1>Why Audio and Rich Media Matter in Tour Apps</h1>
+            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Audio is what lets people experience a place with their eyes up and their phone in their pocket, rather than reading a screen. Combined with photos and archive material, rich media is what turns a list of facts into a place that feels alive.</p>
+
+            <section>
+                <h2>Why does audio matter in a tour app?</h2>
+                <p>Because looking at a place beats reading about it. When the content is audio, a walker can listen while actually looking at the building, view or landscape in front of them, instead of staring down at text and missing the thing they came to see. Audio keeps people present and moving, and it suits the outdoors, where reading a screen in the sun or rain is awkward. It is the format that fits how people use a tour.</p>
+            </section>
+
+            <section>
+                <h2>Letting people look up, not down</h2>
+                <p>A screen pulls attention away from the place. Audio gives it back. With a story playing in their ears, people can take in the view, watch the street, and walk safely, rather than navigating a place head-down through a phone. For a location experience, where the whole point is the place itself, that shift from looking down to looking up is the difference between a tour and a reading exercise.</p>
+            </section>
+
+            <section>
+                <h2>Bringing a place to life</h2>
+                <p>Rich media adds the layers that text alone cannot. Archive photographs let people see how a spot looked a century ago while standing in it, a then-and-now that lands far harder than a description. Voices, ambient sound and images give a place texture and emotion. Used well, they turn a series of locations into something that feels lived-in and real, which is what makes a tour memorable rather than merely informative.</p>
+            </section>
+
+            <section>
+                <h2>Keeping it light and offline</h2>
+                <p>The practical catch is weight, and it is solvable. Audio and images add file size, which matters when the app needs to work offline in places with no signal. The answer is an offline-first design that downloads the media once, up front, so it is all there on the device when the walker reaches a dead spot. Done right, people get rich audio and photos in the back country with no buffering and no roaming bill.</p>
+            </section>
+
+            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
+                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Build an experience worth listening to</h3>
+                <p style="margin-bottom: 1.5rem;">Black Sands apps carry audio, photos and archive media offline, so your tour comes alive even off the grid. We handle the build.</p>
+                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/why-offline-first-matters/" style="color: #0E7490;">Why offline-first matters for location apps</a>.</p>
+        </article>
+    </main>
+
+    <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>
+</body>
+</html>
