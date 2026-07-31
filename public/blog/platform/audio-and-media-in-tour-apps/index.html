@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="platform">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/platform/">Platform</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
-            <h1>Why Audio and Rich Media Matter in Tour Apps</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Audio is what lets people experience a place with their eyes up and their phone in their pocket, rather than reading a screen. Combined with photos and archive material, rich media is what turns a list of facts into a place that feels alive.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Platform · Product</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Why Audio and Rich Media Matter in Tour Apps</h1>
+            <p class="lead">Audio is what lets people experience a place with their eyes up and their phone in their pocket, rather than reading a screen. Combined with photos and archive material, rich media is what turns a list of facts into a place that feels alive.</p>
 
             <section>
                 <h2>Why does audio matter in a tour app?</h2>
@@ -115,13 +119,13 @@
                 <p>The practical catch is weight, and it is solvable. Audio and images add file size, which matters when the app needs to work offline in places with no signal. The answer is an offline-first design that downloads the media once, up front, so it is all there on the device when the walker reaches a dead spot. Done right, people get rich audio and photos in the back country with no buffering and no roaming bill.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Build an experience worth listening to</h3>
-                <p style="margin-bottom: 1.5rem;">Black Sands apps carry audio, photos and archive media offline, so your tour comes alive even off the grid. We handle the build.</p>
-                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Black Sands</span>
+                <h3>Build an experience worth listening to</h3>
+                <p>Black Sands apps carry audio, photos and archive media offline, so your tour comes alive even off the grid. We handle the build.</p>
+                <a href="https://blacksands.app/work-with-us" class="blog-callout__cta">Work with us</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/why-offline-first-matters/" style="color: #0E7490;">Why offline-first matters for location apps</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/building/why-offline-first-matters/">Why offline-first matters for location apps</a>.</p>
         </article>
     </main>
 

@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="volcanic-akl">
+<body class="blog-post" data-topic="volcanic-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/volcanic-akl/" style="color: var(--text-muted); text-decoration: none;">Volcanic AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/volcanic-akl/">Volcanic AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #3D7A5F;">Auckland · Geology</span>
-            <h1>When Did Auckland&#x27;s Volcanoes Last Erupt?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland's most recent eruption created Rangitoto Island around 600 years ago, within the memory of Māori living nearby. It was the largest eruption the field has produced, and the field itself is still considered active.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Volcanic AKL · Volcanoes</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>When Did Auckland&#x27;s Volcanoes Last Erupt?</h1>
+            <p class="lead">Auckland's most recent eruption created Rangitoto Island around 600 years ago, within the memory of Māori living nearby. It was the largest eruption the field has produced, and the field itself is still considered active.</p>
 
             <section>
                 <h2>When did Auckland&#x27;s volcanoes last erupt?</h2>
@@ -115,13 +119,13 @@
                 <p>Yes. GeoNet runs seismographs and monitoring across the region, and Auckland has detailed emergency plans for volcanic activity. A new eruption would almost certainly be preceded by warning signs such as earthquakes and ground deformation in the days or weeks beforehand, giving time to respond. The point is not that an eruption is imminent, but that the system is watched.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #3D7A5F;">Volcanic AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">See the field as it is today</h3>
-                <p style="margin-bottom: 1.5rem;">Volcanic AKL maps every cone in the Auckland Volcanic Field with its history and geology, from the oldest hills to 600-year-old Rangitoto. Works offline.</p>
-                <a href="https://blacksands.app/volcanic-akl" class="btn btn-primary ">Explore Volcanic AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Volcanic AKL</span>
+                <h3>See the field as it is today</h3>
+                <p>Volcanic AKL maps every cone in the Auckland Volcanic Field with its history and geology, from the oldest hills to 600-year-old Rangitoto. Works offline.</p>
+                <a href="https://blacksands.app/volcanic-akl" class="blog-callout__cta">Explore Volcanic AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/volcanic-akl/why-auckland-built-on-volcanoes/" style="color: #3D7A5F;">Why is Auckland built on volcanoes?</a> and <a href="/blog/volcanic-akl/walk-up-rangitoto/" style="color: #3D7A5F;">walking up Rangitoto</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/volcanic-akl/why-auckland-built-on-volcanoes/">Why is Auckland built on volcanoes?</a> and <a href="/blog/volcanic-akl/walk-up-rangitoto/">walking up Rangitoto</a>.</p>
         </article>
     </main>
 

@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="rings-akl">
+<body class="blog-post" data-topic="lord-of-the-rings">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/lord-of-the-rings/" style="color: var(--text-muted); text-decoration: none;">Lord of the Rings</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/lord-of-the-rings/">Lord of the Rings</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #D97706;">New Zealand · Middle-earth</span>
-            <h1>Every Lord of the Rings Scene You Can Stand In</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Many of the actual filmed moments from the Lord of the Rings are real places you can stand in today, from the field where the hobbits hid from the Black Rider to the hill that became Edoras. They are spread across both islands.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Lord of the Rings · Middle-earth</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Every Lord of the Rings Scene You Can Stand In</h1>
+            <p class="lead">Many of the actual filmed moments from the Lord of the Rings are real places you can stand in today, from the field where the hobbits hid from the Black Rider to the hill that became Edoras. They are spread across both islands.</p>
 
             <section>
                 <h2>Can you really stand where the scenes were filmed?</h2>
@@ -115,13 +119,13 @@
                 <p>Some are signposted, many are not. The famous locations like Hobbiton and Edoras are easy to find, but the scene-level spots, the exact tree, bank or ridge where a moment was shot, often sit unmarked in a wider landscape. A dedicated location guide that maps each scene to its real-world point is the way to find them on the ground, especially the smaller moments that no signpost will lead you to.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #D97706;">Lord of the Rings</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find every scene, mapped to the spot</h3>
-                <p style="margin-bottom: 1.5rem;">Our Lord of the Rings app maps the filming locations scene by scene, with directions and access notes, including the small moments no signpost marks. Works offline on the road.</p>
-                <a href="https://blacksands.app/lord-of-the-rings" class="btn btn-primary gold-btn">Explore the app</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Rings</span>
+                <h3>Find every scene, mapped to the spot</h3>
+                <p>Our Lord of the Rings app maps the filming locations scene by scene, with directions and access notes, including the small moments no signpost marks. Works offline on the road.</p>
+                <a href="https://blacksands.app/lord-of-the-rings" class="blog-callout__cta">Explore the app</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/lord-of-the-rings/filming-locations-new-zealand/" style="color: #D97706;">Where was Lord of the Rings filmed in New Zealand?</a></p>
+            <p class="blog-related">Related: <a href="/blog/lord-of-the-rings/filming-locations-new-zealand/">Where was Lord of the Rings filmed in New Zealand?</a></p>
         </article>
     </main>
 

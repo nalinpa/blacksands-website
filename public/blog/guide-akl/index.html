@@ -9,126 +9,134 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
+
 </head>
-<body>
+<body class="blog-post" data-topic="guide-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 6rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> / Guide AKL
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/guide-akl/">Guide AKL</a>
         </nav>
-        <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-        <h1 style="font-size: clamp(2.25rem, 5vw, 3rem); letter-spacing: -0.03em; margin-bottom: 1rem;">Guide AKL</h1>
-        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 3rem; line-height: 1.7;">A local's guide to visiting Auckland: what to do, where to stay, the beaches, the neighbourhoods and the day trips.</p>
 
-        <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/rainy-day-in-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">What to Do in Auckland on a Rainy Day</h2>
-                    <p style="color: var(--text-muted); margin: 0;">On a rainy day in Auckland, head indoors to the Art Gallery, the museum, MOTAT, Weta Workshop Unleashed or the Sky Tower, or shop the malls and covered lanes.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/romantic-things-to-do-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Romantic Things to Do in Auckland for Couples</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Romantic things to do in Auckland include sunset from a volcano, a Waiheke Island day of wine and beaches, a harbour cruise, and dinner along Ponsonby Road.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/three-days-in-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">3 Days in Auckland: The Complete Itinerary</h2>
-                    <p style="color: var(--text-muted); margin: 0;">A three-day Auckland itinerary: day one for the city and volcanoes, day two for an island in the gulf, day three for the west coast or a day trip. Here is how to plan it.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/things-to-do-auckland-at-night/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">What Is There to Do in Auckland at Night?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland&#x27;s nights run from harbourside bars at the Viaduct to the music venues and late spots of K Road, plus the Sky Tower views, theatres and night markets.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/best-day-trips-from-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Best Day Trips From Auckland</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The best day trips from Auckland are Waiheke Island for wine and beaches, Rangitoto for a volcano walk, the west coast surf beaches, and Hobbiton two hours south.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/auckland-in-one-day/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Auckland in One Day: What to Prioritise</h2>
-                    <p style="color: var(--text-muted); margin: 0;">With one day in Auckland, prioritise a volcano climb, the waterfront and a ferry to an island or Devonport, plus a good meal in the suburbs. Here is how to fit it in.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/things-to-do-in-parnell/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Things to Do in Parnell: Auckland&#x27;s Oldest Suburb</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Parnell is one of Auckland&#x27;s oldest suburbs, known for its heritage village, the Rose Gardens, galleries and the nearby Auckland Domain and museum. Here is what to do.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/auckland-waterfront-guide/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Auckland&#x27;s Waterfront: Viaduct, Wynyard and Mission Bay</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland&#x27;s waterfront runs from the Viaduct Harbour and Wynyard Quarter in the centre out to Mission Bay. Here is how to make the most of the City of Sails by the water.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/where-to-stay-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Where to Stay in Auckland: Neighbourhoods and Budgets</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Where to stay in Auckland depends on budget and style: the city centre and waterfront for convenience, Ponsonby and Parnell for character, with options from hostels to boutique hotels.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/things-to-do-auckland-with-kids/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Best Things to Do in Auckland With Kids</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The best things to do in Auckland with kids include Kelly Tarlton&#x27;s, MOTAT, the Sky Tower and Weta Workshop Unleashed, plus the beaches and easy volcano walks.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/auckland-neighbourhoods-guide/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">A First-Timer&#x27;s Guide to Auckland&#x27;s Neighbourhoods</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland&#x27;s key neighbourhoods each have a character: Ponsonby for dining, Parnell for history, the High Street district and K Road for shops and nightlife, Newmarket for retail.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/best-beaches-near-auckland-city/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Auckland&#x27;s Best Beaches Close to the City</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland&#x27;s best city beaches are Mission Bay, Takapuna and Point Chevalier, all easy to reach and good for a swim. The wild west coast surf beaches are a short drive further.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/best-free-things-to-do-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Best Free Things to Do in Auckland</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The best free things to do in Auckland are climbing a volcano, walking the waterfront, hitting the beaches and exploring the parks. Here are the ones worth your time.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/best-time-to-visit-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">When Is the Best Time of Year to Visit Auckland?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The best time to visit Auckland is summer and early autumn, from December to April, for warm weather. Here is how the seasons compare and when to save money.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/auckland-without-a-car/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">How Do You Get Around Auckland Without a Car?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">You can get around Auckland without a car using the AT HOP card on buses, trains and ferries, plus walking and rideshare. Here is how the network works.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/is-auckland-worth-visiting/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Is Auckland Worth Visiting and How Long Do You Need?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland is worth visiting for its volcanoes, harbours, islands and food, and two to three days covers the city well. Here is how to decide and how long to stay.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/guide-akl/first-time-visitor-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">What Should a First-Time Visitor Do in Auckland?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">A local's plan for first-time visitors to Auckland: climb a volcano, ferry to an island, eat in the suburbs, and use the city as a base for day trips.</p>
-                </a>
-            </li>
-        </ul>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Guide AKL · Auckland Guide</span>
+            </span>
+            <h1>Guide AKL</h1>
+            <p class="lead">A local's guide to visiting Auckland: what to do, where to stay, the beaches, the neighbourhoods and the day trips.</p>
+
+            <ul class="blog-list">
+
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/rainy-day-in-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">What to Do in Auckland on a Rainy Day</h2>
+                        <p class="blog-row__desc">On a rainy day in Auckland, head indoors to the Art Gallery, the museum, MOTAT, Weta Workshop Unleashed or the Sky Tower, or shop the malls and covered lanes.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/romantic-things-to-do-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">Romantic Things to Do in Auckland for Couples</h2>
+                        <p class="blog-row__desc">Romantic things to do in Auckland include sunset from a volcano, a Waiheke Island day of wine and beaches, a harbour cruise, and dinner along Ponsonby Road.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/three-days-in-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">3 Days in Auckland: The Complete Itinerary</h2>
+                        <p class="blog-row__desc">A three-day Auckland itinerary: day one for the city and volcanoes, day two for an island in the gulf, day three for the west coast or a day trip. Here is how to plan it.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/things-to-do-auckland-at-night/" class="blog-row__link">
+                        <h2 class="blog-row__title">What Is There to Do in Auckland at Night?</h2>
+                        <p class="blog-row__desc">Auckland&#x27;s nights run from harbourside bars at the Viaduct to the music venues and late spots of K Road, plus the Sky Tower views, theatres and night markets.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/best-day-trips-from-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">Best Day Trips From Auckland</h2>
+                        <p class="blog-row__desc">The best day trips from Auckland are Waiheke Island for wine and beaches, Rangitoto for a volcano walk, the west coast surf beaches, and Hobbiton two hours south.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/auckland-in-one-day/" class="blog-row__link">
+                        <h2 class="blog-row__title">Auckland in One Day: What to Prioritise</h2>
+                        <p class="blog-row__desc">With one day in Auckland, prioritise a volcano climb, the waterfront and a ferry to an island or Devonport, plus a good meal in the suburbs. Here is how to fit it in.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/things-to-do-in-parnell/" class="blog-row__link">
+                        <h2 class="blog-row__title">Things to Do in Parnell: Auckland&#x27;s Oldest Suburb</h2>
+                        <p class="blog-row__desc">Parnell is one of Auckland&#x27;s oldest suburbs, known for its heritage village, the Rose Gardens, galleries and the nearby Auckland Domain and museum. Here is what to do.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/auckland-waterfront-guide/" class="blog-row__link">
+                        <h2 class="blog-row__title">Auckland&#x27;s Waterfront: Viaduct, Wynyard and Mission Bay</h2>
+                        <p class="blog-row__desc">Auckland&#x27;s waterfront runs from the Viaduct Harbour and Wynyard Quarter in the centre out to Mission Bay. Here is how to make the most of the City of Sails by the water.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/where-to-stay-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">Where to Stay in Auckland: Neighbourhoods and Budgets</h2>
+                        <p class="blog-row__desc">Where to stay in Auckland depends on budget and style: the city centre and waterfront for convenience, Ponsonby and Parnell for character, with options from hostels to boutique hotels.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/things-to-do-auckland-with-kids/" class="blog-row__link">
+                        <h2 class="blog-row__title">Best Things to Do in Auckland With Kids</h2>
+                        <p class="blog-row__desc">The best things to do in Auckland with kids include Kelly Tarlton&#x27;s, MOTAT, the Sky Tower and Weta Workshop Unleashed, plus the beaches and easy volcano walks.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/auckland-neighbourhoods-guide/" class="blog-row__link">
+                        <h2 class="blog-row__title">A First-Timer&#x27;s Guide to Auckland&#x27;s Neighbourhoods</h2>
+                        <p class="blog-row__desc">Auckland&#x27;s key neighbourhoods each have a character: Ponsonby for dining, Parnell for history, the High Street district and K Road for shops and nightlife, Newmarket for retail.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/best-beaches-near-auckland-city/" class="blog-row__link">
+                        <h2 class="blog-row__title">Auckland&#x27;s Best Beaches Close to the City</h2>
+                        <p class="blog-row__desc">Auckland&#x27;s best city beaches are Mission Bay, Takapuna and Point Chevalier, all easy to reach and good for a swim. The wild west coast surf beaches are a short drive further.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/best-free-things-to-do-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">Best Free Things to Do in Auckland</h2>
+                        <p class="blog-row__desc">The best free things to do in Auckland are climbing a volcano, walking the waterfront, hitting the beaches and exploring the parks. Here are the ones worth your time.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/best-time-to-visit-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">When Is the Best Time of Year to Visit Auckland?</h2>
+                        <p class="blog-row__desc">The best time to visit Auckland is summer and early autumn, from December to April, for warm weather. Here is how the seasons compare and when to save money.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/auckland-without-a-car/" class="blog-row__link">
+                        <h2 class="blog-row__title">How Do You Get Around Auckland Without a Car?</h2>
+                        <p class="blog-row__desc">You can get around Auckland without a car using the AT HOP card on buses, trains and ferries, plus walking and rideshare. Here is how the network works.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/is-auckland-worth-visiting/" class="blog-row__link">
+                        <h2 class="blog-row__title">Is Auckland Worth Visiting and How Long Do You Need?</h2>
+                        <p class="blog-row__desc">Auckland is worth visiting for its volcanoes, harbours, islands and food, and two to three days covers the city well. Here is how to decide and how long to stay.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/guide-akl/first-time-visitor-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">What Should a First-Time Visitor Do in Auckland?</h2>
+                        <p class="blog-row__desc">A local's plan for first-time visitors to Auckland: climb a volcano, ferry to an island, eat in the suburbs, and use the city as a base for day trips.</p>
+                    </a>
+                </li>
+        
+            </ul>
+        </article>
     </main>
 
     <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>

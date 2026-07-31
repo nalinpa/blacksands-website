@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="volcanic-akl">
+<body class="blog-post" data-topic="volcanic-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/volcanic-akl/" style="color: var(--text-muted); text-decoration: none;">Volcanic AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/volcanic-akl/">Volcanic AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #3D7A5F;">Auckland · Maunga</span>
-            <h1>What Is the Best Volcano to Climb in Auckland?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">The best volcano to climb in Auckland is Maungawhau (Mount Eden). It is the highest cone on the isthmus, the walk up takes under 20 minutes, and the summit gives a full 360-degree view over the city, both harbours and out to Rangitoto. It is free.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Volcanic AKL · Volcanoes</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What Is the Best Volcano to Climb in Auckland?</h1>
+            <p class="lead">The best volcano to climb in Auckland is Maungawhau (Mount Eden). It is the highest cone on the isthmus, the walk up takes under 20 minutes, and the summit gives a full 360-degree view over the city, both harbours and out to Rangitoto. It is free.</p>
 
             <section>
                 <h2>What is the best volcano to climb in Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Yes, Mount Eden is free. It sits a couple of kilometres south of the city centre, reachable by bus, rideshare or a walk of around 45 minutes from the CBD, with the Mt Eden train station nearby. There is free parking at the lower car park on Puhi Huia Road and surrounding streets. The gates are open from 7am until evening, with hours varying by season.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #3D7A5F;">Volcanic AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Pick your cone with a guide in hand</h3>
-                <p style="margin-bottom: 1.5rem;">Volcanic AKL maps every climbable cone in the Auckland Volcanic Field with routes, times and viewpoints, so you can choose the right one for the day. Works offline.</p>
-                <a href="https://blacksands.app/volcanic-akl" class="btn btn-primary ">Explore Volcanic AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Volcanic AKL</span>
+                <h3>Pick your cone with a guide in hand</h3>
+                <p>Volcanic AKL maps every climbable cone in the Auckland Volcanic Field with routes, times and viewpoints, so you can choose the right one for the day. Works offline.</p>
+                <a href="https://blacksands.app/volcanic-akl" class="blog-callout__cta">Explore Volcanic AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/volcanic-akl/mount-eden-vs-one-tree-hill/" style="color: #3D7A5F;">Mount Eden vs One Tree Hill</a> and <a href="/blog/volcanic-akl/easiest-volcano-with-kids/" style="color: #3D7A5F;">the easiest volcano to walk with kids</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/volcanic-akl/mount-eden-vs-one-tree-hill/">Mount Eden vs One Tree Hill</a> and <a href="/blog/volcanic-akl/easiest-volcano-with-kids/">the easiest volcano to walk with kids</a>.</p>
         </article>
     </main>
 

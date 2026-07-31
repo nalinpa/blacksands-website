@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="auckland">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/auckland/" style="color: var(--text-muted); text-decoration: none;">Auckland</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/auckland/">Auckland</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · Travel Basics</span>
-            <h1>What&#x27;s the Weather Like in Auckland? (And What to Pack)</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland has a mild, humid climate, with warm summers, cool and wet winters, and weather that can change through the day in any season. It rarely gets extreme and effectively never snows in the city. Whenever you visit, pack layers and a raincoat.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Auckland · Auckland</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What&#x27;s the Weather Like in Auckland? (And What to Pack)</h1>
+            <p class="lead">Auckland has a mild, humid climate, with warm summers, cool and wet winters, and weather that can change through the day in any season. It rarely gets extreme and effectively never snows in the city. Whenever you visit, pack layers and a raincoat.</p>
 
             <section>
                 <h2>What is the weather like in Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Layers and a raincoat, in every season. Bring clothes you can add and shed as the day shifts, plus a waterproof layer for the showers that arrive without much warning. Sun protection matters more than visitors expect, since New Zealand's clear air and thin ozone make the UV strong, so a hat and sunscreen are worth packing even in cooler months. Comfortable shoes round it out for the cones and the walking.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Be ready whatever the sky does</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL is a hand-curated offline guide to Auckland that works rain or shine, indoors and out. Works offline.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Be ready whatever the sky does</h3>
+                <p>Guide AKL is a hand-curated offline guide to Auckland that works rain or shine, indoors and out. Works offline.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/guide-akl/best-time-to-visit-auckland/" style="color: #0E7490;">When is the best time of year to visit Auckland?</a></p>
+            <p class="blog-related">Related: <a href="/blog/guide-akl/best-time-to-visit-auckland/">When is the best time of year to visit Auckland?</a></p>
         </article>
     </main>
 

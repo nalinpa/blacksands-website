@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="kai-akl">
+<body class="blog-post" data-topic="kai-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/kai-akl/" style="color: var(--text-muted); text-decoration: none;">Kai AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/kai-akl/">Kai AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #1A6FA8;">Auckland · Indian &amp; South Asian</span>
-            <h1>Best Indian and South Asian Food in Auckland</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland's best Indian and South Asian food clusters in the south, from a Mysore masala dosa at Roop's to chaat at Mumbai Chaat, tandoori prawns at Shor Bazaar and a dabeli at Apna Adda. It is some of the best value eating in the city.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Kai AKL · Auckland Food</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Best Indian and South Asian Food in Auckland</h1>
+            <p class="lead">Auckland's best Indian and South Asian food clusters in the south, from a Mysore masala dosa at Roop's to chaat at Mumbai Chaat, tandoori prawns at Shor Bazaar and a dabeli at Apna Adda. It is some of the best value eating in the city.</p>
 
             <section>
                 <h2>Where is the best Indian food in Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>This is some of the best-value eating in Auckland. Much of the South Asian food, especially the vegetarian dosa and chaat, comes in cheap and generous, often well under what a cafe main costs. Even the sit-down tandoor spots are reasonable for what you get. If you are eating on a budget and want flavour, the southern Indian strip is hard to beat.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #1A6FA8;">Kai AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find the dosa and the chaat</h3>
-                <p style="margin-bottom: 1.5rem;">Kai AKL maps Auckland's best Indian and South Asian dishes to the spots that make them, mostly in the south. Works offline.</p>
-                <a href="https://blacksands.app/kai-akl" class="btn btn-primary blue-btn">Explore Kai AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Kai AKL</span>
+                <h3>Find the dosa and the chaat</h3>
+                <p>Kai AKL maps Auckland's best Indian and South Asian dishes to the spots that make them, mostly in the south. Works offline.</p>
+                <a href="https://blacksands.app/kai-akl" class="blog-callout__cta">Explore Kai AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/kai-akl/best-cheap-eats/" style="color: #1A6FA8;">Best cheap eats in Auckland</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/kai-akl/best-cheap-eats/">Best cheap eats in Auckland</a>.</p>
         </article>
     </main>
 

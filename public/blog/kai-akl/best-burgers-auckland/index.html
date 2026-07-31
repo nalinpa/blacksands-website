@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="kai-akl">
+<body class="blog-post" data-topic="kai-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/kai-akl/" style="color: var(--text-muted); text-decoration: none;">Kai AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/kai-akl/">Kai AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #1A6FA8;">Auckland · Burgers</span>
-            <h1>Best Burgers in Auckland</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland's best burgers run from the smoky Stacked Burger Bar in the west to Big J's super steak burger in the east and the late-night cheeseburger at the White Lady pie cart. The city does both the gourmet build and the honest classic.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Kai AKL · Auckland Food</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Best Burgers in Auckland</h1>
+            <p class="lead">Auckland's best burgers run from the smoky Stacked Burger Bar in the west to Big J's super steak burger in the east and the late-night cheeseburger at the White Lady pie cart. The city does both the gourmet build and the honest classic.</p>
 
             <section>
                 <h2>Where are the best burgers in Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Burgers here span cheap to mid-range. The takeaway classics like Big J's are easy on the wallet, while the gourmet burger bars sit a bit higher for the bigger, built burgers. None of it is fine-dining money, which is part of the appeal. A burger is Auckland's reliable, good-value meal whatever your budget.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #1A6FA8;">Kai AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find your burger</h3>
-                <p style="margin-bottom: 1.5rem;">Kai AKL maps Auckland's best burgers to the spots that make them, gourmet bars and classic takeaways alike. Works offline.</p>
-                <a href="https://blacksands.app/kai-akl" class="btn btn-primary blue-btn">Explore Kai AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Kai AKL</span>
+                <h3>Find your burger</h3>
+                <p>Kai AKL maps Auckland's best burgers to the spots that make them, gourmet bars and classic takeaways alike. Works offline.</p>
+                <a href="https://blacksands.app/kai-akl" class="blog-callout__cta">Explore Kai AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/kai-akl/late-night-eats-auckland/" style="color: #1A6FA8;">Where to eat late in Auckland</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/kai-akl/late-night-eats-auckland/">Where to eat late in Auckland</a>.</p>
         </article>
     </main>
 

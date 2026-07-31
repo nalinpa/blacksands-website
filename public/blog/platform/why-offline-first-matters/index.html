@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="platform">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/platform/">Platform</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
-            <h1>Why Offline-First Matters for Location Apps</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Offline-first matters for location apps because the places people use them are exactly where signal disappears. A guide that only works with a connection fails at the trailhead, on the island, and on the maunga, which is precisely where it is needed.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Platform · Product</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Why Offline-First Matters for Location Apps</h1>
+            <p class="lead">Offline-first matters for location apps because the places people use them are exactly where signal disappears. A guide that only works with a connection fails at the trailhead, on the island, and on the maunga, which is precisely where it is needed.</p>
 
             <section>
                 <h2>Why does offline-first matter for location apps?</h2>
@@ -115,13 +119,13 @@
                 <p>It removes a whole category of failure. The user downloads once, then trusts the app to work everywhere they go that day, with no spinning loaders, no roaming charges for overseas visitors, and no dead app at the crucial moment. That reliability is what makes a guide feel trustworthy, and trust is what turns a download into a recommendation.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Build it offline-first from the start</h3>
-                <p style="margin-bottom: 1.5rem;">Black Sands apps are offline-first by design, so your audience's experience holds up on the trail, the island and the maunga. We handle the hard part.</p>
-                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Black Sands</span>
+                <h3>Build it offline-first from the start</h3>
+                <p>Black Sands apps are offline-first by design, so your audience's experience holds up on the trail, the island and the maunga. We handle the hard part.</p>
+                <a href="https://blacksands.app/work-with-us" class="blog-callout__cta">Work with us</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/what-is-gps-gating/" style="color: #0E7490;">What is GPS-gating and why use it for tours?</a></p>
+            <p class="blog-related">Related: <a href="/blog/building/what-is-gps-gating/">What is GPS-gating and why use it for tours?</a></p>
         </article>
     </main>
 

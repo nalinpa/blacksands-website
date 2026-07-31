@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="rings-akl">
+<body class="blog-post" data-topic="lord-of-the-rings">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/lord-of-the-rings/" style="color: var(--text-muted); text-decoration: none;">Lord of the Rings</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/lord-of-the-rings/">Lord of the Rings</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #D97706;">New Zealand · Middle-earth</span>
-            <h1>Lord of the Rings vs The Hobbit Filming Locations: What&#x27;s the Difference?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Both the Lord of the Rings and The Hobbit trilogies were filmed entirely in New Zealand and share many of the same locations. The key differences are when they were filmed, a few Hobbit-only spots like Lake Pukaki, and that Hobbiton was rebuilt as a permanent set for The Hobbit.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Lord of the Rings · Middle-earth</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Lord of the Rings vs The Hobbit Filming Locations: What&#x27;s the Difference?</h1>
+            <p class="lead">Both the Lord of the Rings and The Hobbit trilogies were filmed entirely in New Zealand and share many of the same locations. The key differences are when they were filmed, a few Hobbit-only spots like Lake Pukaki, and that Hobbiton was rebuilt as a permanent set for The Hobbit.</p>
 
             <section>
                 <h2>What&#x27;s the difference between the LOTR and Hobbit locations?</h2>
@@ -115,13 +119,13 @@
                 <p>Often yes, since the films leaned on the same dramatic landscapes. Tongariro National Park, Fiordland and the Queenstown and Glenorchy area appear across both trilogies. Some scenes were heavily altered with digital effects and are hard to place in person, while the big landscape shots are usually still clearly recognisable. Hobbiton aside, you are mostly visiting scenery, not standing sets.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #D97706;">Lord of the Rings</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Both trilogies, one map</h3>
-                <p style="margin-bottom: 1.5rem;">Our Lord of the Rings app maps the locations across both trilogies with scene notes, so you know what was filmed where and which films used it. Works offline.</p>
-                <a href="https://blacksands.app/lord-of-the-rings" class="btn btn-primary gold-btn">Explore the app</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Rings</span>
+                <h3>Both trilogies, one map</h3>
+                <p>Our Lord of the Rings app maps the locations across both trilogies with scene notes, so you know what was filmed where and which films used it. Works offline.</p>
+                <a href="https://blacksands.app/lord-of-the-rings" class="blog-callout__cta">Explore the app</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/lord-of-the-rings/filming-locations-new-zealand/" style="color: #D97706;">Where was Lord of the Rings filmed in New Zealand?</a></p>
+            <p class="blog-related">Related: <a href="/blog/lord-of-the-rings/filming-locations-new-zealand/">Where was Lord of the Rings filmed in New Zealand?</a></p>
         </article>
     </main>
 

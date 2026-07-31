@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="platform">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/platform/">Platform</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
-            <h1>How Museums and Cultural Sites Use Location Apps</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Museums and cultural sites use location apps to guide visitors through a space, layer in deeper content for those who want it, offer multiple languages, and extend the experience beyond their own walls into the surrounding area.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Platform · Product</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>How Museums and Cultural Sites Use Location Apps</h1>
+            <p class="lead">Museums and cultural sites use location apps to guide visitors through a space, layer in deeper content for those who want it, offer multiple languages, and extend the experience beyond their own walls into the surrounding area.</p>
 
             <section>
                 <h2>How do cultural sites use location apps?</h2>
@@ -115,13 +119,13 @@
                 <p>Location apps also let a site extend past its own building. A museum can connect to related sites across a town, or build a trail that ties a cluster of heritage places into one journey, guiding visitors between them with the same app. That turns a single indoor visit into a wider experience of a place, and links cultural organisations that might otherwise sit as separate, unconnected stops on a map.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Extend your site onto every visitor&#x27;s phone</h3>
-                <p style="margin-bottom: 1.5rem;">Black Sands builds location apps for museums, heritage sites and cultural trails, offline-first and multilingual-ready. We handle the build.</p>
-                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Black Sands</span>
+                <h3>Extend your site onto every visitor&#x27;s phone</h3>
+                <p>Black Sands builds location apps for museums, heritage sites and cultural trails, offline-first and multilingual-ready. We handle the build.</p>
+                <a href="https://blacksands.app/work-with-us" class="blog-callout__cta">Work with us</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/location-apps-for-councils-and-parks/" style="color: #0E7490;">How councils and parks can use location apps</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/building/location-apps-for-councils-and-parks/">How councils and parks can use location apps</a>.</p>
         </article>
     </main>
 

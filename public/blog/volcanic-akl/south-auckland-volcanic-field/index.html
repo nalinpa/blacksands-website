@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="volcanic-akl">
+<body class="blog-post" data-topic="volcanic-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/volcanic-akl/" style="color: var(--text-muted); text-decoration: none;">Volcanic AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/volcanic-akl/">Volcanic AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #3D7A5F;">Auckland · South</span>
-            <h1>South Auckland&#x27;s Volcanic Field</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Some of Auckland's most significant volcanoes sit in the south, around Māngere and Manukau, and most visitors never see them. Māngere Mountain and the Ōtuataua Stonefields hold deep Māori history in the volcanic soil.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Volcanic AKL · Volcanoes</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>South Auckland&#x27;s Volcanic Field</h1>
+            <p class="lead">Some of Auckland's most significant volcanoes sit in the south, around Māngere and Manukau, and most visitors never see them. Māngere Mountain and the Ōtuataua Stonefields hold deep Māori history in the volcanic soil.</p>
 
             <section>
                 <h2>What volcanoes are in South Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Because they hold history the central cones have largely lost to the city. The southern volcanoes preserve pā terraces, stone gardens and crater shapes in a more open, less built-over landscape. They were prized for exactly the same reasons as the central maunga, fertile volcanic soil and defensible high ground, and they tell that story with less of the modern city laid over the top.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #3D7A5F;">Volcanic AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">See the field most visitors miss</h3>
-                <p style="margin-bottom: 1.5rem;">Volcanic AKL maps the whole field, including the southern cones and stonefields around Māngere and Manukau. Works offline on the maunga.</p>
-                <a href="https://blacksands.app/volcanic-akl" class="btn btn-primary ">Explore Volcanic AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Volcanic AKL</span>
+                <h3>See the field most visitors miss</h3>
+                <p>Volcanic AKL maps the whole field, including the southern cones and stonefields around Māngere and Manukau. Works offline on the maunga.</p>
+                <a href="https://blacksands.app/volcanic-akl" class="blog-callout__cta">Explore Volcanic AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/volcanic-akl/what-are-tupuna-maunga/" style="color: #3D7A5F;">What are the tūpuna maunga?</a></p>
+            <p class="blog-related">Related: <a href="/blog/volcanic-akl/what-are-tupuna-maunga/">What are the tūpuna maunga?</a></p>
         </article>
     </main>
 

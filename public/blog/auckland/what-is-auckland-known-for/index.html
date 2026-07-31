@@ -53,22 +53,26 @@
       ]
     }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="auckland">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/auckland/" style="color: var(--text-muted); text-decoration: none;">Auckland</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/auckland/">Auckland</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · Tāmaki Makaurau</span>
-            <h1>What Is Auckland Known For?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland is known for being built on around 53 volcanoes, sitting between two harbours, and its sailing culture, the City of Sails. It is also the largest Polynesian city in the world, with the food diversity that comes with it.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Auckland · Auckland</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What Is Auckland Known For?</h1>
+            <p class="lead">Auckland is known for being built on around 53 volcanoes, sitting between two harbours, and its sailing culture, the City of Sails. It is also the largest Polynesian city in the world, with the food diversity that comes with it.</p>
 
             <section>
                 <h2>What is Auckland known for?</h2>
@@ -98,12 +102,13 @@
                 <p>Tāmaki Makaurau is the Māori name for Auckland, often translated as "Tāmaki desired by many" or "Tāmaki of a hundred lovers." The name reflects how prized the isthmus was, with its fertile volcanic soils, twin harbours and abundant resources fought over by many iwi over the centuries.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Black Sands apps</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Go deeper on the parts that interest you</h3>
-                <p style="margin-bottom: 1.5rem;">We build hand-curated local guides to the things Auckland is known for. Walk the <a href="/blog/volcanic-akl/volcanic-cones-to-walk/" style="color: #3D7A5F;">volcanic cones</a>, find <a href="/blog/kai-akl/where-locals-eat/" style="color: #1A6FA8;">where locals eat</a>, or get the full city in <a href="https://blacksands.app/guide-akl" style="color: #0E7490;">Guide AKL</a>.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Go deeper on the parts that interest you</h3>
+                <p>We build hand-curated local guides to the things Auckland is known for. Walk the <a href="/blog/volcanic-akl/volcanic-cones-to-walk/">volcanic cones</a>, find <a href="/blog/kai-akl/where-locals-eat/">where locals eat</a>, or get the full city in <a href="https://blacksands.app/guide-akl">Guide AKL</a>.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
+        
         </article>
     </main>
 

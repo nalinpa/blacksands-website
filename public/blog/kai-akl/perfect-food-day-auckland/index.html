@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="kai-akl">
+<body class="blog-post" data-topic="kai-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/kai-akl/" style="color: var(--text-muted); text-decoration: none;">Kai AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/kai-akl/">Kai AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #1A6FA8;">Auckland · Food Itinerary</span>
-            <h1>A Perfect Food Day in Auckland</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">A perfect food day in Auckland runs from a deli or cafe breakfast to a cheap and brilliant lunch in the suburbs, an afternoon gelato at Giapo, and a proper sit-down dinner. Eat dish by dish and the city opens up.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Kai AKL · Auckland Food</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>A Perfect Food Day in Auckland</h1>
+            <p class="lead">A perfect food day in Auckland runs from a deli or cafe breakfast to a cheap and brilliant lunch in the suburbs, an afternoon gelato at Giapo, and a proper sit-down dinner. Eat dish by dish and the city opens up.</p>
 
             <section>
                 <h2>How do you plan a food day in Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Break the afternoon with something sweet, then sit down for the main event. Giapo's theatrical hokey pokey gelato in the CBD is the classic Auckland afternoon stop, with Doe Donuts and the knafeh at Ima as alternatives. For dinner, settle into a sit-down spot, handmade pasta at Pici, a Picanha plate at Tropeiro Grill, or modern Asian at Hello Beasty, and let the day end slowly over a real meal.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #1A6FA8;">Kai AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Build your own food day</h3>
-                <p style="margin-bottom: 1.5rem;">Kai AKL maps every dish to its restaurant, sorted by craving and area, so a food day plans itself. Works offline.</p>
-                <a href="https://blacksands.app/kai-akl" class="btn btn-primary blue-btn">Explore Kai AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Kai AKL</span>
+                <h3>Build your own food day</h3>
+                <p>Kai AKL maps every dish to its restaurant, sorted by craving and area, so a food day plans itself. Works offline.</p>
+                <a href="https://blacksands.app/kai-akl" class="blog-callout__cta">Explore Kai AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/kai-akl/what-to-eat-in-auckland/" style="color: #1A6FA8;">What to eat in Auckland</a> and <a href="/blog/guide-akl/three-days-in-auckland/" style="color: #1A6FA8;">3 days in Auckland</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/kai-akl/what-to-eat-in-auckland/">What to eat in Auckland</a> and <a href="/blog/guide-akl/three-days-in-auckland/">3 days in Auckland</a>.</p>
         </article>
     </main>
 

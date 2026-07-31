@@ -9,120 +9,128 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
+
 </head>
-<body>
+<body class="blog-post" data-topic="lord-of-the-rings">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 6rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> / Lord of the Rings
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/lord-of-the-rings/">Lord of the Rings</a>
         </nav>
-        <span class="coord-label" style="color: #D97706;">Lord of the Rings</span>
-        <h1 style="font-size: clamp(2.25rem, 5vw, 3rem); letter-spacing: -0.03em; margin-bottom: 1rem;">Lord of the Rings</h1>
-        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 3rem; line-height: 1.7;">Filming locations and travel guides for the Lord of the Rings across New Zealand, from Hobbiton to Edoras.</p>
 
-        <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/self-drive-vs-guided-middle-earth/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Self-Drive vs Guided: Seeing Middle-earth in NZ</h2>
-                    <p style="color: var(--text-muted); margin: 0;">You can see New Zealand&#x27;s Lord of the Rings locations by self-driving or on guided tours. The right choice depends on which locations you want and how remote they are.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/where-were-pelennor-fields-filmed/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Where Were the Pelennor Fields Filmed?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The Battle of the Pelennor Fields was filmed on farmland near Twizel in the Mackenzie Country, the largest single location in the trilogy. Access is by guided tour from Twizel.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/where-was-helms-deep-filmed/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Where Was Helm&#x27;s Deep Filmed?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Helm&#x27;s Deep was filmed at Dry Creek Quarry near Wellington, where the huge fortress set was built. The quarry is private working land and not open to visitors.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/where-was-rivendell-filmed/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Where Was Rivendell Filmed?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Rivendell was filmed at Kaitoke Regional Park, about 45 minutes north of Wellington. The sets are gone, but the native bush remains and a replica Elven archway marks the spot.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/south-island-locations/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">The South Island Lord of the Rings Locations</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The South Island holds the most dramatic Lord of the Rings locations, from Edoras at Mount Sunday to the Pelennor Fields near Twizel and Lothlórien near Glenorchy.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/weta-workshop-visit/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Weta Workshop: What to Know Before You Visit</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Weta Workshop in Wellington made much of the props and creatures for the Lord of the Rings, and the Weta Cave lets visitors see original pieces. Here is what to know.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/wellington-filming-locations/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Lord of the Rings Filming Locations in Wellington</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Wellington holds the densest cluster of Lord of the Rings locations, including Mount Victoria, Kaitoke for Rivendell, and Weta Workshop. It is a strong stop even on a short trip.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/every-scene-you-can-stand-in/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Every Lord of the Rings Scene You Can Stand In</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Many of the actual filmed moments from the Lord of the Rings are real places you can visit today, from the Black Rider scene near Wellington to the hill that became Edoras.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/lotr-vs-hobbit-locations/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Lord of the Rings vs The Hobbit Filming Locations: What&#x27;s the Difference?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Both trilogies were filmed in New Zealand and share many locations. The main differences are the years filmed, some Hobbit-only spots, and that Hobbiton was rebuilt for The Hobbit.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/edoras-mount-sunday/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Where Is Edoras and How Do You Get to Mount Sunday?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Edoras was filmed at Mount Sunday in Canterbury, about two and a half hours from Christchurch. A short walk reaches the summit, but the access road is gravel.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/lotr-road-trip-days/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">How Many Days Do You Need for a Lord of the Rings Road Trip in NZ?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Plan 10 to 14 days for a full Lord of the Rings road trip across both islands. A North Island run works in 4 to 5 days, the South Island needs 6 to 8.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/north-island-locations-short-trips/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Best Lord of the Rings Locations on the North Island</h2>
-                    <p style="color: var(--text-muted); margin: 0;">For a short trip, the best North Island Lord of the Rings locations are Hobbiton, Tongariro National Park for Mordor, Wellington&#x27;s Weta Workshop, and Kaitoke for Rivendell.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/is-tongariro-crossing-worth-it/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Is the Tongariro Crossing Worth It and How Hard Is It?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The Tongariro Alpine Crossing is worth it and is rated hard: about 20 km, 6 to 8 hours, with 800 m of climbing. Here is what to expect and how to prepare.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/how-to-get-to-hobbiton-from-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">How Do You Get to Hobbiton From Auckland?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Hobbiton is about two to two and a half hours south of Auckland. You can self-drive, take an InterCity bus, or book a day tour with return transport from Auckland.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/can-you-visit-hobbiton/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Can You Visit Hobbiton and How Much Does It Cost?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Yes, you can visit Hobbiton near Matamata on a guided tour. Here's what it costs in 2026, how to get there from Auckland, and how far ahead to book.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/lord-of-the-rings/filming-locations-new-zealand/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Where Was Lord of the Rings Filmed in New Zealand? (Visitor Guide)</h2>
-                    <p style="color: var(--text-muted); margin: 0;">A guide to the real Lord of the Rings filming locations you can visit in New Zealand, from Hobbiton and Mount Doom to Edoras and the Pelennor Fields, and which need a tour.</p>
-                </a>
-            </li>
-        </ul>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Lord of the Rings · Middle-earth</span>
+            </span>
+            <h1>Lord of the Rings</h1>
+            <p class="lead">Filming locations and travel guides for the Lord of the Rings across New Zealand, from Hobbiton to Edoras.</p>
+
+            <ul class="blog-list">
+
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/self-drive-vs-guided-middle-earth/" class="blog-row__link">
+                        <h2 class="blog-row__title">Self-Drive vs Guided: Seeing Middle-earth in NZ</h2>
+                        <p class="blog-row__desc">You can see New Zealand&#x27;s Lord of the Rings locations by self-driving or on guided tours. The right choice depends on which locations you want and how remote they are.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/where-were-pelennor-fields-filmed/" class="blog-row__link">
+                        <h2 class="blog-row__title">Where Were the Pelennor Fields Filmed?</h2>
+                        <p class="blog-row__desc">The Battle of the Pelennor Fields was filmed on farmland near Twizel in the Mackenzie Country, the largest single location in the trilogy. Access is by guided tour from Twizel.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/where-was-helms-deep-filmed/" class="blog-row__link">
+                        <h2 class="blog-row__title">Where Was Helm&#x27;s Deep Filmed?</h2>
+                        <p class="blog-row__desc">Helm&#x27;s Deep was filmed at Dry Creek Quarry near Wellington, where the huge fortress set was built. The quarry is private working land and not open to visitors.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/where-was-rivendell-filmed/" class="blog-row__link">
+                        <h2 class="blog-row__title">Where Was Rivendell Filmed?</h2>
+                        <p class="blog-row__desc">Rivendell was filmed at Kaitoke Regional Park, about 45 minutes north of Wellington. The sets are gone, but the native bush remains and a replica Elven archway marks the spot.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/south-island-locations/" class="blog-row__link">
+                        <h2 class="blog-row__title">The South Island Lord of the Rings Locations</h2>
+                        <p class="blog-row__desc">The South Island holds the most dramatic Lord of the Rings locations, from Edoras at Mount Sunday to the Pelennor Fields near Twizel and Lothlórien near Glenorchy.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/weta-workshop-visit/" class="blog-row__link">
+                        <h2 class="blog-row__title">Weta Workshop: What to Know Before You Visit</h2>
+                        <p class="blog-row__desc">Weta Workshop in Wellington made much of the props and creatures for the Lord of the Rings, and the Weta Cave lets visitors see original pieces. Here is what to know.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/wellington-filming-locations/" class="blog-row__link">
+                        <h2 class="blog-row__title">Lord of the Rings Filming Locations in Wellington</h2>
+                        <p class="blog-row__desc">Wellington holds the densest cluster of Lord of the Rings locations, including Mount Victoria, Kaitoke for Rivendell, and Weta Workshop. It is a strong stop even on a short trip.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/every-scene-you-can-stand-in/" class="blog-row__link">
+                        <h2 class="blog-row__title">Every Lord of the Rings Scene You Can Stand In</h2>
+                        <p class="blog-row__desc">Many of the actual filmed moments from the Lord of the Rings are real places you can visit today, from the Black Rider scene near Wellington to the hill that became Edoras.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/lotr-vs-hobbit-locations/" class="blog-row__link">
+                        <h2 class="blog-row__title">Lord of the Rings vs The Hobbit Filming Locations: What&#x27;s the Difference?</h2>
+                        <p class="blog-row__desc">Both trilogies were filmed in New Zealand and share many locations. The main differences are the years filmed, some Hobbit-only spots, and that Hobbiton was rebuilt for The Hobbit.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/edoras-mount-sunday/" class="blog-row__link">
+                        <h2 class="blog-row__title">Where Is Edoras and How Do You Get to Mount Sunday?</h2>
+                        <p class="blog-row__desc">Edoras was filmed at Mount Sunday in Canterbury, about two and a half hours from Christchurch. A short walk reaches the summit, but the access road is gravel.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/lotr-road-trip-days/" class="blog-row__link">
+                        <h2 class="blog-row__title">How Many Days Do You Need for a Lord of the Rings Road Trip in NZ?</h2>
+                        <p class="blog-row__desc">Plan 10 to 14 days for a full Lord of the Rings road trip across both islands. A North Island run works in 4 to 5 days, the South Island needs 6 to 8.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/north-island-locations-short-trips/" class="blog-row__link">
+                        <h2 class="blog-row__title">Best Lord of the Rings Locations on the North Island</h2>
+                        <p class="blog-row__desc">For a short trip, the best North Island Lord of the Rings locations are Hobbiton, Tongariro National Park for Mordor, Wellington&#x27;s Weta Workshop, and Kaitoke for Rivendell.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/is-tongariro-crossing-worth-it/" class="blog-row__link">
+                        <h2 class="blog-row__title">Is the Tongariro Crossing Worth It and How Hard Is It?</h2>
+                        <p class="blog-row__desc">The Tongariro Alpine Crossing is worth it and is rated hard: about 20 km, 6 to 8 hours, with 800 m of climbing. Here is what to expect and how to prepare.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/how-to-get-to-hobbiton-from-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">How Do You Get to Hobbiton From Auckland?</h2>
+                        <p class="blog-row__desc">Hobbiton is about two to two and a half hours south of Auckland. You can self-drive, take an InterCity bus, or book a day tour with return transport from Auckland.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/can-you-visit-hobbiton/" class="blog-row__link">
+                        <h2 class="blog-row__title">Can You Visit Hobbiton and How Much Does It Cost?</h2>
+                        <p class="blog-row__desc">Yes, you can visit Hobbiton near Matamata on a guided tour. Here's what it costs in 2026, how to get there from Auckland, and how far ahead to book.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/lord-of-the-rings/filming-locations-new-zealand/" class="blog-row__link">
+                        <h2 class="blog-row__title">Where Was Lord of the Rings Filmed in New Zealand? (Visitor Guide)</h2>
+                        <p class="blog-row__desc">A guide to the real Lord of the Rings filming locations you can visit in New Zealand, from Hobbiton and Mount Doom to Edoras and the Pelennor Fields, and which need a tour.</p>
+                    </a>
+                </li>
+        
+            </ul>
+        </article>
     </main>
 
     <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>

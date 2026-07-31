@@ -86,22 +86,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="rings-akl">
+<body class="blog-post" data-topic="lord-of-the-rings">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/lord-of-the-rings/" style="color: var(--text-muted); text-decoration: none;">Lord of the Rings</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/lord-of-the-rings/">Lord of the Rings</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #D97706;">New Zealand · Middle-earth</span>
-            <h1>Best Lord of the Rings Locations on the North Island</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">For a short trip, the best Lord of the Rings locations on the North Island are Hobbiton near Matamata, Tongariro National Park for Mordor, Mount Victoria and Weta Workshop in Wellington, and Kaitoke Regional Park for Rivendell. They cluster well for a few days.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Lord of the Rings · Middle-earth</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Best Lord of the Rings Locations on the North Island</h1>
+            <p class="lead">For a short trip, the best Lord of the Rings locations on the North Island are Hobbiton near Matamata, Tongariro National Park for Mordor, Mount Victoria and Weta Workshop in Wellington, and Kaitoke Regional Park for Rivendell. They cluster well for a few days.</p>
 
             <section>
                 <h2>What are the best North Island LOTR locations?</h2>
@@ -128,13 +132,13 @@
                 <p>About 45 minutes from Wellington, Kaitoke's dense native bush was Rivendell. The sets are gone, but a replica Elven archway marks the spot and reference boards explain what was filmed there. It is an easy, free addition to a Wellington leg of the trip.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #D97706;">Lord of the Rings</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Map your North Island route</h3>
-                <p style="margin-bottom: 1.5rem;">Our Lord of the Rings app maps every location across both islands with access notes, so you can build a tight North Island route or go further. Works offline.</p>
-                <a href="https://blacksands.app/lord-of-the-rings" class="btn btn-primary gold-btn">Explore the app</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Rings</span>
+                <h3>Map your North Island route</h3>
+                <p>Our Lord of the Rings app maps every location across both islands with access notes, so you can build a tight North Island route or go further. Works offline.</p>
+                <a href="https://blacksands.app/lord-of-the-rings" class="blog-callout__cta">Explore the app</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/lord-of-the-rings/lotr-road-trip-days/" style="color: #D97706;">How many days do you need for a LOTR road trip?</a></p>
+            <p class="blog-related">Related: <a href="/blog/lord-of-the-rings/lotr-road-trip-days/">How many days do you need for a LOTR road trip?</a></p>
         </article>
     </main>
 

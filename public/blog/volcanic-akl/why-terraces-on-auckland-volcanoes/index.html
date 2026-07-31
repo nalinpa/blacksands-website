@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="volcanic-akl">
+<body class="blog-post" data-topic="volcanic-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/volcanic-akl/" style="color: var(--text-muted); text-decoration: none;">Volcanic AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/volcanic-akl/">Volcanic AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #3D7A5F;">Auckland · Pā History</span>
-            <h1>Why Are There Terraces on Auckland&#x27;s Volcanoes?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">The terraces you see cut into Auckland's volcanic cones are the remains of pā, the fortified settlements Māori built on the maunga. The flat steps, ditches and pits in the slopes are centuries-old earthworks, not natural features.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Volcanic AKL · Volcanoes</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Why Are There Terraces on Auckland&#x27;s Volcanoes?</h1>
+            <p class="lead">The terraces you see cut into Auckland's volcanic cones are the remains of pā, the fortified settlements Māori built on the maunga. The flat steps, ditches and pits in the slopes are centuries-old earthworks, not natural features.</p>
 
             <section>
                 <h2>Why are there terraces on Auckland&#x27;s volcanoes?</h2>
@@ -115,13 +119,13 @@
                 <p>The maunga offered the two things that mattered most: defence and food. Their height made them natural fortresses, hard to attack and easy to watch from, while the rich volcanic soil around and on them was excellent for growing kūmara. That combination made the cones prized and contested, which is exactly why so many were so heavily terraced and fortified. The earthworks are the mark of how valuable this volcanic land was.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #3D7A5F;">Volcanic AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Read the history in the slopes</h3>
-                <p style="margin-bottom: 1.5rem;">Volcanic AKL carries the pā history and earthworks of the maunga alongside the walking routes, so you know what you're standing on. Works offline.</p>
-                <a href="https://blacksands.app/volcanic-akl" class="btn btn-primary ">Explore Volcanic AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Volcanic AKL</span>
+                <h3>Read the history in the slopes</h3>
+                <p>Volcanic AKL carries the pā history and earthworks of the maunga alongside the walking routes, so you know what you're standing on. Works offline.</p>
+                <a href="https://blacksands.app/volcanic-akl" class="blog-callout__cta">Explore Volcanic AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/volcanic-akl/what-are-tupuna-maunga/" style="color: #3D7A5F;">What are the tūpuna maunga?</a></p>
+            <p class="blog-related">Related: <a href="/blog/volcanic-akl/what-are-tupuna-maunga/">What are the tūpuna maunga?</a></p>
         </article>
     </main>
 

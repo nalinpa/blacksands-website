@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="auckland">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/auckland/" style="color: var(--text-muted); text-decoration: none;">Auckland</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/auckland/">Auckland</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · Te Reo</span>
-            <h1>What Does “Tāmaki Makaurau” Mean?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Tāmaki Makaurau is the Māori name for Auckland, most often translated as “Tāmaki desired by many” or “Tāmaki of a hundred lovers.” It reflects how fiercely the isthmus was prized for its fertile soil and twin harbours.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Auckland · Auckland</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What Does “Tāmaki Makaurau” Mean?</h1>
+            <p class="lead">Tāmaki Makaurau is the Māori name for Auckland, most often translated as “Tāmaki desired by many” or “Tāmaki of a hundred lovers.” It reflects how fiercely the isthmus was prized for its fertile soil and twin harbours.</p>
 
             <section>
                 <h2>What does Tāmaki Makaurau mean?</h2>
@@ -115,13 +119,13 @@
                 <p>It is the recognised Māori name and is used widely, including by Auckland Council and central government, often paired with Auckland as a dual name. New Zealand has been steadily restoring and recognising te reo Māori place names, and Tāmaki Makaurau is now a common part of how the city refers to itself.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Know the place, not just the map</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL is a hand-curated offline guide to Auckland that carries the history and meaning behind the places, not just the listings.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Know the place, not just the map</h3>
+                <p>Guide AKL is a hand-curated offline guide to Auckland that carries the history and meaning behind the places, not just the listings.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/auckland/what-is-auckland-known-for/" style="color: #0E7490;">What is Auckland known for?</a></p>
+            <p class="blog-related">Related: <a href="/blog/auckland/what-is-auckland-known-for/">What is Auckland known for?</a></p>
         </article>
     </main>
 

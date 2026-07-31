@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="guide-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/guide-akl/" style="color: var(--text-muted); text-decoration: none;">Guide AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/guide-akl/">Guide AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · Wet Weather</span>
-            <h1>What to Do in Auckland on a Rainy Day</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">On a rainy day in Auckland, head indoors to the Art Gallery, the War Memorial Museum, MOTAT or Weta Workshop Unleashed, take in the Sky Tower, or browse the malls and covered lanes. Auckland's wet-weather options are better than they first look.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Guide AKL · Auckland Guide</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What to Do in Auckland on a Rainy Day</h1>
+            <p class="lead">On a rainy day in Auckland, head indoors to the Art Gallery, the War Memorial Museum, MOTAT or Weta Workshop Unleashed, take in the Sky Tower, or browse the malls and covered lanes. Auckland's wet-weather options are better than they first look.</p>
 
             <section>
                 <h2>What can you do in Auckland when it rains?</h2>
@@ -115,13 +119,13 @@
                 <p>When all else fails, shop and eat your way through it. Newmarket, anchored by the big Westfield mall, and the Britomart and High Street lanes in the centre keep you mostly covered while browsing. The city's cafe and restaurant scene is a fine way to wait out a shower, and a long lunch in the suburbs is no hardship. Auckland does rainy days better than its reputation suggests.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Have a plan for the wet days</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL maps the indoor attractions and covered corners alongside the outdoor ones, so rain need not stop the day. Works offline.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Have a plan for the wet days</h3>
+                <p>Guide AKL maps the indoor attractions and covered corners alongside the outdoor ones, so rain need not stop the day. Works offline.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/guide-akl/things-to-do-auckland-with-kids/" style="color: #0E7490;">Best things to do in Auckland with kids</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/guide-akl/things-to-do-auckland-with-kids/">Best things to do in Auckland with kids</a>.</p>
         </article>
     </main>
 

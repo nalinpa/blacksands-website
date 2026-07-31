@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="guide-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/guide-akl/" style="color: var(--text-muted); text-decoration: none;">Guide AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/guide-akl/">Guide AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · On a Budget</span>
-            <h1>Best Free Things to Do in Auckland</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">The best free things to do in Auckland are climbing a volcanic cone, walking the waterfront, spending time at the beaches, and exploring the parks and gardens. The city's best moments are often outdoors and cost nothing.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Guide AKL · Auckland Guide</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Best Free Things to Do in Auckland</h1>
+            <p class="lead">The best free things to do in Auckland are climbing a volcanic cone, walking the waterfront, spending time at the beaches, and exploring the parks and gardens. The city's best moments are often outdoors and cost nothing.</p>
 
             <section>
                 <h2>What are the best free things to do in Auckland?</h2>
@@ -120,13 +124,13 @@
                 <p>A few free options hold up in the wet. The Auckland Art Gallery has free general entry, the Wintergardens in the Domain are under glass, and wandering the shops and lanes of Britomart and the High Street district keeps you mostly covered. For everything else, Auckland's free pleasures are outdoor ones, so a fine day is when the city is at its cheapest and best.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find the best of the city, free or not</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL is a hand-curated offline guide to Auckland, from the free cones and beaches to the spots worth paying for. Works offline.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Find the best of the city, free or not</h3>
+                <p>Guide AKL is a hand-curated offline guide to Auckland, from the free cones and beaches to the spots worth paying for. Works offline.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/guide-akl/first-time-visitor-auckland/" style="color: #0E7490;">What should a first-time visitor do in Auckland?</a></p>
+            <p class="blog-related">Related: <a href="/blog/guide-akl/first-time-visitor-auckland/">What should a first-time visitor do in Auckland?</a></p>
         </article>
     </main>
 

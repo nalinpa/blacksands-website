@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="volcanic-akl">
+<body class="blog-post" data-topic="volcanic-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/volcanic-akl/" style="color: var(--text-muted); text-decoration: none;">Volcanic AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/volcanic-akl/">Volcanic AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #3D7A5F;">Auckland · Craters &amp; Water</span>
-            <h1>Auckland&#x27;s Volcanic Lakes and Lagoons Explained</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Several of Auckland's lakes and lagoons are actually volcanic craters, formed by explosive eruptions that blasted out round basins now filled with water. Lake Pupuke, Orakei Basin and Panmure Basin are the best known.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Volcanic AKL · Volcanoes</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Auckland&#x27;s Volcanic Lakes and Lagoons Explained</h1>
+            <p class="lead">Several of Auckland's lakes and lagoons are actually volcanic craters, formed by explosive eruptions that blasted out round basins now filled with water. Lake Pupuke, Orakei Basin and Panmure Basin are the best known.</p>
 
             <section>
                 <h2>Why does Auckland have volcanic lakes?</h2>
@@ -115,13 +119,13 @@
                 <p>Yes, and they make easy outings. Lake Pupuke has parks, swimming and boating around its edge. Orakei Basin and Panmure Basin both have walking and cycling paths around the rim, popular with locals. Because the basins are craters, the loop tracks give you a real sense of standing inside an old volcano, even though it now holds water rather than fire.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #3D7A5F;">Volcanic AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Every crater, cone and lake mapped</h3>
-                <p style="margin-bottom: 1.5rem;">Volcanic AKL covers the whole field, including the maar craters now filled with water. Walk the rims with the history in your pocket. Works offline.</p>
-                <a href="https://blacksands.app/volcanic-akl" class="btn btn-primary ">Explore Volcanic AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Volcanic AKL</span>
+                <h3>Every crater, cone and lake mapped</h3>
+                <p>Volcanic AKL covers the whole field, including the maar craters now filled with water. Walk the rims with the history in your pocket. Works offline.</p>
+                <a href="https://blacksands.app/volcanic-akl" class="blog-callout__cta">Explore Volcanic AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/auckland/how-many-volcanoes/" style="color: #3D7A5F;">How many volcanoes does Auckland have?</a></p>
+            <p class="blog-related">Related: <a href="/blog/auckland/how-many-volcanoes/">How many volcanoes does Auckland have?</a></p>
         </article>
     </main>
 

@@ -9,126 +9,134 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
+
 </head>
-<body>
+<body class="blog-post" data-topic="volcanic-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 6rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> / Volcanic AKL
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/volcanic-akl/">Volcanic AKL</a>
         </nav>
-        <span class="coord-label" style="color: #3D7A5F;">Volcanic AKL</span>
-        <h1 style="font-size: clamp(2.25rem, 5vw, 3rem); letter-spacing: -0.03em; margin-bottom: 1rem;">Volcanic AKL</h1>
-        <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 3rem; line-height: 1.7;">A field guide to Auckland's volcanic field: the cones, craters and lakes, what to climb, and the history beneath the city.</p>
 
-        <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/why-terraces-on-auckland-volcanoes/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Why Are There Terraces on Auckland&#x27;s Volcanoes?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The terraces on Auckland&#x27;s volcanic cones are the remains of pā, fortified Māori settlements, with ditches, banks and food storage pits still visible in the slopes.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/volcanoes-maori-names/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Auckland&#x27;s Volcanoes and Their Māori Names</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Most of Auckland&#x27;s volcanoes carry two names, Māori and English, and many now use both. Maungawhau is Mount Eden, Maungakiekie is One Tree Hill, Takarunga is Mount Victoria.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/browns-island-motukorea/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Browns Island (Motukorea): Auckland&#x27;s Island Volcano</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Browns Island, or Motukorea, is one of the best preserved volcanoes in Auckland, a small intact cone in the Hauraki Gulf. There is no scheduled ferry, so you need your own boat.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/south-auckland-volcanic-field/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">South Auckland&#x27;s Volcanic Field</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Some of Auckland&#x27;s most significant volcanoes sit in the south around Māngere and Manukau, and most visitors never see them. Māngere Mountain and the Ōtuataua Stonefields hold deep history.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/volcanoes-of-devonport/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">The Volcanoes of Devonport</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Devonport is home to three of Auckland&#x27;s volcanic cones, including two of the best short climbs in the city. North Head and Mount Victoria give harbour views and history.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/volcanic-lakes-and-lagoons/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Auckland&#x27;s Volcanic Lakes and Lagoons Explained</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Several of Auckland&#x27;s lakes and lagoons are volcanic craters, formed by explosive eruptions that left round basins now filled with water. Lake Pupuke is the best known.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/hidden-volcanoes-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Auckland&#x27;s Volcanoes Hiding in Plain Sight</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Several of Auckland&#x27;s volcanoes sit under the central city, so worn down or built over that most people cross them without realising. Albert Park and the Domain are both volcanoes.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/lost-volcanoes-of-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">What Happened to Auckland&#x27;s Lost Volcanoes?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland has lost several volcanoes to quarrying and development. Cones like Mount Smart and Green Mount were dug away for their scoria, which is part of why the count varies.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/best-volcano-viewpoints-photos/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Best Volcano Viewpoints for Auckland City Photos</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The best volcano viewpoints for Auckland city photos are Maungawhau (Mount Eden) for the skyline, Maungakiekie (One Tree Hill) for the obelisk, and Mount Victoria for the harbour.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/easiest-volcano-with-kids/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">What Is the Easiest Volcano to Walk in Auckland With Kids?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The easiest volcano to walk with kids in Auckland is Maungakiekie (One Tree Hill), a gentle walk through Cornwall Park with sheep, space and a cafe.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/best-volcano-to-climb-auckland/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">What Is the Best Volcano to Climb in Auckland?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The best volcano to climb in Auckland is Maungawhau (Mount Eden). It is the highest cone, has the widest view, and the walk to the top takes under 20 minutes.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/mount-eden-vs-one-tree-hill/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Mount Eden vs One Tree Hill: Which Should You Climb?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Mount Eden is the higher cone with the wider view and a quicker climb. One Tree Hill is a gentler walk through parkland with more history. Here is how to choose.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/what-are-tupuna-maunga/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">What Are the Tūpuna Maunga and Why Do They Matter?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">The tūpuna maunga are Auckland&#x27;s ancestral volcanic mountains, taonga of great cultural significance to mana whenua. Here is what they are and how to treat them with respect.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/when-did-auckland-volcanoes-last-erupt/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">When Did Auckland&#x27;s Volcanoes Last Erupt?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland&#x27;s most recent eruption built Rangitoto Island around 600 years ago. Here is what that means for the field today and whether it could happen again.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/why-auckland-built-on-volcanoes/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Why Is Auckland Built on Volcanoes?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Auckland sits on an active volcanic field because of a hot spot deep in the mantle beneath the city. Here is what that means and why people settled there anyway.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/walk-up-rangitoto/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Can You Walk Up Rangitoto and How Long Does It Take?</h2>
-                    <p style="color: var(--text-muted); margin: 0;">Yes, you can walk up Rangitoto. The summit track takes about an hour each way from the wharf. Here's the ferry, the cost, and what to bring.</p>
-                </a>
-            </li>
-            <li style="padding: 1.75rem 0; border-bottom: 1px solid var(--border-color);">
-                <a href="/blog/volcanic-akl/volcanic-cones-to-walk/" style="text-decoration: none; color: inherit; display: block;">
-                    <h2 style="font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.02em;">Best Volcanic Cones to Walk in Auckland (Local Guide)</h2>
-                    <p style="color: var(--text-muted); margin: 0;">A local guide to the best volcanic cones you can walk in Auckland: Maungawhau (Mount Eden), Maungakiekie (One Tree Hill), Mount Victoria and North Head, with what to expect at each.</p>
-                </a>
-            </li>
-        </ul>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Volcanic AKL · Volcanoes</span>
+            </span>
+            <h1>Volcanic AKL</h1>
+            <p class="lead">A field guide to Auckland's volcanic field: the cones, craters and lakes, what to climb, and the history beneath the city.</p>
+
+            <ul class="blog-list">
+
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/why-terraces-on-auckland-volcanoes/" class="blog-row__link">
+                        <h2 class="blog-row__title">Why Are There Terraces on Auckland&#x27;s Volcanoes?</h2>
+                        <p class="blog-row__desc">The terraces on Auckland&#x27;s volcanic cones are the remains of pā, fortified Māori settlements, with ditches, banks and food storage pits still visible in the slopes.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/volcanoes-maori-names/" class="blog-row__link">
+                        <h2 class="blog-row__title">Auckland&#x27;s Volcanoes and Their Māori Names</h2>
+                        <p class="blog-row__desc">Most of Auckland&#x27;s volcanoes carry two names, Māori and English, and many now use both. Maungawhau is Mount Eden, Maungakiekie is One Tree Hill, Takarunga is Mount Victoria.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/browns-island-motukorea/" class="blog-row__link">
+                        <h2 class="blog-row__title">Browns Island (Motukorea): Auckland&#x27;s Island Volcano</h2>
+                        <p class="blog-row__desc">Browns Island, or Motukorea, is one of the best preserved volcanoes in Auckland, a small intact cone in the Hauraki Gulf. There is no scheduled ferry, so you need your own boat.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/south-auckland-volcanic-field/" class="blog-row__link">
+                        <h2 class="blog-row__title">South Auckland&#x27;s Volcanic Field</h2>
+                        <p class="blog-row__desc">Some of Auckland&#x27;s most significant volcanoes sit in the south around Māngere and Manukau, and most visitors never see them. Māngere Mountain and the Ōtuataua Stonefields hold deep history.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/volcanoes-of-devonport/" class="blog-row__link">
+                        <h2 class="blog-row__title">The Volcanoes of Devonport</h2>
+                        <p class="blog-row__desc">Devonport is home to three of Auckland&#x27;s volcanic cones, including two of the best short climbs in the city. North Head and Mount Victoria give harbour views and history.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/volcanic-lakes-and-lagoons/" class="blog-row__link">
+                        <h2 class="blog-row__title">Auckland&#x27;s Volcanic Lakes and Lagoons Explained</h2>
+                        <p class="blog-row__desc">Several of Auckland&#x27;s lakes and lagoons are volcanic craters, formed by explosive eruptions that left round basins now filled with water. Lake Pupuke is the best known.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/hidden-volcanoes-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">Auckland&#x27;s Volcanoes Hiding in Plain Sight</h2>
+                        <p class="blog-row__desc">Several of Auckland&#x27;s volcanoes sit under the central city, so worn down or built over that most people cross them without realising. Albert Park and the Domain are both volcanoes.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/lost-volcanoes-of-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">What Happened to Auckland&#x27;s Lost Volcanoes?</h2>
+                        <p class="blog-row__desc">Auckland has lost several volcanoes to quarrying and development. Cones like Mount Smart and Green Mount were dug away for their scoria, which is part of why the count varies.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/best-volcano-viewpoints-photos/" class="blog-row__link">
+                        <h2 class="blog-row__title">Best Volcano Viewpoints for Auckland City Photos</h2>
+                        <p class="blog-row__desc">The best volcano viewpoints for Auckland city photos are Maungawhau (Mount Eden) for the skyline, Maungakiekie (One Tree Hill) for the obelisk, and Mount Victoria for the harbour.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/easiest-volcano-with-kids/" class="blog-row__link">
+                        <h2 class="blog-row__title">What Is the Easiest Volcano to Walk in Auckland With Kids?</h2>
+                        <p class="blog-row__desc">The easiest volcano to walk with kids in Auckland is Maungakiekie (One Tree Hill), a gentle walk through Cornwall Park with sheep, space and a cafe.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/best-volcano-to-climb-auckland/" class="blog-row__link">
+                        <h2 class="blog-row__title">What Is the Best Volcano to Climb in Auckland?</h2>
+                        <p class="blog-row__desc">The best volcano to climb in Auckland is Maungawhau (Mount Eden). It is the highest cone, has the widest view, and the walk to the top takes under 20 minutes.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/mount-eden-vs-one-tree-hill/" class="blog-row__link">
+                        <h2 class="blog-row__title">Mount Eden vs One Tree Hill: Which Should You Climb?</h2>
+                        <p class="blog-row__desc">Mount Eden is the higher cone with the wider view and a quicker climb. One Tree Hill is a gentler walk through parkland with more history. Here is how to choose.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/what-are-tupuna-maunga/" class="blog-row__link">
+                        <h2 class="blog-row__title">What Are the Tūpuna Maunga and Why Do They Matter?</h2>
+                        <p class="blog-row__desc">The tūpuna maunga are Auckland&#x27;s ancestral volcanic mountains, taonga of great cultural significance to mana whenua. Here is what they are and how to treat them with respect.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/when-did-auckland-volcanoes-last-erupt/" class="blog-row__link">
+                        <h2 class="blog-row__title">When Did Auckland&#x27;s Volcanoes Last Erupt?</h2>
+                        <p class="blog-row__desc">Auckland&#x27;s most recent eruption built Rangitoto Island around 600 years ago. Here is what that means for the field today and whether it could happen again.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/why-auckland-built-on-volcanoes/" class="blog-row__link">
+                        <h2 class="blog-row__title">Why Is Auckland Built on Volcanoes?</h2>
+                        <p class="blog-row__desc">Auckland sits on an active volcanic field because of a hot spot deep in the mantle beneath the city. Here is what that means and why people settled there anyway.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/walk-up-rangitoto/" class="blog-row__link">
+                        <h2 class="blog-row__title">Can You Walk Up Rangitoto and How Long Does It Take?</h2>
+                        <p class="blog-row__desc">Yes, you can walk up Rangitoto. The summit track takes about an hour each way from the wharf. Here's the ferry, the cost, and what to bring.</p>
+                    </a>
+                </li>
+                <li class="blog-row">
+                    <a href="/blog/volcanic-akl/volcanic-cones-to-walk/" class="blog-row__link">
+                        <h2 class="blog-row__title">Best Volcanic Cones to Walk in Auckland (Local Guide)</h2>
+                        <p class="blog-row__desc">A local guide to the best volcanic cones you can walk in Auckland: Maungawhau (Mount Eden), Maungakiekie (One Tree Hill), Mount Victoria and North Head, with what to expect at each.</p>
+                    </a>
+                </li>
+        
+            </ul>
+        </article>
     </main>
 
     <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>

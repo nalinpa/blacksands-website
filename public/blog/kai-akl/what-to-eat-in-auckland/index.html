@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="kai-akl">
+<body class="blog-post" data-topic="kai-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/kai-akl/" style="color: var(--text-muted); text-decoration: none;">Kai AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/kai-akl/">Kai AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #1A6FA8;">Auckland · Signature Dishes</span>
-            <h1>What to Eat in Auckland: The Dishes Worth Crossing Town For</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">What to eat in Auckland is best answered dish by dish, not restaurant by restaurant. The city's strength is range, so the answer runs from Uyghur lamb skewers to hokey pokey gelato, banh mi to birria tacos, each worth crossing town for.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Kai AKL · Auckland Food</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What to Eat in Auckland: The Dishes Worth Crossing Town For</h1>
+            <p class="lead">What to eat in Auckland is best answered dish by dish, not restaurant by restaurant. The city's strength is range, so the answer runs from Uyghur lamb skewers to hokey pokey gelato, banh mi to birria tacos, each worth crossing town for.</p>
 
             <section>
                 <h2>What should you eat in Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Pick by craving and region, not by ranking. The CBD, the city-fringe and the eastern and southern suburbs each hold their own standouts, so cluster a few dishes in one area for a good food day. Prices run from a few dollars for a snack to a proper sit-down spend, so you can mix a cheap skewer or pie with a longer dinner. Follow the dishes and the map sorts itself out.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #1A6FA8;">Kai AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Every dish, mapped to the spot</h3>
-                <p style="margin-bottom: 1.5rem;">Kai AKL maps Auckland's best dishes to the exact restaurants that make them, hand-picked and sorted by what you feel like. Works offline.</p>
-                <a href="https://blacksands.app/kai-akl" class="btn btn-primary blue-btn">Explore Kai AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Kai AKL</span>
+                <h3>Every dish, mapped to the spot</h3>
+                <p>Kai AKL maps Auckland's best dishes to the exact restaurants that make them, hand-picked and sorted by what you feel like. Works offline.</p>
+                <a href="https://blacksands.app/kai-akl" class="blog-callout__cta">Explore Kai AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/kai-akl/where-locals-eat/" style="color: #1A6FA8;">Where do locals actually eat in Auckland?</a></p>
+            <p class="blog-related">Related: <a href="/blog/kai-akl/where-locals-eat/">Where do locals actually eat in Auckland?</a></p>
         </article>
     </main>
 

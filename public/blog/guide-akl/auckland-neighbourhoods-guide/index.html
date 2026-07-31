@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="guide-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/guide-akl/" style="color: var(--text-muted); text-decoration: none;">Guide AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/guide-akl/">Guide AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · Neighbourhoods</span>
-            <h1>A First-Timer&#x27;s Guide to Auckland&#x27;s Neighbourhoods</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland's neighbourhoods each have their own character. Ponsonby is the dining strip, Parnell the historic one, the High Street district and Karangahape Road cover shops and nightlife, and Newmarket is the retail hub. Knowing them shapes a good visit.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Guide AKL · Auckland Guide</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>A First-Timer&#x27;s Guide to Auckland&#x27;s Neighbourhoods</h1>
+            <p class="lead">Auckland's neighbourhoods each have their own character. Ponsonby is the dining strip, Parnell the historic one, the High Street district and Karangahape Road cover shops and nightlife, and Newmarket is the retail hub. Knowing them shapes a good visit.</p>
 
             <section>
                 <h2>Which Auckland neighbourhoods should you know?</h2>
@@ -120,13 +124,13 @@
                 <p>Match the neighbourhood to the mood. Base yourself centrally and treat the inner suburbs as a set of easy day or evening trips, since most are walkable or a short bus or rideshare apart. A typical pattern is the waterfront and High Street by day, Ponsonby or K Road by night, with Parnell and Newmarket folded in for history and shopping.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find your way around the city</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL maps the neighbourhoods with the spots worth your time in each. Works offline as you explore.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Find your way around the city</h3>
+                <p>Guide AKL maps the neighbourhoods with the spots worth your time in each. Works offline as you explore.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/guide-akl/things-to-do-in-parnell/" style="color: #0E7490;">Things to do in Parnell</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/guide-akl/things-to-do-in-parnell/">Things to do in Parnell</a>.</p>
         </article>
     </main>
 

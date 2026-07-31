@@ -53,22 +53,26 @@
       ]
     }
     </script>
+
 </head>
-<body class="kai-akl">
+<body class="blog-post" data-topic="kai-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/kai-akl/" style="color: var(--text-muted); text-decoration: none;">Kai AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/kai-akl/">Kai AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label">Auckland · Food &amp; Dining</span>
-            <h1>Where Do Locals Actually Eat in Auckland?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Locals eat away from the central waterfront. The food worth crossing town for is on Sandringham Road, Dominion Road, Karangahape Road and out in suburbs like Avondale and Otahuhu, not the harbourside chains aimed at visitors.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Kai AKL · Auckland Food</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Where Do Locals Actually Eat in Auckland?</h1>
+            <p class="lead">Locals eat away from the central waterfront. The food worth crossing town for is on Sandringham Road, Dominion Road, Karangahape Road and out in suburbs like Avondale and Otahuhu, not the harbourside chains aimed at visitors.</p>
 
             <section>
                 <h2>Where do locals eat in Auckland?</h2>
@@ -97,12 +101,13 @@
                 <p>The simple rule is to walk a few blocks off the waterfront. The Viaduct and Princes Wharf have the views and the prices to match, but the food Aucklanders actually queue for sits inland, in the suburbs above. Follow the locals, not the harbour.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #1A6FA8;">Kai AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Eat like a local, not a tourist</h3>
-                <p style="margin-bottom: 1.5rem;">A curated guide to Auckland food, focused on where locals actually eat. Hand-picked spots, no endless review noise, works offline.</p>
-                <a href="https://blacksands.app/kai-akl" class="btn btn-primary blue-btn">Explore Kai AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Kai AKL</span>
+                <h3>Eat like a local, not a tourist</h3>
+                <p>A curated guide to Auckland food, focused on where locals actually eat. Hand-picked spots, no endless review noise, works offline.</p>
+                <a href="https://blacksands.app/kai-akl" class="blog-callout__cta">Explore Kai AKL</a>
             </div>
+        
         </article>
     </main>
 

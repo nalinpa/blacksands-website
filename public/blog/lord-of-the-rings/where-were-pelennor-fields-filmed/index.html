@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="rings-akl">
+<body class="blog-post" data-topic="lord-of-the-rings">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/lord-of-the-rings/" style="color: var(--text-muted); text-decoration: none;">Lord of the Rings</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/lord-of-the-rings/">Lord of the Rings</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #D97706;">New Zealand · Pelennor</span>
-            <h1>Where Were the Pelennor Fields Filmed?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">The Battle of the Pelennor Fields was filmed on farmland near Twizel in the Mackenzie Country, the largest single location used in the trilogy. It is on private land, so access is by guided tour from the town of Twizel.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Lord of the Rings · Middle-earth</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Where Were the Pelennor Fields Filmed?</h1>
+            <p class="lead">The Battle of the Pelennor Fields was filmed on farmland near Twizel in the Mackenzie Country, the largest single location used in the trilogy. It is on private land, so access is by guided tour from the town of Twizel.</p>
 
             <section>
                 <h2>Where were the Pelennor Fields filmed?</h2>
@@ -115,13 +119,13 @@
                 <p>Twizel sits in one of the most striking parts of the South Island. Nearby Lake Pukaki, with its intense turquoise water and views toward Aoraki Mount Cook, was used as Laketown in The Hobbit, and the whole region is a dark-sky reserve famous for its night skies. Even setting the films aside, the Mackenzie Country is worth the trip, with the Pelennor tour as a bonus for fans.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #D97706;">Lord of the Rings</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find the battlefield and beyond</h3>
-                <p style="margin-bottom: 1.5rem;">Our Lord of the Rings app maps the Pelennor location and every other spot with access notes and directions. Works offline on the road.</p>
-                <a href="https://blacksands.app/lord-of-the-rings" class="btn btn-primary gold-btn">Explore the app</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Rings</span>
+                <h3>Find the battlefield and beyond</h3>
+                <p>Our Lord of the Rings app maps the Pelennor location and every other spot with access notes and directions. Works offline on the road.</p>
+                <a href="https://blacksands.app/lord-of-the-rings" class="blog-callout__cta">Explore the app</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/lord-of-the-rings/south-island-locations/" style="color: #D97706;">The South Island Lord of the Rings locations</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/lord-of-the-rings/south-island-locations/">The South Island Lord of the Rings locations</a>.</p>
         </article>
     </main>
 

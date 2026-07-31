@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="kai-akl">
+<body class="blog-post" data-topic="kai-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/kai-akl/" style="color: var(--text-muted); text-decoration: none;">Kai AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/kai-akl/">Kai AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #1A6FA8;">Auckland · Italian</span>
-            <h1>Best Italian and Pizza in Auckland</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland's best Italian runs from a perfect cacio e pepe at Pici to woodfired pizza at Ooh-Fa and Dante's, with handmade pasta at Pasta e Cuore and Prego. The city does both the simple classics and the woodfired pies well.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Kai AKL · Auckland Food</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Best Italian and Pizza in Auckland</h1>
+            <p class="lead">Auckland's best Italian runs from a perfect cacio e pepe at Pici to woodfired pizza at Ooh-Fa and Dante's, with handmade pasta at Pasta e Cuore and Prego. The city does both the simple classics and the woodfired pies well.</p>
 
             <section>
                 <h2>Where is the best Italian food in Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Italian here sits at the mid-to-higher end of casual dining. A plate of handmade pasta or a woodfired pizza at the better spots is a proper restaurant spend rather than a cheap eat, reflecting the from-scratch cooking. A few, like the simpler pizzas and Apero's lighter plates, come in more gently. It is somewhere to sit down and settle in rather than grab and go.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #1A6FA8;">Kai AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find the pasta or the pie</h3>
-                <p style="margin-bottom: 1.5rem;">Kai AKL maps Auckland's best Italian dishes to the restaurants that make them, pasta rooms and pizzerias alike. Works offline.</p>
-                <a href="https://blacksands.app/kai-akl" class="btn btn-primary blue-btn">Explore Kai AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Kai AKL</span>
+                <h3>Find the pasta or the pie</h3>
+                <p>Kai AKL maps Auckland's best Italian dishes to the restaurants that make them, pasta rooms and pizzerias alike. Works offline.</p>
+                <a href="https://blacksands.app/kai-akl" class="blog-callout__cta">Explore Kai AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/kai-akl/what-to-eat-in-auckland/" style="color: #1A6FA8;">What to eat in Auckland</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/kai-akl/what-to-eat-in-auckland/">What to eat in Auckland</a>.</p>
         </article>
     </main>
 

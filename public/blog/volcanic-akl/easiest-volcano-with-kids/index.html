@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="volcanic-akl">
+<body class="blog-post" data-topic="volcanic-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/volcanic-akl/" style="color: var(--text-muted); text-decoration: none;">Volcanic AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/volcanic-akl/">Volcanic AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #3D7A5F;">Auckland · Family Walks</span>
-            <h1>What Is the Easiest Volcano to Walk in Auckland With Kids?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">The easiest volcano to walk with kids in Auckland is Maungakiekie (One Tree Hill). It is a gentle climb through Cornwall Park with sheep to spot, plenty of open space, and a cafe at the bottom. Mount Eden is a good short option too if you want a quicker outing.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Volcanic AKL · Volcanoes</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What Is the Easiest Volcano to Walk in Auckland With Kids?</h1>
+            <p class="lead">The easiest volcano to walk with kids in Auckland is Maungakiekie (One Tree Hill). It is a gentle climb through Cornwall Park with sheep to spot, plenty of open space, and a cafe at the bottom. Mount Eden is a good short option too if you want a quicker outing.</p>
 
             <section>
                 <h2>What is the easiest volcano to walk with kids?</h2>
@@ -115,13 +119,13 @@
                 <p>Go earlier in the day to beat both the heat and the crowds, and let the walk be the activity rather than rushing to the top. At One Tree Hill, the sheep and the obelisk give kids something to aim for. At both maunga, stick to the formed paths and keep off the crater rims, which are fragile and culturally significant.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #3D7A5F;">Volcanic AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Find the right walk for your family</h3>
-                <p style="margin-bottom: 1.5rem;">Volcanic AKL has the routes, walking times and facilities for every cone, so you can match the maunga to the ages you're walking with. Works offline.</p>
-                <a href="https://blacksands.app/volcanic-akl" class="btn btn-primary ">Explore Volcanic AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Volcanic AKL</span>
+                <h3>Find the right walk for your family</h3>
+                <p>Volcanic AKL has the routes, walking times and facilities for every cone, so you can match the maunga to the ages you're walking with. Works offline.</p>
+                <a href="https://blacksands.app/volcanic-akl" class="blog-callout__cta">Explore Volcanic AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/volcanic-akl/best-volcano-to-climb-auckland/" style="color: #3D7A5F;">The best volcano to climb in Auckland</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/volcanic-akl/best-volcano-to-climb-auckland/">The best volcano to climb in Auckland</a>.</p>
         </article>
     </main>
 

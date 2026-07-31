@@ -1,14 +1,7 @@
-<nav class="bs-navbar" x-data="{ mobileMenuOpen: false, workDropdownOpen: false }">
+<nav class="bs-navbar navbar-1b" x-data="{ mobileMenuOpen: false }">
         <div class="bs-nav-left">
             <a href="/" class="bs-brand" aria-label="Homepage">
-                <svg height="32" viewBox="0 0 24 24" width="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="dune-clip"><circle cx="12" cy="12" r="10" /></clipPath>
-                    <g clip-path="url(#dune-clip)" fill="currentColor">
-                        <path d="M0 0 L 24 0 L 24 12 C 20 9, 17 6, 13 6 C 9 6, 4 11, 0 14 Z" />
-                        <path d="M0 24 L 24 24 L 24 16 C 21 12, 18 9.5, 15 9.5 C 10 9.5, 5 14, 0 18 Z" />
-                    </g>
-                </svg>
-                <span class="brand-text">Black Sands</span>
+                <img src="/assets/blacksands-logo.png" alt="Black Sands" class="bs-brand-img">
             </a>
         </div>
 
@@ -19,36 +12,16 @@
 
         <div class="bs-nav-menu" :class="{ 'active': mobileMenuOpen }">
             <div class="bs-nav-links">
-                <a href="/work-with-us">Work With Us</a>
-                
-                <div class="dropdown-container" 
-                     @mouseenter="workDropdownOpen = true" 
-                     @mouseleave="workDropdownOpen = false"
-                     @click.away="workDropdownOpen = false">
-                     
-                    <a href="/our-work" class="dropdown-trigger">
-                        Our Work
-                        <svg :class="{'rotate-180': workDropdownOpen}" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </a>
-                    
-                    <div class="dropdown-menu" x-show="workDropdownOpen" x-transition x-cloak>
-                        <a href="/volcanic-akl">Volcanic AKL</a>
-                        <a href="/kai-akl">Kai AKL</a>
-                        <a href="/lord-of-the-rings">LOTR Location Map</a>
-                        <a href="/guide-akl">Guide AKL</a>
-                    </div>
-                </div>
-
-                <a href="/blog">Blog</a>
-
+                <a href="/creators">Creators</a>
+                <a href="/civic">Civic</a>
+                <a href="/travel-operators">Travel Operators</a>
+                <a href="/our-work">Our Work</a>
                 <a href="/product">Product</a>
+                <a href="/blog">Blog</a>
             </div>
 
             <div class="bs-auth-links">
-                <a href="/login" class="bs-btn-login">Sign in</a>
-                <a href="/access" class="bs-btn-signup">Request Access</a>
+                <a href="/access" class="bs-btn-signup-1b">Start building</a>
             </div>
         </div>
     </nav>

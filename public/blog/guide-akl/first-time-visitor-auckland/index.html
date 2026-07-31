@@ -53,30 +53,34 @@
       ]
     }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="guide-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/guide-akl/" style="color: var(--text-muted); text-decoration: none;">Guide AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/guide-akl/">Guide AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · First Visit</span>
-            <h1>What Should a First-Time Visitor Do in Auckland?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Climb a volcano for the view, take a ferry to an island, eat in the suburbs rather than the waterfront, and use the city as a base for a day trip or two. That is the shape of a good first visit to Auckland.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Guide AKL · Auckland Guide</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What Should a First-Time Visitor Do in Auckland?</h1>
+            <p class="lead">Climb a volcano for the view, take a ferry to an island, eat in the suburbs rather than the waterfront, and use the city as a base for a day trip or two. That is the shape of a good first visit to Auckland.</p>
 
             <section>
                 <h2>What should a first-time visitor do in Auckland?</h2>
                 <p>Auckland rewards getting up high, out on the water, and into the suburbs. A strong first visit covers all three.</p>
                 <ul>
-                    <li><strong>Climb a cone.</strong> Maungawhau (Mount Eden) gives a 360-degree view over the whole isthmus in a 20-minute walk. See <a href="/blog/volcanic-akl/volcanic-cones-to-walk/" style="color: #3D7A5F;">the best cones to walk</a>.</li>
-                    <li><strong>Take a ferry.</strong> Rangitoto for a volcanic summit walk, or Waiheke for beaches and vineyards. Both leave from downtown. Here is <a href="/blog/volcanic-akl/walk-up-rangitoto/" style="color: #3D7A5F;">how the Rangitoto walk works</a>.</li>
-                    <li><strong>Eat in the suburbs.</strong> Dominion Road and Sandringham Road beat the waterfront for value and flavour. See <a href="/blog/kai-akl/where-locals-eat/" style="color: #1A6FA8;">where locals eat</a> and <a href="/blog/kai-akl/best-cheap-eats/" style="color: #1A6FA8;">the best cheap eats</a>.</li>
+                    <li><strong>Climb a cone.</strong> Maungawhau (Mount Eden) gives a 360-degree view over the whole isthmus in a 20-minute walk. See <a href="/blog/volcanic-akl/volcanic-cones-to-walk/">the best cones to walk</a>.</li>
+                    <li><strong>Take a ferry.</strong> Rangitoto for a volcanic summit walk, or Waiheke for beaches and vineyards. Both leave from downtown. Here is <a href="/blog/volcanic-akl/walk-up-rangitoto/">how the Rangitoto walk works</a>.</li>
+                    <li><strong>Eat in the suburbs.</strong> Dominion Road and Sandringham Road beat the waterfront for value and flavour. See <a href="/blog/kai-akl/where-locals-eat/">where locals eat</a> and <a href="/blog/kai-akl/best-cheap-eats/">the best cheap eats</a>.</li>
                     <li><strong>Walk the waterfront.</strong> Wynyard Quarter and the Viaduct are easy, free and central.</li>
                     <li><strong>Take a day trip.</strong> West coast black-sand beaches like Piha, or Hobbiton two hours south.</li>
                 </ul>
@@ -84,7 +88,7 @@
 
             <section>
                 <h2>How many days do you need in Auckland?</h2>
-                <p>Two to three days covers the city itself comfortably: a cone, an island, the food and the waterfront. Add a day for each big day trip you want, whether that is Waiheke, the west coast beaches, or <a href="/blog/lord-of-the-rings/can-you-visit-hobbiton/" style="color: #D97706;">Hobbiton</a>. Many people use Auckland as the start of a longer North Island trip rather than the whole holiday.</p>
+                <p>Two to three days covers the city itself comfortably: a cone, an island, the food and the waterfront. Add a day for each big day trip you want, whether that is Waiheke, the west coast beaches, or <a href="/blog/lord-of-the-rings/can-you-visit-hobbiton/">Hobbiton</a>. Many people use Auckland as the start of a longer North Island trip rather than the whole holiday.</p>
             </section>
 
             <section>
@@ -97,14 +101,15 @@
                 <p>The city centre, waterfront and nearest cones are walkable. For the suburbs and ferries, use an AT HOP card on buses, trains and ferries, or rideshare for the shorter hops. A car is most useful for the west coast beaches and day trips out of the city, less so in the centre where parking is tight.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">The whole city in one offline guide</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL pulls the cones, the food, the islands and the day trips into one hand-curated offline guide. Built for first visits and locals alike.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>The whole city in one offline guide</h3>
+                <p>Guide AKL pulls the cones, the food, the islands and the day trips into one hand-curated offline guide. Built for first visits and locals alike.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
 
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Start here: <a href="/blog/auckland/what-is-auckland-known-for/" style="color: #0E7490;">What is Auckland known for?</a></p>
+            <p>Start here: <a href="/blog/auckland/what-is-auckland-known-for/">What is Auckland known for?</a></p>
+        
         </article>
     </main>
 

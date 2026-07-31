@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="platform">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/platform/">Platform</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
-            <h1>How to Price a Self-Guided Tour App</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">A self-guided tour app can be sold several ways: a one-off purchase, a subscription, a free app with paid upgrades, or resold through travel marketplaces. The right model depends on how often people come back and how you reach them.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Platform · Product</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>How to Price a Self-Guided Tour App</h1>
+            <p class="lead">A self-guided tour app can be sold several ways: a one-off purchase, a subscription, a free app with paid upgrades, or resold through travel marketplaces. The right model depends on how often people come back and how you reach them.</p>
 
             <section>
                 <h2>How should you price a self-guided tour?</h2>
@@ -115,13 +119,13 @@
                 <p>You do not have to sell only through your own app. Tours can be packaged and resold through travel marketplaces and booking platforms, where holidaymakers are already shopping for things to do, often using a redemption code that unlocks the experience in the app. That puts the product in front of buyers you would struggle to reach directly, in exchange for a platform cut. Many operators run their own direct sales and a marketplace channel side by side.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Turn a tour into a product that sells</h3>
-                <p style="margin-bottom: 1.5rem;">Black Sands is a white-label platform for self-guided location apps, with the tools to sell direct or through marketplaces. We handle the build.</p>
-                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Black Sands</span>
+                <h3>Turn a tour into a product that sells</h3>
+                <p>Black Sands is a white-label platform for self-guided location apps, with the tools to sell direct or through marketplaces. We handle the build.</p>
+                <a href="https://blacksands.app/work-with-us" class="blog-callout__cta">Work with us</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/monetise-local-knowledge/" style="color: #0E7490;">How creators can monetise local knowledge beyond PDFs</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/building/monetise-local-knowledge/">How creators can monetise local knowledge beyond PDFs</a>.</p>
         </article>
     </main>
 

@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="platform">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/platform/">Platform</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
-            <h1>White-Label vs Building Your Own: What It Actually Costs</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Building your own location app means months of specialist development plus permanent maintenance. A white-label platform trades that large, ongoing cost for a smaller and more predictable one, letting you focus on content rather than engineering.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Platform · Product</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>White-Label vs Building Your Own: What It Actually Costs</h1>
+            <p class="lead">Building your own location app means months of specialist development plus permanent maintenance. A white-label platform trades that large, ongoing cost for a smaller and more predictable one, letting you focus on content rather than engineering.</p>
 
             <section>
                 <h2>White-label vs building your own: what&#x27;s the real difference?</h2>
@@ -115,13 +119,13 @@
                 <p>Build your own only if your app is your core product, you have genuinely unusual requirements, and you can fund a permanent development team. For almost everyone else, including tour operators, creators and civic bodies whose real product is the local knowledge, white-label is the rational choice. It gets you to market quickly and keeps the cost in proportion to the business.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Skip the build, keep the control</h3>
-                <p style="margin-bottom: 1.5rem;">Black Sands is a white-label platform for location apps. You get a branded, offline-first, GPS-gated app without the cost of building and maintaining one.</p>
-                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Black Sands</span>
+                <h3>Skip the build, keep the control</h3>
+                <p>Black Sands is a white-label platform for location apps. You get a branded, offline-first, GPS-gated app without the cost of building and maintaining one.</p>
+                <a href="https://blacksands.app/work-with-us" class="blog-callout__cta">Work with us</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/walking-tour-to-app-no-code/" style="color: #0E7490;">How to turn a walking tour into an app without code</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/building/walking-tour-to-app-no-code/">How to turn a walking tour into an app without code</a>.</p>
         </article>
     </main>
 

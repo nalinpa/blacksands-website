@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="guide-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/guide-akl/" style="color: var(--text-muted); text-decoration: none;">Guide AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/guide-akl/">Guide AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · Parnell</span>
-            <h1>Things to Do in Parnell: Auckland&#x27;s Oldest Suburb</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Parnell is one of Auckland's oldest suburbs, known for its heritage village, the Rose Gardens, galleries and its closeness to the Auckland Domain and museum. It is an easy, characterful corner of the city to spend half a day.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Guide AKL · Auckland Guide</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Things to Do in Parnell: Auckland&#x27;s Oldest Suburb</h1>
+            <p class="lead">Parnell is one of Auckland's oldest suburbs, known for its heritage village, the Rose Gardens, galleries and its closeness to the Auckland Domain and museum. It is an easy, characterful corner of the city to spend half a day.</p>
 
             <section>
                 <h2>What is there to do in Parnell?</h2>
@@ -115,13 +119,13 @@
                 <p>Parnell is a short distance from the city centre, easy to reach by bus, rideshare or a walk through the Domain. Treat it as a half-day, browsing the village, walking the Rose Gardens, and adding the Domain and museum next door. It pairs naturally with the waterfront, since the suburb runs down toward the harbour on the city's eastern side.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Explore Parnell and the rest of the city</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL maps Parnell and Auckland's other neighbourhoods with the spots worth your time. Works offline.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Explore Parnell and the rest of the city</h3>
+                <p>Guide AKL maps Parnell and Auckland's other neighbourhoods with the spots worth your time. Works offline.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/guide-akl/auckland-neighbourhoods-guide/" style="color: #0E7490;">A guide to Auckland's neighbourhoods</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/guide-akl/auckland-neighbourhoods-guide/">A guide to Auckland's neighbourhoods</a>.</p>
         </article>
     </main>
 

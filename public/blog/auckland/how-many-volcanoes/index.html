@@ -53,22 +53,26 @@
       ]
     }
     </script>
+
 </head>
-<body class="volcanic-akl">
+<body class="blog-post" data-topic="auckland">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/auckland/" style="color: var(--text-muted); text-decoration: none;">Auckland</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/auckland/">Auckland</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label">Auckland · Geography</span>
-            <h1>How Many Volcanoes Does Auckland Have?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Auckland sits on the Auckland Volcanic Field, which contains around 53 volcanic centres spread across roughly 360 square kilometres. It is one of the only major cities in the world built on an active volcanic field.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Auckland · Auckland</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>How Many Volcanoes Does Auckland Have?</h1>
+            <p class="lead">Auckland sits on the Auckland Volcanic Field, which contains around 53 volcanic centres spread across roughly 360 square kilometres. It is one of the only major cities in the world built on an active volcanic field.</p>
 
             <section>
                 <h2>How many volcanoes does Auckland have?</h2>
@@ -90,12 +94,13 @@
                 <p>Many survive as parks and reserves. Maungawhau (Mount Eden), Maungakiekie (One Tree Hill), North Head and Mount Victoria in Devonport, and Rangitoto Island are all accessible and walkable. Others, like Mount Smart, were largely quarried away for scoria and basalt before protections came in.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label">Volcanic AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">See the whole field, cone by cone</h3>
-                <p style="margin-bottom: 1.5rem;">A field guide to every volcano in the Auckland Volcanic Field, with history, walking routes and viewpoints. Works offline.</p>
-                <a href="https://blacksands.app/volcanic-akl" class="btn btn-primary">Explore Volcanic AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>See the whole field, cone by cone</h3>
+                <p>A field guide to every volcano in the Auckland Volcanic Field, with history, walking routes and viewpoints. Works offline.</p>
+                <a href="https://blacksands.app/volcanic-akl" class="blog-callout__cta">Explore Volcanic AKL</a>
             </div>
+        
         </article>
     </main>
 

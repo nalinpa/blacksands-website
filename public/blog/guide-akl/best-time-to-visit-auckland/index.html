@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="guide-akl">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/guide-akl/" style="color: var(--text-muted); text-decoration: none;">Guide AKL</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/guide-akl/">Guide AKL</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Auckland · Travel Basics</span>
-            <h1>When Is the Best Time of Year to Visit Auckland?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">The best time to visit Auckland is from December to April, covering summer and early autumn, when the weather is warmest and driest. For fewer crowds and lower prices, the shoulder months of spring and late autumn are a smart trade.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Guide AKL · Auckland Guide</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>When Is the Best Time of Year to Visit Auckland?</h1>
+            <p class="lead">The best time to visit Auckland is from December to April, covering summer and early autumn, when the weather is warmest and driest. For fewer crowds and lower prices, the shoulder months of spring and late autumn are a smart trade.</p>
 
             <section>
                 <h2>When is the best time of year to visit Auckland?</h2>
@@ -115,13 +119,13 @@
                 <p>Avoid them if you can, for both price and crowds. The big one is mid-December to late January, which overlaps Christmas, New Year and the long summer break, when domestic travel peaks and popular spots book out. There are shorter school holiday blocks through the year too. Travelling just outside these windows is the easiest way to dodge the worst of the crowds.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Guide AKL</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Plan around the seasons</h3>
-                <p style="margin-bottom: 1.5rem;">Guide AKL is a hand-curated offline guide to Auckland that works whatever the weather throws at you, indoors and out.</p>
-                <a href="https://blacksands.app/guide-akl" class="btn btn-primary teal-btn">Explore Guide AKL</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Guide AKL</span>
+                <h3>Plan around the seasons</h3>
+                <p>Guide AKL is a hand-curated offline guide to Auckland that works whatever the weather throws at you, indoors and out.</p>
+                <a href="https://blacksands.app/guide-akl" class="blog-callout__cta">Explore Guide AKL</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/guide-akl/is-auckland-worth-visiting/" style="color: #0E7490;">Is Auckland worth visiting and how long do you need?</a></p>
+            <p class="blog-related">Related: <a href="/blog/guide-akl/is-auckland-worth-visiting/">Is Auckland worth visiting and how long do you need?</a></p>
         </article>
     </main>
 

@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="guide-akl">
+<body class="blog-post" data-topic="platform">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/building/" style="color: var(--text-muted); text-decoration: none;">Building</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/platform/">Platform</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #0E7490;">Black Sands · Building</span>
-            <h1>What Is GPS-Gating and Why Use It for Tours?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">GPS-gating means content in an app unlocks only when the user physically reaches a set location. For tours it turns passive reading into a reason to actually be there, verifies real visits, and builds a sense of discovery stop by stop.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Platform · Product</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>What Is GPS-Gating and Why Use It for Tours?</h1>
+            <p class="lead">GPS-gating means content in an app unlocks only when the user physically reaches a set location. For tours it turns passive reading into a reason to actually be there, verifies real visits, and builds a sense of discovery stop by stop.</p>
 
             <section>
                 <h2>What is GPS-gating?</h2>
@@ -115,13 +119,13 @@
                 <p>Not if the app is built offline-first. The location check happens on the device using its GPS, which works without mobile data. Combined with content stored locally, that means gating can function in remote areas with no signal, unlocking stops as the user arrives even deep off the grid. The two ideas work best together.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #0E7490;">Black Sands</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Gate your experience by place</h3>
-                <p style="margin-bottom: 1.5rem;">Black Sands builds GPS-gated, offline-first location apps, so reaching the spot is what unlocks the story. We handle the engineering.</p>
-                <a href="https://blacksands.app/work-with-us" class="btn btn-primary teal-btn">Work with us</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Black Sands</span>
+                <h3>Gate your experience by place</h3>
+                <p>Black Sands builds GPS-gated, offline-first location apps, so reaching the spot is what unlocks the story. We handle the engineering.</p>
+                <a href="https://blacksands.app/work-with-us" class="blog-callout__cta">Work with us</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/building/why-offline-first-matters/" style="color: #0E7490;">Why offline-first matters for location apps</a>.</p>
+            <p class="blog-related">Related: <a href="/blog/building/why-offline-first-matters/">Why offline-first matters for location apps</a>.</p>
         </article>
     </main>
 

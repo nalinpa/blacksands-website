@@ -78,22 +78,26 @@
   ]
 }
     </script>
+
 </head>
-<body class="rings-akl">
+<body class="blog-post" data-topic="lord-of-the-rings">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="container" style="padding-top: 4rem; padding-bottom: 5rem; max-width: 760px;">
-        <nav class="coord-label" style="margin-bottom: 2rem;">
-            <a href="/blog/" style="color: var(--text-muted); text-decoration: none;">Blog</a> /
-            <a href="/blog/lord-of-the-rings/" style="color: var(--text-muted); text-decoration: none;">Lord of the Rings</a>
+    <main class="blog-post__container">
+        <nav class="blog-breadcrumb">
+            <a href="/blog/">Blog</a> / <a href="/blog/lord-of-the-rings/">Lord of the Rings</a>
         </nav>
 
-        <article class="bs-content" style="max-width: 760px;">
-            <span class="coord-label" style="color: #D97706;">New Zealand · Helm&#x27;s Deep</span>
-            <h1>Where Was Helm&#x27;s Deep Filmed?</h1>
-            <p style="font-size: 1.3rem; line-height: 1.6; color: var(--text-primary); font-weight: 500; margin-bottom: 2.5rem;">Helm's Deep was filmed at Dry Creek Quarry near Wellington, where the enormous fortress set was built. The quarry also held the Minas Tirith set, but it is private working land and not open to visitors.</p>
+        <article class="blog-post__content">
+            <span class="blog-post__meta">
+                <span class="blog-post__label">Lord of the Rings · Middle-earth</span>
+                <span class="blog-post__dot">·</span>
+                <span class="blog-post__date">18 June 2026</span>
+            </span>
+<h1>Where Was Helm&#x27;s Deep Filmed?</h1>
+            <p class="lead">Helm's Deep was filmed at Dry Creek Quarry near Wellington, where the enormous fortress set was built. The quarry also held the Minas Tirith set, but it is private working land and not open to visitors.</p>
 
             <section>
                 <h2>Where was Helm&#x27;s Deep filmed?</h2>
@@ -115,13 +119,13 @@
                 <p>Lean into the accessible Wellington locations and the wider landscapes. Mount Victoria, Kaitoke for Rivendell and Weta Workshop are all open and nearby, and Weta in particular shows the craft behind the big battle sets. For epic terrain, the South Island's Mackenzie Country and the fields near Twizel, where the Pelennor battle was shot, give you the scale that Helm's Deep evokes.</p>
             </section>
 
-            <div style="background: var(--layer-2); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin: 3.5rem 0;">
-                <span class="coord-label" style="color: #D97706;">Lord of the Rings</span>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Know what you can visit, and what you can&#x27;t</h3>
-                <p style="margin-bottom: 1.5rem;">Our Lord of the Rings app maps the locations with honest access notes, so you spend your time where you can actually stand. Works offline on the road.</p>
-                <a href="https://blacksands.app/lord-of-the-rings" class="btn btn-primary gold-btn">Explore the app</a>
+            <div class="blog-callout">
+                <span class="blog-callout__label">Rings</span>
+                <h3>Know what you can visit, and what you can&#x27;t</h3>
+                <p>Our Lord of the Rings app maps the locations with honest access notes, so you spend your time where you can actually stand. Works offline on the road.</p>
+                <a href="https://blacksands.app/lord-of-the-rings" class="blog-callout__cta">Explore the app</a>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted);">Related: <a href="/blog/lord-of-the-rings/where-were-pelennor-fields-filmed/" style="color: #D97706;">Where were the Pelennor Fields filmed?</a></p>
+            <p class="blog-related">Related: <a href="/blog/lord-of-the-rings/where-were-pelennor-fields-filmed/">Where were the Pelennor Fields filmed?</a></p>
         </article>
     </main>
 
