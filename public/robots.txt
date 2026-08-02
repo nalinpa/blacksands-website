@@ -1,4 +1,4 @@
-# Black Sands — AI crawlers explicitly welcomed
+# Black Sands: AI crawlers explicitly welcomed
 
 User-agent: GPTBot
 Allow: /

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism operators | Black Sands</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" type="image/png" href="/assets/blacksands-favicon.png">
+    
+    <!-- Alpine.js -->
+    <style>[x-cloak] { display: none !important; }</style>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+</head>
+<body class="deployment-page theme-operators">
+
+    <!-- Navbar (injected) -->
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <!-- Hero Header -->
+    <header class="dp-header">
+        <div class="dp-header-inner">
+            <span class="dp-eyebrow">&#9670; For tourism operators</span>
+            <h1 class="dp-title">Own the phone<br>in your customer's hand.</h1>
+            <p class="dp-subtitle">A custom-branded, GPS-aware companion app that recaptures attention and drives in-journey revenue.</p>
+        </div>
+    </header>
+
+    <!-- Intro Callout -->
+    <section class="dp-section">
+        <div class="container">
+            <p class="dp-callout">You control the physical journey, but you lose the customer to third-party apps the moment they look at their phone.</p>
+            <p class="dp-callout">We build the app that keeps them with you, and we run it after it ships.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="dp-section--cards">
+        <div class="container">
+            <h2 class="dp-section-heading">What we build</h2>
+            <div class="dp-cards">
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Location-triggered upsells</h3>
+                        <p>Hyper-relevant offers based on proximity. Routes that unlock food, beverage or partner discounts exactly when the customer reaches a waypoint.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Offline-first</h3>
+                        <p>Experiential travel happens off-grid. We cache state locally and sync the moment signal returns. The app doesn't die in a valley.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Dwell and interaction data</h3>
+                        <p>Verified GPS analytics on where customers spend time and how they use your physical assets.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Built around your route</h3>
+                        <p>A transit route, a hostel network and a multi-day trek need different apps. We build for what you actually operate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A fraction of an in-house build -->
+    <section class="dp-section--last">
+        <div class="container">
+            <h2 class="dp-section-heading">A fraction of an in-house build</h2>
+            <p class="dp-callout">A custom mobile app from an agency runs six figures and the better part of a year, then needs a maintenance contract on top.</p>
+            <p class="dp-callout">We're a small studio that has already built and shipped this class of app several times. You get a bespoke build without funding a development team to get it.</p>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="dp-cta">
+        <div class="container">
+            <h2>Ready to talk?</h2>
+            <a href="/contact" class="dp-cta-btn">Book a call &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Footer (injected) -->
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

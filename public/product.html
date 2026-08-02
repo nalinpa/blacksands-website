@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform Capabilities | Black Sands Engine</title>
+    <title>What we build | Black Sands</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,9 +47,9 @@
         
         <aside class="bs-sidebar">
             <div class="sidebar-group">
-                <h3>The Platform</h3>
+                <h3>Overview</h3>
                 <nav>
-                    <a href="#overview" :class="{ 'active': activeSection === 'overview' }">Platform Overview</a>
+                    <a href="#overview" :class="{ 'active': activeSection === 'overview' }">Overview</a>
                     <a href="#reliability" :class="{ 'active': activeSection === 'reliability' }">Reliability & Scale</a>
                 </nav>
             </div>
@@ -57,82 +57,67 @@
             <div class="sidebar-group">
                 <h3>Core Capabilities</h3>
                 <nav>
-                    <a href="#proximity" :class="{ 'active': activeSection === 'proximity' }">Verified Proximity</a>
+                    <a href="#proximity" :class="{ 'active': activeSection === 'proximity' }">Proximity Engagement</a>
                     <a href="#offline" :class="{ 'active': activeSection === 'offline' }">Zero-Signal Operation</a>
-                    <a href="#virality" :class="{ 'active': activeSection === 'virality' }">Automated Marketing</a>
+                    <a href="#virality" :class="{ 'active': activeSection === 'virality' }">Shareable Completions</a>
                 </nav>
             </div>
 
             <div class="sidebar-group">
                 <h3>Deployment</h3>
                 <nav>
-                    <a href="#whitelabel" :class="{ 'active': activeSection === 'whitelabel' }">White-Label Apps</a>
-                    <a href="#api" :class="{ 'active': activeSection === 'api' }">API Integration</a>
+                    <a href="#whitelabel" :class="{ 'active': activeSection === 'whitelabel' }">Your App Store Account</a>
+                    <a href="#api" :class="{ 'active': activeSection === 'api' }">Existing Apps</a>
                 </nav>
             </div>
         </aside>
 
         <main class="bs-content">
             <section id="overview">
-                <h1>Launch Your Interactive Journey.</h1>
-                <p>Black Sands provides the enterprise-grade infrastructure to turn passive physical locations into monetizable digital experiences. You supply the destination and the narrative; we supply the technology to guide, track, and engage your audience—eliminating the massive upfront cost and risk of custom app development.</p>
+                <h1>Location-aware apps, built properly.</h1>
+                <p>We build interactive iOS apps that turn physical places into experiences people pay for. You supply the destination and the story. We build, ship and maintain the app.</p>
                 <hr class="bs-divider">
             </section>
 
             <section id="reliability">
-                <h2>Built for the Wild. Scaled for the Masses.</h2>
-                <p>Consumer travel apps fail because they drop out in remote areas and crash during peak seasons. Experiential travel requires a fundamentally different architecture. Our platform is built on highly available, cloud-native infrastructure designed to handle tourist surges effortlessly, ensuring a flawless experience whether your users are in a downtown metro or off-grid in the mountains.</p>
+                <h2>Built for the wild</h2>
+                <p>Consumer travel apps fail because they drop out in remote areas and crash during peak season. Experiential travel needs a different architecture.</p>
+                <p>We build on cloud-native infrastructure that handles tourist surges, and we run it for you.</p>
                 <ul>
-                    <li><strong>Zero Maintenance:</strong> We manage the server scaling, database security, and OS updates so you don't have to hire an IT team.</li>
-                    <li><strong>Cross-Platform:</strong> Native, high-performance deployment across both iOS and Android from day one.</li>
-                    <li><strong>Actionable Analytics:</strong> Gain verified dwell metrics on where your visitors actually spend their time.</li>
+                    <li><strong>No IT team required.</strong> We manage server scaling, database security and OS updates.</li>
+                    <li><strong>Actionable analytics.</strong> Verified dwell metrics on where visitors actually spend their time.</li>
+                    <li><strong>Maintained, not delivered.</strong> The app doesn't stop being our problem the day it ships.</li>
                 </ul>
             </section>
 
             <section id="proximity">
-                <h2>Location-Triggered Engagement</h2>
-                <p>Stop giving your premium content away to people sitting on their couches. Our proximity engine ensures that digital rewards, hidden audio guides, and partner discounts are only unlocked when a user is <strong>physically present</strong> at your designated real-world coordinates.</p>
-                
-                <div class="code-block">
-                    <div class="code-header">
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                    <pre><code><span class="keyword">import</span> { Engine } <span class="keyword">from</span> <span class="string">'@blacksands/core'</span>;
-
-<span class="comment">// Define your physical reward zone</span>
-<span class="keyword">const</span> destination = {
-    target: <span class="string">"historic_summit"</span>,
-    requiredRadius: <span class="number">20</span> <span class="comment">// meters</span>
-};
-
-<span class="comment">// The Engine verifies their physical presence</span>
-<span class="keyword">if</span> (<span class="keyword">await</span> Engine.verifyArrival(destination)) {
-    unlockExclusiveAudioGuide();
-    issueDigitalExplorerBadge();
-}</code></pre>
-                </div>
+                <h2>Location-triggered engagement</h2>
+                <p>Stop giving premium content away to people sitting on their couches. We build proximity checks that only unlock digital rewards, hidden audio guides and partner discounts when a user is <strong>physically present</strong> at your coordinates.</p>
+                <p>Radius, dwell time and verification strictness are set per project, because a summit cairn and a high street caf&eacute; need different rules.</p>
             </section>
 
             <section id="offline">
-                <h2>Zero-Signal Operation</h2>
-                <p>Real exploration happens off the grid. If your app dies when a customer loses cellular service, you lose the customer. The Black Sands engine caches your entire interactive map and digital inventory locally on the user's device. They can navigate trails, check into waypoints, and unlock badges completely offline. The moment they return to civilization, the engine silently syncs their progress to the cloud.</p>
+                <h2>Zero-signal operation</h2>
+                <p>Real exploration happens off the grid. If your app dies when a customer loses cellular service, you lose the customer.</p>
+                <p>We cache the entire interactive map and digital inventory locally on the device. Users navigate trails, check into waypoints and unlock badges completely offline. Progress syncs the moment they're back in range.</p>
             </section>
 
             <section id="virality">
-                <h2>Automated Marketing & Virality</h2>
-                <p>Turn your customers into your strongest marketing channel. Instead of relying on generic photos, our engine automatically generates beautifully branded, data-rich completion screens (like topographical journey maps and stamped badges). Users proudly share these personalized assets to Instagram and TikTok, driving organic traffic right back to your brand.</p>
+                <h2>Shareable completions</h2>
+                <p>Turn customers into your marketing channel. We build branded completion screens, like topographical journey maps and stamped badges, that users share to Instagram and TikTok, driving organic traffic back to you.</p>
             </section>
 
             <section id="whitelabel">
-                <h2>White-Label App Deployment</h2>
-                <p>Your brand, our engine. Don't spend 12 months and six figures building a mobile app from scratch. We deploy a fully branded, native iOS and Android application directly to your company's Apple App Store and Google Play accounts. You retain 100% ownership of your customer relationships and brand identity, powered quietly by the Black Sands core.</p>
+                <h2>Your brand, your App Store account</h2>
+                <p>We build fully branded native apps that ship under your own Apple Developer account, in your company's name. You own the listing, the customer relationship and the revenue. Apple pays you directly.</p>
+                <p>You add us as an admin and we handle the build, the submission, review responses and every update afterward.</p>
+                <p>Every app is designed around what you're actually offering. We don't run a template.</p>
             </section>
 
             <section id="api">
-                <h2>Headless API Integration</h2>
-                <p>Already have a successful mobile app or corporate portal? You don't need to start over. Plug the Black Sands proximity and gamification engine directly into your existing codebase. Our flexible, headless API allows you to trigger location-based rewards, track verified physical check-ins, and sync interaction data seamlessly with your existing CRM and loyalty programs.</p>
+                <h2>Integrating with what you have</h2>
+                <p>Already have a mobile app or corporate portal? You don't need to start over. We can build proximity and gamification into your existing codebase instead: location-based rewards, verified check-ins, and interaction data synced to your existing CRM or loyalty programme.</p>
+                <a href="/contact" class="btn-forest">Book a call &rarr;</a>
             </section>
         </main>
     </div>

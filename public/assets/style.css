@@ -2,7 +2,7 @@
    1. CSS VARIABLES & BASE STYLES
    ========================================================================== */
 :root {
-    /* Black Sands 1b Redesign — forest green + warm sand palette */
+    /* Black Sands 1b Redesign: forest green + warm sand palette */
     --forest: #0F3D24;      /* hero bg, footer bg, primary dark */
     --forest-2: #0A2B19;    /* deepest green (app-card image beds, button text) */
     --leaf: #3FA65C;        /* primary accent (logo mark, links, primary CTA, "● LIVE") */
@@ -13,7 +13,7 @@
     --muted: #717A6F;       /* secondary text on light */
     --line: #E2D7C2;        /* hairline borders */
 
-    /* Legacy aliases — mapped to new tokens for backwards compatibility */
+    /* Legacy aliases: mapped to new tokens for backwards compatibility */
     --layer-0: var(--forest);
     --layer-1: var(--cream);
     --layer-2: var(--sand);
@@ -32,6 +32,8 @@
     --font-display: 'Bricolage Grotesque', var(--font-sans);
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-mono: 'Fira Code', monospace;
+    --font-body-1b: 'Public Sans', var(--font-sans);
+    --font-mono-1b: 'Space Mono', var(--font-mono);
 }
 
 * {
@@ -84,7 +86,7 @@ p {
 .eyebrow-clay { color: var(--clay); }
 .eyebrow-leaf { color: var(--leaf); }
 
-/* Coordinate-style section label — used throughout for technical aesthetic */
+/* Coordinate-style section label: used throughout for technical aesthetic */
 .coord-label {
     display: block;
     font-family: var(--font-mono);
@@ -329,11 +331,35 @@ p {
     cursor: pointer;
 }
 
+.navbar-1b .bs-mobile-toggle {
+    color: #FFFFFF;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 14px rgba(255, 255, 255, 0.5));
+}
+
+.bs-brand-name {
+    display: none;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+}
+
 /* ==========================================================================
    MOBILE < 900px
    ========================================================================== */
 @media (max-width: 900px) {
     .bs-mobile-toggle { display: block; }
+
+    .bs-brand-name { display: inline-block; }
+
+    .navbar-1b .bs-nav-menu.active .bs-nav-links a {
+        color: var(--text-muted);
+    }
+
+    .navbar-1b .bs-nav-menu.active .bs-nav-links a:hover {
+        color: var(--layer-4);
+        background-color: var(--layer-2);
+    }
 
     .bs-nav-menu {
         display: none;
@@ -427,7 +453,7 @@ p {
 }
 
 /* ==========================================================================
-   4. HOMEPAGE COMPONENTS — 1b REDESIGN
+   4. HOMEPAGE COMPONENTS: 1b REDESIGN
    ========================================================================== */
 
 /* --- Button Variants --- */
@@ -523,7 +549,7 @@ p {
     min-height: calc(90vh - 70px);
     display: flex;
     align-items: center;
-    background: var(--forest);
+    background: var(--clay);
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     overflow: hidden;
@@ -540,7 +566,7 @@ p {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(15,61,36,.72), rgba(15,61,36,.86) 55%, rgba(10,43,25,.96));
+    background: linear-gradient(180deg, rgba(224,134,58,.4), rgba(180,98,32,.58) 55%, rgba(92,42,12,.8));
 }
 
 .hero-glow {
@@ -549,7 +575,7 @@ p {
     right: -10%;
     width: 60%;
     height: 80%;
-    background: radial-gradient(ellipse, rgba(63, 166, 92, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(224, 134, 58, 0.25) 0%, transparent 70%);
     pointer-events: none;
     z-index: 1;
 }
@@ -595,10 +621,10 @@ p {
 @media (max-width: 900px) {
     .hero-1b {
         min-height: auto;
-        padding: 3rem 0 4rem;
+        padding: 0 0 3rem;
     }
     .hero-1b .hero-content {
-        padding: 3rem 1.5rem;
+        padding: 2.5rem 1.5rem 0;
         text-align: center;
     }
     .hero-title-1b {
@@ -915,7 +941,8 @@ p {
     content: '';
     position: absolute;
     top: 20%;
-    left: 30%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 60%;
     height: 60%;
     background: radial-gradient(ellipse, rgba(63, 166, 92, 0.2) 0%, transparent 70%);
@@ -976,11 +1003,19 @@ p {
 }
 
 @media (max-width: 900px) {
+    .showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
     .showcase-featured {
         grid-template-columns: 1fr;
     }
     .featured-image-bed {
         min-height: 300px;
+    }
+    .featured-screenshot {
+        width: 260px;
     }
     .featured-content {
         padding: 2rem;
@@ -1070,6 +1105,12 @@ p {
 @media (max-width: 900px) {
     .showcase-grid {
         grid-template-columns: 1fr;
+    }
+    .card-image-bed {
+        height: 340px;
+    }
+    .card-screenshot {
+        width: 210px;
     }
 }
 
@@ -1162,9 +1203,6 @@ p {
 
 /* --- Tech Showcase / Code Block --- */
 .tech-showcase { padding: 6rem 2rem; }
-.showcase-header { text-align: center; max-width: 700px; margin: 0 auto 3rem auto; }
-.showcase-header h2 { font-size: 2.25rem; margin-bottom: 1rem; letter-spacing: -0.03em; }
-.showcase-header p { font-size: 1.1rem; }
 
 .code-block {
     background: #0D1117;
@@ -1251,7 +1289,7 @@ p {
 .card-link:hover { color: var(--layer-4); }
 
 /* ==========================================================================
-   5. FOOTER — 1b REDESIGN
+   5. FOOTER: 1b REDESIGN
    ========================================================================== */
 .footer-1b {
     background: var(--forest);
@@ -1316,7 +1354,8 @@ p {
 }
 
 .footer-contact-list a,
-.footer-company-list a {
+.footer-company-list a,
+.footer-contact-list li {
     color: #A7C1B1;
     text-decoration: none;
     font-size: 0.95rem;
@@ -1718,7 +1757,7 @@ body.our-work-page { background-color: var(--cream); }
 }
 
 @media (max-width: 900px) {
-    .our-work-layout { padding-top: 2rem; }
+    .our-work-layout { padding-top: 1.25rem; }
 
     .flagship-case { grid-template-columns: 1fr; }
 
@@ -2012,10 +2051,10 @@ body.our-work-page { background-color: var(--cream); }
 }
 
 /* ==========================================================================
-   8. WORK WITH US — 1b REDESIGN (Editorial Sections)
+   8. WORK WITH US: 1b REDESIGN (Editorial Sections)
    ========================================================================== */
 
-/* Partner section — alternating cream / sand backgrounds */
+/* Partner section: alternating cream / sand backgrounds */
 .wwu-section {
     padding: 5rem 0;
     background: var(--cream);
@@ -2258,7 +2297,7 @@ body.our-work-page { background-color: var(--cream); }
    ========================================================================== */
 .app-light-theme { position: relative; z-index: 2; }
 
-/* Hero section — layer-2 card within the parchment container */
+/* Hero section: layer-2 card within the parchment container */
 .app-hero {
     background-color: var(--layer-2);
     border-radius: 20px;
@@ -2305,7 +2344,7 @@ body.our-work-page { background-color: var(--cream); }
 
 .hero-visual { flex: 1; display: flex; justify-content: center; }
 
-/* App screenshots — warm earthy shadow */
+/* App screenshots: warm earthy shadow */
 .light-mode-img {
     aspect-ratio: auto;
     width: 100%;
@@ -2353,7 +2392,7 @@ body.our-work-page { background-color: var(--cream); }
 .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
 .feature-card p { font-size: 0.975rem; margin-bottom: 0; }
 
-/* Privacy policy — styled only, content and IDs untouched */
+/* Privacy policy: styled only, content and IDs untouched */
 .legal-container { max-width: 800px; margin: 0 auto; }
 
 .legal-box {
@@ -2377,7 +2416,7 @@ body.our-work-page { background-color: var(--cream); }
     display: block;
 }
 
-/* h3 border-left in page accent — overridden per-app below */
+/* h3 border-left in page accent: overridden per-app below */
 .legal-prose h3 {
     font-size: 1.2rem;
     margin: 2.5rem 0 0.85rem 0;
@@ -2793,12 +2832,13 @@ body.our-work-page { background-color: var(--cream); }
 
 /* App detail responsive */
 @media (max-width: 900px) {
-    .app-detail-hero { min-height: auto; padding-top: 90px; }
+    .app-detail-hero { min-height: auto; padding-top: 30px; }
     .app-detail-hero .container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-    .app-detail-hero__content { padding: 3rem 0 0; max-width: 100%; }
+    .app-detail-hero__content { padding: 1.5rem 0 0; max-width: 100%; }
     .app-detail-hero__desc { margin-left: auto; margin-right: auto; }
     .app-detail-hero__ctas { justify-content: center; }
     .app-detail-hero__screenshot { width: 240px; }
+    .app-detail-features { padding-top: 2.5rem; }
     .app-detail-features__grid { grid-template-columns: 1fr; }
     .app-detail-legal__box { padding: 2rem 1.5rem; }
 }
@@ -2810,11 +2850,11 @@ body.our-work-page { background-color: var(--cream); }
 }
 
 /* --- Per-app accent colors (legacy; kept for any old references) --- */
-/* Volcanic AKL — forest green */
+/* Volcanic AKL: forest green */
 .volcanic-akl .feature-icon { background-color: rgba(61, 122, 95, 0.12); color: #3D7A5F; border-color: rgba(61, 122, 95, 0.2); }
 .volcanic-akl .legal-prose h3 { border-left-color: #3D7A5F; }
 
-/* Kai AKL — ocean blue */
+/* Kai AKL: ocean blue */
 .blue-badge { background-color: rgba(26, 111, 168, 0.1) !important; color: #1A6FA8 !important; border: 1px solid rgba(26, 111, 168, 0.2) !important; }
 .blue-btn { background-color: #1A6FA8; border-color: #1A6FA8; }
 .blue-btn:hover { background-color: #155f8f; border-color: #155f8f; }
@@ -2827,7 +2867,7 @@ body.our-work-page { background-color: var(--cream); }
 .blue-icon { color: #1A6FA8; background-color: rgba(26, 111, 168, 0.1); border-color: rgba(26, 111, 168, 0.2) !important; }
 .kai-akl .legal-prose h3 { border-left-color: #1A6FA8; }
 
-/* Rings LOTR — amber */
+/* Rings LOTR: amber */
 .gold-badge { background-color: rgba(217, 119, 6, 0.1) !important; color: #D97706 !important; border: 1px solid rgba(217, 119, 6, 0.2) !important; }
 .gold-btn { background-color: #D97706; border-color: #D97706; }
 .gold-btn:hover { background-color: #B45309; border-color: #B45309; }
@@ -2840,7 +2880,7 @@ body.our-work-page { background-color: var(--cream); }
 .gold-icon { color: #D97706; background-color: rgba(217, 119, 6, 0.1); border-color: rgba(217, 119, 6, 0.2) !important; }
 .rings-akl .legal-prose h3 { border-left-color: #D97706; }
 
-/* Guide AKL — harbour teal */
+/* Guide AKL: harbour teal */
 .teal-badge { background-color: rgba(14, 116, 144, 0.1) !important; color: #0E7490 !important; border: 1px solid rgba(14, 116, 144, 0.2) !important; }
 .teal-btn { background-color: #0E7490; border-color: #0E7490; }
 .teal-btn:hover { background-color: #0c6478; border-color: #0c6478; }
@@ -2873,8 +2913,368 @@ body.our-work-page { background-color: var(--cream); }
 .dev-status::before { content: '◉'; font-size: 0.65rem; }
 
 /* ==========================================================================
-   10b. BLOG — forest-green 1b redesign (index + post template)
+   10b. BLOG: forest-green 1b redesign (index + post template)
    ========================================================================== */
+
+/* --- Blog category pages --- */
+.blog-category {
+    --accent: var(--forest);
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body-1b);
+    padding-top: 75px;
+}
+
+.cat-hero {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background: var(--forest);
+    color: var(--sand);
+    overflow: hidden;
+}
+
+.cat-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(90% 120% at 12% 0%, var(--accent) 0%, transparent 60%);
+    opacity: 0.28;
+    pointer-events: none;
+}
+
+.cat-hero__inner {
+    position: relative;
+    max-width: 840px;
+    padding: 5rem 1.5rem 4.5rem;
+}
+
+.cat-hero .crumb {
+    font-family: var(--font-mono-1b);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.5rem;
+    color: rgba(241, 232, 216, 0.72);
+}
+
+.cat-hero .crumb a {
+    color: rgba(241, 232, 216, 0.72);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.cat-hero .crumb a:hover {
+    color: var(--sand);
+}
+
+.cat-hero .crumb span {
+    color: var(--sand);
+}
+
+.cat-hero .eyebrow {
+    display: block;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-mono-1b);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.cat-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.1rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    color: var(--sand);
+    margin-bottom: 1.25rem;
+}
+
+.cat-hero .lede {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(241, 232, 216, 0.85);
+    max-width: 56ch;
+    margin-bottom: 1.75rem;
+}
+
+.cat-hero .count {
+    font-family: var(--font-mono-1b);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+}
+
+/* Section switcher */
+.section-switcher {
+    background: var(--sand);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    border-bottom: 1px solid var(--line);
+}
+
+.section-switcher .cat-hero__inner {
+    padding: 1.25rem 1.5rem;
+}
+
+.section-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.section-pill {
+    font-family: var(--font-body-1b);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.55rem 1.15rem;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    background: #FFFFFF;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.section-pill:hover {
+    border-color: var(--forest);
+    color: var(--forest);
+}
+
+.section-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #FFFFFF;
+}
+
+/* Category post list */
+.category-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-post-list .post-row {
+    border-bottom: 1px solid var(--line);
+}
+
+.category-post-list .post-row a {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 26px 0;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.15s ease;
+}
+
+.category-post-list .post-row a:hover {
+    opacity: 0.72;
+}
+
+.category-post-list .tick {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    margin-top: 0.55rem;
+    background: var(--accent);
+    transform: rotate(45deg);
+}
+
+.category-post-list h2 {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 0.35rem;
+    line-height: 1.2;
+}
+
+.category-post-list p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* App callout */
+.app-callout {
+    background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 72%, #fff));
+    border-radius: 22px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    color: #FFFFFF;
+}
+
+.app-callout .eyebrow {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-mono-1b);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.app-callout h3 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin: 0 0 0.75rem;
+    line-height: 1.15;
+}
+
+.app-callout p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    max-width: 48ch;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.btn-light {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #FFFFFF;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.95rem 1.65rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Browse other sections */
+.browse-heading {
+    font-family: var(--font-mono-1b);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+}
+
+.browse-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.browse-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 1.15rem 1.25rem;
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.browse-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--forest);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+.browse-card-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.browse-card-count {
+    font-family: var(--font-mono-1b);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+}
+
+.browse-card-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .cat-hero__inner {
+        padding: 2.5rem 1.5rem 2rem;
+    }
+
+    .app-callout {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.75rem;
+        gap: 1.5rem;
+    }
+
+    .btn-light {
+        align-self: stretch;
+        justify-content: center;
+    }
+
+    .browse-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-pills {
+        gap: 0.5rem;
+    }
+
+    .section-pill {
+        font-size: 0.85rem;
+        padding: 0.45rem 0.95rem;
+    }
+
+    .category-post-list .post-row a {
+        gap: 14px;
+        padding: 1.25rem 0;
+    }
+
+    .category-post-list h2 {
+        font-size: 1.25rem;
+    }
+
+    .category-post-list p {
+        font-size: 0.95rem;
+    }
+
+    .category-post-list .tick {
+        width: 10px;
+        height: 10px;
+        margin-top: 0.4rem;
+    }
+}
 
 /* Topic accent variable used by individual posts */
 .blog-post { --topic: var(--ink); }
@@ -2889,7 +3289,7 @@ body.our-work-page { background-color: var(--cream); }
 .blog-index {
     max-width: 840px;
     margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
+    padding: 2rem 1.5rem 6rem;
 }
 
 .blog-index__kicker {
@@ -3256,7 +3656,7 @@ body.our-work-page { background-color: var(--cream); }
     font-weight: 800;
     text-decoration: none;
     background: var(--topic, var(--leaf));
-    color: var(--forest-2);
+    color: #FFFFFF;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
@@ -3440,7 +3840,7 @@ body.our-work-page { background-color: var(--cream); }
 }
 
 /* ==========================================================================
-   13. DEPLOYMENT PAGES — Creators / Operators / Civic
+   13. DEPLOYMENT PAGES: Creators / Operators / Civic
    ========================================================================== */
 
 /* Page-scoped theme tokens (set on <body>) */
@@ -3481,7 +3881,7 @@ body.our-work-page { background-color: var(--cream); }
     background-color: var(--page-bg);
 }
 
-/* Header — full-width gradient behind the fixed navbar */
+/* Header: full-width gradient behind the fixed navbar */
 .dp-header {
     position: relative;
     background: var(--header-grad);
@@ -3622,7 +4022,7 @@ body.our-work-page { background-color: var(--cream); }
     max-width: 70ch;
 }
 
-/* CTA band — full-width accent gradient */
+/* CTA band: full-width accent gradient */
 .dp-cta {
     background: var(--cta-grad);
     color: var(--cta-text);
@@ -3689,6 +4089,7 @@ body.our-work-page { background-color: var(--cream); }
     .dp-section--last {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
+        padding-top: 36px;
     }
     .dp-callout {
         font-size: 18px;

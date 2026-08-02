@@ -20,76 +20,73 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="rings-akl" x-init="lucide.createIcons()">
+<body class="app-detail-page theme-rings" x-init="lucide.createIcons()">
 
-    <div class="global-canvas"></div>
-
-    <div x-data="{ navHtml: '' }" 
-        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+    <div x-data="{ navHtml: '' }"
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})"
         x-html="navHtml">
     </div>
 
-    <main class="container page-layout app-light-theme">
-        
-        <div class="app-hero">
-            <div class="hero-content">
-                <div class="case-meta">
-                    <span class="case-badge loc-badge gold-badge">↗ New Zealand</span>
-                </div>
-                
-                <h1 class="hero-title">Discover Epic <br><span class="text-gold-gradient">Filming Locations</span></h1>
-                <p class="hero-desc">Explore iconic cinematic landscapes across New Zealand. Track your journey, follow the location radar, and earn exclusive explorer badges.</p>
-                
-                <div class="btn-group">
-                    <a href="https://apps.apple.com/us/app/rings-location-tracker-nz/id6763873912" target="_blank" rel="noopener noreferrer" class="btn btn-primary app-btn">
+    <section class="app-detail-hero">
+        <div class="container">
+            <div class="app-detail-hero__content">
+                <span class="app-detail-hero__pill">Travel &amp; Lifestyle</span>
+                <h1 class="app-detail-hero__title">Discover Epic <br><span>Filming Locations</span></h1>
+                <p class="app-detail-hero__desc">Explore iconic cinematic landscapes across New Zealand. Track your journey, follow the location radar, and earn exclusive explorer badges.</p>
+                <div class="app-detail-hero__ctas">
+                    <a href="https://apps.apple.com/us/app/rings-location-tracker-nz/id6763873912" target="_blank" rel="noopener noreferrer" class="btn-leaf app-btn">
                         <i data-lucide="apple" class="icon-sm"></i> App Store
                     </a>
-                    <a href="/android" class="btn btn-primary app-btn gold-btn">
+                    <a href="/android" class="btn-ghost app-btn">
                         <i data-lucide="play" class="icon-sm"></i> Google Play
                     </a>
                 </div>
             </div>
+            <div class="app-detail-hero__visual">
+                <div class="app-detail-hero__glow"></div>
+                <img src="/assets/ssRings.png" alt="Rings Location Tracker NZ Interface" class="app-detail-hero__screenshot">
+            </div>
+        </div>
+    </section>
 
-            <div class="hero-visual">
-                <div class="case-image-wrapper light-mode-img">
-                    <img src="/assets/ssRings.png" alt="Rings Location Tracker NZ Interface">
+    <section class="app-detail-features">
+        <div class="container">
+            <div class="app-detail-features__header">
+                <h2 class="app-detail-features__title">Your Guide to the Realm</h2>
+                <p class="app-detail-features__sub">Built for fans and tourists alike, Rings Location Tracker NZ makes exploring New Zealand's cinematic geography an interactive adventure.</p>
+            </div>
+
+            <div class="app-detail-features__grid">
+                <div class="app-detail-feature">
+                    <div class="app-detail-feature__badge"><i data-lucide="compass"></i></div>
+                    <h3>Location Radar</h3>
+                    <p>Put away the maps. Our intuitive radar interface guides you to exact scene coordinates, turning the trek into a quest.</p>
+                </div>
+
+                <div class="app-detail-feature">
+                    <div class="app-detail-feature__badge"><i data-lucide="award"></i></div>
+                    <h3>Collect Badges</h3>
+                    <p>Our GPS verification ensures you actually made it to the site. Unlock beautifully designed digital badges for every region.</p>
+                </div>
+
+                <div class="app-detail-feature">
+                    <div class="app-detail-feature__badge"><i data-lucide="camera"></i></div>
+                    <h3>Photo Memories</h3>
+                    <p>Frame your adventure photos with custom stamps and share your journey directly to your favourite social media platforms.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="section-header text-center">
-            <h2>Your Guide to the Realm</h2>
-            <p>Built for fans and tourists alike, Rings Location Tracker NZ makes exploring New Zealand's cinematic geography an interactive adventure.</p>
-        </div>
+    <section class="app-detail-legal">
+        <div class="container">
+            <div class="app-detail-legal__box" x-data="{ formattedDate: '1 June 2025' }">
+                <h2 id="privacy">Comprehensive Privacy Policy</h2>
+                <span class="app-detail-legal__updated">Effective Date: <span x-text="formattedDate"></span></span>
 
-        <div class="app-features">
-            <div class="feature-card">
-                <div class="feature-icon gold-icon"><i data-lucide="compass"></i></div>
-                <h3>Location Radar</h3>
-                <p>Put away the maps. Our intuitive radar interface guides you to exact scene coordinates, turning the trek into a quest.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon gold-icon"><i data-lucide="award"></i></div>
-                <h3>Collect Badges</h3>
-                <p>Our GPS verification ensures you actually made it to the site. Unlock beautifully designed digital badges for every region.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon gold-icon"><i data-lucide="camera"></i></div>
-                <h3>Photo Memories</h3>
-                <p>Frame your adventure photos with custom stamps and share your journey directly to your favorite social media platforms.</p>
-            </div>
-        </div>
-
-        <div class="legal-container" x-data="{ formattedDate: '1 June 2025' }">
-            <div id="privacy" class="legal-box">
-                <h2 class="legal-title">Comprehensive Privacy Policy</h2>
-                <p class="last-updated">Effective Date: <span x-text="formattedDate"></span></p>
-                
-                <div class="legal-prose">
+                <div class="app-detail-legal__prose">
                     <p><strong>Black Sands Digital</strong> ("we", "our", or "us") is committed to protecting your privacy. This policy explains how we collect, use, disclose, and safeguard your information when you use the <strong>Rings Location Tracker NZ</strong> mobile application (the "App"). Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application.</p>
-                    
+
                     <h3>1. Information We Collect</h3>
                     <p>We may collect information about you in a variety of ways. The information we may collect via the App includes:</p>
                     <ul>
@@ -100,11 +97,11 @@
                     </ul>
 
                     <h3>2. How We Use Your Information</h3>
-                    <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we use information collected about you via the App to:</p>
+                    <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customised experience. Specifically, we use information collected about you via the App to:</p>
                     <ul>
                         <li>Create and manage your account.</li>
                         <li>Verify your physical presence at designated points of interest.</li>
-                        <li>Monitor and analyze usage and trends to improve your experience with the App.</li>
+                        <li>Monitor and analyse usage and trends to improve your experience with the App.</li>
                         <li>Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.</li>
                     </ul>
 
@@ -116,7 +113,7 @@
                     </ul>
 
                     <h3>4. Your Rights (New Zealand Privacy Act 2020)</h3>
-                    <p>In accordance with the New Zealand Privacy Act 2020 and globally recognized privacy standards (such as GDPR and CCPA), you have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. You also maintain the right to withdraw your consent for location tracking at any time via your device's system settings.</p>
+                    <p>In accordance with the New Zealand Privacy Act 2020 and globally recognised privacy standards (such as GDPR and CCPA), you have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. You also maintain the right to withdraw your consent for location tracking at any time via your device's system settings.</p>
 
                     <h3>5. Account and Data Deletion</h3>
                     <p>You maintain full control over your data. You can delete your account and permanently erase your visited history at any time. To do this:</p>
@@ -131,17 +128,16 @@
                     <p>We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible.</p>
                 </div>
 
-                <div id="support" class="support-box">
-                    <h3><i data-lucide="help-circle" class="icon-sm"></i> Contact Us</h3>
+                <div id="support" class="app-detail-support">
+                    <h3><i data-lucide="help-circle"></i> Contact Us</h3>
                     <p>If you have questions or comments about this Privacy Policy, or wish to exercise your data rights, please contact us at:</p>
-                    <a href="mailto:info@blacksandsdigital.nz" class="btn btn-secondary">
+                    <a href="mailto:info@blacksandsdigital.nz" class="btn-forest">
                         <i data-lucide="mail" class="icon-sm"></i> info@blacksandsdigital.nz
                     </a>
                 </div>
             </div>
         </div>
-
-    </main>
+    </section>
 
     <div x-data="{ footerHtml: '' }" 
         x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 

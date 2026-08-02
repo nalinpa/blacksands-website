@@ -9,88 +9,77 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
-
 </head>
-<body class="blog-post" data-topic="auckland">
+<body class="blog-category" data-topic="auckland" style="--accent:#a15a2b;">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
+
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="blog-post__container">
-        <nav class="blog-breadcrumb">
-            <a href="/blog/">Blog</a> / <a href="/blog/auckland/">Auckland</a>
-        </nav>
+    <main>
+        <section class="cat-hero">
+            <div class="container cat-hero__inner">
+                <nav class="crumb"><a href="/blog/">Blog</a> / <span>Auckland</span></nav>
+                <span class="eyebrow" style="color:var(--accent)">◆ Field Notes · City Guide</span>
+                <h1>Auckland</h1>
+                <p class="lede">Background and travel basics for Auckland and Tāmaki Makaurau, the city built on a volcanic field between two harbours.</p>
+                <div class="count">9 ARTICLES</div>
+            </div>
+        </section>
 
-        <article class="blog-post__content">
-            <span class="blog-post__meta">
-                <span class="blog-post__label">Auckland · City Guide</span>
-            </span>
-            <h1>Auckland</h1>
-            <p class="lead">Background and travel basics for Auckland and Tāmaki Makaurau, the city built on a volcanic field between two harbours.</p>
+        <section class="section-switcher">
+            <div class="container cat-hero__inner">
+                <div class="section-pills">
+                <a class="section-pill " href="/blog/lord-of-the-rings/">Lord of the Rings</a>
+                <a class="section-pill " href="/blog/volcanic-akl/">Volcanic AKL</a>
+                <a class="section-pill " href="/blog/kai-akl/">Kai AKL</a>
+                <a class="section-pill " href="/blog/guide-akl/">Guide AKL</a>
+                <a class="section-pill active" href="/blog/auckland/">Auckland</a>
+                <a class="section-pill " href="/blog/platform/">Platform</a>
+                </div>
+            </div>
+        </section>
 
-            <ul class="blog-list">
-
-                <li class="blog-row">
-                    <a href="/blog/auckland/is-auckland-walkable/" class="blog-row__link">
-                        <h2 class="blog-row__title">Is Auckland Walkable?</h2>
-                        <p class="blog-row__desc">Auckland&#x27;s central city and waterfront are walkable, but the city sprawls and is hilly, so you&#x27;ll want buses, trains, ferries or rideshare to reach the wider area.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/auckland-weather-what-to-pack/" class="blog-row__link">
-                        <h2 class="blog-row__title">What&#x27;s the Weather Like in Auckland? (And What to Pack)</h2>
-                        <p class="blog-row__desc">Auckland has a mild, humid climate with warm summers, cool wet winters, and changeable weather year-round. Pack layers and a raincoat whatever the season.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/auckland-vs-wellington/" class="blog-row__link">
-                        <h2 class="blog-row__title">Auckland vs Wellington: Which Should You Visit?</h2>
-                        <p class="blog-row__desc">Auckland is bigger, with harbours, volcanoes and beaches. Wellington is compact and walkable, known for the arts, coffee and Te Papa. Here is how to choose, or fit in both.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/is-auckland-expensive/" class="blog-row__link">
-                        <h2 class="blog-row__title">Is Auckland Expensive? A Visitor&#x27;s Budget Guide</h2>
-                        <p class="blog-row__desc">Auckland is moderately expensive by global standards, but you can control costs by eating in the suburbs, using the free attractions, and not staying on the waterfront.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/is-auckland-safe-for-tourists/" class="blog-row__link">
-                        <h2 class="blog-row__title">Is Auckland Safe for Tourists?</h2>
-                        <p class="blog-row__desc">Auckland is generally a safe city for tourists, with the usual big-city precautions. Here is what to watch for and how to keep your trip trouble-free.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/why-city-of-sails/" class="blog-row__link">
-                        <h2 class="blog-row__title">Why Is Auckland Called the City of Sails?</h2>
-                        <p class="blog-row__desc">Auckland is called the City of Sails because of its deep sailing culture, two harbours, and one of the highest rates of boat ownership of any city in the world.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/what-does-tamaki-makaurau-mean/" class="blog-row__link">
-                        <h2 class="blog-row__title">What Does “Tāmaki Makaurau” Mean?</h2>
-                        <p class="blog-row__desc">Tāmaki Makaurau is the Māori name for Auckland, usually translated as Tāmaki desired by many. Here is what it means and why the isthmus was so prized.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/what-is-auckland-known-for/" class="blog-row__link">
-                        <h2 class="blog-row__title">What Is Auckland Known For?</h2>
-                        <p class="blog-row__desc">Auckland is known for its volcanoes, two harbours, sailing culture, Polynesian heritage and food diversity. Here's what defines New Zealand's biggest city.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/auckland/how-many-volcanoes/" class="blog-row__link">
-                        <h2 class="blog-row__title">How Many Volcanoes Does Auckland Have?</h2>
-                        <p class="blog-row__desc">Auckland sits on a volcanic field of around 53 volcanoes. Here's what that means, which ones you can still see, and whether they could erupt again.</p>
-                    </a>
-                </li>
-        
+        <section class="container" style="max-width:840px; padding-top:2rem; padding-bottom:4rem;">
+            <ul class="category-post-list">
+                <li class="post-row"><a href="/blog/auckland/is-auckland-walkable/"><span class="tick" aria-hidden="true"></span><div><h2>Is Auckland Walkable?</h2><p>Auckland&#x27;s central city and waterfront are walkable, but the city sprawls and is hilly, so you&#x27;ll want buses, trains, ferries or rideshare to reach the wider area.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/auckland-weather-what-to-pack/"><span class="tick" aria-hidden="true"></span><div><h2>What&#x27;s the Weather Like in Auckland? (And What to Pack)</h2><p>Auckland has a mild, humid climate with warm summers, cool wet winters, and changeable weather year-round. Pack layers and a raincoat whatever the season.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/auckland-vs-wellington/"><span class="tick" aria-hidden="true"></span><div><h2>Auckland vs Wellington: Which Should You Visit?</h2><p>Auckland is bigger, with harbours, volcanoes and beaches. Wellington is compact and walkable, known for the arts, coffee and Te Papa. Here is how to choose, or fit in both.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/is-auckland-expensive/"><span class="tick" aria-hidden="true"></span><div><h2>Is Auckland Expensive? A Visitor&#x27;s Budget Guide</h2><p>Auckland is moderately expensive by global standards, but you can control costs by eating in the suburbs, using the free attractions, and not staying on the waterfront.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/is-auckland-safe-for-tourists/"><span class="tick" aria-hidden="true"></span><div><h2>Is Auckland Safe for Tourists?</h2><p>Auckland is generally a safe city for tourists, with the usual big-city precautions. Here is what to watch for and how to keep your trip trouble-free.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/why-city-of-sails/"><span class="tick" aria-hidden="true"></span><div><h2>Why Is Auckland Called the City of Sails?</h2><p>Auckland is called the City of Sails because of its deep sailing culture, two harbours, and one of the highest rates of boat ownership of any city in the world.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/what-does-tamaki-makaurau-mean/"><span class="tick" aria-hidden="true"></span><div><h2>What Does “Tāmaki Makaurau” Mean?</h2><p>Tāmaki Makaurau is the Māori name for Auckland, usually translated as Tāmaki desired by many. Here is what it means and why the isthmus was so prized.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/what-is-auckland-known-for/"><span class="tick" aria-hidden="true"></span><div><h2>What Is Auckland Known For?</h2><p>Auckland is known for its volcanoes, two harbours, sailing culture, Polynesian heritage and food diversity. Here&#x27;s what defines New Zealand&#x27;s biggest city.</p></div></a></li>
+                <li class="post-row"><a href="/blog/auckland/how-many-volcanoes/"><span class="tick" aria-hidden="true"></span><div><h2>How Many Volcanoes Does Auckland Have?</h2><p>Auckland sits on a volcanic field of around 53 volcanoes. Here&#x27;s what that means, which ones you can still see, and whether they could erupt again.</p></div></a></li>
             </ul>
-        </article>
+        </section>
+
+        <section class="container" style="max-width:840px; padding-bottom:4rem;">
+            <div class="app-callout">
+                <div>
+                    <span class="eyebrow">Guide AKL</span>
+                    <h3>Get to know Tāmaki Makaurau</h3>
+                    <p>Explore the city with an offline guide that puts local knowledge, maps and audio at your fingertips.</p>
+                </div>
+                <a class="btn-light" href="/guide-akl/">Explore Guide AKL →</a>
+            </div>
+        </section>
+
+        <section class="container" style="max-width:840px; padding-bottom:6rem;">
+            <h3 class="browse-heading">Browse other sections</h3>
+            <div class="browse-grid">
+                <a class="browse-card" href="/blog/lord-of-the-rings/"><span class="browse-card-title">Lord of the Rings</span><span class="browse-card-count">16 articles</span><span class="browse-card-desc">Middle-earth filming locations</span></a>
+                <a class="browse-card" href="/blog/volcanic-akl/"><span class="browse-card-title">Volcanic AKL</span><span class="browse-card-count">17 articles</span><span class="browse-card-desc">Auckland's volcanic field</span></a>
+                <a class="browse-card" href="/blog/kai-akl/"><span class="browse-card-title">Kai AKL</span><span class="browse-card-count">10 articles</span><span class="browse-card-desc">Where and what to eat</span></a>
+                <a class="browse-card" href="/blog/guide-akl/"><span class="browse-card-title">Guide AKL</span><span class="browse-card-count">17 articles</span><span class="browse-card-desc">Visiting Auckland</span></a>
+                <a class="browse-card" href="/blog/platform/"><span class="browse-card-title">Platform</span><span class="browse-card-count">11 articles</span><span class="browse-card-desc">How location apps get made</span></a>
+            </div>
+        </section>
     </main>
 
     <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>
+
 </body>
 </html>

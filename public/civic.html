@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic & heritage | Black Sands</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" type="image/png" href="/assets/blacksands-favicon.png">
+    
+    <!-- Alpine.js -->
+    <style>[x-cloak] { display: none !important; }</style>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+</head>
+<body class="deployment-page theme-civic">
+
+    <!-- Navbar (injected) -->
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <!-- Hero Header -->
+    <header class="dp-header">
+        <div class="dp-header-inner">
+            <span class="dp-eyebrow">&#9670; For councils and civic organisations</span>
+            <h1 class="dp-title">Engagement,<br>verified.</h1>
+            <p class="dp-subtitle">We build apps that turn public spaces into measurable, interactive experiences, with proof of real participation.</p>
+        </div>
+    </header>
+
+    <!-- Intro Callout -->
+    <section class="dp-section">
+        <div class="container">
+            <p class="dp-callout">You build the trails, protect the heritage sites and fund the public health campaigns. Tracking actual human participation is notoriously difficult.</p>
+            <p class="dp-callout">We build apps that make physical engagement measurable.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="dp-section--cards">
+        <div class="container">
+            <h2 class="dp-section-heading">What we build</h2>
+            <div class="dp-cards">
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Measurable health outcomes</h3>
+                        <p>Gamified physical activity with proximity check-ins, tracking aggregate participation and completion rates across your parks and trails. Data you can put in a wellness grant report.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Respectful heritage unlocks</h3>
+                        <p>Cultural history, indigenous storytelling and geological education held behind strict GPS coordinates, accessed only when visitors are physically present at the site.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Community activation</h3>
+                        <p>Foot traffic to underused public spaces and local business districts through city-wide digital passports and proximity-based trails.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Maintained for you</h3>
+                        <p>We run the app after it ships. Updates, OS compatibility and support, without a permanent IT line on your budget.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- We've built this already -->
+    <section class="dp-section--last">
+        <div class="container">
+            <h2 class="dp-section-heading">We've built this already</h2>
+            <p class="dp-callout">Volcanic AKL is our own app covering Auckland's volcanic field. Check in at the cones to unlock heritage, geology and achievements. Live on the App Store with real users.</p>
+            <p class="dp-callout">It's the clearest example of what this looks like in practice, and it's in your city.</p>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="dp-cta">
+        <div class="container">
+            <h2>Bring spaces to life.</h2>
+            <a href="/contact" class="dp-cta-btn">Book a call &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Footer (injected) -->
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

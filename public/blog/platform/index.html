@@ -9,100 +9,79 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
-
 </head>
-<body class="blog-post" data-topic="platform">
+<body class="blog-category" data-topic="platform" style="--accent:#5b53c0;">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
+
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="blog-post__container">
-        <nav class="blog-breadcrumb">
-            <a href="/blog/">Blog</a> / <a href="/blog/platform/">Platform</a>
-        </nav>
+    <main>
+        <section class="cat-hero">
+            <div class="container cat-hero__inner">
+                <nav class="crumb"><a href="/blog/">Blog</a> / <span>Platform</span></nav>
+                <span class="eyebrow" style="color:var(--accent)">◆ Field Notes · Product</span>
+                <h1>Platform</h1>
+                <p class="lede">How location apps get built and sold: offline-first design, GPS-gating, and turning local knowledge into a product.</p>
+                <div class="count">11 ARTICLES</div>
+            </div>
+        </section>
 
-        <article class="blog-post__content">
-            <span class="blog-post__meta">
-                <span class="blog-post__label">Platform · Product</span>
-            </span>
-            <h1>Platform</h1>
-            <p class="lead">How location apps get built and sold: offline-first design, GPS-gating, and turning local knowledge into a product.</p>
+        <section class="section-switcher">
+            <div class="container cat-hero__inner">
+                <div class="section-pills">
+                <a class="section-pill " href="/blog/lord-of-the-rings/">Lord of the Rings</a>
+                <a class="section-pill " href="/blog/volcanic-akl/">Volcanic AKL</a>
+                <a class="section-pill " href="/blog/kai-akl/">Kai AKL</a>
+                <a class="section-pill " href="/blog/guide-akl/">Guide AKL</a>
+                <a class="section-pill " href="/blog/auckland/">Auckland</a>
+                <a class="section-pill active" href="/blog/platform/">Platform</a>
+                </div>
+            </div>
+        </section>
 
-            <ul class="blog-list">
-
-                <li class="blog-row">
-                    <a href="/blog/platform/why-offline-first-matters/" class="blog-row__link">
-                        <h2 class="blog-row__title">Why Offline-First Matters for Location Apps</h2>
-                        <p class="blog-row__desc">Offline-first design matters for location apps because the places people use them, trails, islands and remote sites, are exactly where mobile signal fails.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/white-label-vs-build-your-own/" class="blog-row__link">
-                        <h2 class="blog-row__title">White-Label vs Building Your Own: What It Actually Costs</h2>
-                        <p class="blog-row__desc">Building your own location app means months of development and ongoing upkeep. A white-label platform trades that for a lower, predictable cost. Here is the comparison.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/what-makes-a-great-walking-tour/" class="blog-row__link">
-                        <h2 class="blog-row__title">What Makes a Great Self-Guided Walking Tour?</h2>
-                        <p class="blog-row__desc">A great self-guided walking tour has a route that flows, a strong story at each stop, sensible pacing, and works offline. The content matters more than the technology.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/what-is-gps-gating/" class="blog-row__link">
-                        <h2 class="blog-row__title">What Is GPS-Gating and Why Use It for Tours?</h2>
-                        <p class="blog-row__desc">GPS-gating unlocks app content only when a user physically reaches a location. For tours it verifies real visits, builds anticipation and rewards being there.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/walking-tour-to-app-no-code/" class="blog-row__link">
-                        <h2 class="blog-row__title">How to Turn a Walking Tour Into an App Without Code</h2>
-                        <p class="blog-row__desc">You can turn a walking tour into a real mobile app without writing code by using a white-label platform that handles the build, leaving you to add the content.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/self-guided-vs-guided-tours-operators/" class="blog-row__link">
-                        <h2 class="blog-row__title">Self-Guided vs Guided Tours: Which Should You Offer?</h2>
-                        <p class="blog-row__desc">Guided tours offer a human touch but cost more to run and scale poorly. Self-guided app tours scale cheaply and run any hour. Many operators now offer both.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/monetise-local-knowledge/" class="blog-row__link">
-                        <h2 class="blog-row__title">How Creators Can Monetise Local Knowledge Beyond PDFs</h2>
-                        <p class="blog-row__desc">Creators can monetise local knowledge with a branded app instead of static PDFs, turning one-off guide sales into a repeatable product with a direct audience.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/location-apps-for-museums-cultural-sites/" class="blog-row__link">
-                        <h2 class="blog-row__title">How Museums and Cultural Sites Use Location Apps</h2>
-                        <p class="blog-row__desc">Museums and cultural sites use location apps to guide visitors, layer in deeper content, offer multiple languages, and extend the experience beyond their walls.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/location-apps-for-councils-and-parks/" class="blog-row__link">
-                        <h2 class="blog-row__title">How Councils and Parks Can Use Location Apps</h2>
-                        <p class="blog-row__desc">Councils, parks and conservation bodies can use location apps to guide visitors safely, tell the story of a place at each point, and ease pressure on staff and signage.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/how-to-price-a-tour-app/" class="blog-row__link">
-                        <h2 class="blog-row__title">How to Price a Self-Guided Tour App</h2>
-                        <p class="blog-row__desc">A self-guided tour app can be sold as a one-off purchase, a subscription, a free app with paid upgrades, or resold through travel marketplaces. Here is how to choose.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/platform/audio-and-media-in-tour-apps/" class="blog-row__link">
-                        <h2 class="blog-row__title">Why Audio and Rich Media Matter in Tour Apps</h2>
-                        <p class="blog-row__desc">Audio lets people experience a place with their eyes up, not on a screen. Combined with photos and archive material, rich media makes a location app feel alive.</p>
-                    </a>
-                </li>
-        
+        <section class="container" style="max-width:840px; padding-top:2rem; padding-bottom:4rem;">
+            <ul class="category-post-list">
+                <li class="post-row"><a href="/blog/platform/why-offline-first-matters/"><span class="tick" aria-hidden="true"></span><div><h2>Why Offline-First Matters for Location Apps</h2><p>Offline-first design matters for location apps because the places people use them, trails, islands and remote sites, are exactly where mobile signal fails.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/white-label-vs-build-your-own/"><span class="tick" aria-hidden="true"></span><div><h2>White-Label vs Building Your Own: What It Actually Costs</h2><p>Building your own location app means months of development and ongoing upkeep. A white-label platform trades that for a lower, predictable cost. Here is the comparison.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/what-makes-a-great-walking-tour/"><span class="tick" aria-hidden="true"></span><div><h2>What Makes a Great Self-Guided Walking Tour?</h2><p>A great self-guided walking tour has a route that flows, a strong story at each stop, sensible pacing, and works offline. The content matters more than the technology.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/what-is-gps-gating/"><span class="tick" aria-hidden="true"></span><div><h2>What Is GPS-Gating and Why Use It for Tours?</h2><p>GPS-gating unlocks app content only when a user physically reaches a location. For tours it verifies real visits, builds anticipation and rewards being there.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/walking-tour-to-app-no-code/"><span class="tick" aria-hidden="true"></span><div><h2>How to Turn a Walking Tour Into an App Without Code</h2><p>You can turn a walking tour into a real mobile app without writing code by using a white-label platform that handles the build, leaving you to add the content.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/self-guided-vs-guided-tours-operators/"><span class="tick" aria-hidden="true"></span><div><h2>Self-Guided vs Guided Tours: Which Should You Offer?</h2><p>Guided tours offer a human touch but cost more to run and scale poorly. Self-guided app tours scale cheaply and run any hour. Many operators now offer both.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/monetise-local-knowledge/"><span class="tick" aria-hidden="true"></span><div><h2>How Creators Can Monetise Local Knowledge Beyond PDFs</h2><p>Creators can monetise local knowledge with a branded app instead of static PDFs, turning one-off guide sales into a repeatable product with a direct audience.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/location-apps-for-museums-cultural-sites/"><span class="tick" aria-hidden="true"></span><div><h2>How Museums and Cultural Sites Use Location Apps</h2><p>Museums and cultural sites use location apps to guide visitors, layer in deeper content, offer multiple languages, and extend the experience beyond their walls.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/location-apps-for-councils-and-parks/"><span class="tick" aria-hidden="true"></span><div><h2>How Councils and Parks Can Use Location Apps</h2><p>Councils, parks and conservation bodies can use location apps to guide visitors safely, tell the story of a place at each point, and ease pressure on staff and signage.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/how-to-price-a-tour-app/"><span class="tick" aria-hidden="true"></span><div><h2>How to Price a Self-Guided Tour App</h2><p>A self-guided tour app can be sold as a one-off purchase, a subscription, a free app with paid upgrades, or resold through travel marketplaces. Here is how to choose.</p></div></a></li>
+                <li class="post-row"><a href="/blog/platform/audio-and-media-in-tour-apps/"><span class="tick" aria-hidden="true"></span><div><h2>Why Audio and Rich Media Matter in Tour Apps</h2><p>Audio lets people experience a place with their eyes up, not on a screen. Combined with photos and archive material, rich media makes a location app feel alive.</p></div></a></li>
             </ul>
-        </article>
+        </section>
+
+        <section class="container" style="max-width:840px; padding-bottom:4rem;">
+            <div class="app-callout">
+                <div>
+                    <span class="eyebrow">Black Sands</span>
+                    <h3>Turn local knowledge into an app</h3>
+                    <p>Build your own branded, offline-first location app without writing code. Publish to iOS and share your stories at the right place.</p>
+                </div>
+                <a class="btn-light" href="/product/">Explore Black Sands →</a>
+            </div>
+        </section>
+
+        <section class="container" style="max-width:840px; padding-bottom:6rem;">
+            <h3 class="browse-heading">Browse other sections</h3>
+            <div class="browse-grid">
+                <a class="browse-card" href="/blog/lord-of-the-rings/"><span class="browse-card-title">Lord of the Rings</span><span class="browse-card-count">16 articles</span><span class="browse-card-desc">Middle-earth filming locations</span></a>
+                <a class="browse-card" href="/blog/volcanic-akl/"><span class="browse-card-title">Volcanic AKL</span><span class="browse-card-count">17 articles</span><span class="browse-card-desc">Auckland's volcanic field</span></a>
+                <a class="browse-card" href="/blog/kai-akl/"><span class="browse-card-title">Kai AKL</span><span class="browse-card-count">10 articles</span><span class="browse-card-desc">Where and what to eat</span></a>
+                <a class="browse-card" href="/blog/guide-akl/"><span class="browse-card-title">Guide AKL</span><span class="browse-card-count">17 articles</span><span class="browse-card-desc">Visiting Auckland</span></a>
+                <a class="browse-card" href="/blog/auckland/"><span class="browse-card-title">Auckland</span><span class="browse-card-count">9 articles</span><span class="browse-card-desc">Background and basics</span></a>
+            </div>
+        </section>
     </main>
 
     <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>
+
 </body>
 </html>

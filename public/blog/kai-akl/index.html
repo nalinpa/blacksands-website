@@ -9,94 +9,78 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
-
 </head>
-<body class="blog-post" data-topic="kai-akl">
+<body class="blog-category" data-topic="kai-akl" style="--accent:#1A6FA8;">
 
     <div x-data="{ navHtml: '' }" x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" x-html="navHtml"></div>
+
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-    <main class="blog-post__container">
-        <nav class="blog-breadcrumb">
-            <a href="/blog/">Blog</a> / <a href="/blog/kai-akl/">Kai AKL</a>
-        </nav>
+    <main>
+        <section class="cat-hero">
+            <div class="container cat-hero__inner">
+                <nav class="crumb"><a href="/blog/">Blog</a> / <span>Kai AKL</span></nav>
+                <span class="eyebrow" style="color:var(--accent)">◆ Field Notes · Food</span>
+                <h1>Kai AKL</h1>
+                <p class="lede">Where to eat in Auckland, from the suburbs locals favour to the dishes worth crossing town for.</p>
+                <div class="count">10 ARTICLES</div>
+            </div>
+        </section>
 
-        <article class="blog-post__content">
-            <span class="blog-post__meta">
-                <span class="blog-post__label">Kai AKL · Food</span>
-            </span>
-            <h1>Kai AKL</h1>
-            <p class="lead">Where to eat in Auckland, from the suburbs locals favour to the dishes worth crossing town for.</p>
+        <section class="section-switcher">
+            <div class="container cat-hero__inner">
+                <div class="section-pills">
+                <a class="section-pill " href="/blog/lord-of-the-rings/">Lord of the Rings</a>
+                <a class="section-pill " href="/blog/volcanic-akl/">Volcanic AKL</a>
+                <a class="section-pill active" href="/blog/kai-akl/">Kai AKL</a>
+                <a class="section-pill " href="/blog/guide-akl/">Guide AKL</a>
+                <a class="section-pill " href="/blog/auckland/">Auckland</a>
+                <a class="section-pill " href="/blog/platform/">Platform</a>
+                </div>
+            </div>
+        </section>
 
-            <ul class="blog-list">
-
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/perfect-food-day-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">A Perfect Food Day in Auckland</h2>
-                        <p class="blog-row__desc">A perfect Auckland food day: a deli breakfast, cheap South Asian or Asian lunch, an afternoon gelato at Giapo, and a sit-down dinner, eaten dish by dish across the city.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/late-night-eats-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">Where to Eat Late in Auckland</h2>
-                        <p class="blog-row__desc">For late eats in Auckland, the White Lady pie cart and Tanuki&#x27;s Cave izakaya are the institutions, backed by the city&#x27;s bars, food courts and takeaways. Here is where to go.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/best-burgers-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">Best Burgers in Auckland</h2>
-                        <p class="blog-row__desc">Auckland&#x27;s best burgers run from the smoky Stacked Burger Bar to Big J&#x27;s super steak burger and the late-night White Lady pie cart. Here is where to eat them.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/best-middle-eastern-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">Best Middle Eastern Food in Auckland</h2>
-                        <p class="blog-row__desc">Auckland&#x27;s best Middle Eastern food includes hummus at Gemmayze Street, falafel at Shefco, chargrilled shish at Paasha and Aegean goat at Lokanta, across Lebanese and beyond.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/best-indian-food-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">Best Indian and South Asian Food in Auckland</h2>
-                        <p class="blog-row__desc">Auckland&#x27;s best Indian food includes Mysore masala dosa at Roop&#x27;s, chaat at Mumbai Chaat, tandoori prawns at Shor Bazaar and dabeli at Apna Adda, mostly in the south.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/best-italian-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">Best Italian and Pizza in Auckland</h2>
-                        <p class="blog-row__desc">Auckland&#x27;s best Italian runs from cacio e pepe at Pici to woodfired pizza at Ooh-Fa and Dante&#x27;s, plus handmade pasta at Pasta e Cuore and Prego. Here is where to eat.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/best-asian-food-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">Auckland&#x27;s Best Asian Eats: Where to Start</h2>
-                        <p class="blog-row__desc">Auckland&#x27;s best Asian eats span Malaysian char kuey teow, Vietnamese pho and banh mi, Korean ssam, dumplings and Uyghur lamb skewers. Here is where to begin.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/what-to-eat-in-auckland/" class="blog-row__link">
-                        <h2 class="blog-row__title">What to Eat in Auckland: The Dishes Worth Crossing Town For</h2>
-                        <p class="blog-row__desc">What to eat in Auckland, dish by dish: Uyghur lamb skewers, hokey pokey gelato, banh mi, birria tacos and the hāngi pie, across the city&#x27;s many cuisines.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/best-cheap-eats/" class="blog-row__link">
-                        <h2 class="blog-row__title">Best Cheap Eats in Auckland (Local Picks)</h2>
-                        <p class="blog-row__desc">Where to eat well in Auckland without spending much: dumplings on Dominion Road, dosa on Sandringham, food courts, night markets and more.</p>
-                    </a>
-                </li>
-                <li class="blog-row">
-                    <a href="/blog/kai-akl/where-locals-eat/" class="blog-row__link">
-                        <h2 class="blog-row__title">Where Do Locals Actually Eat in Auckland?</h2>
-                        <p class="blog-row__desc">A local's guide to where Aucklanders actually eat, from the best food neighbourhoods to the dishes worth crossing town for, beyond the usual tourist spots.</p>
-                    </a>
-                </li>
-        
+        <section class="container" style="max-width:840px; padding-top:2rem; padding-bottom:4rem;">
+            <ul class="category-post-list">
+                <li class="post-row"><a href="/blog/kai-akl/perfect-food-day-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>A Perfect Food Day in Auckland</h2><p>A perfect Auckland food day: a deli breakfast, cheap South Asian or Asian lunch, an afternoon gelato at Giapo, and a sit-down dinner, eaten dish by dish across the city.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/late-night-eats-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>Where to Eat Late in Auckland</h2><p>For late eats in Auckland, the White Lady pie cart and Tanuki&#x27;s Cave izakaya are the institutions, backed by the city&#x27;s bars, food courts and takeaways. Here is where to go.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/best-burgers-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>Best Burgers in Auckland</h2><p>Auckland&#x27;s best burgers run from the smoky Stacked Burger Bar to Big J&#x27;s super steak burger and the late-night White Lady pie cart. Here is where to eat them.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/best-middle-eastern-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>Best Middle Eastern Food in Auckland</h2><p>Auckland&#x27;s best Middle Eastern food includes hummus at Gemmayze Street, falafel at Shefco, chargrilled shish at Paasha and Aegean goat at Lokanta, across Lebanese and beyond.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/best-indian-food-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>Best Indian and South Asian Food in Auckland</h2><p>Auckland&#x27;s best Indian food includes Mysore masala dosa at Roop&#x27;s, chaat at Mumbai Chaat, tandoori prawns at Shor Bazaar and dabeli at Apna Adda, mostly in the south.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/best-italian-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>Best Italian and Pizza in Auckland</h2><p>Auckland&#x27;s best Italian runs from cacio e pepe at Pici to woodfired pizza at Ooh-Fa and Dante&#x27;s, plus handmade pasta at Pasta e Cuore and Prego. Here is where to eat.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/best-asian-food-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>Auckland&#x27;s Best Asian Eats: Where to Start</h2><p>Auckland&#x27;s best Asian eats span Malaysian char kuey teow, Vietnamese pho and banh mi, Korean ssam, dumplings and Uyghur lamb skewers. Here is where to begin.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/what-to-eat-in-auckland/"><span class="tick" aria-hidden="true"></span><div><h2>What to Eat in Auckland: The Dishes Worth Crossing Town For</h2><p>What to eat in Auckland, dish by dish: Uyghur lamb skewers, hokey pokey gelato, banh mi, birria tacos and the hāngi pie, across the city&#x27;s many cuisines.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/best-cheap-eats/"><span class="tick" aria-hidden="true"></span><div><h2>Best Cheap Eats in Auckland (Local Picks)</h2><p>Where to eat well in Auckland without spending much: dumplings on Dominion Road, dosa on Sandringham, food courts, night markets and more.</p></div></a></li>
+                <li class="post-row"><a href="/blog/kai-akl/where-locals-eat/"><span class="tick" aria-hidden="true"></span><div><h2>Where Do Locals Actually Eat in Auckland?</h2><p>A local&#x27;s guide to where Aucklanders actually eat, from the best food neighbourhoods to the dishes worth crossing town for, beyond the usual tourist spots.</p></div></a></li>
             </ul>
-        </article>
+        </section>
+
+        <section class="container" style="max-width:840px; padding-bottom:4rem;">
+            <div class="app-callout">
+                <div>
+                    <span class="eyebrow">Kai AKL</span>
+                    <h3>The dishes worth crossing town for</h3>
+                    <p>Find the best cheap eats, late-night spots and neighbourhood institutions with an offline food guide built for Auckland.</p>
+                </div>
+                <a class="btn-light" href="/our-work/">Explore Kai AKL →</a>
+            </div>
+        </section>
+
+        <section class="container" style="max-width:840px; padding-bottom:6rem;">
+            <h3 class="browse-heading">Browse other sections</h3>
+            <div class="browse-grid">
+                <a class="browse-card" href="/blog/lord-of-the-rings/"><span class="browse-card-title">Lord of the Rings</span><span class="browse-card-count">16 articles</span><span class="browse-card-desc">Middle-earth filming locations</span></a>
+                <a class="browse-card" href="/blog/volcanic-akl/"><span class="browse-card-title">Volcanic AKL</span><span class="browse-card-count">17 articles</span><span class="browse-card-desc">Auckland's volcanic field</span></a>
+                <a class="browse-card" href="/blog/guide-akl/"><span class="browse-card-title">Guide AKL</span><span class="browse-card-count">17 articles</span><span class="browse-card-desc">Visiting Auckland</span></a>
+                <a class="browse-card" href="/blog/auckland/"><span class="browse-card-title">Auckland</span><span class="browse-card-count">9 articles</span><span class="browse-card-desc">Background and basics</span></a>
+                <a class="browse-card" href="/blog/platform/"><span class="browse-card-title">Platform</span><span class="browse-card-count">11 articles</span><span class="browse-card-desc">How location apps get made</span></a>
+            </div>
+        </section>
     </main>
 
     <div x-data="{ footerHtml: '' }" x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" x-html="footerHtml"></div>
+
 </body>
 </html>

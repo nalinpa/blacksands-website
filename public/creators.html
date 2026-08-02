@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work with us | Black Sands</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/style.css">
+    
+    <link rel="icon" type="image/png" href="/assets/blacksands-favicon.png">
+    
+    <!-- Alpine.js -->
+    <style>[x-cloak] { display: none !important; }</style>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+</head>
+<body class="deployment-page theme-creators">
+
+    <!-- Navbar (injected) -->
+    <div x-data="{ navHtml: '' }" 
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})" 
+        x-html="navHtml">
+    </div>
+
+    <!-- Hero Header -->
+    <header class="dp-header">
+        <div class="dp-header-inner">
+            <span class="dp-eyebrow">&#9670; For travel creators</span>
+            <h1 class="dp-title">Monetize<br>your local knowledge.</h1>
+            <p class="dp-subtitle">Turn your hard-earned travel knowledge into a premium, interactive product your audience actually wants to navigate.</p>
+        </div>
+    </header>
+
+    <!-- Intro Callout -->
+    <section class="dp-section">
+        <div class="container">
+            <p class="dp-callout">Stop selling static $15 PDF itineraries that get lost in your followers' downloads folder. The modern traveller doesn't just want a list of your recommendations. They want to navigate a destination exactly the way you experienced it.</p>
+            <p class="dp-callout">We're an iOS studio in Auckland. We build that app for you, around your guide, published under your name.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="dp-section--cards">
+        <div class="container">
+            <h2 class="dp-section-heading">What we build for you</h2>
+            <div class="dp-cards">
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Interactive GPS routing</h3>
+                        <p>A native app experience that guides your audience directly to your curated spots.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Rich media</h3>
+                        <p>Exclusive audio notes, hidden vlogs and behind-the-scenes photos attached to specific map coordinates.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Custom-branded interface</h3>
+                        <p>Your colours, your logo, your voice. We handle everything technical. You own the brand and the audience relationship.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Dynamic updates</h3>
+                        <p>A caf&eacute; closed? Update a pin instantly across every user's device. No "Version 2" PDF required.</p>
+                    </div>
+                </div>
+                <div class="dp-card">
+                    <span class="dp-card-icon">&#9670;</span>
+                    <div>
+                        <h3>Revenue built in</h3>
+                        <p>Premium map layers behind subscriptions or one-time purchases. A passive audience becomes recurring revenue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it starts -->
+    <section class="dp-section--last">
+        <div class="container">
+            <h2 class="dp-section-heading">How it starts</h2>
+            <p class="dp-callout">A 15-minute call. We look at what you already sell and how your audience uses it, and tell you honestly whether an app is the right move.</p>
+            <p class="dp-callout">If it is, you hand over your spots and your brand, and we build it. Your app ships to the App Store under your own developer account, in your name, in about three weeks.</p>
+        </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="dp-cta">
+        <div class="container">
+            <h2>Ready to talk?</h2>
+            <a href="/contact" class="dp-cta-btn">Book a 15-minute call &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Footer (injected) -->
+    <div x-data="{ footerHtml: '' }" 
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
+        x-html="footerHtml">
+    </div>
+
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
