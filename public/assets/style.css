@@ -342,6 +342,7 @@ p {
     font-weight: 800;
     font-size: 1.05rem;
     letter-spacing: -0.02em;
+    padding-left: 0.5rem;
 }
 
 /* ==========================================================================
@@ -353,7 +354,7 @@ p {
     .bs-brand-name { display: inline-block; }
 
     .navbar-1b .bs-nav-menu.active .bs-nav-links a {
-        color: var(--text-muted);
+        color: var(--ink);
     }
 
     .navbar-1b .bs-nav-menu.active .bs-nav-links a:hover {
@@ -1015,7 +1016,7 @@ p {
         min-height: 300px;
     }
     .featured-screenshot {
-        width: 260px;
+        width: 210px;
     }
     .featured-content {
         padding: 2rem;
@@ -1107,10 +1108,14 @@ p {
         grid-template-columns: 1fr;
     }
     .card-image-bed {
-        height: 340px;
+        height: auto;
+        min-height: 300px;
     }
     .card-screenshot {
-        width: 210px;
+        width: 190px;
+    }
+    .card-content {
+        padding: 1.75rem 1.25rem 1.25rem;
     }
 }
 
@@ -1261,6 +1266,15 @@ p {
     border-color: var(--border-hover);
     transform: translateY(-4px);
     box-shadow: 0 16px 32px rgba(28, 26, 22, 0.08);
+}
+
+@media (max-width: 900px) {
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+    .card {
+        padding: 1.75rem 1.25rem;
+    }
 }
 
 .card-label {
@@ -2846,7 +2860,7 @@ body.our-work-page { background-color: var(--cream); }
 @media (max-width: 540px) {
     .app-detail-hero__title { font-size: 2.5rem; }
     .app-detail-hero__screenshot { width: 200px; border-width: 8px; }
-    .app-detail-feature { padding: 1.5rem; }
+    .app-detail-feature { padding: 1.5rem 1.25rem; }
 }
 
 /* --- Per-app accent colors (legacy; kept for any old references) --- */
@@ -4100,6 +4114,7 @@ body.our-work-page { background-color: var(--cream); }
     .dp-card {
         grid-template-columns: 1fr;
         gap: 12px;
+        padding: 20px;
     }
     .dp-card h3 {
         font-size: 22px;
