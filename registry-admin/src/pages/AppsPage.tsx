@@ -32,8 +32,8 @@ export default function AppsPage() {
 
   async function select(appId: string) {
     setMsg("");
-    const token = await auth.currentUser!.getIdToken();
     try {
+      const token = await auth.currentUser!.getIdToken();
       const { app } = await getApp(token, appId);
       setSelectedId(appId);
       setForm(toFormState(app));
@@ -50,18 +50,18 @@ export default function AppsPage() {
       return;
     }
 
-    const token = await auth.currentUser!.getIdToken();
     try {
+      const token = await auth.currentUser!.getIdToken();
+      const successMsg = selectedId ? "Saved. Live API may take up to 5 min to pick this up (KV cache TTL)." : "Created. Live API may take up to 5 min to pick this up (KV cache TTL).";
       if (selectedId) {
         const { appId: _appId, ...rest } = config!;
         await updateApp(token, selectedId, rest);
-        setMsg("Saved. Live API may take up to 5 min to pick this up (KV cache TTL).");
       } else {
         await createApp(token, config!);
-        setMsg("Created. Live API may take up to 5 min to pick this up (KV cache TTL).");
       }
       await refreshList();
       reset();
+      setMsg(successMsg);
     } catch (e) {
       if (e instanceof ApiError && e.status === 409) setMsg("That App ID is already registered.");
       else setMsg(e instanceof Error ? e.message : "Error saving");
@@ -73,8 +73,8 @@ export default function AppsPage() {
     if (!ok) return;
 
     setMsg("");
-    const token = await auth.currentUser!.getIdToken();
     try {
+      const token = await auth.currentUser!.getIdToken();
       await deleteApp(token, appId);
       if (selectedId === appId) reset();
       await refreshList();
