@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - Node 18+ everywhere (repo convention relies on global `fetch`/`crypto`/`atob`/`btoa`).
-- Backend tests run with `npm test` in `enginev1/api` (`tsx --test test/*.test.ts`) — **baseline is 138 passing, 0 failing**, confirmed by running it before this plan was written. Every backend task's test step gives the exact expected count after that task's additions.
+- Backend tests run with `npm test` in `enginev1/api` (`tsx --test test/*.test.ts`) — **baseline is 137 passing, 0 failing**, confirmed by running it before this plan was written. Every backend task's test step gives the exact expected count after that task's additions.
 - Backend tests never touch real Firestore or real network — they mock `globalThis.fetch` using the existing `enginev1/api/test/helpers.ts` (`mockFetch`, `makeEnv`, `registryDoc`, `fsDoc`, `makeKeypair`, `signToken`, `jwksRoute`). Reuse these; do not invent parallel test infrastructure.
 - Frontend testing is manual only (per the approved spec): all branchy/validating logic (required-field checks, create-or-fail, update-or-404, `locationFields` type validation) lives server-side and is covered by the backend tests above. The frontend is presentation and wiring — `cones/admin`, the existing precedent this app is modeled on, has no automated tests either.
 - **`enginev1/api` currently has pre-existing, unrelated, uncommitted changes** (`git status` at plan-writing time: modified `src/index.ts`, `src/lib/cache.ts`, `src/lib/telegram.ts`, `src/routes/adminApps.ts`, `test/admin-apps.test.ts`, `test/config.test.ts`, `test/helpers.ts`, `wrangler.toml`; untracked `firebase.json`, `firestore.rules`) — this is the registry-hardening work described in project memory, not yet deployed. **Never run `git add -A` or `git add .` in that repo.** Every commit step below lists the exact files to stage. **Do not run `wrangler deploy`** as an unattended step — the last backend task ends with a note to confirm with the user first, since a deploy would ship those unrelated pending changes too, not just this feature's routes.
@@ -40,7 +40,7 @@ Pure refactor, no behavior change — required before Task 3/4 because `POST /ap
 - [ ] **Step 1: Record the baseline**
 
 Run: `cd enginev1/api && npm test`
-Expected: `ℹ tests 138`, `ℹ pass 138`, `ℹ fail 0` (this is the number every later step's "after" count is measured against).
+Expected: `ℹ tests 137`, `ℹ pass 137`, `ℹ fail 0` (this is the number every later step's "after" count is measured against).
 
 - [ ] **Step 2: Create the shared lib**
 
@@ -114,7 +114,7 @@ import { validateLocationFields } from "../lib/locationFields";
 - [ ] **Step 4: Run tests, confirm no regression**
 
 Run: `cd enginev1/api && npm test`
-Expected: `ℹ tests 138`, `ℹ pass 138`, `ℹ fail 0` — identical to Step 1. If anything fails, the extraction changed behavior; diff the moved function against the original before proceeding.
+Expected: `ℹ tests 137`, `ℹ pass 137`, `ℹ fail 0` — identical to Step 1. If anything fails, the extraction changed behavior; diff the moved function against the original before proceeding.
 
 - [ ] **Step 5: Commit**
 
@@ -201,7 +201,7 @@ test("GET /v1/admin/apps/:appId — admin token returns the full doc", async () 
 - [ ] **Step 2: Run tests to verify they fail**
 
 Run: `cd enginev1/api && npm test`
-Expected: the 4 new tests FAIL (route doesn't exist yet — Hono returns 404 for the unmatched path, so the 401 tests fail as "expected 401, got 404" and the two others fail on missing `app` in the body). `ℹ tests 142`, `ℹ fail` > 0.
+Expected: the 4 new tests FAIL (route doesn't exist yet — Hono returns 404 for the unmatched path, so the 401 tests fail as "expected 401, got 404" and the two others fail on missing `app` in the body). `ℹ tests 141`, `ℹ fail` > 0.
 
 - [ ] **Step 3: Implement the route**
 
@@ -229,7 +229,7 @@ adminApps.get("/apps/:appId", async (c) => {
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `cd enginev1/api && npm test`
-Expected: `ℹ tests 142`, `ℹ pass 142`, `ℹ fail 0`.
+Expected: `ℹ tests 141`, `ℹ pass 141`, `ℹ fail 0`.
 
 - [ ] **Step 5: Commit**
 
@@ -389,7 +389,7 @@ test("POST /v1/admin/apps — duplicate appId returns 409", async () => {
 - [ ] **Step 2: Run tests to verify they fail**
 
 Run: `cd enginev1/api && npm test`
-Expected: the 5 new tests FAIL (no route yet). `ℹ tests 147`.
+Expected: the 5 new tests FAIL (no route yet). `ℹ tests 146`.
 
 - [ ] **Step 3: Implement the route**
 
@@ -471,7 +471,7 @@ adminApps.post("/apps", async (c) => {
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `cd enginev1/api && npm test`
-Expected: `ℹ tests 147`, `ℹ pass 147`, `ℹ fail 0`.
+Expected: `ℹ tests 146`, `ℹ pass 146`, `ℹ fail 0`.
 
 - [ ] **Step 5: Commit**
 
@@ -582,7 +582,7 @@ test("PUT /v1/admin/apps/:appId — success updates only the given fields", asyn
 - [ ] **Step 2: Run tests to verify they fail**
 
 Run: `cd enginev1/api && npm test`
-Expected: the 4 new tests FAIL (no route yet). `ℹ tests 151`.
+Expected: the 4 new tests FAIL (no route yet). `ℹ tests 150`.
 
 - [ ] **Step 3: Implement the route**
 
@@ -658,7 +658,7 @@ adminApps.put("/apps/:appId", async (c) => {
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `cd enginev1/api && npm test`
-Expected: `ℹ tests 151`, `ℹ pass 151`, `ℹ fail 0`.
+Expected: `ℹ tests 150`, `ℹ pass 150`, `ℹ fail 0`.
 
 - [ ] **Step 5: Commit**
 
@@ -735,7 +735,7 @@ test("DELETE /v1/admin/apps/:appId — success deletes the doc", async () => {
 - [ ] **Step 2: Run tests to verify they fail**
 
 Run: `cd enginev1/api && npm test`
-Expected: the 3 new tests FAIL (no route yet). `ℹ tests 154`.
+Expected: the 3 new tests FAIL (no route yet). `ℹ tests 153`.
 
 - [ ] **Step 3: Implement the route**
 
@@ -763,7 +763,7 @@ adminApps.delete("/apps/:appId", async (c) => {
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `cd enginev1/api && npm test`
-Expected: `ℹ tests 154`, `ℹ pass 154`, `ℹ fail 0`.
+Expected: `ℹ tests 153`, `ℹ pass 153`, `ℹ fail 0`.
 
 - [ ] **Step 5: Commit**
 
