@@ -68,11 +68,11 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 
-.firebase
-apps
-cloudflare
-docs
-scripts
+/.firebase
+/apps
+/cloudflare
+/docs
+/scripts
 
 # git worktrees (local scratch, never committed)
 .worktrees
