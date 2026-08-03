@@ -76,3 +76,7 @@ scripts
 
 # git worktrees (local scratch, never committed)
 .worktrees
+
+
+# superpowers subagent-driven-development scratch (ledger, briefs, reports)
+.superpowers
