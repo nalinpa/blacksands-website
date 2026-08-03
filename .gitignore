@@ -73,3 +73,6 @@ apps
 cloudflare
 docs
 scripts
+
+# git worktrees (local scratch, never committed)
+.worktrees
