@@ -147,7 +147,7 @@ export function fromFormState(form: AppFormState): { errors: string[]; config: A
       },
       theme,
       map: { center: [lat, lng] },
-      ...(locationFields.length > 0 && { locationFields }),
+      locationFields,
       features: {
         completion,
         itinerary: { enabled: form.itineraryEnabled },
