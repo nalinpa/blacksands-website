@@ -27,18 +27,27 @@ export const emptyForm: AppFormState = {
 };
 
 export function toFormState(app: AppConfig): AppFormState {
-  const completion = app.features.completion;
+  const collections = app.collections ?? { locations: "" };
+  const theme = app.theme ?? {};
+  const center = app.map?.center ?? [0, 0];
+  const features = app.features ?? {
+    completion: { enabled: false },
+    itinerary: { enabled: false },
+    push: { enabled: false },
+    redemption: { enabled: false },
+  };
+  const completion = features.completion;
   return {
     appId: app.appId,
     name: app.name,
     firebaseProject: app.firebaseProject,
     r2Bucket: app.r2Bucket,
-    collectionsLocations: app.collections.locations,
-    collectionsReviews: app.collections.reviews ?? "",
-    collectionsItineraries: app.collections.itineraries ?? "",
-    theme: Object.entries(app.theme).map(([key, value]) => ({ key, value })),
-    mapLat: String(app.map.center[0]),
-    mapLng: String(app.map.center[1]),
+    collectionsLocations: collections.locations,
+    collectionsReviews: collections.reviews ?? "",
+    collectionsItineraries: collections.itineraries ?? "",
+    theme: Object.entries(theme).map(([key, value]) => ({ key, value })),
+    mapLat: String(center[0]),
+    mapLng: String(center[1]),
     completionEnabled: completion.enabled,
     completionCollection: completion.enabled ? completion.collection : "",
     completionMethodTick: completion.enabled ? (completion.methods ?? []).includes("tick") : false,
@@ -48,9 +57,9 @@ export function toFormState(app: AppConfig): AppFormState {
     completionFieldLocationSlug: completion.enabled ? completion.fields.locationSlug : "",
     completionFieldLocationName: completion.enabled ? completion.fields.locationName : "",
     completionFieldShared: completion.enabled ? completion.fields.shared : "",
-    itineraryEnabled: app.features.itinerary.enabled,
-    pushEnabled: app.features.push.enabled,
-    redemptionEnabled: app.features.redemption.enabled,
+    itineraryEnabled: features.itinerary.enabled,
+    pushEnabled: features.push.enabled,
+    redemptionEnabled: features.redemption.enabled,
     locationFields: (app.locationFields ?? []).map((f) => ({
       key: f.key,
       label: f.label,
