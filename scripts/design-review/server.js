@@ -25,32 +25,36 @@ function send(res, status, data, contentType) {
 }
 
 const server = http.createServer((req, res) => {
-  const urlPath = decodeURIComponent(req.url.split('?')[0]);
-  const rel = urlPath === '/' ? '/index.html' : urlPath;
-  const resolved = path.join(ROOT, rel);
+  try {
+    const urlPath = decodeURIComponent(req.url.split('?')[0]);
+    const rel = urlPath === '/' ? '/index.html' : urlPath;
+    const resolved = path.join(ROOT, rel);
 
-  if (!resolved.startsWith(ROOT)) {
-    send(res, 403, 'Forbidden');
-    return;
+    if (!resolved.startsWith(ROOT)) {
+      send(res, 403, 'Forbidden');
+      return;
+    }
+
+    fs.readFile(resolved, (err, data) => {
+      if (!err) {
+        send(res, 200, data, MIME[path.extname(resolved)] || 'application/octet-stream');
+        return;
+      }
+      if (!path.extname(resolved)) {
+        fs.readFile(resolved + '.html', (err2, data2) => {
+          if (err2) {
+            send(res, 404, 'Not found');
+            return;
+          }
+          send(res, 200, data2, MIME['.html']);
+        });
+        return;
+      }
+      send(res, 404, 'Not found');
+    });
+  } catch (err) {
+    send(res, 400, 'Bad Request');
   }
-
-  fs.readFile(resolved, (err, data) => {
-    if (!err) {
-      send(res, 200, data, MIME[path.extname(resolved)] || 'application/octet-stream');
-      return;
-    }
-    if (!path.extname(resolved)) {
-      fs.readFile(resolved + '.html', (err2, data2) => {
-        if (err2) {
-          send(res, 404, 'Not found');
-          return;
-        }
-        send(res, 200, data2, MIME['.html']);
-      });
-      return;
-    }
-    send(res, 404, 'Not found');
-  });
 });
 
 server.listen(PORT, () => {
