@@ -200,7 +200,10 @@ p {
     font-size: var(--text-small);
     font-weight: 500;
     line-height: 1;
-    padding-bottom: var(--space-1);
+    /* Symmetric box: the hover underline's padding+border is mirrored on top so
+       the link text sits on the bar's true centre line, level with the wordmark */
+    padding: var(--space-1) 0;
+    border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     transition: border-color var(--transition-fast);
 }
@@ -217,7 +220,7 @@ p {
     font-size: var(--text-small);
     font-weight: 500;
     line-height: 1;
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-3) var(--space-6);
     border: 1px solid var(--ink);
     border-radius: 100px;
     background-color: transparent;
@@ -233,7 +236,7 @@ p {
    `display: contents` lifts the menu's two children into the bar's grid so they can
    own their own columns; the wrapper is still there for the mobile sheet below 900px. */
 @media (min-width: 901px) {
-    :root { --nav-height: calc(var(--space-12) + var(--space-2)); }
+    :root { --nav-height: calc(var(--space-16) + var(--space-2)); }
 
     .bs-navbar {
         display: grid;
@@ -244,13 +247,28 @@ p {
     .bs-nav-menu { display: contents; }
     .bs-nav-left { justify-self: start; }
     .bs-auth-links { justify-self: end; }
-    .bs-brand-img { height: var(--space-6); }
+
+    /* The brand outranks the links ~1.7:1 in size and 700:400 in weight.
+       The type scale has no step between --text-body (17) and --text-h3 (30),
+       so the wordmark takes 24px off the space scale — same derived-value
+       precedent as --nav-height. Mark and name are sized as one lockup. */
+    .bs-brand-img { height: var(--space-8); }
+    .bs-brand-name { font-size: var(--space-6); }
+    .bs-nav-links a { font-weight: 400; }
 }
 
 /* Squeeze before the hamburger takes over at 900px */
 @media (max-width: 1200px) {
     .bs-navbar { padding: 0 var(--space-8); }
     .bs-nav-links { gap: var(--space-6); }
+}
+
+/* Below 1000px the true-centre grid starves the side columns and the full-size
+   lockup comes within 4px of the first link. The brand steps back one size here
+   only — a 100px band that hands off to the hamburger at 900 anyway. */
+@media (min-width: 901px) and (max-width: 1000px) {
+    .bs-brand-img { height: var(--space-6); }
+    .bs-brand-name { font-size: var(--text-body); }
 }
 
 /* ==========================================================================
@@ -372,7 +390,7 @@ p {
         line-height: 1.2;
         letter-spacing: var(--tracking-h2);
         padding: var(--space-2) 0;
-        border-bottom: none;
+        border: none;
     }
 
     .bs-auth-links {
