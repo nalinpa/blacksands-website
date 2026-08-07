@@ -1209,11 +1209,16 @@ p {
     white-space: nowrap;
     padding-bottom: var(--space-1);
     border-bottom: 1px solid var(--sand);
-    transition: color var(--transition-fast), border-color var(--transition-fast);
+    transition: border-color var(--transition-fast);
 }
 
+/* The rule moves, the text does not. Resting text is already full --sand at
+   10.08:1 on --forest, so every colour this palette offers is a step *down* in
+   contrast — rounds 3 and 4 swapped the text to --leaf, which measures 3.98:1
+   and fails AA for 17px/500. Holding the text at --sand keeps the hover state
+   at the same 10.08:1 as the resting state, and --leaf on the 1px rule is a
+   non-text element, where 3.98:1 clears the 3:1 minimum on its own. */
 .final-cta-link:hover {
-    color: var(--leaf);
     border-bottom-color: var(--leaf);
 }
 
@@ -1470,14 +1475,18 @@ p {
     text-decoration: none;
     font-size: var(--text-small);
     line-height: var(--leading-body);
-    transition: color var(--transition-fast);
 }
 
-/* Base is already full --sand, so hover moves to --leaf — the same hover the
-   CTA link on the axis directly above uses. */
+/* Same hover as .final-cta-link on the axis above: a --leaf rule appears and
+   the text stays put. A colour swap is not available down here — the resting
+   colour is already the brightest the palette has, so hovering to --leaf dimmed
+   14px text from 10.08:1 to 3.98:1 and failed AA. text-decoration does not
+   affect layout, so nothing shifts when it appears. */
 .footer-contact-list a:hover,
 .footer-company-list a:hover {
-    color: var(--leaf);
+    text-decoration: underline;
+    text-decoration-color: var(--leaf);
+    text-underline-offset: var(--space-1);
 }
 
 /* Full-bleed hairline, the same weight and colour as the one dividing the CTA
