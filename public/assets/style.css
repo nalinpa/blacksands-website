@@ -238,37 +238,58 @@ p {
 @media (min-width: 901px) {
     :root { --nav-height: calc(var(--space-16) + var(--space-2)); }
 
+    /* No fill, no border, no shadow — the nav is type laid on the page, not a band
+       of chrome above it. `absolute` rather than `fixed` is what buys that: with no
+       fill there is nothing for page content to scroll behind, so the bar leaves
+       with the fold instead of colliding with what passes under it. */
     .bs-navbar {
+        position: absolute;
+        background-color: transparent;
         display: grid;
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
     }
 
+    /* ...and the hero runs full-bleed up to y=0 beneath it, so there is no cream
+       strip clipped above the photo. body's padding-top still reserves the space
+       on every other page, where the bar simply floats on the page ground. */
+    .hero-1b { margin-top: calc(-1 * var(--nav-height)); }
+
     .bs-nav-menu { display: contents; }
     .bs-nav-left { justify-self: start; }
     .bs-auth-links { justify-self: end; }
 
-    /* The brand outranks the links ~1.7:1 in size and 700:400 in weight.
-       The type scale has no step between --text-body (17) and --text-h3 (30),
-       so the wordmark takes 24px off the space scale — same derived-value
-       precedent as --nav-height. Mark and name are sized as one lockup. */
-    .bs-brand-img { height: var(--space-8); }
-    .bs-brand-name { font-size: var(--space-6); }
-    .bs-nav-links a { font-weight: 400; }
+    /* Brand leads the links 20:14 in size and 700:500 in weight — enough of a step
+       to be read first, not so much that the bar splits into two unrelated voices.
+       The type scale has no step between --text-body (17) and --text-h3 (30), so
+       the wordmark takes 20px off the space scale; the mark is sized to sit with
+       it rather than outrank it. */
+    .bs-brand-img { height: var(--space-6); }
+    .bs-brand-name { font-size: calc(var(--space-4) + var(--space-1)); }
+
+    /* CTA is text + arrow, the site's own "Work with us →" convention, weighted
+       and boxed exactly like a link. The arrow carries the affordance a bordered
+       pill was spending far more ink on. */
+    .bs-btn-signup-1b {
+        padding: var(--space-1) 0;
+        border: 1px solid transparent;
+        border-radius: 0;
+        transition: border-color var(--transition-fast);
+    }
+
+    .bs-btn-signup-1b::after { content: "\00a0\2192"; }
+
+    .bs-btn-signup-1b:hover {
+        background-color: transparent;
+        color: var(--ink);
+        border-bottom-color: var(--ink);
+    }
 }
 
 /* Squeeze before the hamburger takes over at 900px */
 @media (max-width: 1200px) {
     .bs-navbar { padding: 0 var(--space-8); }
     .bs-nav-links { gap: var(--space-6); }
-}
-
-/* Below 1000px the true-centre grid starves the side columns and the full-size
-   lockup comes within 4px of the first link. The brand steps back one size here
-   only — a 100px band that hands off to the hamburger at 900 anyway. */
-@media (min-width: 901px) and (max-width: 1000px) {
-    .bs-brand-img { height: var(--space-6); }
-    .bs-brand-name { font-size: var(--text-body); }
 }
 
 /* ==========================================================================
