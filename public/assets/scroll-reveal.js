@@ -2,7 +2,10 @@
   document.documentElement.classList.add('js-reveal');
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) return;
+  if (!('IntersectionObserver' in window)) {
+    document.documentElement.classList.remove('js-reveal');
+    return;
+  }
 
   var els = document.querySelectorAll('[data-reveal]');
   if (!els.length) return;
