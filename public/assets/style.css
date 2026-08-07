@@ -1441,21 +1441,27 @@ p {
     margin: 0;
 }
 
-/* Same size as the brand sentence opposite them: one body size across the whole
-   footer, so the only type contrast left down here is body vs. mono label. */
+/* Functional tier. One step below the brand sentence in size and one step above
+   it in value: 14px at full --sand against 17px dim prose. Round 2 had every
+   small thing in the footer at one size and one value, so three structurally
+   different columns read as one grey texture. Now the slab's small type is
+   three deliberate steps — prose 17 dim, links 14 sand, labels 12.8 faint —
+   and nothing sits between them. */
 .footer-contact-list a,
 .footer-company-list a,
 .footer-contact-list li {
-    color: var(--closing-dim);
+    color: var(--sand);
     text-decoration: none;
-    font-size: var(--text-body);
+    font-size: var(--text-small);
     line-height: var(--leading-body);
     transition: color var(--transition-fast);
 }
 
+/* Base is already full --sand, so hover moves to --leaf — the same hover the
+   CTA link on the axis directly above uses. */
 .footer-contact-list a:hover,
 .footer-company-list a:hover {
-    color: var(--sand);
+    color: var(--leaf);
 }
 
 /* Full-bleed hairline, the same weight and colour as the one dividing the CTA
@@ -1480,9 +1486,13 @@ p {
     grid-column: 3 / -1;
 }
 
+/* Body face, not mono. Mono in this palette is the eyebrow/label voice
+   (.eyebrow, .coord-label, .footer-col-title) — running meta text set in it was
+   a fourth type register the slab hadn't earned. Same size as the labels it
+   shares the quiet tier with; case and family are what separate them. */
 .footer-copy,
 .footer-attr {
-    font-family: var(--font-mono);
+    font-family: var(--font-body-1b);
     font-size: var(--text-eyebrow);
     color: var(--closing-faint);
 }
@@ -1514,6 +1524,14 @@ p {
     .footer-bottom-row {
         align-items: start;
         row-gap: var(--space-3);
+    }
+    /* The 14px functional tier is a desktop move: it exists to separate three
+       side-by-side columns. Stacked, there are no columns to separate and the
+       links are tap targets, so they stay at body size. */
+    .footer-contact-list a,
+    .footer-company-list a,
+    .footer-contact-list li {
+        font-size: var(--text-body);
     }
 }
 
