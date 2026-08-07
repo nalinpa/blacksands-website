@@ -185,18 +185,19 @@ p {
 
 .bs-nav-menu { display: flex; align-items: center; flex: 1; }
 
-/* Link cluster sits right-of-centre, held off the CTA by a deliberate gap */
+/* One flex gap for all six links: the spacing is even by construction, never per-item */
 .bs-nav-links {
     display: flex;
     align-items: center;
-    gap: var(--space-6);
-    margin-left: auto;
+    gap: var(--space-8);
 }
 
+/* Links sit a full step below the wordmark in size and weight, so six of them
+   read as a quiet index rather than six competing labels */
 .bs-nav-links a {
     color: var(--ink);
     text-decoration: none;
-    font-size: var(--text-body);
+    font-size: var(--text-small);
     font-weight: 500;
     line-height: 1;
     padding-bottom: var(--space-1);
@@ -208,15 +209,15 @@ p {
     border-bottom-color: var(--ink);
 }
 
-.bs-auth-links { display: flex; align-items: center; margin-left: var(--space-24); }
+.bs-auth-links { display: flex; align-items: center; }
 
 .bs-btn-signup-1b {
     color: var(--ink);
     text-decoration: none;
-    font-size: var(--text-body);
+    font-size: var(--text-small);
     font-weight: 500;
     line-height: 1;
-    padding: var(--space-3) var(--space-6);
+    padding: var(--space-2) var(--space-4);
     border: 1px solid var(--ink);
     border-radius: 100px;
     background-color: transparent;
@@ -228,12 +229,28 @@ p {
     color: var(--cream);
 }
 
+/* Desktop: three-zone grid — wordmark hard-left, link cluster true-centre, CTA hard-right.
+   `display: contents` lifts the menu's two children into the bar's grid so they can
+   own their own columns; the wrapper is still there for the mobile sheet below 900px. */
+@media (min-width: 901px) {
+    :root { --nav-height: calc(var(--space-12) + var(--space-2)); }
+
+    .bs-navbar {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+    }
+
+    .bs-nav-menu { display: contents; }
+    .bs-nav-left { justify-self: start; }
+    .bs-auth-links { justify-self: end; }
+    .bs-brand-img { height: var(--space-6); }
+}
+
 /* Squeeze before the hamburger takes over at 900px */
 @media (max-width: 1200px) {
     .bs-navbar { padding: 0 var(--space-8); }
-    .bs-nav-links { gap: var(--space-4); }
-    .bs-nav-links a, .bs-btn-signup-1b { font-size: var(--text-small); }
-    .bs-auth-links { margin-left: var(--space-8); }
+    .bs-nav-links { gap: var(--space-6); }
 }
 
 /* ==========================================================================
