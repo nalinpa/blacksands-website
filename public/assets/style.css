@@ -571,16 +571,7 @@ p {
     background: linear-gradient(180deg, rgba(224,134,58,.4), rgba(180,98,32,.58) 55%, rgba(92,42,12,.8));
 }
 
-.hero-glow {
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 60%;
-    height: 80%;
-    background: radial-gradient(ellipse, rgba(224, 134, 58, 0.25) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-}
+/* hero-glow removed: decorative element added noise rather than legibility */
 
 .hero-1b .hero-content {
     position: relative;
@@ -596,13 +587,13 @@ p {
 
 .hero-title-1b {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 7.5rem);
+    font-size: var(--text-display);
     font-weight: 800;
-    line-height: 0.86;
-    letter-spacing: -0.04em;
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
     color: #FFFFFF;
     margin-bottom: 2rem;
-    max-width: 20ch;
+    max-width: 16ch;
 }
 
 .hero-desc-1b {
@@ -642,35 +633,39 @@ p {
 }
 
 /* --- Stats Bar --- */
+/* Part of the hero unit, not a disconnected strip. Same container rails,
+   deliberate hierarchy: big number vs. its label, not four different registers. */
 .stat-bar {
     background: var(--cream);
     border-bottom: 1px solid var(--line);
-    padding: 2rem 0;
+    padding: var(--space-12) 0;
 }
 
 .stat-bar-inner {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: var(--space-8);
     align-items: baseline;
 }
 
 .stat-item {
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: var(--space-2);
 }
 
 .stat-number {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: var(--text-h3);
     font-weight: 700;
     color: var(--ink);
+    line-height: 1.1;
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: var(--text-small);
     color: var(--muted);
+    line-height: 1.4;
 }
 
 @media (max-width: 900px) {
@@ -1114,9 +1109,10 @@ p {
     }
     .card-screenshot {
         width: 190px;
+        margin-bottom: 0;
     }
     .card-content {
-        padding: 1.75rem 1.25rem 1.25rem;
+        padding: 1.75rem 1.5rem 1.25rem;
     }
 }
 
@@ -1344,7 +1340,7 @@ p {
         grid-template-columns: 1fr;
     }
     .card {
-        padding: 1.75rem 1.25rem;
+        padding: 1.75rem;
     }
 }
 
@@ -3002,7 +2998,7 @@ body.our-work-page { background-color: var(--cream); }
 @media (max-width: 540px) {
     .app-detail-hero__title { font-size: 2.5rem; }
     .app-detail-hero__screenshot { width: 200px; border-width: 8px; }
-    .app-detail-feature { padding: 1.5rem 1.25rem; }
+    .app-detail-feature { padding: 1.5rem; }
 }
 
 /* --- Per-app accent colors (legacy; kept for any old references) --- */
@@ -4243,8 +4239,8 @@ body.our-work-page { background-color: var(--cream); }
     .dp-section,
     .dp-section--cards,
     .dp-section--last {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         padding-top: 36px;
     }
     .dp-callout {
@@ -4256,7 +4252,6 @@ body.our-work-page { background-color: var(--cream); }
     .dp-card {
         grid-template-columns: 1fr;
         gap: 12px;
-        padding: 20px;
     }
     .dp-card h3 {
         font-size: 22px;
@@ -4268,7 +4263,7 @@ body.our-work-page { background-color: var(--cream); }
    ========================================================================== */
 @media (max-width: 768px) {
     html, body { width: 100vw; overflow-x: hidden; }
-    .bs-content, .bs-layout, .container { width: 100%; max-width: 100vw; }
+    .bs-content, .bs-layout, .container { width: 100%; max-width: 100vw; padding-left: 1.25rem; padding-right: 1.25rem; }
 
     .bs-content h1,
     .hero-title {
