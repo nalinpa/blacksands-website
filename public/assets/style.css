@@ -63,6 +63,7 @@
     --space-24: 6rem;
     --space-32: 8rem;
     --section-padding-y: clamp(4rem, 10vw, 9rem);
+    --nav-height: calc(var(--space-16) + var(--space-4));
 
     /* Motion */
     --transition-fast: 160ms ease;
@@ -84,7 +85,7 @@ body {
     background-color: var(--cream);
     color: var(--ink);
     line-height: 1.7;
-    padding-top: 70px;
+    padding-top: var(--nav-height);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
@@ -137,101 +138,43 @@ p {
 /* ==========================================================================
    2. NAVIGATION
    ========================================================================== */
+/* Flat bar, page-coloured: no border, no blur, no shadow. The type is the design. */
 .bs-navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 75px;
-    background-color: rgba(250, 247, 242, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-color);
+    height: var(--nav-height);
+    background-color: var(--cream);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
+    padding: 0 var(--space-16);
     z-index: 1000;
 }
 
-/* Black navbar variant for hero */
-.navbar-1b {
-    background: #000000;
-    border-bottom: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
+.bs-nav-left { display: flex; align-items: center; }
 
-.navbar-1b .bs-brand {
-    color: #FFFFFF;
-}
-
-.navbar-1b .bs-brand svg {
-    color: var(--leaf);
-}
-
-.navbar-1b .bs-nav-links a {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.navbar-1b .bs-nav-links a:hover {
-    color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-1b .dropdown-menu {
-    background: #000000;
-    border-color: rgba(255, 255, 255, 0.15);
-}
-
-.navbar-1b .dropdown-menu a {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.navbar-1b .dropdown-menu a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-}
-
-.bs-btn-signup-1b {
-    color: var(--forest-2);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 700;
-    padding: 0.65rem 1.4rem;
-    border-radius: 100px;
-    background-color: var(--leaf);
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    letter-spacing: 0.01em;
-}
-.bs-btn-signup-1b:hover {
-    background-color: var(--leaf);
-    transform: translateY(-1px);
-}
-
-.bs-nav-left { display: flex; align-items: center; gap: 1rem; }
-
+/* Wordmark lockup: mark + name, optically tight, no glow */
 .bs-brand {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
+    gap: var(--space-3);
     text-decoration: none;
-    color: var(--layer-4);
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: -0.03em;
-}
-
-.bs-brand svg {
-    width: 32px;
-    height: 32px;
+    color: var(--ink);
 }
 
 .bs-brand-img {
-    height: 44px;
+    height: var(--space-8);
     width: auto;
     display: block;
-    filter: drop-shadow(0 0 12px rgba(63, 166, 92, 0.9)) drop-shadow(0 0 24px rgba(63, 166, 92, 0.6)) drop-shadow(0 0 40px rgba(63, 166, 92, 0.3));
+}
+
+.bs-brand-name {
+    font-size: var(--text-body);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: var(--tracking-h2);
+    color: inherit;
 }
 
 .footer-logo-img {
@@ -241,49 +184,56 @@ p {
 }
 
 .bs-nav-menu { display: flex; align-items: center; flex: 1; }
-.bs-nav-links { display: flex; gap: 0.5rem; margin-left: 2.5rem; }
+
+/* Link cluster sits right-of-centre, held off the CTA by a deliberate gap */
+.bs-nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    margin-left: auto;
+}
 
 .bs-nav-links a {
-    color: var(--text-muted);
+    color: var(--ink);
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    transition: all 0.2s ease;
-    letter-spacing: 0.01em;
+    font-size: var(--text-body);
+    font-weight: 500;
+    line-height: 1;
+    padding-bottom: var(--space-1);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-fast);
 }
 
 .bs-nav-links a:hover {
-    color: var(--layer-4);
-    background-color: var(--layer-2);
+    border-bottom-color: var(--ink);
 }
 
-.bs-auth-links { display: flex; align-items: center; gap: 1rem; margin-left: auto; }
+.bs-auth-links { display: flex; align-items: center; margin-left: var(--space-24); }
 
-.bs-btn-login {
-    color: var(--text-muted);
+.bs-btn-signup-1b {
+    color: var(--ink);
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: color 0.2s ease;
+    font-size: var(--text-body);
+    font-weight: 500;
+    line-height: 1;
+    padding: var(--space-3) var(--space-6);
+    border: 1px solid var(--ink);
+    border-radius: 100px;
+    background-color: transparent;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
-.bs-btn-login:hover { color: var(--layer-4); }
 
-.bs-btn-signup {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 700;
-    padding: 0.65rem 1.4rem;
-    border-radius: 20px;
-    background-color: var(--layer-4);
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    letter-spacing: 0.01em;
+.bs-btn-signup-1b:hover {
+    background-color: var(--ink);
+    color: var(--cream);
 }
-.bs-btn-signup:hover {
-    background-color: var(--layer-5);
-    transform: translateY(-1px);
+
+/* Squeeze before the hamburger takes over at 900px */
+@media (max-width: 1200px) {
+    .bs-navbar { padding: 0 var(--space-8); }
+    .bs-nav-links { gap: var(--space-4); }
+    .bs-nav-links a, .bs-btn-signup-1b { font-size: var(--text-small); }
+    .bs-auth-links { margin-left: var(--space-8); }
 }
 
 /* ==========================================================================
@@ -359,95 +309,67 @@ p {
     display: none;
     background: transparent;
     border: none;
-    color: var(--text-primary);
+    color: var(--ink);
     cursor: pointer;
-}
-
-.navbar-1b .bs-mobile-toggle {
-    color: #FFFFFF;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 14px rgba(255, 255, 255, 0.5));
-}
-
-.bs-brand-name {
-    display: none;
-    color: #FFFFFF;
-    font-weight: 800;
-    font-size: 1.05rem;
-    letter-spacing: -0.02em;
-    padding-left: 0.5rem;
+    padding: 0;
+    margin-left: auto;
+    line-height: 0;
 }
 
 /* ==========================================================================
    MOBILE < 900px
    ========================================================================== */
 @media (max-width: 900px) {
+    .bs-navbar { padding: 0 var(--space-6); }
+
     .bs-mobile-toggle { display: block; }
 
-    .bs-brand-name { display: inline-block; }
-
-    .navbar-1b .bs-nav-menu.active .bs-nav-links a {
-        color: var(--ink);
-    }
-
-    .navbar-1b .bs-nav-menu.active .bs-nav-links a:hover {
-        color: var(--layer-4);
-        background-color: var(--layer-2);
-    }
-
+    /* Full-width sheet, hairline seam, no shadow */
     .bs-nav-menu {
         display: none;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         position: absolute;
-        top: 75px;
+        top: var(--nav-height);
         left: 0;
         width: 100%;
-        background-color: var(--layer-1);
-        border-bottom: 1px solid var(--border-color);
-        padding: 1.5rem;
-        box-shadow: 0 8px 24px rgba(28, 26, 22, 0.08);
+        background-color: var(--cream);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: var(--space-6) var(--space-6) var(--space-8);
     }
 
     .bs-nav-menu.active { display: flex; }
 
     .bs-nav-links {
         flex-direction: column;
+        align-items: stretch;
         width: 100%;
         margin: 0;
-        gap: 0.25rem;
+        gap: 0;
     }
 
     .bs-nav-links a {
-        width: 100%;
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
+        font-size: var(--text-h3);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: var(--tracking-h2);
+        padding: var(--space-2) 0;
+        border-bottom: none;
     }
-
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        border: none;
-        padding: 0 0 0 1rem;
-        background: transparent;
-        margin-top: 0;
-    }
-
-    .dropdown-menu::before { display: none; }
 
     .bs-auth-links {
-        flex-direction: column;
         width: 100%;
-        margin: 1rem 0 0 0;
-        gap: 0.75rem;
-        border-top: 1px solid var(--border-color);
-        padding-top: 1.25rem;
+        margin: var(--space-6) 0 0;
+        padding-top: var(--space-6);
+        border-top: 1px solid var(--line);
     }
 
-    .bs-btn-login, .bs-btn-signup {
+    .bs-btn-signup-1b {
         width: 100%;
         text-align: center;
-        padding: 0.85rem;
-        border-radius: 8px;
+        font-size: var(--text-body);
+        padding: var(--space-4) var(--space-6);
     }
 }
 
@@ -579,7 +501,7 @@ p {
 .hero-1b {
     position: relative;
     width: 100vw;
-    min-height: calc(90vh - 70px);
+    min-height: calc(90vh - var(--nav-height));
     display: flex;
     align-items: center;
     background: var(--clay);
