@@ -751,15 +751,18 @@ p {
 }
 
 /* --- Monetize Band --- */
+/* Phone mockup + benefit list. Generous whitespace between elements.
+   Headline at display-scale confidence. Benefit bullets use diamond
+   as intentional brand element (matches eyebrow diamond). */
 .monetize-band {
     background: var(--sand);
-    padding: 5rem 0;
+    padding: var(--section-padding-y) 0;
 }
 
 .monetize-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: var(--space-16);
     align-items: center;
 }
 
@@ -838,44 +841,49 @@ p {
 
 .monetize-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: var(--text-h2);
     font-weight: 700;
     color: var(--ink);
-    letter-spacing: -0.03em;
-    margin: 1rem 0 1.5rem;
-    line-height: 1.1;
+    letter-spacing: var(--tracking-h2);
+    margin: var(--space-6) 0 var(--space-8);
+    line-height: var(--leading-h2);
 }
 
 .monetize-desc {
-    font-size: 1.1rem;
+    font-size: var(--text-body);
     color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    line-height: var(--leading-body);
+    margin-bottom: var(--space-8);
 }
 
 .benefit-list {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-12);
 }
 
 .benefit-list li {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1rem;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-body);
     color: var(--ink);
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-body);
 }
 
+/* Diamond bullet: intentional brand element matching the eyebrow diamond.
+   --leaf on non-text element clears 3:1 on --sand. */
 .benefit-bullet {
     color: var(--leaf);
     font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 0.35rem;
 }
 
 @media (max-width: 900px) {
     .monetize-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: var(--space-12);
     }
     .monetize-content {
         text-align: center;
