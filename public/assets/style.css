@@ -4181,3 +4181,25 @@ body.our-work-page { background-color: var(--cream); }
 
     .how-it-works-inner { padding: 0 1.5rem; }
 }
+
+/* ==========================================================================
+   15. SCROLL-INTO-VIEW REVEAL
+   ========================================================================== */
+/* Scroll-into-view reveal. Gated behind .js-reveal so content stays fully
+   visible with no JS — never depends on script execution to appear. */
+.js-reveal [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.js-reveal [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .js-reveal [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
