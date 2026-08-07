@@ -1137,12 +1137,26 @@ p {
     border-bottom: 1px solid var(--closing-rule);
 }
 
-/* Headline across the full measure, then a single row underneath: the sentence
-   left, the call right, both sitting on the same bottom line. */
-.final-cta-content {
+/* One grid for the whole closing slab. The CTA row, the footer columns and the
+   legal row all resolve against the same four tracks, so nothing down here
+   picks its own x-position: left-hand content spans tracks 1-2, contact-ish
+   content hangs on track 3, company-ish content on track 4. Three axes total,
+   and every element in the slab sits on one of them. */
+.final-cta-content,
+.footer-grid,
+.footer-bottom-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: var(--space-16);
+    /* Track 3 carries a street address and track 4 carries short labels, so the
+       last two tracks are 1.1/0.9 rather than even — the axes are the point, not
+       equal widths, and this keeps "New Lynn, Auckland 0600" on one line down to
+       900px where the slab stacks anyway. */
+    grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.1fr) minmax(0, 0.9fr);
+    column-gap: var(--space-8);
+}
+
+/* Headline across the full measure, then a single row underneath: the sentence
+   on the left axis, the call on the right axis, both on the same bottom line. */
+.final-cta-content {
     row-gap: var(--space-12);
     align-items: end;
 }
@@ -1159,20 +1173,20 @@ p {
 }
 
 .final-cta-desc {
-    grid-column: 1;
-    max-width: 34ch;
+    grid-column: 1 / span 2;
     margin: 0;
+    text-wrap: balance;      /* no four-character widow under an 86px headline */
     font-size: var(--text-body);
     line-height: var(--leading-body);
     color: var(--closing-dim);
 }
 
 /* Text and an arrow, not a pill — the same CTA convention the nav uses, scaled
-   up to answer the headline. The rule under it carries the affordance a filled
-   button was spending far more ink on. */
+   up to answer the headline. Left-flush on track 4, which is the same axis the
+   Company column and its links hang from directly below. */
 .final-cta-link {
-    grid-column: 2;
-    justify-self: end;
+    grid-column: 4;
+    justify-self: start;
     color: var(--sand);
     text-decoration: none;
     font-size: var(--text-h3);
@@ -1190,17 +1204,9 @@ p {
     border-bottom-color: var(--leaf);
 }
 
-@media (max-width: 900px) {
-    .final-cta-content {
-        grid-template-columns: minmax(0, 1fr);
-        row-gap: var(--space-8);
-    }
-    .final-cta-desc,
-    .final-cta-link {
-        grid-column: 1;
-        justify-self: start;
-    }
-}
+/* Mobile collapse for the whole slab lives at the end of section 5, after every
+   grid-column placement it has to unwind — the `> *` selector ties on
+   specificity with the per-element rules, so source order is what decides. */
 
 /* --- Eyebrow color variants --- */
 .eyebrow-clay { color: var(--clay); }
@@ -1381,20 +1387,17 @@ p {
     padding: var(--space-16) 0 var(--space-24);
 }
 
-/* Both link columns are content-width and pinned to the right edge, so the
-   footer ends flush with the container instead of at some fraction of it;
-   the brand takes whatever is left and the gap between them is the whitespace.
+/* Tracks come from the shared closing-slab grid in section 4. Only the brand is
+   placed explicitly — the two link columns then auto-fill tracks 3 and 4 in DOM
+   order, landing on the same axes as the CTA row above and the legal row below.
    `align-items: start` keeps the three column tops on one line. */
 .footer-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto;
-    column-gap: var(--space-24);
     row-gap: var(--space-12);
     align-items: start;
 }
 
 .footer-brand {
-    max-width: 34ch;
+    grid-column: 1 / span 2;
 }
 
 .footer-logo {
@@ -1438,12 +1441,14 @@ p {
     margin: 0;
 }
 
+/* Same size as the brand sentence opposite them: one body size across the whole
+   footer, so the only type contrast left down here is body vs. mono label. */
 .footer-contact-list a,
 .footer-company-list a,
 .footer-contact-list li {
     color: var(--closing-dim);
     text-decoration: none;
-    font-size: var(--text-small);
+    font-size: var(--text-body);
     line-height: var(--leading-body);
     transition: color var(--transition-fast);
 }
@@ -1460,11 +1465,19 @@ p {
     padding: var(--space-6) 0 var(--space-8);
 }
 
+/* The legal row is on the slab grid too: copy hangs off the left axis with the
+   brand, attribution off track 3 with the Contact column. Nothing here floats
+   to an edge of its own. */
 .footer-bottom-row {
-    display: flex;
-    justify-content: space-between;
     align-items: baseline;
-    gap: var(--space-6);
+}
+
+.footer-copy {
+    grid-column: 1 / span 2;
+}
+
+.footer-attr {
+    grid-column: 3 / -1;
 }
 
 .footer-copy,
@@ -1474,23 +1487,33 @@ p {
     color: var(--closing-faint);
 }
 
+/* The slab collapses as one unit: all three grids drop to a single left-flush
+   column and every placement above unwinds to it. Must stay after the last
+   `grid-column` declaration in this file — `.footer-bottom-row > *` and
+   `.footer-attr` have identical specificity, so source order breaks the tie. */
 @media (max-width: 900px) {
     .footer-main {
         padding: var(--space-12) 0 var(--space-16);
     }
-    .footer-grid {
+    .final-cta-content,
+    .footer-grid,
+    .footer-bottom-row {
         grid-template-columns: minmax(0, 1fr);
-        row-gap: var(--space-12);
     }
-    .footer-brand {
-        max-width: 100%;
+    .final-cta-content > *,
+    .footer-grid > *,
+    .footer-bottom-row > * {
+        grid-column: 1;
+        justify-self: start;
+    }
+    .final-cta-content {
+        row-gap: var(--space-8);
     }
     /* Stacked, still left-aligned: centring it here would be the one templated
        move in an otherwise flush-left slab. */
     .footer-bottom-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-3);
+        align-items: start;
+        row-gap: var(--space-3);
     }
 }
 
