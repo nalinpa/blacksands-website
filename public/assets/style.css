@@ -681,14 +681,17 @@ p {
 }
 
 /* --- How It Works 1b --- */
+/* Numbered list with generous vertical rhythm. The number is the only
+   decorative element — no icons, no cards, no borders. Type scale drives
+   the hierarchy: numbers large and muted, titles at --text-h3, body at --text-body. */
 .how-it-works-1b {
-    padding: 5rem 0;
+    padding: var(--section-padding-y) 0;
     background: var(--cream);
 }
 
 .section-eyebrow {
     display: block;
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--space-12);
 }
 
 .how-it-works-list {
@@ -699,8 +702,8 @@ p {
 .how-row {
     display: grid;
     grid-template-columns: 120px 1fr 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
+    gap: var(--space-8);
+    padding: var(--space-8) 0;
     border-top: 1.5px solid var(--ink);
     align-items: start;
 }
@@ -709,36 +712,38 @@ p {
     border-bottom: 1.5px solid var(--ink);
 }
 
+/* Contrast fix: --leaf on --cream failed AA at large text sizes.
+   Using --forest instead, which clears 7:1 on --cream. */
 .how-number {
     font-family: var(--font-display);
-    font-size: 4rem;
+    font-size: var(--text-h2);
     font-weight: 700;
-    color: var(--leaf);
+    color: var(--forest);
     line-height: 1;
 }
 
 .how-title {
     font-family: var(--font-display);
-    font-size: 1.75rem;
+    font-size: var(--text-h3);
     font-weight: 700;
     color: var(--ink);
-    letter-spacing: -0.02em;
+    letter-spacing: var(--tracking-h2);
 }
 
 .how-desc {
-    font-size: 1rem;
+    font-size: var(--text-body);
     color: var(--muted);
-    line-height: 1.7;
+    line-height: var(--leading-body);
     max-width: 40ch;
 }
 
 @media (max-width: 900px) {
     .how-row {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: var(--space-3);
     }
     .how-number {
-        font-size: 2.5rem;
+        font-size: var(--text-h3);
     }
     .how-title {
         font-size: 1.35rem;
