@@ -894,8 +894,10 @@ p {
 }
 
 /* --- Showcase Section --- */
+/* Grid-aligned discipline: shared column axes between header, featured, and grid.
+   Type hierarchy: title at --text-h2, featured at --text-h3, cards at --text-h3. */
 .showcase-section {
-    padding: 5rem 0 6rem;
+    padding: var(--section-padding-y) 0;
     background: var(--cream);
 }
 
@@ -903,28 +905,32 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-12);
 }
 
 .showcase-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: var(--text-h2);
     font-weight: 700;
     color: var(--ink);
-    letter-spacing: -0.03em;
-    margin-top: 0.5rem;
+    letter-spacing: var(--tracking-h2);
+    margin-top: var(--space-3);
 }
 
+/* Contrast fix: --leaf on --cream failed AA for text.
+   Following Footer pattern: keep text at --forest, add --leaf underline on hover. */
 .see-all-link {
     color: var(--forest);
     font-weight: 600;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.2s ease;
+    font-size: var(--text-body);
+    transition: border-color var(--transition-fast);
     white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    padding-bottom: var(--space-1);
 }
 .see-all-link:hover {
-    color: var(--leaf);
+    border-bottom-color: var(--leaf);
 }
 
 /* Featured Card */
@@ -992,11 +998,11 @@ p {
 
 .featured-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-size: var(--text-h3);
     font-weight: 700;
     color: var(--sand);
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
+    letter-spacing: var(--tracking-h2);
+    margin-bottom: var(--space-4);
 }
 
 .featured-desc {
@@ -1083,11 +1089,11 @@ p {
 
 .card-title {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: var(--text-h3);
     font-weight: 700;
     color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
+    letter-spacing: var(--tracking-h2);
+    margin-bottom: var(--space-3);
 }
 
 .card-desc {
