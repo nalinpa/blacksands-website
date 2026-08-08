@@ -2951,12 +2951,23 @@ body.our-work-page .case-status.live { color: var(--forest); }
     APP DETAIL PAGES (Guide AKL, Kai AKL, Volcanic AKL, Rings)
     ========================================================================== */
 
-.app-detail-page {
-    --ad-ink: #16241C;
-    --ad-muted: #717A6F;
-}
+/* Per-app accent, declared once per theme and consumed everywhere below as
+   var(--acc). The four values are unchanged; only the plumbing changes. Three
+   property-listing selectors per theme collapse to one custom property, so a
+   new accent role never needs a new selector written out four times.
+   --acc is a surface/rule/marker colour on this template, never a text colour:
+   no accent clears 4.5:1 on both --forest and --cream. */
+.app-detail-page { --acc: var(--leaf); }
 
-/* Full-width forest hero */
+.app-detail-page.theme-guide    { --acc: #0E7490; }
+.app-detail-page.theme-kai      { --acc: #D97706; }
+.app-detail-page.theme-volcanic { --acc: #C45B4A; }
+.app-detail-page.theme-rings    { --acc: #0FB5AE; }
+
+/* Full-bleed forest band. Two text values only, the closing slab's exact
+   recipe: --sand is the payoff line and the primary call, --hero-quiet is
+   everything supporting them. Nothing on this band is #FFFFFF — white is not
+   in the palette, and --sand on --forest is 10.09:1. */
 .app-detail-hero {
     position: relative;
     width: 100vw;
@@ -2964,12 +2975,15 @@ body.our-work-page .case-status.live { color: var(--forest); }
     margin-right: calc(-50vw + 50%);
     min-height: 720px;
     background: var(--forest);
+    color: var(--sand);
+    --hero-quiet: color-mix(in srgb, var(--sand) 62%, var(--forest));
     display: flex;
     align-items: flex-end;
     overflow: hidden;
-    padding: 100px 0 0;
+    padding: calc(var(--nav-height) + var(--space-8)) 0 0;
 }
 
+/* Unchanged — the band's own surface, behind everything. */
 .app-detail-hero::before {
     content: '';
     position: absolute;
@@ -2981,224 +2995,239 @@ body.our-work-page .case-status.live { color: var(--forest); }
     z-index: 1;
 }
 
+/* Two tracks. The eyebrow and the headline span both — that span is what buys
+   the headline the full 1160px measure it needs at the --text-display cap. */
 .app-detail-hero .container {
     position: relative;
     z-index: 2;
     width: 100%;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    column-gap: var(--space-16);
     align-items: end;
-    padding-bottom: 0;
+    padding-top: var(--space-24);
 }
 
+/* The wrapper stays in the markup but stops being a box, so its four children
+   become grid items on the band's own tracks. */
 .app-detail-hero__content {
-    padding: 4rem 0 5rem;
-    max-width: 620px;
+    display: contents;
 }
 
 .app-detail-hero__pill {
+    grid-column: 1 / -1;
+    justify-self: start;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: var(--space-2);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--leaf);
-    background: rgba(63, 166, 92, 0.12);
-    border: 1px solid rgba(63, 166, 92, 0.22);
-    padding: 0.4rem 0.9rem;
+    letter-spacing: var(--tracking-eyebrow);
+    line-height: 1;
+    color: var(--sand);
+    background: color-mix(in srgb, var(--acc) 22%, transparent);
+    border: 1px solid color-mix(in srgb, var(--acc) 55%, transparent);
+    padding: var(--space-2) var(--space-4);
     border-radius: 100px;
-    margin-bottom: 1.75rem;
+    margin: 0 0 var(--space-6);
 }
 
 .app-detail-hero__title {
+    grid-column: 1 / -1;
     font-family: var(--font-display);
-    font-size: clamp(2.75rem, 6vw, 5.125rem);
+    font-size: var(--text-display);
     font-weight: 800;
-    line-height: 0.92;
-    letter-spacing: -0.04em;
-    color: #FFFFFF;
-    margin-bottom: 1.5rem;
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    color: var(--hero-quiet);
+    margin: 0 0 var(--space-8);
 }
 
+/* Emphasis by value, not by hue: the opening clause sits at the quiet mix and
+   the <span> steps up to full --sand. */
 .app-detail-hero__title span {
-    color: var(--leaf);
+    color: var(--sand);
 }
 
 .app-detail-hero__desc {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    color: rgba(241, 232, 216, 0.9);
-    max-width: 48ch;
-    margin-bottom: 2.25rem;
+    grid-column: 1;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--hero-quiet);
+    max-width: 46ch;
+    margin: 0 0 var(--space-8);
 }
 
 .app-detail-hero__ctas {
+    grid-column: 1;
     display: flex;
-    gap: 1rem;
+    gap: var(--space-4);
     flex-wrap: wrap;
+    margin: 0;
 }
 
+/* Scoped override of the global .btn-leaf / .btn-ghost pair. */
+.app-detail-hero__ctas .app-btn {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-small);
+    font-weight: 600;
+    line-height: 1;
+    border-radius: 100px;
+    border: 1px solid transparent;
+    transform: none;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.app-detail-hero__ctas .btn-leaf { background: var(--sand); color: var(--forest); }
+.app-detail-hero__ctas .btn-leaf:hover { background: var(--cream); transform: none; }
+.app-detail-hero__ctas .btn-ghost {
+    background: transparent;
+    color: var(--sand);
+    border-color: color-mix(in srgb, var(--sand) 35%, transparent);
+}
+.app-detail-hero__ctas .btn-ghost:hover { background: transparent; border-color: var(--sand); }
+
+/* Rows 3 and 4 are the sentence and the CTAs — the device stands alongside
+   both and bottoms out on the band's edge. */
 .app-detail-hero__visual {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
-    padding-top: 2rem;
-}
-
-.app-detail-hero__glow {
-    position: absolute;
-    bottom: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 140%;
-    height: 90%;
-    background: radial-gradient(ellipse at center, rgba(63, 166, 92, 0.28) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-.app-detail-hero__screenshot {
-    position: relative;
-    z-index: 1;
-    width: 300px;
-    max-width: 100%;
-    border-radius: 28px 28px 0 0;
-    border: 10px solid #050F0A;
-    border-bottom: none;
-    box-shadow: 0 -8px 60px rgba(0, 0, 0, 0.35);
+    grid-column: 2;
+    grid-row: 3 / span 2;
+    align-self: end;
+    justify-self: center;
     display: block;
+    padding: 0;
 }
 
-/* Features band */
+/* Framing, not decoration: a heavy --ink bezel, top corners only, and a bottom
+   edge cropped flush with the band. No glow, no drop shadow. */
+.app-detail-hero__screenshot {
+    display: block;
+    width: 100%;
+    height: clamp(360px, 40vw, 480px);
+    object-fit: cover;
+    object-position: top center;
+    border: 10px solid var(--ink);
+    border-bottom: none;
+    border-radius: 28px 28px 0 0;
+}
+
+/* Features band. Bottom padding is 0 — the gap down to the privacy section is
+   owned by .app-detail-legal. */
 .app-detail-features {
     background: var(--cream);
-    padding: 5rem 0 6rem;
+    padding: var(--section-padding-y) 0 0;
 }
 
+/* Left-flush. */
 .app-detail-features__header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-}
-
-.app-detail-features__kicker {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--clay);
-    margin-bottom: 0.75rem;
+    margin: 0 0 var(--space-16);
 }
 
 .app-detail-features__title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: var(--text-h2);
     font-weight: 700;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
     color: var(--ink);
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-    line-height: 1.1;
+    max-width: 22ch;
+    margin: 0 0 var(--space-4);
 }
 
 .app-detail-features__sub {
-    font-size: 1.1rem;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
     color: var(--muted);
-    line-height: 1.7;
+    max-width: 54ch;
+    margin: 0;
 }
 
+/* Three columns, each opened by a solid accent rule and a mono index. */
 .app-detail-features__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-16);
+    row-gap: var(--space-12);
+    counter-reset: app-feature;
 }
 
+/* No card: no background, no box border, no radius, no hover lift. */
 .app-detail-feature {
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 2rem;
-    text-align: left;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    counter-increment: app-feature;
+    border-top: 2px solid var(--acc);
+    padding: var(--space-6) 0 0;
 }
 
-.app-detail-feature:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-}
-
-.app-detail-feature__badge {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(63, 166, 92, 0.12);
-    color: var(--leaf);
-    font-size: 1.35rem;
-    margin-bottom: 1.25rem;
-}
-
-.app-detail-feature__badge svg {
-    width: 26px;
-    height: 26px;
+.app-detail-feature::before {
+    content: counter(app-feature, decimal-leading-zero);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--muted);
+    margin-bottom: var(--space-6);
 }
 
 .app-detail-feature h3 {
     font-family: var(--font-display);
-    font-size: 1.35rem;
+    font-size: var(--text-h3);
     font-weight: 700;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
     color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
+    margin: 0 0 var(--space-3);
 }
 
 .app-detail-feature p {
-    font-size: 1rem;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
     color: var(--muted);
-    line-height: 1.7;
+    margin: 0;
 }
 
-/* Privacy / legal card */
+/* Privacy / legal. This section owns the whole gap down from the features
+   band, which is why .app-detail-features ends with 0 bottom padding. */
 .app-detail-legal {
     background: var(--cream);
-    padding: 0 0 6rem;
+    padding: var(--section-padding-y) 0;
 }
 
+/* Was a white 28px-radius card. What replaces it is one hairline and a real
+   measure. The element itself stays — it carries the Alpine x-data — it just
+   stops being a box. */
 .app-detail-legal__box {
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 3.5rem;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    max-width: 68ch;
+    margin: 0;
+    padding: var(--space-16) 0 0;
 }
 
 .app-detail-legal__box h2 {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-size: var(--text-h2);
     font-weight: 700;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
     color: var(--ink);
-    letter-spacing: -0.03em;
-    margin-bottom: 0.5rem;
+    margin: 0 0 var(--space-3);
+    scroll-margin-top: calc(var(--nav-height) + var(--space-8));
 }
 
 .app-detail-legal__updated {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: var(--tracking-eyebrow);
     color: var(--muted);
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--space-16);
 }
 
 .app-detail-legal__prose {
@@ -3207,134 +3236,115 @@ body.our-work-page .case-status.live { color: var(--forest); }
 
 .app-detail-legal__prose h3 {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: var(--text-h3);
     font-weight: 700;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
     color: var(--ink);
-    margin: 2rem 0 0.75rem;
-    letter-spacing: -0.01em;
+    margin: var(--space-16) 0 var(--space-4);
 }
 
-.app-detail-legal__prose p,
-.app-detail-legal__prose li {
-    font-size: 1rem;
-    line-height: 1.75;
-    margin-bottom: 1rem;
+.app-detail-legal__prose p {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    margin: 0 0 var(--space-4);
 }
 
+/* list-style is restored rather than replaced. ::marker takes --acc directly
+   and the semantics stay. */
 .app-detail-legal__prose ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 1.5rem;
+    list-style: disc;
+    padding-left: var(--space-4);
+    margin: 0 0 var(--space-8);
 }
 
 .app-detail-legal__prose li {
-    position: relative;
-    padding-left: 1.5rem;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    padding-left: var(--space-2);
+    margin-bottom: var(--space-3);
 }
 
-.app-detail-legal__prose li::before {
-    content: '●';
-    position: absolute;
-    left: 0;
-    top: 0.05em;
-    color: var(--leaf);
-    font-size: 0.55rem;
+.app-detail-legal__prose li::marker {
+    color: var(--acc);
 }
 
 .app-detail-legal__prose strong {
     color: var(--ink);
-    font-weight: 700;
+    font-weight: 600;
 }
 
-/* Support box */
+/* Same hairline, same left edge. */
 .app-detail-support {
-    margin-top: 3rem;
-    padding: 2rem;
-    background: var(--cream);
-    border-radius: 20px;
-    text-align: center;
+    margin-top: var(--space-16);
+    padding: var(--space-12) 0 0;
+    border-top: 1px solid var(--line);
+    background: none;
+    border-radius: 0;
+    text-align: left;
+    scroll-margin-top: calc(var(--nav-height) + var(--space-8));
 }
 
 .app-detail-support h3 {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: var(--space-2);
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: var(--text-h3);
     font-weight: 700;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
     color: var(--ink);
-    margin-bottom: 0.75rem;
+    margin: 0 0 var(--space-3);
 }
 
 .app-detail-support h3 svg {
-    width: 22px;
-    height: 22px;
-    color: var(--leaf);
+    width: 1em;
+    height: 1em;
+    color: var(--muted);
+    flex: none;
 }
 
 .app-detail-support p {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
     color: var(--muted);
-    margin-bottom: 1.25rem;
-    max-width: 50ch;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 52ch;
+    margin: 0 0 var(--space-6);
 }
 
-/* Per-app accent modifiers (override leaf defaults) */
-.app-detail-page.theme-guide .app-detail-hero__pill,
-.app-detail-page.theme-guide .app-detail-hero__title span,
-.app-detail-page.theme-guide .app-detail-feature__badge,
-.app-detail-page.theme-guide .app-detail-legal__prose li::before,
-.app-detail-page.theme-guide .app-detail-support h3 svg { color: #0E7490; }
-.app-detail-page.theme-guide .app-detail-hero__pill,
-.app-detail-page.theme-guide .app-detail-feature__badge { background: rgba(14, 116, 144, 0.12); border-color: rgba(14, 116, 144, 0.22); }
-.app-detail-page.theme-guide .app-detail-hero__glow { background: radial-gradient(ellipse at center, rgba(14, 116, 144, 0.28) 0%, transparent 65%); }
 
-.app-detail-page.theme-kai .app-detail-hero__pill,
-.app-detail-page.theme-kai .app-detail-hero__title span,
-.app-detail-page.theme-kai .app-detail-feature__badge,
-.app-detail-page.theme-kai .app-detail-legal__prose li::before,
-.app-detail-page.theme-kai .app-detail-support h3 svg { color: #D97706; }
-.app-detail-page.theme-kai .app-detail-hero__pill,
-.app-detail-page.theme-kai .app-detail-feature__badge { background: rgba(217, 119, 6, 0.12); border-color: rgba(217, 119, 6, 0.22); }
-.app-detail-page.theme-kai .app-detail-hero__glow { background: radial-gradient(ellipse at center, rgba(217, 119, 6, 0.28) 0%, transparent 65%); }
-
-.app-detail-page.theme-volcanic .app-detail-hero__pill,
-.app-detail-page.theme-volcanic .app-detail-hero__title span,
-.app-detail-page.theme-volcanic .app-detail-feature__badge,
-.app-detail-page.theme-volcanic .app-detail-legal__prose li::before,
-.app-detail-page.theme-volcanic .app-detail-support h3 svg { color: #C45B4A; }
-.app-detail-page.theme-volcanic .app-detail-hero__pill,
-.app-detail-page.theme-volcanic .app-detail-feature__badge { background: rgba(196, 91, 74, 0.12); border-color: rgba(196, 91, 74, 0.22); }
-.app-detail-page.theme-volcanic .app-detail-hero__glow { background: radial-gradient(ellipse at center, rgba(196, 91, 74, 0.28) 0%, transparent 65%); }
-
-.app-detail-page.theme-rings .app-detail-hero__pill,
-.app-detail-page.theme-rings .app-detail-hero__title span,
-.app-detail-page.theme-rings .app-detail-feature__badge,
-.app-detail-page.theme-rings .app-detail-legal__prose li::before,
-.app-detail-page.theme-rings .app-detail-support h3 svg { color: #0FB5AE; }
-.app-detail-page.theme-rings .app-detail-hero__pill,
-.app-detail-page.theme-rings .app-detail-feature__badge { background: rgba(15, 181, 174, 0.12); border-color: rgba(15, 181, 174, 0.22); }
-.app-detail-page.theme-rings .app-detail-hero__glow { background: radial-gradient(ellipse at center, rgba(15, 181, 174, 0.28) 0%, transparent 65%); }
-
-/* App detail responsive */
 @media (max-width: 900px) {
-    .app-detail-hero { min-height: auto; padding-top: 30px; }
-    .app-detail-hero .container { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-    .app-detail-hero__content { padding: 1.5rem 0 0; max-width: 100%; }
-    .app-detail-hero__desc { margin-left: auto; margin-right: auto; }
-    .app-detail-hero__ctas { justify-content: center; }
-    .app-detail-hero__screenshot { width: 240px; }
-    .app-detail-features { padding-top: 2.5rem; }
-    .app-detail-features__grid { grid-template-columns: 1fr; }
-    .app-detail-legal__box { padding: 2rem 1.5rem; }
+    .app-detail-hero {
+        min-height: 0;
+        padding-top: calc(var(--nav-height) + var(--space-6));
+    }
+    .app-detail-hero .container {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: var(--space-12);
+    }
+    .app-detail-hero__content > *,
+    .app-detail-hero__visual {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: start;
+    }
+    .app-detail-hero__desc { max-width: none; }
+    .app-detail-hero__visual { width: min(100%, 300px); }
+    .app-detail-features__grid {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-8);
+    }
+    .app-detail-legal__box { padding-top: var(--space-12); }
 }
 
 @media (max-width: 540px) {
-    .app-detail-hero__title { font-size: 2.5rem; }
-    .app-detail-hero__screenshot { width: 200px; border-width: 8px; }
-    .app-detail-feature { padding: 1.5rem; }
+    .app-detail-hero__title { font-size: clamp(2.25rem, 9vw, 2.75rem); }
+    .app-detail-hero__visual { width: min(100%, 260px); }
+    .app-detail-hero__screenshot {
+        height: clamp(300px, 78vw, 380px);
+        border-width: 8px;
+    }
 }
 
 /* --- Per-app accent colors (legacy; kept for any old references) --- */
