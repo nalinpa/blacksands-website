@@ -77,7 +77,9 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 100px;
+    /* Same formula as .bs-sidebar's sticky offset — an anchor should land where
+       the index sits, and both are "clear the bar, then one step". */
+    scroll-padding-top: calc(var(--nav-height) + var(--space-6));
 }
 
 body {
@@ -423,35 +425,66 @@ p {
 /* ==========================================================================
    3. BUTTONS & UI ELEMENTS
    ========================================================================== */
-.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn {
-    display: inline-block;
-    padding: 0.85rem 1.75rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
+/* Utility-page buttons: /contact, /login, /404 (+ android.html). Not the
+   site-wide pill system — .btn-forest and friends below are untouched.
+
+   Full-width block by default, because that is how all four uses of .btn on the
+   site are written. Square, no shadow, no lift: the same hover contract the nav
+   CTA settled on, where the box fills and the text inverts. Both variants carry
+   a 1px border so that stacking a filled one above an outlined one does not
+   produce a 2px height difference. */
+.btn,
+.bs-btn-submit {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: inherit;
+    font-size: var(--text-body);
+    font-weight: 500;
+    line-height: 1.2;
+    padding: var(--space-4) var(--space-6);
+    border: 1px solid transparent;
+    border-radius: 0;
     text-decoration: none;
-    transition: all 0.2s ease;
     cursor: pointer;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast),
+                border-color var(--transition-fast);
 }
-.btn-primary {
-    background-color: var(--accent-dark);
-    color: #FFFFFF;
-    border: 1px solid var(--accent-dark);
-    box-shadow: 0 4px 6px rgba(15, 23, 42, 0.1);
+
+/* /contact stacks two of these with no wrapper. They currently touch — .btn is
+   inline-block, .full-width overrides it to block, and neither carries a margin.
+   One rule covers both the stacked pair and .btn-group's children. */
+.btn + .btn { margin-top: var(--space-3); }
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-8);
 }
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(15, 23, 42, 0.15);
+
+.btn-primary,
+.bs-btn-submit {
+    background-color: var(--forest);
+    color: var(--cream);
+    border-color: var(--forest);
 }
+
+.btn-primary:hover,
+.bs-btn-submit:hover:not(:disabled) {
+    background-color: var(--ink);
+    border-color: var(--ink);
+}
+
 .btn-secondary {
-    background-color: var(--bg-surface);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    background-color: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
 }
+
 .btn-secondary:hover {
-    border-color: var(--text-primary);
-    background-color: var(--bg-deep);
+    background-color: var(--ink);
+    color: var(--cream);
 }
 
 /* ==========================================================================
@@ -551,7 +584,7 @@ p {
     min-height: calc(90vh - var(--nav-height));
     display: flex;
     align-items: center;
-    background: var(--clay);
+    background: var(--forest-2);   /* bed under the photo while it loads */
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     overflow: hidden;
@@ -564,205 +597,318 @@ p {
     z-index: 0;
 }
 
+/* One scrim, no tint. The old three-stop clay gradient plus .hero-glow laid two
+   orange washes over a photo that already carries the warmth — decoration
+   fighting the picture rather than buying legibility. This is --forest-2 #0A2B19
+   alone (rgba of a palette hex is how this file has always expressed alpha —
+   see .bs-navbar's translucent --cream), heaviest under the text and lifting to
+   the right where nothing sits, so the photo stays a photo.
+
+   The stops are picked so every hero string clears AA against a worst-case
+   blown-out white region of the photo, not just against the sky it actually has:
+   at 0.88 the composite luminance is 0.0488, putting --cream at 9.87:1 and
+   --sand at 8.74:1; at the 0.66 stop it is 0.156, --cream 4.73:1 / --sand 4.19:1.
+   The eyebrow sits in the first 15% (>=8:1), the 42ch description ends at ~34%
+   where --sand still measures 5.0:1, and the H1 is 96px large text needing 3:1. */
 .hero-overlay::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(224,134,58,.4), rgba(180,98,32,.58) 55%, rgba(92,42,12,.8));
+    background: linear-gradient(
+        90deg,
+        rgba(10, 43, 25, 0.88) 0%,
+        rgba(10, 43, 25, 0.66) 45%,
+        rgba(10, 43, 25, 0.40) 100%
+    );
 }
 
-/* hero-glow removed: decorative element added noise rather than legibility */
-
+/* On the .container rails, so the hero's left edge is the same axis the stat bar,
+   How-it-works, the showcase and the closing slab all hang from — it was on its
+   own 60px-from-the-viewport padding before, which drifted off every other
+   section above 1280px. width + the auto margins .container already sets, rather
+   than flex-grow: `.hero-content { flex: 1 }` lives further down this file
+   (section 12) and would otherwise stretch it past the 1280px measure. */
 .hero-1b .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    padding: 6rem 60px;
+    flex: 0 1 auto;
+    width: 100%;
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
 }
 
+/* Was .eyebrow-leaf. --leaf over this photo measures 4.0:1 against an average
+   region and ~1.5:1 against the sky — it is the one small string on the fold and
+   it cannot be left to the picture. Held at --sand, the quiet half of the same
+   two-value binary the closing slab runs. Specificity ties with .eyebrow (both
+   0,1,0), so this must stay below it in source order to win. */
 .hero-eyebrow {
     display: block;
-    margin-bottom: 1.5rem;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--sand);
+    margin-bottom: var(--space-6);
 }
 
+/* The bare token, not the legacy clamp(3rem, 8vw, 7.5rem). --text-display caps
+   at 96px where the old rule ran to 120px; the closer's comment already states
+   the hero H1 is the element that owns --text-display straight, with
+   .final-cta-title at 1.65x above it. Three display steps down the page —
+   96 / 56 / 30 — instead of five arbitrary clamps.
+
+   The `.text-leaf` span is gone from the markup: at 96px --leaf needs 3:1 and
+   measures 2.83:1 over a white photo region, and a two-tone headline was the
+   third decorative element on a fold the direction asks to quieten. Copy is
+   unchanged; only the span wrapper is removed. */
 .hero-title-1b {
     font-family: var(--font-display);
     font-size: var(--text-display);
     font-weight: 800;
     line-height: var(--leading-display);
     letter-spacing: var(--tracking-display);
-    color: #FFFFFF;
-    margin-bottom: 2rem;
-    max-width: 16ch;
+    color: var(--cream);
+    margin: 0 0 var(--space-8);
 }
 
+/* Body size at 400, not 24px at 700. A bold subhead one step under an 800-weight
+   display line is two headlines stacked; the closer sets .final-cta-desc at
+   --text-body for the same reason. 42ch is a legibility measure as much as a
+   typographic one — see the scrim comment. */
 .hero-desc-1b {
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
-    font-weight: 700;
-    color: #CDDDD0;
-    max-width: 40ch;
-    margin-bottom: 2.5rem;
-    line-height: 1.7;
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: var(--leading-body);
+    color: var(--sand);
+    max-width: 42ch;
+    margin: 0 0 var(--space-8);
 }
 
 .hero-btns-1b {
     display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+/* .btn-leaf and .btn-ghost carry different padding (0.85/1.75rem vs 1/2rem) and
+   only one of them has a border, so side by side they render at two different
+   heights. Neither sets text-decoration either, and this stylesheet has no
+   anchor reset — both pills currently draw the UA underline. Both classes are
+   shared with other pages, so the correction is scoped to the hero pair. The
+   transparent border mirrors .btn-ghost's 1.5px so the two boxes match, the same
+   trick .bs-nav-links a uses to sit on the bar's centre line. */
+.hero-btns-1b .btn-leaf,
+.hero-btns-1b .btn-ghost {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-body);
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.hero-btns-1b .btn-leaf {
+    border: 1.5px solid transparent;
 }
 
 @media (max-width: 900px) {
     .hero-1b {
         min-height: auto;
-        padding: 0 0 3rem;
     }
+    /* 24px rail, the same one .bs-navbar and the closing slab already use below
+       900px, so the nav mark, the H1 and the footer mark share one left edge. */
     .hero-1b .hero-content {
-        padding: 2.5rem 1.5rem 0;
+        padding: var(--space-24) var(--space-6);
         text-align: center;
     }
-    .hero-title-1b {
-        font-size: clamp(2.5rem, 10vw, 4rem);
-    }
-    .hero-btns-1b {
-        justify-content: center;
+    /* Centred content spans the full width, so a left-to-right scrim would leave
+       the right half of the type at 0.40. Flat 0.80 instead: composite luminance
+       0.0795, --sand 6.67:1 and --cream 7.53:1 even over a white region. */
+    .hero-overlay::after {
+        background: rgba(10, 43, 25, 0.80);
     }
     .hero-desc-1b {
         margin-left: auto;
         margin-right: auto;
     }
+    .hero-btns-1b {
+        justify-content: center;
+    }
 }
 
-/* --- Stats Bar --- */
-/* Part of the hero unit, not a disconnected strip. Same container rails,
-   deliberate hierarchy: big number vs. its label, not four different registers. */
+/* --- Stats Bar: the bottom half of the opening unit ----------------------- */
+/* No border and no band colour. The strip was fenced off from the hero by a
+   hairline and 2rem of padding, which read as a separate component; space is
+   what joins it to the fold now, and the --section-padding-y that How-it-works
+   opens with is what ends the fold. */
 .stat-bar {
     background: var(--cream);
-    border-bottom: 1px solid var(--line);
-    padding: var(--space-12) 0;
+    padding: var(--space-16) 0;
 }
 
 .stat-bar-inner {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-8);
-    align-items: baseline;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    row-gap: var(--space-8);
 }
 
+/* Value over label, not value beside label. Inline, each cell read as one
+   run-on sentence, and the cell whose value is "4" behaved like a different
+   component from the cell whose value is "Built around". */
 .stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+    display: grid;
+    row-gap: var(--space-2);
+    align-content: start;
 }
 
+/* Two tiers, one colour — the nav's move (wordmark 20/700 over links 14/500)
+   applied to a four-up strip. Four cells whose values are "4", "Built around",
+   "Published" and "Offline-first" cannot carry a numeric register, so size and
+   weight do all the separating and --ink does not vary. Holding the label at
+   --ink also keeps it off --muted, which measures 4.135:1 on --cream and would
+   miss AA at 14px. */
 .stat-number {
     font-family: var(--font-display);
     font-size: var(--text-h3);
     font-weight: 700;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
     color: var(--ink);
-    line-height: 1.1;
 }
 
 .stat-label {
     font-size: var(--text-small);
-    color: var(--muted);
-    line-height: 1.4;
+    font-weight: 500;
+    line-height: var(--leading-body);
+    color: var(--ink);
 }
 
 @media (max-width: 900px) {
+    .stat-bar .container {
+        padding: 0 var(--space-6);
+    }
+    .stat-bar {
+        padding: var(--space-12) 0;
+    }
     .stat-bar-inner {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 500px) {
     .stat-bar-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
 /* --- How It Works 1b --- */
-/* Numbered list with generous vertical rhythm. The number is the only
-   decorative element — no icons, no cards, no borders. Type scale drives
-   the hierarchy: numbers large and muted, titles at --text-h3, body at --text-body. */
 .how-it-works-1b {
     padding: var(--section-padding-y) 0;
     background: var(--cream);
 }
 
-.section-eyebrow {
+/* Scoped: .section-eyebrow is shared with the "how we work" strip on
+   creators.html, which this phase does not touch. */
+.how-it-works-1b .section-eyebrow {
     display: block;
-    margin-bottom: var(--space-12);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    margin-bottom: var(--space-16);
 }
 
 .how-it-works-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
 }
 
+/* Three tracks on one set of axes, the closing slab's discipline applied to a
+   list: the index sits in a fixed --space-24 column (96px holds "01" at the
+   56px cap, which measures ~67px), then title and description take the rest at
+   1 / 1.1 — the same uneven pair the footer grid uses, and enough width that all
+   three titles stay on one line at 1440.
+
+   The dividers drop from 1.5px --ink to a 1px --line hairline: the closing slab
+   already established one rule weight for the whole site, and three near-black
+   bars were drawing more than the numbers they separate. */
 .how-row {
     display: grid;
-    grid-template-columns: 120px 1fr 1fr;
-    gap: var(--space-8);
-    padding: var(--space-8) 0;
-    border-top: 1.5px solid var(--ink);
+    grid-template-columns: minmax(0, var(--space-24)) minmax(0, 1fr) minmax(0, 1.1fr);
+    column-gap: var(--space-8);
+    padding: var(--space-12) 0;
+    border-top: 1px solid var(--line);
     align-items: start;
 }
 
 .how-row:last-child {
-    border-bottom: 1.5px solid var(--ink);
+    border-bottom: 1px solid var(--line);
 }
 
-/* Contrast fix: --leaf on --cream failed AA at large text sizes.
-   Using --forest instead, which clears 7:1 on --cream. */
+/* The AA fix. --leaf measures 2.53:1 on --sand and 2.86:1 on --cream — under
+   the 3:1 large-text floor in either bed, so there is no background in this
+   palette where a --leaf numeral passes. --forest is 11.38:1 on --cream and
+   clears AA at any size, which takes the question off the table permanently.
+
+   Competing with the title is then handled by weight, not by dimming the colour:
+   500 against the title's 700, at --text-h2 against the title's --text-h3. The
+   number is the biggest thing in the row and the lightest — an index, not a
+   heading. */
 .how-number {
     font-family: var(--font-display);
     font-size: var(--text-h2);
-    font-weight: 700;
+    font-weight: 500;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
     color: var(--forest);
-    line-height: 1;
 }
 
 .how-title {
     font-family: var(--font-display);
     font-size: var(--text-h3);
     font-weight: 700;
-    color: var(--ink);
+    line-height: var(--leading-h2);
     letter-spacing: var(--tracking-h2);
+    color: var(--ink);
+    margin: 0;
 }
 
+/* No max-width: the grid track is the measure now, which is what keeps the
+   description column aligned to a real axis instead of to a character count. */
 .how-desc {
     font-size: var(--text-body);
-    color: var(--muted);
     line-height: var(--leading-body);
-    max-width: 40ch;
+    color: var(--muted);
+    margin: 0;
 }
 
 @media (max-width: 900px) {
+    .how-it-works-1b .container {
+        padding: 0 var(--space-6);
+    }
+    .how-it-works-1b .section-eyebrow {
+        margin-bottom: var(--space-12);
+    }
     .how-row {
-        grid-template-columns: 1fr;
-        gap: var(--space-3);
-    }
-    .how-number {
-        font-size: var(--text-h3);
-    }
-    .how-title {
-        font-size: 1.35rem;
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-3);
+        padding: var(--space-8) 0;
     }
 }
 
 /* --- Monetize Band --- */
-/* Phone mockup + benefit list. Generous whitespace between elements.
-   Headline at display-scale confidence. Benefit bullets use diamond
-   as intentional brand element (matches eyebrow diamond). */
 .monetize-band {
     background: var(--sand);
     padding: var(--section-padding-y) 0;
 }
 
+/* 0.9 / 1.1 rather than 1 / 1, and --space-16 between them rather than
+   --space-12. The mockup is the section's one illustrative element and it was
+   holding an equal half of the canvas against a --text-h2 headline; giving the
+   type the larger track is what stops the two competing, and it needs no change
+   to the mockup itself. */
 .monetize-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-16);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    column-gap: var(--space-16);
     align-items: center;
 }
 
@@ -835,197 +981,301 @@ p {
     color: var(--ink);
 }
 
+/* One gap value for the whole column instead of four different bottom margins
+   (1rem / 1.5rem / 1.5rem / 2rem). The eyebrow, headline, sentence, list and
+   call are now evenly spaced by construction, which is the same thing
+   .bs-nav-links does with its single flex gap. justify-items keeps the CTA from
+   stretching to the track width. */
 .monetize-content {
-    max-width: 500px;
+    display: grid;
+    row-gap: var(--space-6);
+    justify-items: start;
+    max-width: none;
 }
 
+.monetize-content .eyebrow {
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+}
+
+/* --text-h2, the section-headline step — one level under the hero's
+   --text-display and well under the closer's 1.65x. It reads as the punchiest
+   line in the middle of the page without starting a fourth display size. 14ch
+   breaks it as "Stop selling / static PDFs." rather than letting it run the full
+   track on one line. */
 .monetize-title {
     font-family: var(--font-display);
     font-size: var(--text-h2);
     font-weight: 700;
-    color: var(--ink);
-    letter-spacing: var(--tracking-h2);
-    margin: var(--space-6) 0 var(--space-8);
     line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
+    color: var(--ink);
+    margin: 0;
+    max-width: 14ch;
 }
 
 .monetize-desc {
     font-size: var(--text-body);
-    color: var(--muted);
     line-height: var(--leading-body);
-    margin-bottom: var(--space-8);
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0;
 }
 
 .benefit-list {
     list-style: none;
-    margin-bottom: var(--space-12);
+    display: grid;
+    row-gap: var(--space-4);
+    margin: 0;
+    padding: 0;
 }
 
-.benefit-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
+/* Scoped under .monetize-content: .benefit-list is also on creators.html and
+   product.html, which this phase does not touch. A two-track grid rather than a
+   flex row so all three lines wrap to one hanging indent instead of tucking
+   under their own bullet. */
+.monetize-content .benefit-list li {
+    display: grid;
+    grid-template-columns: var(--space-6) minmax(0, 1fr);
+    align-items: baseline;
     font-size: var(--text-body);
-    color: var(--ink);
-    margin-bottom: var(--space-4);
     line-height: var(--leading-body);
+    color: var(--ink);
+    margin: 0;
 }
 
-/* Diamond bullet: intentional brand element matching the eyebrow diamond.
-   --leaf on non-text element clears 3:1 on --sand. */
-.benefit-bullet {
-    color: var(--leaf);
-    font-size: 0.75rem;
-    flex-shrink: 0;
-    margin-top: 0.35rem;
+/* Kept as a mark, demoted to a mark. --leaf on --sand is 2.53:1, invisible at
+   12px even before the AA question; --forest is 10.09:1 there. At
+   --text-eyebrow against 17px body text it cannot compete on size, so a dark
+   value is the safe one — a pale accent would just have been noise. */
+.monetize-content .benefit-bullet {
+    font-size: var(--text-eyebrow);
+    color: var(--forest);
+}
+
+/* Scoped: .btn-forest is shared with creators.html and civic.html. This
+   stylesheet has no anchor reset, so the pill currently draws the UA underline. */
+.monetize-content .btn-forest {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-body);
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
 }
 
 @media (max-width: 900px) {
+    .monetize-band .container {
+        padding: 0 var(--space-6);
+    }
     .monetize-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-12);
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-12);
     }
+    /* Stacked, the column stays left-flush — the same call the closing slab
+       makes at this breakpoint. Centring one section in an otherwise flush-left
+       page is the templated move. */
     .monetize-content {
-        text-align: center;
-    }
-    .benefit-list li {
-        justify-content: center;
+        justify-items: start;
     }
 }
 
 /* --- Showcase Section --- */
-/* Grid-aligned discipline: shared column axes between header, featured, and grid.
-   Type hierarchy: title at --text-h2, featured at --text-h3, cards at --text-h3. */
 .showcase-section {
     padding: var(--section-padding-y) 0;
     background: var(--cream);
 }
 
+/* The same four tracks the closing slab runs, for the same reason: the lede
+   spans 1-2 and the call hangs off track 4, which is the axis .final-cta-link
+   and the Company column already sit on further down the page. */
 .showcase-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: var(--space-12);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.1fr) minmax(0, 0.9fr);
+    column-gap: var(--space-8);
+    align-items: end;
+    margin-bottom: var(--space-16);
+}
+
+.showcase-header-lede {
+    grid-column: 1 / span 2;
+    display: grid;
+    row-gap: var(--space-4);
+    justify-items: start;
+}
+
+.showcase-header-lede .eyebrow {
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
 }
 
 .showcase-title {
     font-family: var(--font-display);
     font-size: var(--text-h2);
     font-weight: 700;
-    color: var(--ink);
+    line-height: var(--leading-h2);
     letter-spacing: var(--tracking-h2);
-    margin-top: var(--space-3);
+    color: var(--ink);
+    margin: 0;
 }
 
-/* Contrast fix: --leaf on --cream failed AA for text.
-   Following Footer pattern: keep text at --forest, add --leaf underline on hover. */
+.showcase-intro {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0;
+}
+
+/* The AA fix: the rule moves, the text does not. The text was swapping
+   --forest -> --leaf on hover, which took it from 11.38:1 down to 2.86:1.
+   Holding it at --forest keeps both states at 11.38:1, and --leaf lands on
+   the 1px border instead. */
 .see-all-link {
+    grid-column: 4;
+    justify-self: start;
     color: var(--forest);
-    font-weight: 600;
     text-decoration: none;
     font-size: var(--text-body);
-    transition: border-color var(--transition-fast);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-h2);
     white-space: nowrap;
-    border-bottom: 1px solid transparent;
     padding-bottom: var(--space-1);
+    border-bottom: 1px solid var(--forest);
+    transition: border-color var(--transition-fast);
 }
+
 .see-all-link:hover {
     border-bottom-color: var(--leaf);
 }
 
 /* Featured Card */
+/* Same --forest bed as the closing slab, so it gets the slab's two-value binary
+   too: --sand for what you read first, one quiet mix for what supports it. */
 .showcase-featured {
     display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     background: var(--forest);
-    border-radius: 24px;
+    color: var(--sand);
+    --featured-quiet: color-mix(in srgb, var(--sand) 62%, var(--forest));
+    border-radius: var(--space-6);
     overflow: hidden;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-6);
 }
 
+/* The radial --leaf glow behind the screenshot is deleted. */
 .featured-image-bed {
     background: var(--forest-2);
-    position: relative;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 2rem;
+    padding: var(--space-8);
     min-height: 400px;
-}
-
-.featured-image-bed::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 60%;
-    background: radial-gradient(ellipse, rgba(63, 166, 92, 0.2) 0%, transparent 70%);
 }
 
 .featured-screenshot {
     width: 230px;
     border-radius: 20px 20px 0 0;
-    border: 8px solid #050F0A;
-    position: relative;
-    z-index: 1;
+    border: 8px solid var(--forest-2);
 }
 
+/* One row-gap for the column, same construction as .monetize-content. */
 .featured-content {
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: var(--space-16);
+    display: grid;
+    row-gap: var(--space-6);
+    align-content: center;
+    justify-items: start;
 }
 
 .featured-meta {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    align-items: baseline;
+    column-gap: var(--space-6);
 }
 
+/* The pill is gone. Category and status are one voice now — the site's mono
+   label voice, separated by value alone. */
 .featured-meta .case-badge {
-    background: rgba(241, 232, 216, 0.15);
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
     color: var(--sand);
-    border: 1px solid rgba(241, 232, 216, 0.25);
 }
 
-.case-status.live {
-    color: var(--leaf);
+.showcase-featured .case-status,
+.showcase-card .case-status {
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
 }
 
+/* --leaf measures 3.98:1 on --forest and 2.86:1 on --cream, so as 12.8px text
+   it misses AA in both beds. Each bed holds it at that bed's own value. */
+.showcase-featured .case-status.live { color: var(--featured-quiet); }
+.showcase-card .case-status.live { color: var(--forest); }
+
+/* Between --text-h2 and --text-h3, derived by calc from the scale. */
 .featured-title {
     font-family: var(--font-display);
-    font-size: var(--text-h3);
+    font-size: calc(var(--text-h3) * 1.4);
     font-weight: 700;
-    color: var(--sand);
+    line-height: var(--leading-h2);
     letter-spacing: var(--tracking-h2);
-    margin-bottom: var(--space-4);
+    color: var(--sand);
+    margin: 0;
 }
 
 .featured-desc {
-    font-size: 1.05rem;
-    color: rgba(241, 232, 216, 0.8);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    max-width: 45ch;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--featured-quiet);
+    max-width: 46ch;
+    margin: 0;
 }
 
 .featured-ctas {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+/* Same scoped correction as the hero pair. */
+.featured-ctas .btn-leaf,
+.featured-ctas .btn-ghost {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-body);
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.featured-ctas .btn-leaf {
+    border: 1.5px solid transparent;
 }
 
 @media (max-width: 900px) {
+    .showcase-section .container {
+        padding: 0 var(--space-6);
+    }
     .showcase-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-6);
+        margin-bottom: var(--space-12);
+    }
+    .showcase-header-lede,
+    .see-all-link {
+        grid-column: 1;
     }
     .showcase-featured {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
     .featured-image-bed {
         min-height: 300px;
@@ -1034,104 +1284,104 @@ p {
         width: 210px;
     }
     .featured-content {
-        padding: 2rem;
+        padding: var(--space-8);
     }
 }
 
 /* Showcase Grid (3 cards) */
 .showcase-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
 }
 
+/* The lift-and-shadow hover ran at 0.3s, over the phase's 200ms ceiling. A
+   border that darkens is the same hover .bs-nav-links a and .final-cta-link
+   already use, costs no repaint outside the element, and is honest at 160ms. */
 .showcase-card {
     background: var(--cream);
     border: 1px solid var(--line);
     border-radius: 20px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color var(--transition-fast);
 }
 
 .showcase-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    border-color: var(--ink);
 }
 
+/* aspect-ratio instead of a 300px height plus a 300px min-height override. */
 .card-image-bed {
     background: var(--forest-2);
-    height: 300px;
+    aspect-ratio: 4 / 3;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 1rem;
+    padding: var(--space-4);
 }
 
 .card-screenshot {
     width: 150px;
     border-radius: 16px 16px 0 0;
-    margin-bottom: -30px;
+    margin-bottom: calc(var(--space-8) * -1);
 }
 
+/* Top padding clears the screenshot's --space-8 bleed with --space-4 to spare. */
 .card-content {
-    padding: 2rem 1.5rem 1.5rem;
+    padding: var(--space-12) var(--space-6) var(--space-8);
+    display: grid;
+    row-gap: var(--space-3);
+    justify-items: start;
 }
 
-.card-content .eyebrow {
-    display: block;
-    margin-bottom: 0.5rem;
+/* Category and status on one line, mirroring .featured-meta. */
+.card-meta {
+    display: flex;
+    align-items: baseline;
+    column-gap: var(--space-4);
 }
 
-.card-content .case-status {
-    display: block;
-    margin-bottom: 0.75rem;
+.card-meta .eyebrow {
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
 }
 
 .card-title {
     font-family: var(--font-display);
     font-size: var(--text-h3);
     font-weight: 700;
-    color: var(--ink);
+    line-height: var(--leading-h2);
     letter-spacing: var(--tracking-h2);
-    margin-bottom: var(--space-3);
+    color: var(--ink);
+    margin: 0;
 }
 
+/* The 2-line clamp stays: it is what keeps three cards of different copy
+   lengths on one bottom axis. */
 .card-desc {
-    font-size: 0.95rem;
+    font-size: var(--text-small);
+    line-height: var(--leading-body);
     color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
+    margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.app-store-link {
-    color: var(--forest);
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
-}
-.app-store-link:hover {
-    color: var(--leaf);
+.card-content .app-store-link {
+    margin-top: var(--space-2);
+    font-size: var(--text-small);
+    font-weight: 500;
 }
 
 @media (max-width: 900px) {
     .showcase-grid {
-        grid-template-columns: 1fr;
-    }
-    .card-image-bed {
-        height: auto;
-        min-height: 300px;
+        grid-template-columns: minmax(0, 1fr);
     }
     .card-screenshot {
         width: 190px;
-        margin-bottom: 0;
-    }
-    .card-content {
-        padding: 1.75rem 1.5rem 1.25rem;
     }
 }
 
@@ -1206,8 +1456,8 @@ p {
    text, and the slab is meant to spend two sizes, not three. It shares the row
    and the baseline with the sentence opposite it now — sand and underlined
    against quiet prose is what marks it as the call, not scale. */
-.final-cta-link {
-    grid-column: 4;
+.final-cta-link,
+.our-work-cta-link {
     justify-self: start;
     color: var(--sand);
     text-decoration: none;
@@ -1221,13 +1471,17 @@ p {
     transition: border-color var(--transition-fast);
 }
 
+.final-cta-link { grid-column: 4; }
+.our-work-cta-link { grid-column: 3; }
+
 /* The rule moves, the text does not. Resting text is already full --sand at
    10.08:1 on --forest, so every colour this palette offers is a step *down* in
    contrast — rounds 3 and 4 swapped the text to --leaf, which measures 3.98:1
    and fails AA for 17px/500. Holding the text at --sand keeps the hover state
    at the same 10.08:1 as the resting state, and --leaf on the 1px rule is a
    non-text element, where 3.98:1 clears the 3:1 minimum on its own. */
-.final-cta-link:hover {
+.final-cta-link:hover,
+.our-work-cta-link:hover {
     border-bottom-color: var(--leaf);
 }
 
@@ -1640,21 +1894,22 @@ p {
 body.our-work-page { background-color: var(--cream); }
 
 .our-work-layout {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: var(--section-padding-y);
+    padding-bottom: 0;
 }
 
-/* --- Flagship: Guide AKL --- */
+/* --- Flagship: Guide AKL -------------------------------------------------
+   1fr + --space-8 + 2fr is three equal tracks with the same gutter as
+   .other-apps-grid below, so the flagship's seam and the card grid's first
+   gutter are the same vertical line. The forest slab is gone: only the image
+   bed carries dark ground, and the content sits on the page like every other
+   block on the site. */
 .flagship-case {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 0;
-    background: var(--forest);
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 24px 60px rgba(15, 61, 36, 0.18);
-    margin-bottom: 3.5rem;
-    color: var(--sand);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: var(--space-8);
+    align-items: start;
+    margin-bottom: var(--section-padding-y);
 }
 
 .flagship-image-bed {
@@ -1663,8 +1918,9 @@ body.our-work-page { background-color: var(--cream); }
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 3rem 3rem 0;
+    padding: var(--space-12) var(--space-8) 0;
     min-height: 440px;
+    border-radius: var(--space-6);
     overflow: hidden;
 }
 
@@ -1676,116 +1932,124 @@ body.our-work-page { background-color: var(--cream); }
     pointer-events: none;
 }
 
+/* Percentage, not a fixed 300px: the bed is now one track wide and its width
+   moves with the rail. */
 .flagship-image-bed img {
     position: relative;
-    width: 300px;
-    max-width: 100%;
-    border-radius: 26px 26px 0 0;
-    border: 10px solid #050F0A;
-    border-bottom: none;
+    width: 62%;
+    border-radius: var(--space-6) var(--space-6) 0 0;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
     display: block;
 }
 
+/* Three registers, not five. Spacing is per-element, not one flex gap — the
+   step before the CTAs is deliberately the largest gap in the stack. */
 .flagship-content {
-    padding: 3.5rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 1.125rem;
+    align-items: flex-start;
 }
 
 .flagship-meta {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.25rem;
+    align-items: baseline;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
 }
 
+/* Pill, tint and border deleted. The badge and the LIVE stamp are one mono
+   register now, told apart by position rather than by two decorations. */
 .flagship-badge {
-    display: inline-block;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.35rem 0.85rem;
-    border-radius: 100px;
-    background: rgba(63, 166, 92, 0.18);
-    color: var(--leaf);
-    border: 1px solid rgba(63, 166, 92, 0.25);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--muted);
 }
 
 .flagship-content h2 {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 3.75rem);
-    font-weight: 800;
-    color: var(--sand);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 0.25rem;
+    font-size: var(--text-h2);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: var(--tracking-h2);
+    line-height: var(--leading-h2);
+    margin: 0 0 var(--space-4);
 }
 
 .flagship-desc {
-    font-size: 1.05rem;
-    color: rgba(241, 232, 216, 0.85);
-    line-height: 1.7;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
     max-width: 48ch;
-    margin-bottom: 0.5rem;
+    margin: 0 0 var(--space-8);
 }
 
 .flagship-ctas {
     display: flex;
-    gap: 1rem;
+    align-items: baseline;
+    gap: var(--space-8);
     flex-wrap: wrap;
 }
 
-/* --- Other live apps --- */
-.other-apps-section { margin-bottom: 4rem; }
+/* The page's primary call gets body size; every other .app-store-link on the
+   page stays at --text-small. Size is the only thing separating them. */
+.flagship-ctas .app-store-link { font-size: var(--text-body); }
+
+/* --- The divider device ---
+   A mono label and a hairline, nothing else. */
+.other-apps-section { margin-bottom: var(--section-padding-y); }
 
 .other-apps-header {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    column-gap: var(--space-6);
+    margin-bottom: var(--space-12);
 }
 
 .other-apps-label {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 600;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--tracking-eyebrow);
     color: var(--muted);
     white-space: nowrap;
 }
 
 .other-apps-rule {
-    flex: 1;
     height: 1px;
     background: var(--line);
 }
 
+/* --- Other live apps --- */
 .other-apps-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    row-gap: var(--space-16);
 }
 
+/* De-chromed to match the flagship: the image bed is the object, the text is
+   on the page. No border, no radius, no shadow, no hover lift — the links are
+   the interactive elements, not the card. */
 .bs-case-card.other-case {
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    padding: 0;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+    transition: none;
 }
 
 .bs-case-card.other-case:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    transform: none;
+    box-shadow: none;
 }
 
 .case-image-bed.other-case-bed {
@@ -1795,13 +2059,15 @@ body.our-work-page { background-color: var(--cream); }
     align-items: flex-end;
     justify-content: center;
     overflow: hidden;
-    padding: 0 1rem;
+    padding: 0 var(--space-4);
+    border-radius: var(--space-6);
+    margin-bottom: var(--space-6);
 }
 
 .case-image-bed.other-case-bed img {
-    width: 150px;
-    border-radius: 20px 20px 0 0;
-    margin-bottom: -28px;
+    width: 45%;
+    border-radius: var(--space-4) var(--space-4) 0 0;
+    margin-bottom: calc(var(--space-8) * -1);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
     display: block;
 }
@@ -1809,62 +2075,83 @@ body.our-work-page { background-color: var(--cream); }
 .bs-case-card.other-case .case-meta.other-case-meta {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-    padding: 0 1.5rem;
-    padding-top: 1.5rem;
+    align-items: baseline;
+    gap: var(--space-4);
+    padding: 0;
+    margin-bottom: var(--space-3);
 }
 
+/* Was --clay on --cream = 1.9:1, which is not readable small mono text at any
+   size. Same mono voice as .flagship-badge, at a colour that reads. --clay is
+   untouched everywhere else it appears on the site. */
 .case-badge-clay {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--clay);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--muted);
 }
 
 .bs-case-card.other-case h2 {
     font-family: var(--font-display);
-    font-size: 1.625rem;
+    font-size: var(--text-h3);
     font-weight: 700;
     color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-    padding: 0 1.5rem;
+    letter-spacing: var(--tracking-h2);
+    line-height: var(--leading-h2);
+    margin: 0 0 var(--space-3);
+    padding: 0;
 }
 
+/* Clamped so the three footers land on one line across the row — the clamp is
+   grid discipline, not truncation for its own sake. flex-grow is gone; the
+   footer's margin-top: auto does the pushing. */
 .bs-case-card.other-case .case-desc {
-    font-size: 0.95rem;
+    font-size: var(--text-small);
+    line-height: var(--leading-body);
     color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-    padding: 0 1.5rem;
+    margin: 0 0 var(--space-6);
+    padding: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    flex-grow: 1;
 }
 
 .bs-case-card.other-case .case-footer {
     display: flex;
-    gap: 1.5rem;
+    gap: var(--space-8);
     border-top: 1px solid var(--line);
-    padding: 1.25rem 1.5rem;
+    padding: var(--space-4) 0 0;
+    margin-top: auto;
 }
 
+/* § 4 — .app-store-link, the site's light-background call. The old hover swapped
+   the text to --leaf (2.86:1 on --cream, 3.0:1 on white — the instance flagged
+   in Phase 2's out-of-scope note, in scope now because this phase owns the page
+   it lives on). Footer pattern: the rule moves, the text does not. --forest
+   holds 10.5:1 in both states; --leaf on a 1px rule is a non-text element at
+   3.98:1, clear of the 3:1 minimum. */
 .app-store-link {
     color: var(--forest);
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
+    font-size: var(--text-small);
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: var(--space-1);
+    padding-bottom: var(--space-1);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-fast);
 }
-.app-store-link:hover { color: var(--leaf); }
+
+.app-store-link:hover {
+    color: var(--forest);
+    border-bottom-color: var(--leaf);
+}
+
+.app-store-link--quiet { color: var(--muted); }
 
 /* Coordinate-style LIVE status badge */
 .case-status {
@@ -1876,349 +2163,342 @@ body.our-work-page { background-color: var(--cream); }
     text-transform: uppercase;
 }
 
-.case-status.live { color: var(--leaf); }
+/* --leaf is 2.86:1 on --cream and 3.0:1 on white — the LIVE stamp used to sit
+   on a dark bed where the global rule was defensible, and it no longer does.
+   Page-scoped so the global rule still serves the dark beds it was written for. */
+body.our-work-page .case-status.live { color: var(--forest); }
 
-/* --- Our Work CTA band --- */
+/* --- Our Work CTA band ---
+   Colour scoping comes from the closing-slab block in § 5 (see the edit to the
+   `.final-cta, .bs-global-footer` selector below). This band sits directly
+   above the footer, so it uses the same ground, the same two text values and
+   the same hairline seam. The old --leaf ground is dropped: --forest on --leaf
+   measured 4.07:1 for the body copy and failed AA. */
 .our-work-cta {
     position: relative;
-    background: var(--leaf);
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    padding: 5rem 0;
+    padding: var(--section-padding-y) 0 var(--space-16);
+    border-bottom: 1px solid var(--closing-rule);
     overflow: hidden;
 }
 
-.our-work-cta::before {
-    content: '';
-    position: absolute;
-    top: -40%;
-    right: -10%;
-    width: 60%;
-    height: 120%;
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.18) 0%, transparent 65%);
-    pointer-events: none;
-}
-
+/* Same 3 tracks as .other-apps-grid: 60px is .container's rail, not a new
+   value. Headline across the full measure, then the sentence and the call on
+   one bottom line — the closing slab's own layout, one page-level step down. */
 .our-work-cta-inner {
-    position: relative;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    row-gap: var(--space-12);
+    align-items: end;
 }
 
 .our-work-cta-inner h2 {
+    grid-column: 1 / -1;
     font-family: var(--font-display);
-    font-size: clamp(2.75rem, 6vw, 5rem);
+    font-size: calc(var(--text-display) * 1.25);
     font-weight: 800;
-    color: var(--forest-2);
-    letter-spacing: -0.04em;
-    line-height: 1;
+    color: var(--sand);
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-display);
+    margin: 0;
 }
 
 .our-work-cta-inner p {
-    font-size: 1.15rem;
-    color: var(--forest);
-    max-width: 44ch;
-    line-height: 1.7;
+    grid-column: 1 / span 2;
+    margin: 0;
+    text-wrap: balance;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--closing-quiet);
+    max-width: none;
 }
 
 @media (max-width: 900px) {
-    .our-work-layout { padding-top: 1.25rem; }
+    /* --space-6 is the rail .bs-navbar and the closing slab already drop to
+       below 900px, so the nav mark, the flagship and the CTA share one left
+       edge all the way down. */
+    .our-work-layout { padding: var(--space-12) var(--space-6) 0; }
 
-    .flagship-case { grid-template-columns: 1fr; }
+    .flagship-case {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-8);
+        margin-bottom: var(--space-16);
+    }
 
     .flagship-image-bed {
         min-height: 320px;
-        padding: 2rem 2rem 0;
-        order: -1;
+        padding: var(--space-8) var(--space-8) 0;
     }
 
-    .flagship-image-bed img { width: 220px; }
+    .flagship-image-bed img { width: 62%; max-width: 240px; }
 
-    .flagship-content { padding: 2rem; }
+    .other-apps-header { margin-bottom: var(--space-8); }
 
-    .other-apps-grid { grid-template-columns: 1fr; }
+    .other-apps-grid {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-12);
+    }
 
     .our-work-cta-inner {
-        padding: 0 1.5rem;
-        align-items: center;
-        text-align: center;
+        padding: 0 var(--space-6);
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-8);
     }
 
-    .our-work-cta-inner .btn-forest-2 { align-self: center; }
+    .our-work-cta-inner h2,
+    .our-work-cta-inner p,
+    .our-work-cta-link { grid-column: 1; }
 }
 
 @media (max-width: 768px) {
-    .flagship-ctas {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .flagship-ctas .btn-leaf,
-    .flagship-ctas .btn-ghost {
-        width: 100%;
-        text-align: center;
-    }
-
     .bs-case-card.other-case .case-footer {
         flex-direction: column;
-        gap: 0.75rem;
+        gap: var(--space-3);
     }
 }
 
 /* ==========================================================================
    7. PLATFORM / DOCUMENTATION LAYOUT
    ========================================================================== */
-.product-docs-wrapper {
-    background-color: var(--cream);
-}
-
 .bs-layout {
     display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 56px;
+    grid-template-columns: 15rem 1fr;
+    gap: var(--space-16);
     align-items: start;
-    padding-top: 2rem;
-    padding-bottom: 6rem;
-    min-height: 100vh;
+    /* One source of top spacing for both columns, so the index and the first
+       heading start on the same line. Was 2rem here plus 2rem on each column;
+       same 4rem total, declared once instead of three times. */
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-24);
+    /* body already carries padding-top: var(--nav-height), so a bare 100vh
+       pushed the footer a full nav below the fold on the short /legal tabs. */
+    min-height: calc(100vh - var(--nav-height));
 }
 
+/* The sticky offset is nav height plus one breathing step, derived rather than
+   measured. The old `top: 99px /* 75px navbar + 24px */` was arithmetic against
+   a 75px nav that no longer exists — the bar is 72px at >=901px and 80px below
+   it, so the constant was silently 27px of dead gap instead of the 24px it
+   claimed. --space-6 is the right addend: it reproduces the 24px the comment was
+   aiming for and lands at 96px, within 3px of what ships today, so this is a
+   correctness fix and not a visual change.
+
+   The padding-top that used to sit here has to go for the formula to be true:
+   `top` positions the sticky box, and 24px of offset plus 32px of padding put
+   the first label 56px under the bar, not 24px. Rest-state spacing now comes
+   from .bs-layout above, which both columns share. */
 .bs-sidebar {
     position: sticky;
-    top: 99px; /* 75px navbar + 24px */
-    padding-top: 2rem;
+    top: calc(var(--nav-height) + var(--space-6));
 }
 
-.sidebar-group { margin-bottom: 2.5rem; }
+.sidebar-group { margin-bottom: var(--space-12); }
 
+/* Same column-label tier as .footer-col-title: mono, --text-eyebrow,
+   --tracking-eyebrow, 500. Three different lists on the site, one label. */
 .sidebar-group h3 {
     font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 600;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--tracking-eyebrow);
     color: var(--muted);
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-4);
 }
 
-.sidebar-group nav { display: flex; flex-direction: column; gap: 0.1rem; }
+/* No gap: the items butt against each other so their left borders join into one
+   continuous rail down the group. The rail is the index; the active item is a
+   segment of it that turns solid. */
+.sidebar-group nav { display: flex; flex-direction: column; }
 
-.sidebar-group nav a {
+/* /product's anchors and /legal's tab buttons are the same control wearing
+   different HTML, so they share one rule and cannot drift apart. `border: 0`
+   before `border-left` strips the button chrome without losing the rail. */
+.sidebar-group nav a,
+.sidebar-group nav .bs-legal-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    font-family: inherit;
+    font-size: var(--text-small);
+    font-weight: 500;
+    line-height: 1.35;
     color: var(--muted);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    padding: 0.4rem 0 0.4rem 1rem;
-    border-left: 2px solid transparent;
-    transition: all 0.2s ease;
-    line-height: 1.35;
+    cursor: pointer;
+    padding: var(--space-2) 0 var(--space-2) var(--space-4);
+    border: 0;
+    border-left: 2px solid var(--line);
+    transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.sidebar-group nav a:hover {
-    color: var(--forest);
-    border-left-color: var(--line);
+/* Hover moves colour only. The old state moved colour, rail and weight at once,
+   and the weight shift reflowed the label a pixel or two every time the observer
+   fired — which on /product is on every scroll. Nothing here changes metrics. */
+.sidebar-group nav a:hover,
+.sidebar-group nav .bs-legal-btn:hover {
+    color: var(--ink);
 }
 
-.sidebar-group nav a.active {
-    color: var(--forest);
-    border-left-color: var(--leaf);
-    font-weight: 600;
+/* Active is the rail going solid --ink, matching the label. --ink and not --leaf:
+   this is a position marker in a page that has no other colour in it, and the
+   navbar sets the precedent that "current" is stated in the page's own ink. It
+   also keeps hover (--ink text, --line rail) and active (--ink text, --ink rail)
+   visibly distinct instead of two shades of the same idea. */
+.sidebar-group nav a.active,
+.sidebar-group nav .bs-legal-btn.active {
+    color: var(--ink);
+    border-left-color: var(--ink);
 }
 
-.bs-content {
-    min-width: 0;
-    max-width: 760px;
-    padding-top: 2rem;
-}
+/* No max-width on the column: .container caps at 1280px and the grid spends
+   15rem + 4rem on the index, so the content column is 854px at every width above
+   the 900px breakpoint. Headings run the full 854px; the measure is set on the
+   prose itself below, which is what actually needs it. */
+.bs-content { min-width: 0; }
 
+/* --section-padding-y split either side of the hairline, so the rule sits
+   optically centred in the gap between two topics instead of hanging off the
+   heading. 144px of air between sections at desktop, 64px at mobile. */
 .bs-content section {
-    padding-top: 1rem;
-    padding-bottom: 5rem;
+    padding-top: calc(var(--section-padding-y) / 2);
+    padding-bottom: calc(var(--section-padding-y) / 2);
     border-top: 1px solid var(--line);
 }
 
 .bs-content section:first-of-type {
     border-top: none;
+    padding-top: 0;
 }
 
-.bs-content .section-kicker {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--clay);
-    margin-bottom: 0.6rem;
+.bs-content section:last-of-type {
+    padding-bottom: 0;
+}
+
+/* Three steps, all from the token scale, no bespoke clamps: the page title at
+   --text-display, section titles at --text-h2, subsections at --text-h3. The h1
+   had no rule at all and was falling through to the browser's 2em (34px), which
+   put the page title a full step *below* its own section headings. */
+.bs-content h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-display);
+    font-weight: 800;
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    margin-bottom: var(--space-8);
 }
 
 .bs-content h2 {
     font-family: var(--font-display);
-    font-size: clamp(2.25rem, 5vw, 2.75rem);
+    font-size: var(--text-h2);
     font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    margin-bottom: 1.25rem;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
+    margin-bottom: var(--space-6);
 }
 
-.bs-content p {
-    font-size: 18px;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-}
-
-.bs-content .leaf-bullets {
-    list-style: none;
-    padding-left: 0;
-    margin: 1.5rem 0 0;
-}
-
-.bs-content .leaf-bullets li {
-    position: relative;
-    padding-left: 1.5rem;
-    color: var(--muted);
-    font-size: 17px;
-    margin-bottom: 0.85rem;
-    line-height: 1.6;
-}
-
-.bs-content .leaf-bullets li::before {
-    content: '●';
-    position: absolute;
-    left: 0;
-    top: 0.05em;
-    color: var(--leaf);
-    font-size: 0.6rem;
-}
-
-.bs-content .leaf-bullets li strong {
-    color: var(--ink);
-    font-weight: 700;
-}
-
-.bs-divider { border: 0; height: 1px; background-color: var(--border-color); margin: 3rem 0; }
-
-/* Product page terminal */
-.product-terminal {
-    background: var(--forest-2);
-    border: 1px solid rgba(63, 166, 92, 0.18);
-    border-radius: 18px;
-    box-shadow: 0 24px 60px rgba(10, 43, 25, 0.18);
-    margin-top: 2rem;
-}
-
-.product-terminal .code-header {
-    background: rgba(15, 61, 36, 0.55);
-    border-bottom: 1px solid rgba(63, 166, 92, 0.15);
-    padding: 0.85rem 1.25rem;
-}
-
-.product-terminal .code-header::after { display: none; }
-
-.product-terminal .dot { width: 11px; height: 11px; }
-.product-terminal .dot:nth-child(1) { background: #FF5F56; }
-.product-terminal .dot:nth-child(2) { background: #FFBD2E; }
-.product-terminal .dot:nth-child(3) { background: #27C93F; }
-
-.product-terminal pre {
-    padding: 1.75rem 1.5rem;
-    overflow-x: auto;
-}
-
-.product-terminal code {
-    font-family: var(--font-mono);
-    font-size: 13.5px;
-    color: #D8CBB5;
-    line-height: 1.7;
-}
-
-.product-terminal .keyword { color: #7EE0A0; font-weight: 600; }
-.product-terminal .string { color: #FFCF9E; }
-.product-terminal .comment { color: #6F8A78; font-style: italic; }
-.product-terminal .number { color: #9FD6FF; }
-
-/* Product CTA band */
-.product-cta-band {
-    background: var(--leaf);
-    position: relative;
-    overflow: hidden;
-    padding: 5rem 0;
-}
-
-.product-cta-band::before {
-    content: '';
-    position: absolute;
-    top: -40%;
-    right: -10%;
-    width: 60%;
-    height: 140%;
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.22) 0%, transparent 65%);
-    pointer-events: none;
-}
-
-.product-cta-band .container {
-    position: relative;
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-}
-
-.product-cta-band h2 {
+.bs-content h3 {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    color: var(--forest-2);
-    letter-spacing: -0.04em;
-    line-height: 1;
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-h2);
+    margin: var(--space-12) 0 var(--space-4);
 }
 
-.product-cta-band p {
-    font-size: 1.15rem;
-    color: var(--forest);
-    max-width: 44ch;
-    line-height: 1.7;
+/* 68ch is the measure, not the column. Long-form reading at 854px was ~80
+   characters a line; the headings keep the full width and the prose steps in. */
+.bs-content p {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
+    max-width: 68ch;
+    margin-bottom: var(--space-6);
 }
 
-@media (max-width: 900px) {
-    .bs-layout { grid-template-columns: 1fr; gap: 2rem; padding-top: 1rem; }
+/* `* { padding: 0 }` at the top of this file strips every list's indent, so the
+   one <ul> on /product was rendering its markers outside the content box. Native
+   markers, tinted to the hairline colour — a ::before pseudo-element was doing
+   this job for a .leaf-bullets class no page uses. */
+.bs-content ul {
+    list-style: disc;
+    padding-left: var(--space-4);
+    max-width: 68ch;
+    margin: var(--space-8) 0 0;
+}
+
+.bs-content li {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
+    margin-bottom: var(--space-3);
+}
+
+.bs-content li::marker { color: var(--line); }
+
+.bs-content li strong { color: var(--ink); font-weight: 600; }
+
+/* The single CTA in the doc column follows .final-cta-link's convention — text
+   and a rule, not a pill. Scoped to .bs-content so the six .btn-forest pills on
+   other pages are untouched; the global button system is a later phase's job. */
+.bs-content .btn-forest {
+    display: inline-block;
+    background: transparent;
+    color: var(--ink);
+    font-size: var(--text-body);
+    font-weight: 500;
+    letter-spacing: var(--tracking-h2);
+    padding: 0 0 var(--space-1);
+    border-radius: 0;
+    border-bottom: 1px solid var(--ink);
+    transition: border-color var(--transition-fast);
+}
+
+.bs-content .btn-forest:hover {
+    transform: none;
+    border-bottom-color: var(--leaf);
+}
+
+
     .bs-sidebar {
         position: static;
-        padding-top: 0;
         border-bottom: 1px solid var(--line);
-        padding-bottom: 1.5rem;
+        padding-bottom: var(--space-6);
     }
-    .sidebar-group { display: inline-block; margin-right: 2rem; margin-bottom: 1rem; vertical-align: top; }
-    .sidebar-group nav { display: inline-flex; flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
-    .sidebar-group nav a {
-        border-left: none;
-        border-bottom: 2px solid transparent;
-        padding: 0.35rem 0;
-        margin-right: 1rem;
-        white-space: nowrap;
-    }
-    .sidebar-group nav a.active {
-        border-left-color: transparent;
-        border-bottom-color: var(--leaf);
-    }
-    .bs-content { padding-top: 0; }
-    .bs-content section { padding-bottom: 3.5rem; }
-    .product-cta-band .container { align-items: center; text-align: center; }
-    .product-cta-band .btn-forest-2 { align-self: center; }
-}
 
-@media (max-width: 768px) {
-    .product-terminal code { font-size: 12px; }
-    .bs-content h2 { font-size: 1.9rem; }
-    .bs-content p { font-size: 16px; }
+    .sidebar-group {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 var(--space-8) var(--space-4) 0;
+    }
+
+    .sidebar-group nav {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0 var(--space-6);
+    }
+
+    .sidebar-group nav a,
+    .sidebar-group nav .bs-legal-btn {
+        width: auto;
+        white-space: nowrap;
+        padding: var(--space-2) 0;
+        border-left: 0;
+        border-bottom: 2px solid var(--line);
+    }
+
+    .sidebar-group nav a.active,
+    .sidebar-group nav .bs-legal-btn.active {
+        border-bottom-color: var(--ink);
+    }
 }
 
 /* ==========================================================================
@@ -2332,15 +2612,24 @@ body.our-work-page { background-color: var(--cream); }
 /* ==========================================================================
    9. AUTHENTICATION (LOGIN & ACCESS)
    ========================================================================== */
-.login-container {
+/* /contact, /login and /404 are one object: a single panel holding a mark, one
+   heading, a little prose and one or two actions. Declared once for all three
+   and once more for the error page's container name, which is the only thing
+   that differs between them. */
+.login-container,
+.error-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 70px);
-    padding: 4rem 1rem;
-    position: relative;
-    z-index: 2;
+    /* Was `calc(100vh - 70px)` here and `calc(100vh - 75px)` on .error-container:
+       two different hardcoded nav heights, both wrong, on pages that sit under
+       the same bar. body already carries padding-top: var(--nav-height), so the
+       viewport left below it is exactly this. Same fix as .bs-sidebar's sticky
+       offset in Task 1 — that is three stale nav constants in this file, and
+       `scroll-padding-top: 100px` was the fourth. */
+    min-height: calc(100vh - var(--nav-height));
+    padding: var(--space-16) var(--space-6);
 }
 
 /* Logo SVG inherits moss green */
@@ -2349,119 +2638,159 @@ body.our-work-page { background-color: var(--cream); }
     margin-bottom: 2rem;
 }
 
+/* --sand on the --cream page. The panel is a surface with a colour step, not a
+   card floating on a shadow: the old treatment was --cream on --cream rescued by
+   a hairline and a 24px blur, which is exactly the move the nav and the closing
+   slab were redesigned to stop making. No shadow, no radius, no border — the
+   colour is the edge. One max-width for all three pages (was 400px here and
+   500px on .error-box); 30rem is ~58 characters of --text-body, a real measure
+   for the one paragraph each of these pages carries. */
 .login-box {
-    background-color: var(--layer-3);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 2.5rem;
+    background-color: var(--sand);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: var(--space-12) var(--space-8);
     width: 100%;
-    max-width: 400px;
-    box-shadow: 0 8px 24px rgba(28, 26, 22, 0.08);
+    max-width: 30rem;
+    /* Left, not centred, on all three. A form has to left-align its labels, so
+       centring the other two would have made the set read as two designs; and
+       left-flush is the site's own voice — the nav, the closing slab and the doc
+       template all hang off a left axis. It is also what lets the 404 numeral
+       land as a graphic device rather than an ornament. */
+    text-align: left;
 }
 
+/* One heading size for all three pages. --text-h3 (30px), not --text-h2: inside
+   a 480px panel a 56px heading is a wall, and on /404 it would compete with the
+   numeral that is supposed to be carrying the page. */
 .login-box h1 {
-    font-size: 1.4rem;
-    text-align: center;
-    margin-bottom: 1.75rem;
-    letter-spacing: -0.02em;
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-h2);
+    margin-bottom: var(--space-4);
 }
 
+/* A rule, not a tinted box — the same left-rail device the sidebar index uses in
+   Task 1. #C0392B is kept as-is rather than tokenised: the palette has no error
+   value, and one fake-auth message is not a reason to add one. It measures
+   5.3:1 on --sand, so it clears AA at this size. */
 .login-alert {
-    background-color: rgba(192, 57, 43, 0.08);
+    background: transparent;
+    border: 0;
+    border-left: 2px solid #C0392B;
+    border-radius: 0;
+    padding: var(--space-2) 0 var(--space-2) var(--space-4);
+    margin-bottom: var(--space-6);
     color: #C0392B;
-    border: 1px solid rgba(192, 57, 43, 0.2);
-    padding: 0.85rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: var(--text-small);
     font-weight: 500;
-    margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: left;
 }
 
-.form-group { margin-bottom: 1.25rem; }
+.form-group { margin-bottom: var(--space-6); }
 
 .label-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.5rem;
 }
 
+/* Same label tier as .sidebar-group h3 and .footer-col-title: mono, uppercase,
+   --text-eyebrow. Three lists on the site, one label treatment. */
 .form-group label {
     display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.form-group > label { margin-bottom: 0.5rem; }
-
-.forgot-link {
-    font-size: 0.85rem;
-    color: var(--layer-4);
-    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--muted);
 }
-.forgot-link:hover { text-decoration: underline; }
 
+.form-group > label,
+.label-row { margin-bottom: var(--space-2); }
+
+/* Underline, not a box: two bordered boxes stacked inside a bordered panel was
+   three nested rectangles doing one job. --muted on --sand is 3.4:1, which
+   clears the 3:1 a non-text boundary needs. */
 .form-group input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    background-color: var(--layer-1);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    color: var(--text-primary);
-    transition: all 0.2s ease;
+    padding: var(--space-3) 0;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--muted);
+    border-radius: 0;
+    font-family: inherit;
+    font-size: var(--text-body);
+    color: var(--ink);
+    transition: border-color var(--transition-fast);
 }
 
+/* The box-shadow doubles the rule's apparent weight without changing layout, so
+   focus is a visible 2px state rather than a 1px colour shift a sighted keyboard
+   user would miss. Do not drop it in favour of border-bottom-width — that
+   reflows the field by a pixel on every focus. */
 .form-group input:focus {
     outline: none;
-    border-color: var(--layer-4);
-    background-color: var(--layer-1);
-    box-shadow: 0 0 0 3px rgba(77, 94, 58, 0.12);
+    border-bottom-color: var(--ink);
+    box-shadow: 0 1px 0 0 var(--ink);
 }
 
 .form-group input:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .bs-btn-submit {
-    width: 100%;
-    background-color: var(--layer-4);
-    color: #FFFFFF;
-    border: 1px solid var(--layer-4);
-    padding: 0.85rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: all 0.2s ease;
+    margin-top: var(--space-2);
 }
 
-.bs-btn-submit:hover:not(:disabled) {
-    background-color: var(--layer-5);
-    border-color: var(--layer-5);
-    transform: translateY(-1px);
-}
+.bs-btn-submit.loading,
+.bs-btn-submit:disabled { opacity: 0.7; cursor: wait; }
 
-.bs-btn-submit.loading { opacity: 0.7; cursor: wait; }
-
+/* Moves inside the panel in Step 6, so it gets a hairline instead of floating
+   under the card as a detached centred line. */
 .login-footer {
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--line);
+    font-size: var(--text-small);
+    color: var(--muted);
+    text-align: left;
 }
 
-.login-footer a { color: var(--layer-4); font-weight: 500; text-decoration: none; }
-.login-footer a:hover { text-decoration: underline; }
+/* The closing slab's link contract: the text holds its colour and the rule under
+   it turns --leaf. Underline is always present here because these two links sit
+   inside prose and need to be findable at rest. */
+.login-footer a,
+.forgot-link {
+    color: var(--ink);
+    font-size: var(--text-small);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: var(--space-1);
+    transition: text-decoration-color var(--transition-fast);
+}
+
+.login-footer a:hover,
+.forgot-link:hover { text-decoration-color: var(--leaf); }
 
 /* Access page */
-.access-box { text-align: center; }
-.access-box p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.65; margin-bottom: 2.5rem; }
-.lock-icon { width: 48px; height: 48px; color: var(--layer-4); margin: 0 auto 1.5rem auto; display: block; }
-.full-width { width: 100%; display: block; text-align: center; }
+.access-box { text-align: left; }
+.access-box p {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
+    margin-bottom: var(--space-8);
+}
+.lock-icon {
+    display: block;
+    width: var(--space-8);
+    height: var(--space-8);
+    color: var(--leaf);
+    margin: 0 0 var(--space-6);
+}
+.full-width { width: 100%; display: block; }
 
 /* ==========================================================================
    10. APP PROFILES
@@ -2574,18 +2903,6 @@ body.our-work-page { background-color: var(--cream); }
 }
 
 .legal-title { font-size: 2.25rem; margin-bottom: 0.5rem; letter-spacing: -0.03em; }
-
-.last-updated {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
-    display: block;
-}
 
 /* h3 border-left in page accent: overridden per-app below */
 .legal-prose h3 {
@@ -3887,127 +4204,136 @@ body.our-work-page { background-color: var(--cream); }
 /* ==========================================================================
    11. LEGAL & DOCUMENTATION PAGES
    ========================================================================== */
-.bs-legal-btn {
-    display: block;
-    width: 100%;
-    text-align: left;
-    background: transparent;
-    border: none;
-    border-left: 2px solid transparent;
-    color: var(--text-muted);
-    padding: 0.65rem 0 0.65rem 1rem;
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
+/* /legal's three tabs are all `.bs-content section` siblings, so the shared
+   section rhythm from Step 3 would put a hairline and 72px of padding above
+   whichever tab is showing — and `:first-of-type` only exempts the ToS one, so
+   Privacy and DPA would each open with a stray rule. The tabs are panels, not
+   sections in a scroll; their rhythm lives on the h2 below. */
+.legal-content section {
+    border-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
-
-.bs-legal-btn:hover {
-    color: var(--text-primary);
-    border-left-color: var(--border-hover);
-}
-
-.bs-legal-btn.active {
-    color: var(--layer-4);
-    border-left-color: var(--layer-4);
-    font-weight: 700;
-}
-
-.legal-content section { margin-bottom: 2rem; }
 
 .legal-header {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--space-16);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--line);
 }
 
-.legal-header h1 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-}
+/* h1 inherits --text-display from .bs-content h1 — same page title treatment as
+   /product, which is the point of calling these one template. Only the spacing
+   under it is legal-specific, because a dateline follows it. */
+.legal-header h1 { margin-bottom: var(--space-4); }
 
 .legal-header .last-updated {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--muted);
 }
 
-/* § section number prefix via CSS counter */
-.legal-doc { counter-reset: legal-section; }
+/* The § counter is gone: every h2 on this page already begins with its own
+   number in the content ("1. Infrastructure Usage & API"), so the pseudo-element
+   was printing a second numbering system directly above the first.
 
+   Clause headings take --text-h3, not the --text-h2 that /product's section
+   titles take, because they are subsections of one document rather than separate
+   topics — this is the "h2 for sections, h3 for subsections" split, applied to
+   what the content actually is. The rule above each clause is the same device
+   /product uses between sections, at a tighter rhythm: a legal clause is one
+   paragraph, and 144px between one-paragraph items reads as broken, not
+   generous. Specificity ties with `.bs-content h2` and this block is later in
+   the file, so it wins — keep it below section 7. */
 .legal-doc h2 {
-    counter-increment: legal-section;
-    position: relative;
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-    padding-top: 2.5rem;
-    letter-spacing: -0.02em;
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-h2);
+    margin: var(--space-12) 0 var(--space-4);
+    padding-top: var(--space-12);
+    border-top: 1px solid var(--line);
 }
 
-.legal-doc h2::before {
-    content: "§ 0" counter(legal-section);
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.35rem;
-    font-style: normal;
+.legal-doc h2:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
 }
 
 .legal-doc p {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
+    max-width: 68ch;
+    margin-bottom: var(--space-4);
 }
 
 /* ==========================================================================
    12. 404 / ERROR PAGES
    ========================================================================== */
-.error-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 75px);
-    padding: 2rem;
-    position: relative;
-    z-index: 2;
-}
-
+/* --sand on the --cream page. The panel is a surface with a colour step, not a
+   card floating on a shadow: the old treatment was --cream on --cream rescued by
+   a hairline and a 24px blur, which is exactly the move the nav and the closing
+   slab were redesigned to stop making. No shadow, no radius, no border — the
+   colour is the edge. One max-width for all three pages (was 400px here and
+   500px on .error-box); 30rem is ~58 characters of --text-body, a real measure
+   for the one paragraph each of these pages carries. */
 .error-box {
-    text-align: center;
-    max-width: 500px;
-    background-color: var(--layer-3);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 4rem 3rem;
-    box-shadow: 0 12px 40px rgba(28, 26, 22, 0.08);
+    background-color: var(--sand);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: var(--space-12) var(--space-8);
+    width: 100%;
+    max-width: 30rem;
+    /* Left, not centred, on all three. A form has to left-align its labels, so
+       centring the other two would have made the set read as two designs; and
+       left-flush is the site's own voice — the nav, the closing slab and the doc
+       template all hang off a left axis. It is also what lets the 404 numeral
+       land as a graphic device rather than an ornament. */
+    text-align: left;
 }
 
+/* One heading size for all three pages. --text-h3 (30px), not --text-h2: inside
+   a 480px panel a 56px heading is a wall, and on /404 it would compete with the
+   numeral that is supposed to be carrying the page. */
+.error-box h1 {
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: var(--tracking-h2);
+    margin-bottom: var(--space-4);
+}
+
+.error-box p {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
+    margin-bottom: var(--space-8);
+}
+
+/* The one numeral-as-graphic on the site. 1.5x --text-display is 144px at
+   desktop and 66px at the clamp floor — above every heading anywhere, and one
+   deliberate step below the closing slab's 1.65x, which stays the largest type
+   on the site. It uses the display token's own leading and tracking rather than
+   a hand-picked -0.05em, so it sits in the same system as .final-cta-title
+   instead of near it.
+
+   --ink, not --leaf: this is a graphic device cut from the page's own ink. Green
+   at 144px is decoration, and it would also be the third accent on a set of
+   pages that spends exactly one (the marks in Step 2). Three digits at 144px
+   measure ~260px inside the panel's 416px of inner width, so it never wraps. */
 .error-code {
-    font-family: var(--font-sans);
-    font-size: 6rem;
+    font-family: var(--font-display);
+    font-size: calc(var(--text-display) * 1.5);
     font-weight: 800;
-    color: var(--layer-4);
-    line-height: 1;
-    margin-bottom: 1rem;
-    letter-spacing: -0.05em;
-}
-
-.error-box h1 { font-size: 2rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
-.error-box p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; }
-
-@media (max-width: 600px) {
-    .error-box { padding: 3rem 1.5rem; }
-    .error-code { font-size: 4.5rem; }
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    color: var(--ink);
+    margin-bottom: var(--space-6);
 }
 
 /* ==========================================================================
@@ -4052,12 +4378,14 @@ body.our-work-page { background-color: var(--cream); }
     background-color: var(--page-bg);
 }
 
-/* Header: full-width gradient behind the fixed navbar */
+/* Header: full-width gradient behind the fixed navbar. The gradient is the
+   theme's signature and stays; the repeating dot texture is gone — one soft
+   highlight is enough. */
 .dp-header {
     position: relative;
     background: var(--header-grad);
     color: #fff;
-    padding: 0 0 68px;
+    padding: 0 0 var(--section-padding-y);
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
@@ -4068,213 +4396,243 @@ body.our-work-page { background-color: var(--cream); }
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(120% 95% at 100% 0%, rgba(255, 255, 255, 0.20), transparent 55%),
-        repeating-radial-gradient(circle at 88% 135%, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 46px);
+    background: radial-gradient(120% 95% at 100% 0%, rgba(255, 255, 255, 0.20), transparent 55%);
     pointer-events: none;
 }
 
+/* 60px is .container's rail, not a new value — the hero's left edge has to be
+   the same edge as every .container section beneath it. */
 .dp-header-inner {
     position: relative;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 76px 60px 0;
+    padding: var(--section-padding-y) 60px 0;
 }
 
 .dp-eyebrow {
+    display: block;
     font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
     color: var(--eyebrow-color);
     text-transform: uppercase;
 }
 
+/* Straight off the token, no page-specific clamp: a named page's opening
+   statement carries the same weight as the homepage's. */
 .dp-title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    line-height: 0.88;
-    letter-spacing: -0.04em;
-    margin-top: 22px;
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
     color: #fff;
-    max-width: 24ch;
+    max-width: 20ch;
+    margin: var(--space-8) 0 0;
 }
 
 .dp-subtitle {
-    font-size: 20px;
-    line-height: 1.5;
+    font-size: calc(var(--text-body) * 1.15);
+    line-height: var(--leading-body);
     color: rgba(255, 255, 255, 0.92);
     max-width: 52ch;
-    margin-top: 28px;
+    margin: var(--space-8) 0 0;
 }
 
-/* Intro / closing callout paragraphs with accent left border */
-.dp-section {
-    padding: 72px 0 20px;
-}
+/* One rhythm for all three body sections. */
+.dp-section        { padding: var(--section-padding-y) 0 0; }
+.dp-section--cards { padding: var(--section-padding-y) 0 0; }
+.dp-section--last  { padding: var(--section-padding-y) 0; }
 
-.dp-section--cards {
-    padding: 44px 0 20px;
-}
-
-.dp-section--last {
-    padding: 44px 0 72px;
-}
-
+/* First paragraph of a section is the lead, the rest are body — two sizes, not
+   one flat register and not three. The accent rule is the only decoration in
+   the page's whole middle, and the only non-text element carrying --acc, which
+   is what keeps the three themes visibly different between the hero and the
+   CTA band. 2px, not 4: it marks the measure, it isn't a highlighter. */
 .dp-callout {
-    font-size: 22px;
-    line-height: 1.5;
-    color: var(--ink);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--muted);
     max-width: 62ch;
-    border-left: 4px solid var(--acc);
-    padding-left: 26px;
+    border-left: 2px solid var(--acc);
+    padding-left: var(--space-6);
+    margin: 0 0 var(--space-8);
 }
 
-/* Section heading */
+.dp-callout:first-of-type {
+    font-size: calc(var(--text-body) * 1.35);
+    color: var(--ink);
+}
+
+.dp-callout:last-child { margin-bottom: 0; }
+
+/* Was 22px/800/uppercase — a fourth heading size competing with the H1 and the
+   card titles. Demoted to the site's mono label voice, the same device as
+   .other-apps-label on /our-work: small label, big content. */
 .dp-section-heading {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 22px;
-    letter-spacing: 0.02em;
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 8px;
+    margin: 0 0 var(--space-12);
 }
 
-/* Feature cards */
+/* --- Numbered rows (was: icon cards) ------------------------------------
+   The number is a CSS counter, so /civic and /travel-operators renumber
+   themselves for four rows with no markup change — which is the whole reason
+   this can be a numbering device at all without forking the shared template. */
 .dp-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: grid;
+    counter-reset: dp-card;
+    border-top: 1px solid var(--line);
 }
 
+/* Three tracks: index rail / title / description. The --space-8 gutter is the
+   same one /our-work's grids use. */
 .dp-card {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 22px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 6fr);
+    column-gap: var(--space-8);
     align-items: start;
-    padding: 28px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--acc);
-    border-radius: 16px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--line);
+    background: none;
+    border-left: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
-.dp-card-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: var(--acc-soft);
-    color: var(--acc);
-    border-radius: 13px;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 18px;
-    flex-shrink: 0;
+/* The wrapper <div> exists in all three pages' markup and can't be deleted
+   from one without forking the template. display: contents lifts its <h3> and
+   <p> onto the row's own tracks instead. */
+.dp-card > div { display: contents; }
+
+/* --ink, not --acc: at --text-eyebrow this is small text needing 4.5:1, and
+   every theme's --acc fails it on that theme's --page-bg (#FF5A5F ≈ 3.3:1,
+   #0FB5AE ≈ 2.4:1). Same reasoning the Footer applied to --leaf — the accent
+   stays on non-text elements (the callout rule, the two gradients), the text
+   holds at a colour that reads. */
+.dp-card::before {
+    counter-increment: dp-card;
+    content: counter(dp-card, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: var(--text-eyebrow);
+    font-weight: 500;
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--ink);
+    padding-top: var(--space-2);   /* optical: onto the h3's cap line */
 }
+
+/* Kept only so civic.html and travel-operators.html — which still carry their
+   ◆ spans, because this task must not commit changes to them — render
+   identically to creators.html. Phase 4 deletes the spans and this rule. */
+.dp-card-icon { display: none; }
 
 .dp-card h3 {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 26px;
-    letter-spacing: -0.02em;
+    font-size: var(--text-h3);
+    letter-spacing: var(--tracking-h2);
+    line-height: var(--leading-h2);
     color: var(--ink);
+    margin: 0;
 }
 
 .dp-card p {
-    font-size: 17px;
-    line-height: 1.55;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
     color: var(--muted);
-    margin-top: 6px;
-    max-width: 70ch;
+    margin: 0;
+    max-width: 60ch;
 }
 
-/* CTA band: full-width accent gradient */
+/* --- CTA band ---
+   Same scale, tracking and padding rhythm as .our-work-cta. The ground is the
+   one thing that differs: --cta-grad is the per-page theme's signature and has
+   to survive, so this band keeps the gradient and keeps its pill (--forest-2
+   on white clears every theme's gradient at ~15:1, where a bordered text link
+   would have to be re-checked against three different backgrounds). */
 .dp-cta {
     background: var(--cta-grad);
     color: var(--cta-text);
-    padding: 88px 0;
+    padding: var(--section-padding-y) 0;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
 }
 
+/* Two children — a headline and a call. A grid would buy nothing here; the
+   stack is the layout. */
 .dp-cta .container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: var(--space-12);
 }
 
 .dp-cta h2 {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    letter-spacing: -0.035em;
-    line-height: 0.92;
+    font-size: calc(var(--text-display) * 1.25);
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-display);
     color: var(--cta-text);
-}
-
-.dp-cta p {
-    font-size: 19px;
-    color: var(--cta-sub);
-    max-width: 46ch;
+    margin: 0;
 }
 
 .dp-cta-btn {
     display: inline-block;
     background: var(--forest-2);
     color: #fff;
-    font-weight: 700;
-    font-size: 17px;
-    padding: 17px 34px;
+    font-weight: 600;
+    font-size: var(--text-body);
+    line-height: 1.2;
+    padding: var(--space-4) var(--space-8);
     border-radius: 100px;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    transition: transform var(--transition-fast);
 }
 
-.dp-cta-btn:hover {
-    transform: translateY(-2px);
-}
+.dp-cta-btn:hover { transform: translateY(-2px); }
 
-/* Deployment pages responsive */
 @media (max-width: 900px) {
-    .dp-header {
-        padding-bottom: 48px;
+    /* The old block padded .dp-section AND left .container's 60px in place —
+       84px of rail on a 390px screen. --space-6 on the .container is the rail
+       .bs-navbar and the closing slab already use below 900px. */
+    .dp-header-inner,
+    .dp-section .container,
+    .dp-section--cards .container,
+    .dp-section--last .container,
+    .dp-cta .container {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
     }
-    .dp-header-inner {
-        padding: 60px 1.5rem 0;
-    }
-    .dp-title {
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
-    }
-    .dp-subtitle {
-        font-size: 18px;
-    }
+
+    .dp-header { padding-bottom: var(--space-16); }
+    .dp-header-inner { padding-top: var(--space-16); }
+    .dp-title { max-width: none; }
+
     .dp-section,
     .dp-section--cards,
     .dp-section--last {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        padding-top: 36px;
+        padding-left: 0;
+        padding-right: 0;
     }
-    .dp-callout {
-        font-size: 18px;
-    }
-    .dp-cta {
-        padding: 60px 0;
-    }
+
+    .dp-callout { padding-left: var(--space-4); }
+    .dp-section-heading { margin-bottom: var(--space-8); }
+
     .dp-card {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: var(--space-3);
+        padding: var(--space-6) 0;
     }
-    .dp-card h3 {
-        font-size: 22px;
-    }
+
+    .dp-card::before { padding-top: 0; }
+    .dp-cta .container { gap: var(--space-8); }
 }
 
 /* ==========================================================================

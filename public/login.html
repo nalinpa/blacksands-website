@@ -28,16 +28,17 @@
     </div>
 
     <main class="login-container" x-data="{ isLoading: false, hasError: false }">
-        
-        <svg height="48" viewBox="0 0 24 24" width="48" fill="none" xmlns="http://www.w3.org/2000/svg" class="login-logo">
-            <clipPath id="dune-clip-large"><circle cx="12" cy="12" r="10" /></clipPath>            
-            <g clip-path="url(#dune-clip-large)" fill="currentColor">
-                <path d="M0 0 L 24 0 L 24 12 C 20 9, 17 6, 13 6 C 9 6, 4 11, 0 14 Z" />
-                <path d="M0 24 L 24 24 L 24 16 C 21 12, 18 9.5, 15 9.5 C 10 9.5, 5 14, 0 18 Z" />
-            </g>
-        </svg>
-        
+
         <div class="login-box">
+
+            <svg height="48" viewBox="0 0 24 24" width="48" fill="none" xmlns="http://www.w3.org/2000/svg" class="login-logo">
+                <clipPath id="dune-clip-large"><circle cx="12" cy="12" r="10" /></clipPath>
+                <g clip-path="url(#dune-clip-large)" fill="currentColor">
+                    <path d="M0 0 L 24 0 L 24 12 C 20 9, 17 6, 13 6 C 9 6, 4 11, 0 14 Z" />
+                    <path d="M0 24 L 24 24 L 24 16 C 21 12, 18 9.5, 15 9.5 C 10 9.5, 5 14, 0 18 Z" />
+                </g>
+            </svg>
+
             <h1>Sign in to Black Sands</h1>
             
             <div class="login-alert" x-show="hasError" x-cloak x-transition.opacity>
@@ -63,10 +64,10 @@
                     <span x-show="isLoading" x-cloak>Authenticating...</span>
                 </button>
             </form>
-        </div>
-        
-        <div class="login-footer">
-            New to Black Sands? <a href="/contact">Request an account</a>.
+
+            <div class="login-footer">
+                New to Black Sands? <a href="/contact">Request an account</a>.
+            </div>
         </div>
     </main>
 
