@@ -25,7 +25,7 @@
 
     <main class="container our-work-layout">
 
-        <article class="flagship-case">
+        <article class="flagship-case" data-reveal>
             <div class="flagship-image-bed">
                 <img src="/assets/ssGuideAKL.png" alt="Guide AKL App Interface" loading="lazy">
             </div>
@@ -37,8 +37,8 @@
                 <h2>Guide AKL</h2>
                 <p class="flagship-desc">An Auckland city companion. Hidden laneway cafés, neighbourhood deep-dives and real local tips, built for residents and visitors both.</p>
                 <div class="flagship-ctas">
-                    <a href="https://apps.apple.com/us/app/akl-auckland-travel-guide/id6781898807" class="btn-leaf">App Store &nearr;</a>
-                    <a href="/guide-akl" class="btn-ghost">More info</a>
+                    <a href="https://apps.apple.com/us/app/akl-auckland-travel-guide/id6781898807" class="app-store-link">App Store &nearr;</a>
+                    <a href="/guide-akl" class="app-store-link app-store-link--quiet">More info</a>
                 </div>
             </div>
         </article>
@@ -49,7 +49,7 @@
                 <div class="other-apps-rule"></div>
             </div>
 
-            <div class="other-apps-grid">
+            <div class="other-apps-grid" data-reveal>
 
                 <article class="bs-case-card other-case">
                     <div class="case-image-bed other-case-bed">
@@ -107,7 +107,7 @@
         <div class="our-work-cta-inner">
             <h2>Your app, next.</h2>
             <p>Bring your routes and your audience. We'll build the app and run it for you.</p>
-            <a href="/contact" class="btn-forest-2">Book a call &rarr;</a>
+            <a href="/contact" class="our-work-cta-link">Book a call &rarr;</a>
         </div>
     </section>
 
@@ -115,6 +115,8 @@
         x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})" 
         x-html="footerHtml">
     </div>
+
+    <script src="/assets/scroll-reveal.js" defer></script>
 
 </body>
 </html>

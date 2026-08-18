@@ -80,6 +80,10 @@ html {
     /* Same formula as .bs-sidebar's sticky offset — an anchor should land where
        the index sits, and both are "clear the bar, then one step". */
     scroll-padding-top: calc(var(--nav-height) + var(--space-6));
+    /* Lives on html, not body: overflow-x on body with overflow-y unset
+       computes overflow-y to auto, turning body into its own scroll
+       container and breaking position: sticky for descendants (.bs-sidebar). */
+    overflow-x: hidden;
 }
 
 body {
@@ -88,7 +92,6 @@ body {
     color: var(--ink);
     line-height: 1.7;
     padding-top: var(--nav-height);
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     font-size: 17px;
 }
@@ -581,7 +584,6 @@ p {
 .hero-1b {
     position: relative;
     width: 100vw;
-    min-height: calc(90vh - var(--nav-height));
     display: flex;
     align-items: center;
     background: var(--forest-2);   /* bed under the photo while it loads */
@@ -803,7 +805,7 @@ p {
 
 /* --- How It Works 1b --- */
 .how-it-works-1b {
-    padding: var(--section-padding-y) 0;
+    padding: 2em;
     background: var(--cream);
 }
 
@@ -1659,6 +1661,7 @@ p {
    than falling back to --ink on green. The quiet mix clears 4.5:1 on --forest
    (4.9), so it is quiet by choice, not by giving up legibility. */
 .final-cta,
+.our-work-cta,
 .bs-global-footer {
     background: var(--forest);
     color: var(--sand);
@@ -2466,38 +2469,17 @@ body.our-work-page .case-status.live { color: var(--forest); }
     border-bottom-color: var(--leaf);
 }
 
+@media (max-width: 900px) {
+    .bs-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+        padding-top: var(--space-8);
+    }
 
     .bs-sidebar {
         position: static;
         border-bottom: 1px solid var(--line);
         padding-bottom: var(--space-6);
-    }
-
-    .sidebar-group {
-        display: inline-block;
-        vertical-align: top;
-        margin: 0 var(--space-8) var(--space-4) 0;
-    }
-
-    .sidebar-group nav {
-        display: inline-flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 0 var(--space-6);
-    }
-
-    .sidebar-group nav a,
-    .sidebar-group nav .bs-legal-btn {
-        width: auto;
-        white-space: nowrap;
-        padding: var(--space-2) 0;
-        border-left: 0;
-        border-bottom: 2px solid var(--line);
-    }
-
-    .sidebar-group nav a.active,
-    .sidebar-group nav .bs-legal-btn.active {
-        border-bottom-color: var(--ink);
     }
 }
 
@@ -2973,14 +2955,18 @@ body.our-work-page .case-status.live { color: var(--forest); }
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
-    min-height: 720px;
+    min-height: 560px;
     background: var(--forest);
     color: var(--sand);
     --hero-quiet: color-mix(in srgb, var(--sand) 62%, var(--forest));
     display: flex;
-    align-items: flex-end;
     overflow: hidden;
-    padding: calc(var(--nav-height) + var(--space-8)) 0 0;
+    /* body already carries padding-top: var(--nav-height) for the fixed nav,
+       so this only needs its own breathing room, not another nav-height on
+       top of it. Bottom padding keeps the CTAs off the band's edge. Default
+       (stretch) align-items makes .container fill this exactly, which is
+       what lets the text column and the visual match heights below. */
+    padding: var(--space-8) 0 var(--space-16);
 }
 
 /* Unchanged — the band's own surface, behind everything. */
@@ -2995,28 +2981,31 @@ body.our-work-page .case-status.live { color: var(--forest); }
     z-index: 1;
 }
 
-/* Two tracks. The eyebrow and the headline span both — that span is what buys
-   the headline the full 1160px measure it needs at the --text-display cap. */
+/* One auto row sized to the taller of the two columns — the screenshot's own
+   clamp() is the definite size that drives it (see .app-detail-hero__screenshot),
+   and .app-detail-hero__content stretches (the default align-self) to match
+   that, so the auto-margins inside it (see .app-detail-hero__desc) have real
+   space to distribute instead of nothing to work with. */
 .app-detail-hero .container {
     position: relative;
     z-index: 2;
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
     column-gap: var(--space-16);
-    align-items: end;
-    padding-top: var(--space-24);
 }
 
-/* The wrapper stays in the markup but stops being a box, so its four children
-   become grid items on the band's own tracks. */
+/* Real box now (not display: contents) — it's a flex column so the two
+   auto-margins below can split the slack into two even gaps instead of one
+   lump between title and desc. */
 .app-detail-hero__content {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 
 .app-detail-hero__pill {
-    grid-column: 1 / -1;
-    justify-self: start;
+    align-self: start;
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
@@ -3031,18 +3020,20 @@ body.our-work-page .case-status.live { color: var(--forest); }
     border: 1px solid color-mix(in srgb, var(--acc) 55%, transparent);
     padding: var(--space-2) var(--space-4);
     border-radius: 100px;
-    margin: 0 0 var(--space-6);
+    margin: 0 0 var(--space-4);
 }
 
+/* Smaller than the bare --text-display cap on purpose — this hero balances
+   the text column's height against the visual (see .app-detail-hero above),
+   so a shorter title means a more compact hero, not a stretched-out image. */
 .app-detail-hero__title {
-    grid-column: 1 / -1;
     font-family: var(--font-display);
-    font-size: var(--text-display);
+    font-size: clamp(2.25rem, 4.2vw, 3.5rem);
     font-weight: 800;
     line-height: var(--leading-display);
     letter-spacing: var(--tracking-display);
     color: var(--hero-quiet);
-    margin: 0 0 var(--space-8);
+    margin: 0 0 var(--space-4);
 }
 
 /* Emphasis by value, not by hue: the opening clause sits at the quiet mix and
@@ -3051,21 +3042,22 @@ body.our-work-page .case-status.live { color: var(--forest); }
     color: var(--sand);
 }
 
+/* margin-top: auto is the balancer — flexbox splits leftover column height
+   equally between this and the CTAs' auto margin below, instead of one gap
+   swallowing it all. */
 .app-detail-hero__desc {
-    grid-column: 1;
     font-size: var(--text-body);
     line-height: var(--leading-body);
     color: var(--hero-quiet);
     max-width: 46ch;
-    margin: 0 0 var(--space-8);
+    margin: auto 0 var(--space-6);
 }
 
 .app-detail-hero__ctas {
-    grid-column: 1;
     display: flex;
     gap: var(--space-4);
     flex-wrap: wrap;
-    margin: 0;
+    margin: auto 0 0;
 }
 
 /* Scoped override of the global .btn-leaf / .btn-ghost pair. */
@@ -3089,28 +3081,49 @@ body.our-work-page .case-status.live { color: var(--forest); }
 }
 .app-detail-hero__ctas .btn-ghost:hover { background: transparent; border-color: var(--sand); }
 
-/* Rows 3 and 4 are the sentence and the CTAs — the device stands alongside
-   both and bottoms out on the band's edge. */
+/* align-self: end lands it at the bottom of the row, but the row still sits
+   inside the hero's own padding-bottom (space-16) — that's breathing room
+   for the CTAs, not meant for the visual. Negative margin pulls just the
+   visual back through that padding so it actually touches the band's outer
+   edge instead of stopping short of it. */
 .app-detail-hero__visual {
     grid-column: 2;
-    grid-row: 3 / span 2;
     align-self: end;
     justify-self: center;
+    width: min(100%, 420px);
     display: block;
     padding: 0;
+    margin-bottom: calc(-1 * var(--space-16));
 }
 
 /* Framing, not decoration: a heavy --ink bezel, top corners only, and a bottom
-   edge cropped flush with the band. No glow, no drop shadow. */
+   edge cropped flush with the band. No glow, no drop shadow.
+
+   height: 100% doesn't work here — the hero only has a min-height (not a
+   definite height), so a percentage on the image is indeterminate and the
+   browser falls back to the image's own intrinsic aspect ratio at the
+   420px column width (~900px tall), dragging the whole hero up with it.
+   A clamp sized to the (now-compact) text column's natural height is what
+   the grid row actually sizes itself against — content-driven, not
+   image-intrinsic-ratio-driven. */
 .app-detail-hero__screenshot {
     display: block;
     width: 100%;
-    height: clamp(360px, 40vw, 480px);
+    height: clamp(400px, 40vw, 600px);
     object-fit: cover;
     object-position: top center;
     border: 10px solid var(--ink);
     border-bottom: none;
     border-radius: 28px 28px 0 0;
+    transform-origin: bottom center;
+    transition: transform var(--transition-fast);
+}
+
+/* scale, not translateY — the bottom edge is flush with the band (see the
+   negative margin above); translating up would leave a gap under it. Scaling
+   from the bottom keeps the base anchored and grows upward instead. */
+.app-detail-hero__visual:hover .app-detail-hero__screenshot {
+    transform: scale(1.035);
 }
 
 /* Features band. Bottom padding is 0 — the gap down to the privacy section is
@@ -3317,20 +3330,33 @@ body.our-work-page .case-status.live { color: var(--forest); }
 @media (max-width: 900px) {
     .app-detail-hero {
         min-height: 0;
-        padding-top: calc(var(--nav-height) + var(--space-6));
+        padding: var(--space-6) 0 var(--space-8);
     }
     .app-detail-hero .container {
         grid-template-columns: minmax(0, 1fr);
-        padding-top: var(--space-12);
+        grid-template-rows: none;
     }
-    .app-detail-hero__content > *,
-    .app-detail-hero__visual {
-        grid-column: 1;
-        grid-row: auto;
-        justify-self: start;
+    .app-detail-hero__content {
+        /* Undo the auto-margin balancing act — mobile just stacks in
+           natural document order with its own margins. */
+        margin-bottom: var(--space-8);
+    }
+    .app-detail-hero__desc,
+    .app-detail-hero__ctas {
+        margin-top: 0;
     }
     .app-detail-hero__desc { max-width: none; }
-    .app-detail-hero__visual { width: min(100%, 300px); }
+    .app-detail-hero__visual {
+        grid-column: 1;
+        justify-self: center;
+        width: min(100%, 300px);
+        height: auto;
+        margin-bottom: calc(-1 * var(--space-8));
+    }
+    .app-detail-hero__screenshot {
+        height: clamp(300px, 90vw, 420px);
+        min-height: 0;
+    }
     .app-detail-features__grid {
         grid-template-columns: minmax(0, 1fr);
         row-gap: var(--space-8);
@@ -4164,6 +4190,11 @@ body.our-work-page .case-status.live { color: var(--forest); }
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     background: #FFFFFF;
     color: var(--forest-2);
+}
+
+.blog-callout .blog-callout__cta {
+    color: #fff;
+    text-decoration: none;
 }
 
 .blog-callout__cta::after {
