@@ -2945,6 +2945,7 @@ body.our-work-page .case-status.live { color: var(--forest); }
 .app-detail-page.theme-kai      { --acc: #D97706; }
 .app-detail-page.theme-volcanic { --acc: #C45B4A; }
 .app-detail-page.theme-rings    { --acc: #0FB5AE; }
+.app-detail-page.theme-rtr      { --acc: #C1571C; }
 
 /* Full-bleed forest band. Two text values only, the closing slab's exact
    recipe: --sand is the payoff line and the primary call, --hero-quiet is
