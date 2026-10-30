@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiwi Guide | New Zealand Travel Guide by Black Sands Digital</title>
+    <meta name="description" content="Kiwi Guide: the all-in-one companion for the beaches, volcanoes, glaciers, fiords, and small-town stops of New Zealand. Coming soon.">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127956;&#65039;</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/style.css">
+
+    <script src="https://unpkg.com/lucide@1.18.0/dist/umd/lucide.min.js" integrity="sha384-UUwTS+RNYj0wSOgt4wIqWyG4Rc/xvrqgHDg/fEwc2e6WEFUooChoVCwkcddDnMaL" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js" integrity="sha384-pb6hrQvo4s23cEUFtj0CZkzGE3jyK3pj26RIupXXxhSrrcUA/Cn0lZgcCrGH0t6L" crossorigin="anonymous"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="app-detail-page theme-si" x-init="lucide.createIcons()">
+
+    <div x-data="{ navHtml: '' }"
+        x-init="fetch('/components/navbar.html').then(r => r.text()).then(html => navHtml = html).catch(() => {})"
+        x-html="navHtml">
+    </div>
+
+    <section class="app-detail-hero">
+        <div class="container">
+            <div class="app-detail-hero__content">
+                <span class="app-detail-hero__pill">&#8599; New Zealand &middot; Travel &amp; Leisure</span>
+                <h1 class="app-detail-hero__title">Your New Zealand.<br><span>Fully Unlocked.</span></h1>
+                <p class="app-detail-hero__desc">Kiwi Guide is the all-in-one companion for Aotearoa New Zealand: beaches, volcanoes, glaciers, fiords, and the small-town stops that don't make the tourist maps. Built on the Black Sands engine. Launching with the South Island, North Island coming soon.</p>
+                <!-- ponytail: no store buttons or screenshot until the app ships. Copy .app-detail-hero__ctas and .app-detail-hero__visual back from rotorua-guide.html then. -->
+            </div>
+        </div>
+    </section>
+
+    <section class="app-detail-features">
+        <div class="container">
+            <div class="app-detail-features__header">
+                <h2 class="app-detail-features__title">Built for the long road</h2>
+                <p class="app-detail-features__sub">Kiwi Guide brings the Black Sands proximity engine to a whole country of mountain passes, volcanic plateaus, fiords, and wild coast.</p>
+            </div>
+
+            <div class="app-detail-features__grid">
+                <div class="app-detail-feature">
+                    <h3>Mountains, Lakes &amp; Coast</h3>
+                    <p>Volcanoes, glaciers, fiords, alpine lakes, and wild beaches, curated alongside the walks, towns, and places to eat and stay along the way.</p>
+                </div>
+
+                <div class="app-detail-feature">
+                    <h3>Verified Check-ins</h3>
+                    <p>GPS proximity verification means every unlocked location was actually visited. Build a credible record of everywhere you've explored across New Zealand.</p>
+                </div>
+
+                <div class="app-detail-feature">
+                    <h3>Trip Planner</h3>
+                    <p>Turn saved sites into a day-by-day road trip itinerary, then share a photo card of the places you've been.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-detail-legal">
+        <div class="container">
+            <div class="app-detail-legal__box" x-data="{ formattedDate: '13 October 2026' }">
+                <h2 id="terms">Terms of Service</h2>
+                <span class="app-detail-legal__updated">Last Updated: <span x-text="formattedDate"></span></span>
+
+                <div class="app-detail-legal__prose">
+                    <p>These terms govern your use of the <strong>Kiwi Guide</strong> mobile application, provided by <strong>Black Sands Digital</strong> ("we", "our", or "us"). By using the app, you agree to these terms.</p>
+
+                    <h3>1. The Service</h3>
+                    <p>Kiwi Guide is a location-based travel guide. The app is currently free to download and use, and contains no in-app purchases.</p>
+
+                    <h3>2. Future Paid Features</h3>
+                    <p>We may introduce optional paid content or features in the future. Any such purchase would be processed and billed by Apple through the App Store, and these terms will be updated to describe it before it becomes available.</p>
+
+                    <h3>3. Accuracy of Content</h3>
+                    <p>Location information, opening hours, prices, and other details are provided as a guide and may change without notice. We do not guarantee the accuracy of third-party details such as pricing or operating hours, and are not responsible for losses arising from reliance on them.</p>
+
+                    <h3>4. Location-Based Features</h3>
+                    <p>Check-ins rely on your device's GPS. You are responsible for your own physical safety while using the app, including while navigating to or exploring any location it suggests.</p>
+
+                    <h3>5. User Content</h3>
+                    <p>Reviews and ratings you submit may be displayed publicly to other users within the app. You retain ownership of content you submit, but grant us a licence to display it as part of the service. We may remove content that violates our community standards.</p>
+
+                    <h3>6. Termination</h3>
+                    <p>You may stop using the app and delete your account at any time via the settings menu. We may suspend or terminate access for use that violates these terms.</p>
+
+                    <h3>7. Governing Law</h3>
+                    <p>These terms are governed by the laws of New Zealand.</p>
+                </div>
+
+                <h2 id="privacy">Privacy Policy</h2>
+                <span class="app-detail-legal__updated">Last Updated: <span x-text="formattedDate"></span></span>
+
+                <div class="app-detail-legal__prose">
+                    <p><strong>Black Sands Digital</strong> ("we", "our", or "us") respects your privacy. This policy explains how we collect, use, and protect your information when you use the <strong>Kiwi Guide</strong> mobile application.</p>
+
+                    <h3>1. Information We Collect</h3>
+                    <ul>
+                        <li><strong>Account Information:</strong> When you create an account, we collect your email address and a unique user identifier. You may also sign in with Apple or Google, in which case we receive the identifier and email address those services provide.</li>
+                        <li><strong>Location Data:</strong> Kiwi Guide requires your precise location (GPS) to verify your presence at points of interest for check-ins. This data is processed in real-time on-device and is not stored continuously.</li>
+                        <li><strong>Photos:</strong> If you choose to create a share card, you may select a photo from your camera or photo library. This photo is used only to generate the image you choose to share and is not uploaded to our servers.</li>
+                        <li><strong>Reviews:</strong> Ratings and text reviews you submit for a location are stored against your account and are visible to other users of the app.</li>
+                        <li><strong>Usage Data &amp; Crash Reports:</strong> We collect anonymous diagnostic data to help us identify bugs and improve the app's performance.</li>
+                    </ul>
+
+                    <h3>2. How We Use Your Information</h3>
+                    <p>Your data is used solely to provide and improve the app's core functionality. We <strong>do not</strong> sell, rent, or share your personal location history or account details with third-party advertisers or data brokers.</p>
+
+                    <h3>3. Third-Party Services</h3>
+                    <p>Kiwi Guide utilises Google Firebase to securely authenticate users and store your account data, saved sites, and itineraries. Sign in with Apple and Sign in with Google are used only for authentication. Your data is handled in accordance with each provider's own privacy and security protocols.</p>
+
+                    <h3>4. Data Storage &amp; Deletion</h3>
+                    <p>You have full control over your data. You can delete your account and associated data at any time directly via the settings menu inside the Kiwi Guide application. Upon requesting deletion, your data is permanently removed from our active database.</p>
+
+                    <h3>5. Children's Privacy</h3>
+                    <p>Kiwi Guide does not knowingly collect or solicit personal information from anyone under the age of 13. If you are under 13, please do not attempt to register for the app or send any personal information about yourself to us.</p>
+
+                    <h3>6. Changes to This Policy</h3>
+                    <p>We may update this policy as the app changes, including if paid features are introduced. The date above shows when it was last revised.</p>
+                </div>
+
+                <div id="support" class="app-detail-support">
+                    <h3><i data-lucide="help-circle"></i> Need Support?</h3>
+                    <p>If you have questions about this privacy policy or the Kiwi Guide app, contact us.</p>
+                    <a href="mailto:info@blacksandsdigital.nz" class="btn-forest">
+                        <i data-lucide="mail" class="icon-sm"></i> info@blacksandsdigital.nz
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div x-data="{ footerHtml: '' }"
+        x-init="fetch('/components/footer.html').then(r => r.text()).then(html => footerHtml = html).catch(() => {})"
+        x-html="footerHtml">
+    </div>
+
+</body>
+</html>

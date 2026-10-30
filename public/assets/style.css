@@ -2946,6 +2946,7 @@ body.our-work-page .case-status.live { color: var(--forest); }
 .app-detail-page.theme-volcanic { --acc: #C45B4A; }
 .app-detail-page.theme-rings    { --acc: #0FB5AE; }
 .app-detail-page.theme-rtr      { --acc: #C1571C; }
+.app-detail-page.theme-si       { --acc: #2F6DB5; }
 
 /* Full-bleed forest band. Two text values only, the closing slab's exact
    recipe: --sand is the payoff line and the primary call, --hero-quiet is
@@ -3808,6 +3809,7 @@ body.our-work-page .case-status.live { color: var(--forest); }
 .blog-post[data-topic="kai-akl"] { --topic: #1A6FA8; }
 .blog-post[data-topic="guide-akl"] { --topic: #0E7490; }
 .blog-post[data-topic="auckland"] { --topic: #0E7490; }
+.blog-post[data-topic="rotorua"] { --topic: #C1571C; }
 .blog-post[data-topic="platform"] { --topic: #0E7490; }
 
 /* Blog index layout */
@@ -4125,6 +4127,101 @@ body.our-work-page .case-status.live { color: var(--forest); }
     margin-bottom: 1.25rem;
 }
 
+.blog-post__content h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 1.75rem 0 0.6rem;
+    line-height: 1.3;
+}
+
+/* Same recipe as .bs-content and .app-detail-legal__prose: native markers tinted
+   to the topic colour, with the padding split between the <ul> and the <li>. The
+   li padding is what keeps the marker beside its text instead of stranded out at
+   the left margin once a bullet wraps to several lines. */
+.blog-post__content ul,
+.blog-post__content ol {
+    list-style: disc;
+    padding-left: var(--space-4);
+    margin: 0 0 var(--space-6);
+}
+
+.blog-post__content ol {
+    list-style: decimal;
+    padding-left: var(--space-6);
+}
+
+.blog-post__content li {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #3A423A;
+    padding-left: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.blog-post__content li::marker {
+    color: var(--topic, var(--leaf));
+}
+
+.blog-post__content li strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* ponytail: one wrapper handles narrow screens; wide tables scroll rather than
+   stack. The border and radius live on the wrapper so the scroll happens inside
+   the frame. */
+.blog-table-wrap {
+    overflow-x: auto;
+    margin: 0 0 var(--space-8);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--cream);
+}
+
+.blog-post__content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.blog-post__content thead th {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    background: var(--sand);
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    white-space: nowrap;
+}
+
+.blog-post__content tbody td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--line);
+    color: #3A423A;
+    line-height: 1.55;
+    vertical-align: top;
+}
+
+.blog-post__content tbody td:first-child {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.blog-post__content tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.blog-post__content tbody tr:hover td {
+    background: rgba(241, 232, 216, 0.45);
+}
+
 .blog-post__content a {
     color: var(--topic, var(--forest));
     text-decoration: underline;
@@ -4235,6 +4332,19 @@ body.our-work-page .case-status.live { color: var(--forest); }
 
     .blog-post__content p {
         font-size: 1rem;
+    }
+
+    .blog-post__content li {
+        font-size: 1rem;
+    }
+
+    .blog-post__content thead th,
+    .blog-post__content tbody td {
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .blog-post__content table {
+        font-size: 0.9rem;
     }
 
     .blog-callout {
@@ -4421,8 +4531,8 @@ body.our-work-page .case-status.live { color: var(--forest); }
 }
 
 /* Header: full-width gradient behind the fixed navbar. The gradient is the
-   theme's signature and stays; the repeating dot texture is gone — one soft
-   highlight is enough. */
+   theme's signature; over it, the same soft highlight + concentric rings the
+   app-detail hero uses, so the two templates read as one system. */
 .dp-header {
     position: relative;
     background: var(--header-grad);
@@ -4438,7 +4548,9 @@ body.our-work-page .case-status.live { color: var(--forest); }
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(120% 95% at 100% 0%, rgba(255, 255, 255, 0.20), transparent 55%);
+    background:
+        radial-gradient(120% 95% at 100% 0%, rgba(255, 255, 255, 0.20), transparent 55%),
+        repeating-radial-gradient(circle at 85% 110%, rgba(255, 255, 255, 0.10) 0 1px, transparent 1px 46px);
     pointer-events: none;
 }
 
@@ -4726,4 +4838,39 @@ body.our-work-page .case-status.live { color: var(--forest); }
         transform: none;
         transition: none;
     }
+}
+/* Homepage showcase titles link to their app page. */
+.featured-title a:link,
+.featured-title a:visited {
+    color: var(--sand);
+    text-decoration: none;
+}
+
+.card-title a:link,
+.card-title a:visited {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.featured-title a:hover,
+.featured-title a:focus-visible,
+.card-title a:hover,
+.card-title a:focus-visible {
+    text-decoration: underline;
+}
+
+/* Our-work titles link to their app page. */
+.flagship-content h2 a:link,
+.flagship-content h2 a:visited,
+.bs-case-card.other-case h2 a:link,
+.bs-case-card.other-case h2 a:visited {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.flagship-content h2 a:hover,
+.flagship-content h2 a:focus-visible,
+.bs-case-card.other-case h2 a:hover,
+.bs-case-card.other-case h2 a:focus-visible {
+    text-decoration: underline;
 }

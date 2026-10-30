@@ -8,6 +8,7 @@
 - [Kai AKL](https://blacksands.app/kai-akl): A curated guide to Auckland food and restaurants, focused on where locals actually eat.
 - [Lord of the Rings](https://blacksands.app/lord-of-the-rings): A guide to Lord of the Rings and Middle-earth filming locations in New Zealand.
 - [Guide AKL](https://blacksands.app/guide-akl): A complete offline tourist guide to Auckland.
+- [Rotorua Guide](https://blacksands.app/rotorua-guide): A guide to Rotorua's geothermal parks, hot pools, Māori cultural sites, walks and places to eat.
 
 ## Articles
 
@@ -91,6 +92,23 @@
 - [What Makes a Great Self-Guided Walking Tour?](https://blacksands.app/blog/platform/what-makes-a-great-walking-tour/): A great self-guided walking tour has a route that flows, a strong story at each stop, sensible pacing, and works offline. The content matters more than the technology.
 - [White-Label vs Building Your Own: What It Actually Costs](https://blacksands.app/blog/platform/white-label-vs-build-your-own/): Building your own location app means months of development and ongoing upkeep. A white-label platform trades that for a lower, predictable cost. Here is the comparison.
 - [Why Offline-First Matters for Location Apps](https://blacksands.app/blog/platform/why-offline-first-matters/): Offline-first design matters for location apps because the places people use them, trails, islands and remote sites, are exactly where mobile signal fails.
+- [Best Things to Do in Rotorua](https://blacksands.app/blog/rotorua/best-things-to-do-in-rotorua/): The best things to do in Rotorua are a geothermal park, a hot pool soak, a Māori cultural evening with hāngī, and an adventure day. Two days covers the essentials.
+- [Free Things to Do in Rotorua](https://blacksands.app/blog/rotorua/free-things-to-do-in-rotorua/): The best free things to do in Rotorua: geothermal walks at Kuirau Park and Sulphur Point, natural hot pools, a free geyser lookout, forest tracks, glow worms and the night market.
+- [Things to Do in Rotorua With Kids](https://blacksands.app/blog/rotorua/things-to-do-in-rotorua-with-kids/): The best things to do in Rotorua with kids: kiwi at the National Kiwi Hatchery, the Lady Knox Geyser, the Skyline luge, the Redwoods Treewalk, family hot pools and a hāngī with glow worms.
+- [Rotorua Events Calendar: Annual Festivals and Races by Month](https://blacksands.app/blog/rotorua/rotorua-events-calendar/): Rotorua's annual events month by month: the Blue Lake Multisport Festival, Waitangi Day, the Tarawera Ultra-Trail, Crankworx, the Rotorua Marathon and Matariki, with next dates.
+- [Things to Do in Rotorua at Night](https://blacksands.app/blog/rotorua/things-to-do-in-rotorua-at-night/): What to do in Rotorua after dark: a hāngī and haka evening, the lit Redwoods Nightlights walk, glow worms, late-night hot pools, Eat Streat and the Thursday night market.
+- [Rotorua on a Budget](https://blacksands.app/blog/rotorua/rotorua-on-a-budget/): How to do Rotorua cheaply: free geothermal sights, free hot pools, forest walks and glow worms, what a dorm bed or campsite costs, and the free swaps for the paid attractions.
+- [1 Day in Rotorua: The Perfect Itinerary](https://blacksands.app/blog/rotorua/one-day-in-rotorua/): A one-day Rotorua itinerary, hour by hour: the Lady Knox Geyser at Waiotapu, lunch on Eat Streat, the Redwoods Treewalk, a hot pool soak and a hāngī with glow worms.
+- [2 Days in Rotorua Itinerary](https://blacksands.app/blog/rotorua/two-days-in-rotorua/): A two-day Rotorua itinerary: Waiotapu and the Redwoods with a hāngī evening on day one, Te Puia and the Kaituna River on day two, with swaps for families, bikers and rain.
+- [3 Days in Rotorua Itinerary](https://blacksands.app/blog/rotorua/three-days-in-rotorua/): A three-day Rotorua itinerary: the geothermal parks and a hāngī evening, Te Puia and the Kaituna River, then the lakes along Tarawera Road and glow worms after dark.
+- [How Many Days Do You Need in Rotorua?](https://blacksands.app/blog/rotorua/how-many-days-in-rotorua/): Two days suits most visitors to Rotorua. Here is what one, two, three and four days each get you, and what changes the answer: a car, kids, events and the weather.
+- [Best Time to Visit Rotorua](https://blacksands.app/blog/rotorua/best-time-to-visit-rotorua/): Late February to early April is the best time to visit Rotorua: warm, and past the summer crowds. Season-by-season weather, events, school holidays and dates to avoid.
+- [Is Rotorua Worth Visiting?](https://blacksands.app/blog/rotorua/is-rotorua-worth-visiting/): Yes, for most North Island travellers. Geysers, living Māori culture, hot pools and adventure in one compact area, weighed against the smell, the cost and the tour-group format.
+- [Best Free Hot Pools Near Rotorua](https://blacksands.app/blog/rotorua/free-hot-pools-rotorua/): Kerosene Creek, Hot 'n' Cold, the Kuirau Park foot baths, Hot Water Beach and Kawerau's free pools: directions, what to expect, and how to soak safely.
+- [Waiotapu vs Waimangu vs Te Puia: Which Geothermal Park Is Worth It?](https://blacksands.app/blog/rotorua/waiotapu-vs-waimangu-vs-te-puia/): Rotorua's three main geothermal parks compared: what each one has, what it costs, how long it takes, and which to choose if you only have time for one.
+- [Hot 'n' Cold vs Kerosene Creek: Which Free Hot Pool Should You Visit?](https://blacksands.app/blog/rotorua/hot-n-cold-vs-kerosene-creek/): Rotorua's two best free hot pools compared: Kerosene Creek for a deep, scenic soak, Hot 'n' Cold if you want to set your own temperature. Directions, pros, cons and safety.
+- [Ultimate Guide to Rotorua's Thermal Parks](https://blacksands.app/blog/rotorua/rotorua-thermal-parks-guide/): All five paid geothermal parks and the free thermal areas around Rotorua: prices, highlights, how long each takes, how to group them by area, and how accessible they are.
+- [Rotorua Canopy Tours vs Redwoods Altitude vs Rotorua Ziplines: Which Zipline Should You Choose?](https://blacksands.app/blog/rotorua/rotorua-ziplines-compared/): Rotorua's three zipline operators compared: prices, ages, weight limits, locations and what each one actually flies over, so you book the right one.
 
 ## About
 
