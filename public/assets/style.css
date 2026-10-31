@@ -3892,6 +3892,7 @@ body.our-work-page .case-status.live { color: var(--forest); }
 .blog-post[data-topic="guide-akl"] { --topic: #0E7490; }
 .blog-post[data-topic="auckland"] { --topic: #0E7490; }
 .blog-post[data-topic="rotorua"] { --topic: #C1571C; }
+.blog-post[data-topic="south-island"] { --topic: #6D4C9F; }
 .blog-post[data-topic="platform"] { --topic: #0E7490; }
 
 /* Blog index layout */
@@ -4314,6 +4315,52 @@ body.our-work-page .case-status.live { color: var(--forest); }
     color: var(--ink);
 }
 
+/* Photos and inline SVG maps. Portrait photos are capped so one image never
+   fills the whole screen. */
+.blog-figure {
+    margin: 0 0 var(--space-8);
+}
+
+.blog-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: var(--sand);
+}
+
+.blog-figure figcaption {
+    margin-top: var(--space-2);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.blog-figure figcaption a {
+    color: var(--muted);
+}
+
+.blog-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--cream);
+}
+
+.blog-map .map-land { fill: var(--sand); stroke: var(--line); stroke-width: 1.5; }
+.blog-map .map-water { fill: #BFDDE3; stroke: #8DBFCA; stroke-width: 1; }
+.blog-map .map-road { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 2 4; stroke-linecap: round; }
+.blog-map .map-route { fill: none; stroke: var(--topic, var(--forest)); stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+.blog-map .map-route--spur { stroke-dasharray: 7 6; }
+.blog-map .map-town { fill: var(--ink); stroke: var(--cream); stroke-width: 2; }
+.blog-map .map-spot { fill: var(--topic, var(--forest)); stroke: #FFFFFF; stroke-width: 2.5; }
+.blog-map .map-label { font-family: var(--font-mono); font-size: 15px; font-weight: 600; fill: var(--ink); paint-order: stroke; stroke: var(--cream); stroke-width: 4px; stroke-linejoin: round; }
+.blog-map .map-label--spot { fill: var(--topic, var(--forest)); }
+.blog-map .map-label--road { font-size: 13px; fill: var(--muted); }
 
 /* App callout box */
 .blog-callout {
