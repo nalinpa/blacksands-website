@@ -737,6 +737,62 @@ p {
     }
 }
 
+/* --- Kiwi Guide launch band ------------------------------------------------
+   Full-bleed header art, then a --forest strip carrying the name and CTA. The
+   image already says "New Zealand travel planner" on its sign, so no text sits
+   over it. */
+.kiwi-launch {
+    background: var(--forest);
+}
+
+.kiwi-launch__banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: cover;
+}
+
+.kiwi-launch__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+}
+
+.kiwi-launch .eyebrow { color: var(--sand); }
+
+.kiwi-launch__title {
+    font-family: var(--font-display);
+    font-size: calc(var(--text-h3) * 1.4);
+    font-weight: 700;
+    line-height: var(--leading-h2);
+    letter-spacing: var(--tracking-h2);
+    color: var(--sand);
+    margin: var(--space-2) 0;
+}
+
+.kiwi-launch__desc {
+    color: color-mix(in srgb, var(--sand) 62%, var(--forest));
+    max-width: 52ch;
+    margin: 0;
+}
+
+.kiwi-launch__bar .btn-leaf {
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .kiwi-launch__bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--space-8) var(--space-6);
+    }
+}
+
 /* --- Stats Bar: the bottom half of the opening unit ----------------------- */
 /* No border and no band colour. The strip was fenced off from the hero by a
    hairline and 2rem of padding, which read as a separate component; space is
@@ -1221,7 +1277,7 @@ p {
 
 /* --leaf measures 3.98:1 on --forest and 2.86:1 on --cream, so as 12.8px text
    it misses AA in both beds. Each bed holds it at that bed's own value. */
-.showcase-featured .case-status.live { color: var(--featured-quiet); }
+.showcase-featured .case-status { color: var(--featured-quiet); }
 .showcase-card .case-status.live { color: var(--forest); }
 
 /* Between --text-h2 and --text-h3, derived by calc from the scale. */
@@ -3128,6 +3184,32 @@ body.our-work-page .case-status.live { color: var(--forest); }
     transform: scale(1.035);
 }
 
+/* Kiwi Guide: header photo behind the band instead of a screenshot. Same scrim
+   recipe as .hero-overlay::after — heavy under the text, lifting to the right
+   so the kiwi sign (~56% across) stays readable. The ::before glow is dropped;
+   it was a stand-in for a photo. */
+.app-detail-hero--kiwi {
+    background:
+        linear-gradient(90deg,
+            rgba(10, 43, 25, 0.88) 0%,
+            rgba(10, 43, 25, 0.66) 40%,
+            rgba(10, 43, 25, 0.15) 70%),
+        url('/assets/kiwi-guide-header.jpg') center / cover,
+        var(--forest);
+}
+.app-detail-hero--kiwi::before { display: none; }
+/* The quiet mix goes muddy over the photo; full --sand holds. */
+.app-detail-hero--kiwi .app-detail-hero__desc { color: var(--sand); }
+
+@media (max-width: 900px) {
+    .app-detail-hero--kiwi {
+        background:
+            linear-gradient(rgba(10, 43, 25, 0.80), rgba(10, 43, 25, 0.80)),
+            url('/assets/kiwi-guide-header.jpg') center / cover,
+            var(--forest);
+    }
+}
+
 /* Features band. Bottom padding is 0 — the gap down to the privacy section is
    owned by .app-detail-legal. */
 .app-detail-features {
@@ -4231,6 +4313,7 @@ body.our-work-page .case-status.live { color: var(--forest); }
 .blog-post__content a:hover {
     color: var(--ink);
 }
+
 
 /* App callout box */
 .blog-callout {
