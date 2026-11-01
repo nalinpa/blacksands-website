@@ -9,6 +9,7 @@
 - [Lord of the Rings](https://blacksands.app/lord-of-the-rings): A guide to Lord of the Rings and Middle-earth filming locations in New Zealand.
 - [Guide AKL](https://blacksands.app/guide-akl): A complete offline tourist guide to Auckland.
 - [Rotorua Guide](https://blacksands.app/rotorua-guide): A guide to Rotorua's geothermal parks, hot pools, Māori cultural sites, walks and places to eat.
+- [Kiwi Guide](https://blacksands.app/kiwi-guide): A road trip planner for New Zealand's South Island, with over 500 places, suggested trips and local knowledge. North Island coming soon.
 
 ## Articles
 
