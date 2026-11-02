@@ -2341,7 +2341,7 @@ body.our-work-page .case-status.live { color: var(--forest); }
 }
 
 /* The sticky offset is nav height plus one breathing step, derived rather than
-   measured. The old `top: 99px /* 75px navbar + 24px */` was arithmetic against
+   measured. The old `top: 99px` (75px navbar + 24px) was arithmetic against
    a 75px nav that no longer exists — the bar is 72px at >=901px and 80px below
    it, so the constant was silently 27px of dead gap instead of the 24px it
    claimed. --space-6 is the right addend: it reproduces the 24px the comment was
